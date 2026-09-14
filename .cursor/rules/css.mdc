@@ -1,0 +1,25 @@
+---
+description: BEM, rem, 모바일 퍼스트 CSS 규칙
+globs: "**/*.{css,html}"
+alwaysApply: false
+---
+
+# CSS
+
+- 클래스만 스타일한다. ID·태그 셀렉터로 화면 스타일을 주지 않는다. BEM: `block__element--modifier`.
+- 고정 길이는 rem. `1rem = 16px`. `html` font-size는 `100%`를 유지한다. `62.5%`로 10px 기준을 만들지 않는다.
+- px 예외는 두 가지만: `1px` 헤어라인, 미디어쿼리 경계. 분기점은 `1024px`, `1920px`.
+- 색·간격·글자 크기는 `variables.css` 토큰을 쓴다. 컴포넌트에 매직 넘버를 반복하지 않는다.
+- 모바일 스타일이 기본. 상위 해상도는 아래 패턴만 사용한다.
+
+```css
+/* ❌ BAD */
+.card { width: 320px; }
+@media (max-width: 767px) { .card { width: 100%; } }
+
+/* ✅ GOOD */
+.card { width: 100%; }
+@media (min-width: 1024px) { .card { width: 20rem; } }
+```
+
+- `:focus-visible` 윤곽을 지우지 않는다. `prefers-reduced-motion: reduce`에서는 전환·애니메이션 시간을 0에 가깝게 둔다.

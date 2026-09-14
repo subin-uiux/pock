@@ -1,0 +1,17 @@
+/**
+ * footer.css
+ * 공통 푸터. 시안 반영 전 구조만 둔다.
+ */
+
+.footer {
+  padding: var(--spacing-lg) var(--layout-gutter);
+  padding-bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom));
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__copy {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
+}
