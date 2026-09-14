@@ -1,0 +1,31 @@
+/**
+ * navigation.css
+ * Block: .navigation
+ * 역할: 하단/사이드 주요 내비게이션
+ */
+
+.navigation {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.navigation__list {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.navigation__item {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.navigation__link {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.navigation__link--active {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+@media (min-width: 1024px) {
+  .navigation {
+    /* 추후 디자인 지시 후 구현 */
+  }
+}

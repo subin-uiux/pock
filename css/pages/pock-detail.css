@@ -1,0 +1,34 @@
+/**
+ * pock-detail.css
+ * Page: .page--pock-detail
+ * 역할: POCK 상세 화면
+ *
+ * Modifiers:
+ *   .pock-detail--locked   — 아직 열 수 없음
+ *   .pock-detail--opening  — 공개 시점 도달, 열기 가능
+ *   .pock-detail--opened   — 이미 열람함
+ */
+
+.page--pock-detail {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.main--pock-detail {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.pock-detail {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.pock-detail--locked {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.pock-detail--opening {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.pock-detail--opened {
+  /* 추후 디자인 지시 후 구현 */
+}

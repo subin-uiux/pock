@@ -1,0 +1,19 @@
+/**
+ * home.css
+ * Page: .page--home
+ * 역할: 로그인 후 메인 홈 대시보드
+ */
+
+.page--home {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+.main--home {
+  /* 추후 디자인 지시 후 구현 */
+}
+
+@media (min-width: 1024px) {
+  .main--home {
+    /* 추후 디자인 지시 후 구현 */
+  }
+}
