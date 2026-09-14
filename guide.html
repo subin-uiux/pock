@@ -685,45 +685,53 @@
             <p class="btn-system__desc">상태는 Default / Pressed를 기준으로 하며, 버튼의 용도에 따라 Guide 및 Icon 타입을 함께 사용합니다. Push는 주요 액션, Popup은 팝업 내 액션, Action은 Icon / Text 타입의 기능 실행 버튼으로 사용합니다.</p>
           </div>
 
-          <p class="btn-system__label">01 / Push_btn</p>
-          <div class="btn-system__board">
-            <h3 class="btn-system__card-title">01 / Push btn</h3>
-            <div class="btn-system__sample">
-              <p class="btn-system__state">Default</p>
-              <div class="btn-system__stack">
-                <button type="button" class="btn btn--push-muted btn--block">Text</button>
-                <button type="button" class="btn btn--push btn--block">Text</button>
-                <button type="button" class="btn btn--push-green btn--block">Text</button>
+          <div class="btn-system__rows">
+            <div class="btn-system__row">
+              <p class="btn-system__label">01 / Push_btn</p>
+              <div class="btn-system__board">
+                <h3 class="btn-system__card-title">01 / Push btn</h3>
+                <div class="btn-system__sample">
+                  <p class="btn-system__state">Default</p>
+                  <div class="btn-system__stack">
+                    <button type="button" class="btn btn--push-muted btn--block">Text</button>
+                    <button type="button" class="btn btn--push btn--block">Text</button>
+                    <button type="button" class="btn btn--push-green btn--block">Text</button>
+                  </div>
+                  <p class="btn-system__state">Pressed</p>
+                  <button type="button" class="btn btn--push-pressed btn--block">Text</button>
+                  <p class="btn-system__state">Guide Button</p>
+                  <button type="button" class="btn btn--guide">Text</button>
+                </div>
               </div>
-              <p class="btn-system__state">Pressed</p>
-              <button type="button" class="btn btn--push-pressed btn--block">Text</button>
-              <p class="btn-system__state">Guide Button</p>
-              <button type="button" class="btn btn--guide">Text</button>
             </div>
-          </div>
 
-          <p class="btn-system__label">02 / Popup_btn</p>
-          <div class="btn-system__board">
-            <h3 class="btn-system__card-title">02 / Popup_btn</h3>
-            <div class="btn-system__sample">
-              <p class="btn-system__state">Default</p>
-              <button type="button" class="btn btn--popup">Text</button>
-              <p class="btn-system__state">Pressed</p>
-              <button type="button" class="btn btn--popup-pressed">Text</button>
+            <div class="btn-system__row">
+              <p class="btn-system__label">02 / Popup_btn</p>
+              <div class="btn-system__board">
+                <h3 class="btn-system__card-title">02 / Popup_btn</h3>
+                <div class="btn-system__sample">
+                  <p class="btn-system__state">Default</p>
+                  <button type="button" class="btn btn--popup">Text</button>
+                  <p class="btn-system__state">Pressed</p>
+                  <button type="button" class="btn btn--popup-pressed">Text</button>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <p class="btn-system__label">03 / Action_btn</p>
-          <div class="btn-system__board">
-            <h3 class="btn-system__card-title">03 / Action_btn</h3>
-            <div class="btn-system__sample">
-              <p class="btn-system__state">Type = Icon</p>
-              <button type="button" class="btn btn--action-icon">
-                <span class="btn__icon" aria-hidden="true"></span>
-                Text
-              </button>
-              <p class="btn-system__state">Type = Text</p>
-              <button type="button" class="btn btn--action-text">Text</button>
+            <div class="btn-system__row">
+              <p class="btn-system__label">03 / Action_btn</p>
+              <div class="btn-system__board">
+                <h3 class="btn-system__card-title">03 / Action_btn</h3>
+                <div class="btn-system__sample">
+                  <p class="btn-system__state">Type = Icon</p>
+                  <button type="button" class="btn btn--action-icon">
+                    <span class="btn__icon" aria-hidden="true"></span>
+                    Text
+                  </button>
+                  <p class="btn-system__state">Type = Text</p>
+                  <button type="button" class="btn btn--action-text">Text</button>
+                </div>
+              </div>
             </div>
           </div>
         </section>

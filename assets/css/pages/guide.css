@@ -247,12 +247,27 @@
 .color-swatch__chip--base-100 { background-color: var(--color-base-100); }
 .color-swatch__chip--base-0 { background-color: var(--color-base-0); }
 
+.btn-system__rows {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--spacing-md);
+}
+
+.btn-system__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
 .btn-system__board {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--spacing-md);
-  width: min(100%, 18rem);
+  width: 100%;
   padding: var(--spacing-lg) var(--spacing-md);
   border-radius: 1.25rem;
   background-color: var(--color-base-0);
@@ -422,7 +437,7 @@
   .color-system__panel,
   .type-system__panel,
   .nav-system__panel,
-.btn-system__panel {
+  .btn-system__panel {
     padding: var(--spacing-xl) var(--spacing-lg);
   }
 
