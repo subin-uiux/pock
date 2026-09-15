@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="assets/css/components/navigation.css">
   <link rel="stylesheet" href="assets/css/components/button.css">
   <link rel="stylesheet" href="assets/css/components/letter-card.css">
+  <link rel="stylesheet" href="assets/css/components/letter.css">
+  <link rel="stylesheet" href="assets/css/components/grid.css">
   <link rel="stylesheet" href="assets/css/pages/guide.css">
   <title>컴포넌트 가이드 ㅣ POCK</title>
 
@@ -38,6 +40,99 @@
             <p class="logo-system__card-title">Logo</p>
             <div class="logo-system__frame">
               <img class="logo-system__image" src="assets/images/logo.png" alt="포크 심벌과 POCK 워드마크 로고" width="132" height="163">
+            </div>
+          </div>
+        </section>
+
+        <section class="grid-system" id="grid-system" aria-labelledby="grid-system-title">
+          <p class="grid-system__eyebrow">POCK · Grid system</p>
+          <div class="grid-system__panel">
+            <h2 class="grid-system__title" id="grid-system-title">GRID</h2>
+            <p class="grid-system__lead">설계 · 가이드라인 · 레이아웃 안내</p>
+            <p class="grid-system__desc">POCK은 화면 크기에 따라 컬럼과 콘텐츠 영역이 유동적으로 조정됩니다.<br>Mobile은 360–768px, Tablet은 769–1024px을 기준으로 반응하며,<br>1025–1920px에서는 Tablet의 최대 너비를 유지한 채 화면 중앙에 정렬됩니다.</p>
+          </div>
+
+          <p class="grid-system__label">Mobile</p>
+          <div class="grid-system__board grid-system__board--mobile">
+            <p class="grid-system__caption">Mobile – (360~768)</p>
+            <div class="grid-system__viewport grid-system__viewport--mobile">
+              <div class="grid-system__stage grid-system__stage--mobile" aria-hidden="true">
+                <div class="grid-system__sheet">
+                  <div class="grid-system__track grid-system__track--mobile">
+                    <span class="grid-system__mark grid-system__mark--margin"><span class="grid-system__mark-value">20</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">12</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">12</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">12</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--margin"><span class="grid-system__mark-value">20</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="grid-system__label">Pad</p>
+          <div class="grid-system__board grid-system__board--pad">
+            <p class="grid-system__caption">Pad – (769~1024)</p>
+            <div class="grid-system__viewport grid-system__viewport--pad">
+              <div class="grid-system__stage grid-system__stage--pad" aria-hidden="true">
+                <div class="grid-system__sheet">
+                  <div class="grid-system__track grid-system__track--pad">
+                    <span class="grid-system__mark grid-system__mark--margin"><span class="grid-system__mark-value">64</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                    <span class="grid-system__col"></span>
+                    <span class="grid-system__mark grid-system__mark--margin"><span class="grid-system__mark-value">64</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="grid-system__label">Pc (Pad 최대 사이즈 가운데 정렬)</p>
+          <div class="grid-system__board grid-system__board--pc">
+            <p class="grid-system__caption">Pc – (1025~1920)</p>
+            <div class="grid-system__viewport grid-system__viewport--pc">
+              <div class="grid-system__stage grid-system__stage--pc" aria-hidden="true">
+                <div class="grid-system__canvas">
+                  <div class="grid-system__sheet">
+                    <div class="grid-system__track grid-system__track--pad">
+                      <span class="grid-system__mark grid-system__mark--margin"><span class="grid-system__mark-value">64</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--gutter"><span class="grid-system__mark-value">24</span></span>
+                      <span class="grid-system__col"></span>
+                      <span class="grid-system__mark grid-system__mark--margin"><span class="grid-system__mark-value">64</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -872,8 +967,6 @@
                     <button type="button" class="btn btn--push btn--block">Text</button>
                     <button type="button" class="btn btn--push-green btn--block">Text</button>
                   </div>
-                  <p class="btn-system__state">Pressed</p>
-                  <button type="button" class="btn btn--push-pressed btn--block">Text</button>
                   <p class="btn-system__state">Guide Button</p>
                   <button type="button" class="btn btn--guide">Text</button>
                 </div>
@@ -887,8 +980,6 @@
                 <div class="btn-system__sample">
                   <p class="btn-system__state">Default</p>
                   <button type="button" class="btn btn--popup">Text</button>
-                  <p class="btn-system__state">Pressed</p>
-                  <button type="button" class="btn btn--popup-pressed">Text</button>
                 </div>
               </div>
             </div>
@@ -1101,7 +1192,6 @@
                 <li class="card-system__item">
                   <p class="card-system__caption">letter-card-received (Countdown)</p>
                   <article class="letter-card letter-card--locked letter-card--mo">
-                    <a class="letter-card__more" href="#card-system">전체보기 &gt;</a>
                     <div class="letter-card__body">
                       <span class="letter-card__lock" aria-hidden="true">
                         <img class="letter-card__lock-image" src="assets/images/letter/letter-lock-icon.png" alt="" width="40" height="40">
@@ -1134,7 +1224,6 @@
                 <li class="card-system__item">
                   <p class="card-system__caption">letter-card-received (Timer)</p>
                   <article class="letter-card letter-card--locked letter-card--mo">
-                    <a class="letter-card__more" href="#card-system">전체보기 &gt;</a>
                     <div class="letter-card__body">
                       <span class="letter-card__lock" aria-hidden="true">
                         <img class="letter-card__lock-image" src="assets/images/letter/letter-lock-icon.png" alt="" width="40" height="40">
@@ -1188,7 +1277,6 @@
                 <li class="card-system__item">
                   <p class="card-system__caption">letter-card-received (Countdown)</p>
                   <article class="letter-card letter-card--locked letter-card--tb">
-                    <a class="letter-card__more" href="#card-system">전체보기 &gt;</a>
                     <div class="letter-card__body">
                       <span class="letter-card__lock" aria-hidden="true">
                         <img class="letter-card__lock-image" src="assets/images/letter/letter-lock-icon.png" alt="" width="40" height="40">
@@ -1221,7 +1309,6 @@
                 <li class="card-system__item">
                   <p class="card-system__caption">letter-card-received (Timer)</p>
                   <article class="letter-card letter-card--locked letter-card--tb">
-                    <a class="letter-card__more" href="#card-system">전체보기 &gt;</a>
                     <div class="letter-card__body">
                       <span class="letter-card__lock" aria-hidden="true">
                         <img class="letter-card__lock-image" src="assets/images/letter/letter-lock-icon.png" alt="" width="40" height="40">
@@ -1262,6 +1349,365 @@
                 </li>
               </ul>
             </div>
+          </div>
+        </section>
+        <section class="letter-system" id="letter-system" aria-labelledby="letter-system-title">
+          <p class="letter-system__eyebrow">POCK · Letter system</p>
+          <div class="letter-system__panel">
+            <h2 class="letter-system__title" id="letter-system-title">LETTER</h2>
+            <p class="letter-system__lead">편지지 + 색상 + 정렬 = 하나의 Letter</p>
+            <p class="letter-system__groups">총 7가지 색상 | Red · Orange · Yellow · Green · Blue · Purple · Pink</p>
+            <p class="letter-system__desc">Letter는 메시지를 읽고 쓰는 편지지 컴포넌트입니다. 이미지·제목·본문·발신 정보로 구성되며, Rainbow Light 7색을 배경으로 사용합니다.</p>
+          </div>
+
+          <p class="letter-system__label">01 / Letter card - normal (Mo)</p>
+          <div class="letter-system__board">
+            <h3 class="letter-system__card-title">01 / Letter card - normal (Mo)</h3>
+            <ul class="letter-system__list">
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Red)</p>
+                  <article class="letter letter--mo letter--red">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Orange)</p>
+                  <article class="letter letter--mo letter--orange">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Yellow)</p>
+                  <article class="letter letter--mo letter--yellow">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Green)</p>
+                  <article class="letter letter--mo letter--green">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Blue)</p>
+                  <article class="letter letter--mo letter--blue">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Purple)</p>
+                  <article class="letter letter--mo letter--purple">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Pink)</p>
+                  <article class="letter letter--mo letter--pink">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+            </ul>
+          </div>
+
+          <p class="letter-system__label">01 / Letter card - normal (Tb, Pc)</p>
+          <div class="letter-system__board letter-system__board--wide">
+            <h3 class="letter-system__card-title">01 / Letter card - normal (Tb, Pc)</h3>
+            <ul class="letter-system__list">
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Red)</p>
+                  <article class="letter letter--tb letter--red">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Orange)</p>
+                  <article class="letter letter--tb letter--orange">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Yellow)</p>
+                  <article class="letter letter--tb letter--yellow">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Green)</p>
+                  <article class="letter letter--tb letter--green">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Blue)</p>
+                  <article class="letter letter--tb letter--blue">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Purple)</p>
+                  <article class="letter letter--tb letter--purple">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li class="letter-system__item">
+                  <p class="letter-system__caption">Letter (Pink)</p>
+                  <article class="letter letter--tb letter--pink">
+                    <button class="letter__expand" type="button" aria-label="닫기"><img class="letter__expand-icon" src="assets/images/pixelarticons_close.png" alt="" width="18" height="18"></button>
+                    <div class="letter__media"></div>
+                    <div class="letter__content">
+                      <div class="letter__text">
+                        <h4 class="letter__title">제목</h4>
+                        <p class="letter__body">걸음마다 눈부신 나 Let's get it star
+모든 순간 시선을 난 피하지 않지
+나를 스친 그 순간 지금은 Chasing
+아주 눈이 부신 너를 숨김없이 보여줘
+한 번도 빛난 적 없었던 미지의 향으로
+온 세상을 물들여 새로워진 장면에 두
+눈앞 황홀해 너의 손을 잡을 때
+너와 어우러질 때</p>
+                      </div>
+                      <div class="letter__foot">
+                        <span class="letter__from">FROM. 발신인</span>
+                        <span class="letter__date">20XX.XX.XX</span>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+            </ul>
           </div>
         </section>
       </div>

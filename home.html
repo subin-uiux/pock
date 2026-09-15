@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>홈 — POCK</title>
+  <meta name="description" content="POCK 홈. 받은 POCK과 보낸 POCK, 코인 현황을 한눈에 확인합니다.">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -11,39 +12,28 @@
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/components/header.css">
   <link rel="stylesheet" href="css/components/navigation.css">
-  <link rel="stylesheet" href="css/components/pock-card.css">
-  <link rel="stylesheet" href="css/components/coin.css">
   <link rel="stylesheet" href="css/components/button.css">
   <link rel="stylesheet" href="css/pages/home.css">
 </head>
-<body class="page page--home">
+<body class="page page--home page--has-navigation">
   <!--
     home.html
-    역할: 로그인 후 메인 화면
-    포함 예정: 받은 POCK, 보낸 POCK, 다가오는 POCK, Coin 정보
+    역할: 로그인 후 메인 홈 대시보드
   -->
 
-  <div class="page__wrapper" id="smooth-wrapper">
-    <div class="page__content" id="smooth-content">
+  <div class="page__wrapper">
+    <header class="header">
+      <!-- 공통 헤더 (추후 구현) -->
+    </header>
 
-      <header class="header">
-        <!-- 공통 헤더 (추후 구현) -->
-      </header>
+    <main id="main" class="main main--home">
+      <!-- 홈 대시보드 콘텐츠 (추후 디자인 지시 후 구현) -->
+    </main>
 
-      <main class="main main--home">
-        <!-- 홈 대시보드 영역 (추후 구현) -->
-      </main>
-
-      <nav class="navigation" aria-label="주요 메뉴">
-        <!-- 하단/사이드 내비게이션 (추후 구현) -->
-      </nav>
-
-    </div>
+    <nav class="navigation" aria-label="주요 메뉴">
+      <!-- 내비게이션 (추후 구현) -->
+    </nav>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollSmoother.min.js"></script>
 
   <script src="data/pock-data.js"></script>
   <script src="data/coin-data.js"></script>
@@ -51,7 +41,6 @@
   <script src="js/navigation.js"></script>
   <script src="js/components/header.js"></script>
   <script src="js/components/navigation.js"></script>
-  <script src="js/animation.js"></script>
   <script src="js/pock.js"></script>
   <script src="js/coin.js"></script>
   <script src="js/pages/home.js"></script>

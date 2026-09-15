@@ -84,10 +84,14 @@
   --spacing-xxl: 3rem;
   --spacing-section: 4rem;
 
-  /* Layout — 모바일 기본 */
+  /* Layout — 모바일 기본. 그리드: Mobile 4 · margin 20 · gutter 12 */
   --layout-max-width: 100%;
   --layout-content-width: 100%;
-  --layout-gutter: var(--spacing-md);
+  --layout-gutter: 1.25rem; /* 20 — grid margin */
+  --grid-columns: 4;
+  --grid-margin: 1.25rem; /* 20 */
+  --grid-gutter: 0.75rem; /* 12 */
+  --grid-max-width: 100%;
   --header-height: 3.5rem;
   --navigation-height: 4rem;
 
@@ -129,15 +133,21 @@
 
 @media (min-width: 1024px) {
   :root {
-    --layout-max-width: 75rem;
-    --layout-content-width: 60rem;
-    --layout-gutter: var(--spacing-lg);
+    /* Pad / Pc — 8 · margin 64 · gutter 24 · 콘텐츠 최대 1024 가운데 */
+    --layout-max-width: 100%;
+    --layout-content-width: 64rem; /* 1024 */
+    --layout-gutter: 4rem; /* 64 */
+    --grid-columns: 8;
+    --grid-margin: 4rem; /* 64 */
+    --grid-gutter: 1.5rem; /* 24 */
+    --grid-max-width: 64rem; /* 1024 */
   }
 }
 
 @media (min-width: 1920px) {
   :root {
-    --layout-max-width: 90rem;
-    --layout-content-width: 75rem;
+    --layout-max-width: 100%;
+    --layout-content-width: 64rem; /* Pad 최대 유지 */
+    --grid-max-width: 64rem;
   }
 }
