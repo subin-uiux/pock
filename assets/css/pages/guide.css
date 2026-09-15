@@ -24,7 +24,8 @@
 .nav-system,
 .btn-system,
 .card-system,
-.letter-system {
+.letter-system,
+.window-system {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
@@ -44,7 +45,8 @@
 .nav-system,
 .btn-system,
 .card-system,
-.letter-system {
+.letter-system,
+.window-system {
   padding-top: 0;
 }
 
@@ -55,7 +57,8 @@
 .nav-system__eyebrow,
 .btn-system__eyebrow,
 .card-system__eyebrow,
-.letter-system__eyebrow {
+.letter-system__eyebrow,
+.window-system__eyebrow {
   color: var(--color-base-0);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-tight);
@@ -68,7 +71,8 @@
 .nav-system__panel,
 .btn-system__panel,
 .card-system__panel,
-.letter-system__panel {
+.letter-system__panel,
+.window-system__panel {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -86,7 +90,8 @@
 .nav-system__title,
 .btn-system__title,
 .card-system__title,
-.letter-system__title {
+.letter-system__title,
+.window-system__title {
   font-size: var(--font-size-3xl);
   line-height: var(--line-height-tight);
   letter-spacing: 0.04em;
@@ -99,7 +104,8 @@
 .nav-system__lead,
 .btn-system__lead,
 .card-system__lead,
-.letter-system__lead {
+.letter-system__lead,
+.window-system__lead {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
 }
@@ -117,7 +123,9 @@
 .card-system__groups,
 .card-system__desc,
 .letter-system__groups,
-.letter-system__desc {
+.letter-system__desc,
+.window-system__groups,
+.window-system__desc {
   color: var(--color-panel-muted);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-loose);
@@ -748,7 +756,8 @@
   .nav-system__panel,
   .btn-system__panel,
   .card-system__panel,
-  .letter-system__panel {
+  .letter-system__panel,
+  .window-system__panel {
     padding: var(--spacing-xl) var(--spacing-lg);
   }
 
