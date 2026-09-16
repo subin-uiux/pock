@@ -1,0 +1,24 @@
+/**
+ * dimmed-overlay.css
+ * 전체 화면 딤. Fill #000 64% · blur 16.
+ */
+
+.dimmed-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-modal);
+  background-color: var(--color-overlay);
+  backdrop-filter: blur(var(--overlay-blur));
+  -webkit-backdrop-filter: blur(var(--overlay-blur));
+}
+
+.dimmed-overlay--preview {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  width: 48rem; /* 768 */
+  height: 53.25rem; /* 852 */
+  flex: 0 0 auto;
+  align-self: center;
+  margin-inline: auto;
+}

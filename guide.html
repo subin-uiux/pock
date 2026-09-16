@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="assets/css/components/letter.css">
   <link rel="stylesheet" href="assets/css/components/window.css">
   <link rel="stylesheet" href="assets/css/components/letter-write.css">
+  <link rel="stylesheet" href="assets/css/components/dimmed-overlay.css">
+  <link rel="stylesheet" href="assets/css/components/popup.css">
+  <link rel="stylesheet" href="assets/css/components/search-input.css">
   <link rel="stylesheet" href="assets/css/components/grid.css">
   <link rel="stylesheet" href="assets/css/pages/guide.css">
   <title>컴포넌트 가이드 ㅣ POCK</title>
@@ -1985,15 +1988,18 @@
                   <header class="pock-window__bar">
                     <h4 class="pock-window__title">친구목록</h4>
                     <div class="pock-window__actions">
-                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
-                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
                         <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
-                      </button>
+                      </span>
                     </div>
                   </header>
                   <div class="pock-window__rule" aria-hidden="true"></div>
                   <div class="pock-window__body">
                     <div class="pock-window__pane">
+                      <div class="pock-window__scroll" aria-hidden="true">
+                        <div class="pock-window__scroll-thumb"></div>
+                      </div>
                       <ul class="pock-window__list">
                         <li class="pock-window__item">
                           <div class="pock-window__thumb" aria-hidden="true"></div>
@@ -2028,15 +2034,18 @@
                   <header class="pock-window__bar">
                     <h4 class="pock-window__title">친구목록</h4>
                     <div class="pock-window__actions">
-                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
-                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
                         <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
-                      </button>
+                      </span>
                     </div>
                   </header>
                   <div class="pock-window__rule" aria-hidden="true"></div>
                   <div class="pock-window__body">
                     <div class="pock-window__pane">
+                      <div class="pock-window__scroll" aria-hidden="true">
+                        <div class="pock-window__scroll-thumb"></div>
+                      </div>
                       <ul class="pock-window__list">
                         <li class="pock-window__item">
                           <div class="pock-window__thumb" aria-hidden="true"></div>
@@ -2071,15 +2080,18 @@
                   <header class="pock-window__bar">
                     <h4 class="pock-window__title">친구목록</h4>
                     <div class="pock-window__actions">
-                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
-                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
                         <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
-                      </button>
+                      </span>
                     </div>
                   </header>
                   <div class="pock-window__rule" aria-hidden="true"></div>
                   <div class="pock-window__body">
                     <div class="pock-window__pane">
+                      <div class="pock-window__scroll" aria-hidden="true">
+                        <div class="pock-window__scroll-thumb"></div>
+                      </div>
                       <ul class="pock-window__list">
                         <li class="pock-window__item">
                           <div class="pock-window__thumb" aria-hidden="true"></div>
@@ -2120,10 +2132,10 @@
                 <header class="pock-window__bar pock-window__bar--standalone pock-window__bar--w-mo">
                   <h4 class="pock-window__title">친구목록</h4>
                   <div class="pock-window__actions">
-                    <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
-                    <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                    <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                    <span class="pock-window__control pock-window__control--close" aria-hidden="true">
                       <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
-                    </button>
+                    </span>
                   </div>
                 </header>
               </div>
@@ -2132,10 +2144,10 @@
                   <p class="window-system__caption">window header_normal (Mo)</p>
                   <header class="pock-window__bar pock-window__bar--standalone pock-window__bar--normal pock-window__bar--w-mo-fit">
                     <div class="pock-window__actions">
-                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
-                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
                         <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
-                      </button>
+                      </span>
                     </div>
                   </header>
                 </div>
@@ -2143,10 +2155,10 @@
                   <p class="window-system__caption">window header_normal (Tb, Pc)</p>
                   <header class="pock-window__bar pock-window__bar--standalone pock-window__bar--normal pock-window__bar--w-tb-pc">
                     <div class="pock-window__actions">
-                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
-                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
                         <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
-                      </button>
+                      </span>
                     </div>
                   </header>
                 </div>
@@ -2324,6 +2336,222 @@
                   <button class="btn btn--push btn--block letter-write__send" type="button">보내기</button>
                 </article>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="overlay-system" id="overlay-system" aria-labelledby="overlay-system-title">
+          <p class="overlay-system__eyebrow">POCK · Dimmed Overlay</p>
+          <div class="overlay-system__panel">
+            <h2 class="overlay-system__title" id="overlay-system-title">DIMMED OVERLAY</h2>
+            <p class="overlay-system__lead">POCK의 상황별 공통 팝업 UI 시스템</p>
+            <p class="overlay-system__groups">적용 범위 | Popup · Modal · Onboarding Guide · Navigation Guide · Search Field</p>
+            <p class="overlay-system__desc">정보 안내, 경고, 공유, 첫 진입 가이드, 서치필드 백그라운드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Share · Onboarding Guide로 구분합니다.</p>
+          </div>
+
+          <p class="overlay-system__label">Dimmed Overlay</p>
+          <div class="overlay-system__board">
+            <h3 class="overlay-system__card-title">Dimmed Overlay</h3>
+            <div class="overlay-system__stage">
+              <p class="overlay-system__caption">Dimmed Overlay</p>
+              <div class="dimmed-overlay dimmed-overlay--preview" aria-hidden="true"></div>
+              <p class="overlay-system__spec">Fill : #000000
+Opacity : 64%
+Background Blur : 16px
+Coverage : Full Screen</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="popup-system" id="popup-system" aria-labelledby="popup-system-title">
+          <p class="popup-system__eyebrow">POCK · POPUP</p>
+          <div class="popup-system__panel">
+            <h2 class="popup-system__title" id="popup-system-title">POPUP</h2>
+            <p class="popup-system__lead">POCK의 상황별 공통 팝업 UI 시스템</p>
+            <p class="popup-system__groups">총 9가지 유형 | Info · Warning · Share · Onboarding Guide</p>
+            <p class="popup-system__desc">정보 안내, 경고, 공유, 첫 진입 가이드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Share · Onboarding Guide로 구분합니다.</p>
+          </div>
+
+          <p class="popup-system__label">Window - popup</p>
+          <div class="popup-system__board">
+            <h3 class="popup-system__card-title">Window - popup</h3>
+            <div class="popup-system__samples">
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Info_popup (Mo)</p>
+                <article class="pock-popup pock-popup--info pock-popup--mo" aria-label="정보">
+                  <header class="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
+                    <div class="pock-window__actions">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="7" height="5">
+                      </span>
+                    </div>
+                  </header>
+                  <div class="pock-popup__body">
+                    <img class="pock-popup__icon" src="assets/images/Info_popup-icon.png" alt="" width="36" height="36">
+                    <p class="pock-popup__text">Text</p>
+                  </div>
+                  <div class="pock-popup__actions">
+                    <button class="btn btn--popup" type="button">취소</button>
+                    <button class="btn btn--popup" type="button">확인</button>
+                  </div>
+                </article>
+              </div>
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Info_popup (Tb, Pc)</p>
+                <article class="pock-popup pock-popup--info pock-popup--tb" aria-label="정보">
+                  <header class="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
+                    <div class="pock-window__actions">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
+                      </span>
+                    </div>
+                  </header>
+                  <div class="pock-popup__body">
+                    <img class="pock-popup__icon" src="assets/images/Info_popup-icon.png" alt="" width="36" height="36">
+                    <p class="pock-popup__text">Text</p>
+                  </div>
+                  <div class="pock-popup__actions">
+                    <button class="btn btn--popup" type="button">취소</button>
+                    <button class="btn btn--popup" type="button">확인</button>
+                  </div>
+                </article>
+              </div>
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Warning Popup (Mo)</p>
+                <article class="pock-popup pock-popup--warning pock-popup--mo" aria-label="경고">
+                  <header class="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
+                    <div class="pock-window__actions">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="7" height="5">
+                      </span>
+                    </div>
+                  </header>
+                  <div class="pock-popup__body">
+                    <img class="pock-popup__icon" src="assets/images/Warning%20_Popup-icon.png" alt="" width="36" height="36">
+                    <p class="pock-popup__text">
+                      <span class="pock-popup__heading">POCK을 정말 떠나시겠어요?</span><br>
+                      탈퇴하면 지금까지의 편지와 기록이 모두 삭제되며 다시 복구할 수 없습니다.
+                    </p>
+                  </div>
+                  <div class="pock-popup__actions">
+                    <button class="btn btn--popup" type="button">취소</button>
+                    <button class="btn btn--popup" type="button">확인</button>
+                  </div>
+                </article>
+              </div>
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Warning Popup (Tb, Pc)</p>
+                <article class="pock-popup pock-popup--warning pock-popup--tb" aria-label="경고">
+                  <header class="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
+                    <div class="pock-window__actions">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
+                      </span>
+                    </div>
+                  </header>
+                  <div class="pock-popup__body">
+                    <img class="pock-popup__icon" src="assets/images/Warning%20_Popup-icon.png" alt="" width="36" height="36">
+                    <p class="pock-popup__text">
+                      <span class="pock-popup__heading">POCK을 정말 떠나시겠어요?</span><br>
+                      탈퇴하면 지금까지의 편지와 기록이 모두 삭제되며 다시 복구할 수 없습니다.
+                    </p>
+                  </div>
+                  <div class="pock-popup__actions">
+                    <button class="btn btn--popup" type="button">취소</button>
+                    <button class="btn btn--popup" type="button">확인</button>
+                  </div>
+                </article>
+              </div>
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Share Popup (Mo)</p>
+                <article class="pock-popup pock-popup--share pock-popup--mo" aria-label="공유">
+                  <header class="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
+                    <div class="pock-window__actions">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="7" height="5">
+                      </span>
+                    </div>
+                  </header>
+                  <div class="pock-popup__body">
+                    <img class="pock-popup__icon" src="assets/images/Share%20_Popup-icon.svg" alt="" width="40" height="34">
+                    <p class="pock-popup__text">내 POCK에 놀러와!</p>
+                  </div>
+                  <div class="pock-popup__actions">
+                    <button class="btn btn--popup" type="button">링크 복사</button>
+                    <button class="btn btn--popup" type="button">닫기</button>
+                  </div>
+                </article>
+              </div>
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Share Popup (Tb, Pc)</p>
+                <article class="pock-popup pock-popup--share pock-popup--tb" aria-label="공유">
+                  <header class="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
+                    <div class="pock-window__actions">
+                      <span class="pock-window__control pock-window__control--min" aria-hidden="true"></span>
+                      <span class="pock-window__control pock-window__control--close" aria-hidden="true">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.svg" alt="" width="9" height="7">
+                      </span>
+                    </div>
+                  </header>
+                  <div class="pock-popup__body">
+                    <img class="pock-popup__icon" src="assets/images/Share%20_Popup-icon.svg" alt="" width="40" height="34">
+                    <p class="pock-popup__text">내 POCK에 놀러와!</p>
+                  </div>
+                  <div class="pock-popup__actions">
+                    <button class="btn btn--popup" type="button">링크 복사</button>
+                    <button class="btn btn--popup" type="button">닫기</button>
+                  </div>
+                </article>
+              </div>
+              <div class="popup-system__sample">
+                <p class="popup-system__caption">Onboarding Guide Popup</p>
+                <article class="onboard-popup" aria-label="온보딩 가이드">
+                  <h4 class="onboard-popup__title">내 프로필</h4>
+                  <p class="onboard-popup__desc">내 닉네임과 보유한 코인을<br>언제든지 확인할 수 있어요.</p>
+                  <ol class="onboard-popup__dots" aria-label="가이드 단계">
+                    <li class="onboard-popup__dot is-active"></li>
+                    <li class="onboard-popup__dot"></li>
+                    <li class="onboard-popup__dot"></li>
+                    <li class="onboard-popup__dot"></li>
+                    <li class="onboard-popup__dot"></li>
+                    <li class="onboard-popup__dot"></li>
+                  </ol>
+                  <div class="onboard-popup__nav">
+                    <button class="onboard-popup__skip" type="button">건너뛰기</button>
+                    <button class="btn btn--push" type="button">다음</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="search-system" id="search-system" aria-labelledby="search-system-title">
+          <p class="search-system__eyebrow">POCK · SEARCH INPUT</p>
+          <div class="search-system__panel">
+            <h2 class="search-system__title" id="search-system-title">SEARCH INPUT</h2>
+            <p class="search-system__lead">POCK의 공통 검색 입력 UI 시스템</p>
+            <p class="search-system__desc">검색 아이콘과 플레이스홀더를 포함한 검색 전용 입력 컴포넌트입니다. 사용자가 원하는 콘텐츠를 빠르게 탐색할 수 있도록 사용하며, 화면 크기에 따라 너비가 유동적으로 조정되는 반응형 구조로 적용합니다.</p>
+          </div>
+
+          <p class="search-system__label">Search Input</p>
+          <div class="search-system__board">
+            <h3 class="search-system__card-title">Search Input</h3>
+            <div class="search-system__stage">
+              <p class="search-system__caption">Search Input</p>
+              <label class="search-input search-input--mo">
+                <img class="search-input__icon" src="assets/images/search-icon.svg" alt="" width="22" height="22">
+                <input class="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어">
+              </label>
+              <label class="search-input search-input--wide">
+                <img class="search-input__icon" src="assets/images/search-icon.svg" alt="" width="22" height="22">
+                <input class="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어">
+              </label>
             </div>
           </div>
         </section>

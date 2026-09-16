@@ -1,0 +1,69 @@
+/**
+ * search-input.css
+ * 검색 전용 입력. Mo 320×32 · Wide 650×40.
+ */
+
+.search-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8 */
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.375rem 0.75rem; /* 6 12 */
+  border: 1.5px solid #8d8d8d;
+  border-radius: 0.3125rem; /* 5 */
+  background-color: var(--color-base-100);
+  box-shadow: 1px 1px 0 0 #000000;
+}
+
+.search-input--mo {
+  width: 20rem; /* 320 */
+  height: 2rem; /* 32 */
+}
+
+.search-input--wide {
+  width: 40.625rem; /* 650 */
+  height: 2.5rem; /* 40 */
+}
+
+.search-input__icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 1.375rem; /* 22 */
+  height: 1.375rem;
+  object-fit: contain;
+}
+
+.search-input__field {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-base-900); /* 임시값 */
+  line-height: var(--line-height-tight); /* 임시값 */
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.search-input--mo .search-input__field {
+  font-size: 0.875rem; /* 14 */
+}
+
+.search-input--wide .search-input__field {
+  font-size: 1.125rem; /* 18 */
+}
+
+.search-input__field::placeholder {
+  color: var(--color-base-600); /* 임시값 — 아이콘 fill #898989 */
+}
+
+.search-input__field::-webkit-search-decoration,
+.search-input__field::-webkit-search-cancel-button,
+.search-input__field::-webkit-search-results-button,
+.search-input__field::-webkit-search-results-decoration {
+  display: none;
+}
