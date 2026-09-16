@@ -819,7 +819,7 @@
   width: 100%;
   padding: var(--spacing-lg);
   border-radius: 1.25rem;
-  background-color: var(--color-base-100);
+  background-color: #f6f6f6;
 }
 
 .search-system__board {

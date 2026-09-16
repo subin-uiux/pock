@@ -92,7 +92,7 @@
   border: 0.5px solid #6e6e6e; /* 임시값, window chrome */
   border-top: 0.5px solid #6e6e6e;
   border-radius: 0 0 0.625rem 0.625rem;
-  background-color: #f9f6f9; /* 임시값 */
+  background-color: #f6f6f6;
 }
 
 .pock-popup__actions .btn--popup {
