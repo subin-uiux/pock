@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/css/components/button.css">
   <link rel="stylesheet" href="assets/css/components/letter-card.css">
   <link rel="stylesheet" href="assets/css/components/letter.css">
+  <link rel="stylesheet" href="assets/css/components/window.css">
   <link rel="stylesheet" href="assets/css/components/grid.css">
   <link rel="stylesheet" href="assets/css/pages/guide.css">
   <title>컴포넌트 가이드 ㅣ POCK</title>
@@ -1213,10 +1214,10 @@
                           </div>
                           <span class="letter-card__dday">D-7</span>
                         </div>
-                        <div class="letter-card__reward">
+                        <button type="button" class="letter-card__reward">
                           <img class="letter-card__coin" src="assets/images/coin.png" alt="" width="13" height="10">
                           <span>초성 보기</span>
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </article>
@@ -1231,10 +1232,10 @@
                       <p class="letter-card__target">From.Text</p>
                       <div class="letter-card__status-group">
                         <div class="letter-card__status letter-card__status--timer">22:07:32</div>
-                        <div class="letter-card__reward">
+                        <button type="button" class="letter-card__reward">
                           <img class="letter-card__coin" src="assets/images/coin.png" alt="" width="13" height="10">
                           <span>초성 보기</span>
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </article>
@@ -1298,10 +1299,10 @@
                           </div>
                           <span class="letter-card__dday">D-7</span>
                         </div>
-                        <div class="letter-card__reward">
+                        <button type="button" class="letter-card__reward">
                           <img class="letter-card__coin" src="assets/images/coin.png" alt="" width="13" height="10">
                           <span>초성 보기</span>
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </article>
@@ -1316,10 +1317,10 @@
                       <p class="letter-card__target">From.Text</p>
                       <div class="letter-card__status-group">
                         <div class="letter-card__status letter-card__status--timer">22:07:32</div>
-                        <div class="letter-card__reward">
+                        <button type="button" class="letter-card__reward">
                           <img class="letter-card__coin" src="assets/images/coin.png" alt="" width="13" height="10">
                           <span>초성 보기</span>
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </article>
@@ -1972,6 +1973,144 @@
             <p class="window-system__lead">POCK의 레트로 윈도우 UI 시스템</p>
             <p class="window-system__groups">총 2가지 유형 | Friend_list, Letter_write</p>
             <p class="window-system__desc">POCK의 주요 인터페이스에 공통으로 적용되는 윈도우 그래픽입니다. Letter Card, Letter Write 등 기능에 따라 형태와 구성이 달라지며, 동일한 타이틀 바와 프레임 규칙을 적용해 일관된 화면 경험을 제공합니다.</p>
+          </div>
+
+          <p class="window-system__label">01 / Friend_list</p>
+          <div class="window-system__board">
+            <h3 class="window-system__card-title">01 / Friend_list</h3>
+            <div class="window-system__samples">
+              <div class="window-system__sample">
+                <p class="window-system__caption">Friend_list (Mo)</p>
+                <article class="pock-window pock-window--friend pock-window--mo" aria-label="친구목록">
+                  <header class="pock-window__bar">
+                    <h4 class="pock-window__title">친구목록</h4>
+                    <div class="pock-window__actions">
+                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
+                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.png" alt="" width="20" height="20">
+                      </button>
+                    </div>
+                  </header>
+                  <div class="pock-window__rule" aria-hidden="true"></div>
+                  <div class="pock-window__body">
+                    <div class="pock-window__pane">
+                      <ul class="pock-window__list">
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <footer class="pock-window__foot">
+                    <button class="pock-window__manage" type="button">
+                      <img class="pock-window__manage-icon" src="assets/images/friends-management-icon.png" alt="" width="20" height="20">
+                      <span>친구 관리</span>
+                    </button>
+                  </footer>
+                </article>
+              </div>
+
+              <div class="window-system__sample">
+                <p class="window-system__caption">Friend_list (Tb)</p>
+                <article class="pock-window pock-window--friend pock-window--tb" aria-label="친구목록">
+                  <header class="pock-window__bar">
+                    <h4 class="pock-window__title">친구목록</h4>
+                    <div class="pock-window__actions">
+                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
+                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.png" alt="" width="20" height="20">
+                      </button>
+                    </div>
+                  </header>
+                  <div class="pock-window__rule" aria-hidden="true"></div>
+                  <div class="pock-window__body">
+                    <div class="pock-window__pane">
+                      <ul class="pock-window__list">
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <footer class="pock-window__foot">
+                    <button class="pock-window__manage" type="button">
+                      <img class="pock-window__manage-icon" src="assets/images/friends-management-icon.png" alt="" width="20" height="20">
+                      <span>친구 관리</span>
+                    </button>
+                  </footer>
+                </article>
+              </div>
+
+              <div class="window-system__sample">
+                <p class="window-system__caption">Friend_list (Pc)</p>
+                <article class="pock-window pock-window--friend pock-window--pc" aria-label="친구목록">
+                  <header class="pock-window__bar">
+                    <h4 class="pock-window__title">친구목록</h4>
+                    <div class="pock-window__actions">
+                      <button class="pock-window__control pock-window__control--min" type="button" aria-label="최소화"></button>
+                      <button class="pock-window__control pock-window__control--close" type="button" aria-label="닫기">
+                        <img class="pock-window__control-icon" src="assets/images/heart-icon.png" alt="" width="20" height="20">
+                      </button>
+                    </div>
+                  </header>
+                  <div class="pock-window__rule" aria-hidden="true"></div>
+                  <div class="pock-window__body">
+                    <div class="pock-window__pane">
+                      <ul class="pock-window__list">
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                        <li class="pock-window__item">
+                          <div class="pock-window__thumb" aria-hidden="true"></div>
+                          <p class="pock-window__name">Text</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <footer class="pock-window__foot">
+                    <button class="pock-window__manage" type="button">
+                      <img class="pock-window__manage-icon" src="assets/images/friends-management-icon.png" alt="" width="20" height="20">
+                      <span>친구 관리</span>
+                    </button>
+                  </footer>
+                </article>
+              </div>
+            </div>
           </div>
         </section>
       </div>

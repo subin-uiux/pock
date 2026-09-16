@@ -216,6 +216,7 @@
   font-size: 0.875rem; /* Mo 14px */
   line-height: var(--line-height-tight);
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .letter-card__coin {
