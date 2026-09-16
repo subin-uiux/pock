@@ -1,33 +1,36 @@
 /**
  * window.css
- * 레트로 윈도우 그래픽. Friend_list 먼저.
- * Mo 시안 반영. Tb·Pc는 이후 수정.
+ * 레트로 윈도우 그래픽. Friend_list.
+ * Mo 353 · Tb(2차 641.5×434.26) · Pc(3차 896×434.26)
  */
 
 .pock-window {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 0.5rem;
+  max-width: 100%;
+  border-radius: 0.625rem; /* 10 — 상·하 모서리 */
   background-color: var(--color-brand-window-base);
   color: var(--color-base-0);
 }
 
-/* Mo: 창 너비 353 · 타이틀바 높이 40 */
+/* Mo: 353 */
 .pock-window--mo {
   width: 22.0625rem; /* 353 */
   max-width: 100%;
 }
 
-/* Tb 너비 — 임시값 (시안 비율) */
+/* Tb = 2차: 641.5×434.26 · 프로필 4열 */
 .pock-window--tb {
-  width: 35.5rem; /* 568 — 임시값 */
+  width: 40.09375rem; /* 641.5 */
+  height: 27.14125rem; /* 434.26 */
   max-width: 100%;
 }
 
-/* Pc 너비 — 임시값 (시안 여백 포함) */
+/* Pc = 3차: 896×434.26 · 프로필 4열 */
 .pock-window--pc {
-  width: 45rem; /* 720 — 임시값 */
+  width: 56rem; /* 896 */
+  height: 27.14125rem; /* 434.26 */
   max-width: 100%;
 }
 
@@ -40,16 +43,18 @@
   box-sizing: border-box;
   height: 2.5rem; /* 40 */
   padding: 0 0.5rem 0 0.75rem;
-  background: linear-gradient(180deg, #4783fe 0%, #98bafe 50%, #ffffff 100%);
+  border: 0.5px solid #6e6e6e; /* base/700 */
+  border-bottom: 0; /* 회색바 top stroke와 겹침 제거 */
+  border-radius: 0.625rem 0.625rem 0 0; /* 위만 10 */
+  background: linear-gradient(180deg, #4783fe 57%, #98bafe 92%, #ffffff 100%);
 }
 
 .pock-window__title {
   margin: 0;
-  color: var(--color-base-0);
+  color: #ffffff;
   font-size: 1rem; /* 16 */
   line-height: var(--line-height-tight);
   white-space: nowrap;
-  text-shadow: 0 0.0625rem 0 rgba(15, 25, 46, 0.25);
 }
 
 .pock-window__actions {
@@ -64,107 +69,260 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 1.25rem; /* 20 */
-  height: 1.25rem; /* 20 */
-  border: 1px solid rgba(15, 25, 46, 0.2);
-  border-radius: 0.125rem;
+  margin: 0;
+  border: 0.5px solid var(--color-base-700);
+  border-radius: 0.0825rem; /* 1.32 */
+  cursor: pointer;
 }
 
+/* 1번째: 최소화 — 패딩 상13 하2 좌2 우7 · 안 네모 11.85×1.33 */
 .pock-window__control--min {
-  background-color: #98bafe;
+  width: auto;
+  height: auto;
+  padding: 0.8125rem 0.4375rem 0.125rem 0.125rem; /* 13 7 2 2 */
+  background: linear-gradient(180deg, #f4f4f4 0%, #d5fffc 100%);
 }
 
 .pock-window__control--min::before {
   content: "";
   display: block;
-  width: 0.625rem;
-  height: 0.125rem;
-  background-color: var(--color-base-0);
+  width: 0.740625rem; /* 11.85 */
+  height: 0.083125rem; /* 1.33 */
+  background-color: #0c95da;
 }
 
+/* 2번째: 하트 — 패딩 상5 하4 좌우10 */
 .pock-window__control--close {
-  padding: 0;
+  width: auto;
+  height: auto;
+  padding: 0.3125rem 0.625rem 0.25rem; /* 5 10 4 */
   overflow: hidden;
-  background-color: var(--color-rainbow-red-base);
+  background: linear-gradient(180deg, #ffffff 0%, #fd0606 9%, #970404 100%);
 }
 
 .pock-window__control-icon {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: screen;
+  width: 0.5625rem; /* 9 */
+  height: 0.4375rem; /* 7 */
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
-/* 타이틀바 아래 회색바 */
+/* 01-1 Window Header — 단독 샘플 */
+.pock-window__bar--standalone {
+  border-bottom: 0.5px solid #6e6e6e;
+  border-radius: 0.625rem 0.625rem 0 0; /* 위만 10 */
+}
+
+.pock-window__bar--normal {
+  justify-content: flex-end;
+}
+
+.pock-window__bar--w-mo {
+  width: 19.375rem; /* 310 — header_txt */
+  height: 2.5rem; /* 40 */
+  max-width: 100%;
+}
+
+.pock-window__bar--w-mo-fit {
+  width: 21.875rem; /* 350 — header_normal Mo */
+  height: 1.25rem; /* 20 */
+  max-width: 100%;
+}
+
+.pock-window__bar--w-tb-pc {
+  width: 25rem; /* 400 — header_normal Tb, Pc */
+  height: 1.875rem; /* 30 */
+  max-width: 100%;
+}
+
+/* header_normal (Mo) — 버튼 13.75×10 · 17.5×10 · radius 1.65 */
+.pock-window__bar--normal.pock-window__bar--w-mo-fit .pock-window__control {
+  border-radius: 0.103125rem; /* 1.65 */
+  padding: 0;
+}
+
+.pock-window__bar--normal.pock-window__bar--w-mo-fit .pock-window__control--min {
+  position: relative;
+  display: block;
+  width: 0.859375rem; /* 13.75 */
+  height: 0.625rem; /* 10 */
+}
+
+.pock-window__bar--normal.pock-window__bar--w-mo-fit .pock-window__control--min::before {
+  position: absolute;
+  left: 0.125rem; /* 2 — 왼쪽 기준 오른쪽으로 2 */
+  bottom: 0.0625rem; /* 1 — 아래 기준 위로 1 */
+  width: 0.5625rem; /* 9 */
+  height: 0.0625rem; /* 1 */
+}
+
+.pock-window__bar--normal.pock-window__bar--w-mo-fit .pock-window__control--close {
+  width: 1.09375rem; /* 17.5 */
+  height: 0.625rem; /* 10 */
+}
+
+.pock-window__bar--normal.pock-window__bar--w-mo-fit .pock-window__control-icon {
+  width: 0.4375rem; /* 7 */
+  height: 0.3125rem; /* 5 */
+}
+
+/* header_normal (Tb, Pc) — 버튼 20×16 · 28×16 · radius 2.38 */
+.pock-window__bar--normal.pock-window__bar--w-tb-pc .pock-window__control {
+  border-radius: 0.14875rem; /* 2.38 */
+  padding: 0;
+}
+
+.pock-window__bar--normal.pock-window__bar--w-tb-pc .pock-window__control--min {
+  position: relative;
+  display: block;
+  width: 1.25rem; /* 20 */
+  height: 1rem; /* 16 */
+}
+
+.pock-window__bar--normal.pock-window__bar--w-tb-pc .pock-window__control--min::before {
+  position: absolute;
+  left: 0.125rem; /* 2 — 왼쪽 기준 오른쪽으로 2 */
+  bottom: 0.125rem; /* 2 — 아래 기준 위로 2 */
+  width: 0.75rem; /* 12 */
+  height: 0.0625rem; /* 1 */
+}
+
+.pock-window__bar--normal.pock-window__bar--w-tb-pc .pock-window__control--close {
+  width: 1.75rem; /* 28 */
+  height: 1rem; /* 16 */
+}
+
+.pock-window__bar--normal.pock-window__bar--w-tb-pc .pock-window__control-icon {
+  width: 0.5625rem; /* 9 */
+  height: 0.4375rem; /* 7 */
+}
+
+/* 타이틀바 아래 회색바 — 높이 16.63, 폭은 창에 맞춤 */
 .pock-window__rule {
   flex: 0 0 auto;
-  height: 0.5rem; /* 8 — 임시값 */
+  box-sizing: border-box;
+  width: 100%;
+  height: 16.63px;
+  border: 0.5px solid #6e6e6e; /* base/700 */
+  border-bottom: 0; /* 바깥 박스 top stroke와 겹침 제거 */
   background: linear-gradient(180deg, #d9d9d9 0%, #cddaeb 100%);
 }
 
-/* 바깥 박스 */
-.pock-window__body {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  min-height: 0;
-  box-sizing: border-box;
-  padding: 0.5rem; /* 바깥·안 박스 간격 — 임시값 */
-  background: linear-gradient(180deg, #9eddfd 0%, #2753f7 100%);
-}
-
-/* 안 박스 */
+/* 안 박스 — Mo #E9FBFF 80% */
 .pock-window__pane {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   flex: 1 1 auto;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
   border-radius: 0.5rem;
-  background: linear-gradient(180deg, #9eddfd 0%, #2753f7 100%);
-  scrollbar-width: thin;
-  scrollbar-color: #2753f7 #9eddfd;
-}
-
-.pock-window__pane::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-.pock-window__pane::-webkit-scrollbar-track {
-  margin: 0.25rem 0;
-  background: transparent;
-}
-
-.pock-window__pane::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: linear-gradient(180deg, #9eddfd 0%, #2753f7 100%);
+  background-color: rgba(233, 251, 255, 0.8); /* #E9FBFF 80% */
 }
 
 .pock-window__list {
-  display: grid;
-  gap: 0.75rem 0.625rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
   margin: 0;
   padding: 0.75rem;
   list-style: none;
 }
 
+.pock-window__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border: 0.5px solid #6e6e6e; /* base/700 */
+  border-bottom: 0; /* 하단바 top stroke와 겹침 제거 */
+  background: linear-gradient(180deg, #2753f7 0%, #9eddfd 100%);
+}
+
+/* Mo: 바깥 간격 · 프로필 2열 118 */
 .pock-window--mo .pock-window__body {
-  min-height: 22.5rem; /* 2행 노출용 — 임시값 */
+  padding: 12px 11px 14px;
 }
 
 .pock-window--mo .pock-window__list {
-  grid-template-columns: repeat(2, 7.375rem); /* 카드 118 */
-  justify-content: center;
+  padding: 32px 0 33px;
+  gap: 18px 29px;
 }
 
-.pock-window--tb .pock-window__body,
+.pock-window--mo .pock-window__item {
+  flex: 0 0 118px;
+  width: 118px;
+  gap: 7px;
+}
+
+.pock-window--mo .pock-window__pane {
+  /* Mo 안박스 — 이전 331×409에 가깝게 채움 */
+  width: 100%;
+  height: 25.5625rem; /* 409 — 임시 유지 */
+  flex: 0 0 auto;
+}
+
+/* Tb = 2차: 바깥 좌우14 상하17 · 프로필 120×150 · 안박스 60% */
+.pock-window--tb .pock-window__body {
+  padding: 17px 14px;
+}
+
+.pock-window--tb .pock-window__pane {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  background-color: rgba(233, 251, 255, 0.6); /* #E9FBFF 60% */
+}
+
+.pock-window--tb .pock-window__list {
+  padding: 30px 0 10px; /* 안박스–프로필 상30 하10 · 좌우는 사이즈에 따라 중앙 */
+  gap: 20px; /* 프로필 간격 20 */
+}
+
+.pock-window--tb .pock-window__item {
+  flex: 0 0 120px;
+  width: 120px;
+  gap: 12px; /* 이미지–텍스트 12 */
+}
+
+.pock-window--tb .pock-window__thumb {
+  width: 120px;
+  height: 150px;
+}
+
+/* Pc = 3차: 896×434.26 · 프로필/간격은 2차와 동일 · 안박스 60% */
 .pock-window--pc .pock-window__body {
-  min-height: 13.5rem; /* 1행 노출용 — 임시값 */
+  padding: 17px 14px;
 }
 
-.pock-window--tb .pock-window__list,
+.pock-window--pc .pock-window__pane {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  background-color: rgba(233, 251, 255, 0.6); /* #E9FBFF 60% */
+}
+
 .pock-window--pc .pock-window__list {
-  grid-template-columns: repeat(4, 7.375rem);
-  justify-content: start;
+  padding: 30px 0 10px;
+  gap: 20px;
+}
+
+.pock-window--pc .pock-window__item {
+  flex: 0 0 120px;
+  width: 120px;
+  gap: 12px;
+}
+
+.pock-window--pc .pock-window__thumb {
+  width: 120px;
+  height: 150px;
 }
 
 .pock-window__item {
@@ -181,9 +339,9 @@
   width: 7.375rem; /* 118 */
   height: 9.125rem; /* 146 */
   overflow: hidden;
-  border: 1px solid rgba(15, 25, 46, 0.12);
-  border-radius: 0.375rem;
-  background: linear-gradient(180deg, #f3f3f3 0%, #d9d9d9 100%);
+  border: 0;
+  border-radius: 0.625rem; /* 10 */
+  background: linear-gradient(180deg, var(--color-base-0) 0%, var(--color-base-500) 100%);
 }
 
 .pock-window__name {
@@ -202,7 +360,8 @@
   box-sizing: border-box;
   min-height: 2.5rem; /* 40 — 타이틀바와 맞춤 */
   padding: 0.375rem 0.75rem;
-  border-top: 0.5px solid var(--color-base-700);
+  border: 0.5px solid #6e6e6e; /* base/700 — 상단바·회색바와 동일 */
+  border-radius: 0 0 0.625rem 0.625rem; /* 아래만 10 */
   background-color: var(--color-brand-window-base);
   box-shadow: inset 0 0.25rem 0.3125rem rgba(255, 255, 255, 0.25); /* X0 Y4 Blur5 #fff 25% */
 }
@@ -219,7 +378,8 @@
 
 .pock-window__manage-icon {
   display: block;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.125rem; /* 18 */
+  height: 1.125rem;
   object-fit: contain;
+  image-rendering: pixelated;
 }
