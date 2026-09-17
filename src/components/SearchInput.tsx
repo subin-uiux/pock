@@ -26,6 +26,7 @@ export function SearchInput({
         type="search"
         placeholder="검색"
         {...rest}
+        maxLength={10}
       />
     </label>
   );

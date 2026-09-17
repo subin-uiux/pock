@@ -24,17 +24,19 @@ export function LetterWrite({
   const letters = getAllLetters();
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
   const [from, setFrom] = useState("나");
   const [date, setDate] = useState("");
   const [letterId, setLetterId] = useState(letters[0]?.id ?? "letter-blue");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<LetterWriteTab>(null);
+  const [content, setContent] = useState("");
 
   const selectedLetter = letters.find((l) => l.id === letterId);
 
   const handleSend = () => {
+    const lines = content.replace(/\r\n/g, "\n").split("\n");
+    const title = lines[0] ?? "";
+    const body = lines.slice(1).join("\n");
     onSend?.({
       title,
       body,
@@ -86,7 +88,7 @@ export function LetterWrite({
         <div className="letter-write__top">
           <h4 className="letter-write__title">POCK 작성</h4>
           <button
-            className="letter-write__friend"
+            className="btn btn--action-text letter-write__friend"
             type="button"
             onClick={onSelectFriend}
           >
@@ -96,8 +98,8 @@ export function LetterWrite({
             <button
               className={
                 activeTab === "paper"
-                  ? "letter-write__tab letter-write__tab--active"
-                  : "letter-write__tab"
+                  ? "btn btn--action-icon letter-write__tab letter-write__tab--active"
+                  : "btn btn--action-icon letter-write__tab"
               }
               type="button"
               role="tab"
@@ -118,8 +120,8 @@ export function LetterWrite({
             <button
               className={
                 activeTab === "photo"
-                  ? "letter-write__tab letter-write__tab--active"
-                  : "letter-write__tab"
+                  ? "btn btn--action-icon letter-write__tab letter-write__tab--active"
+                  : "btn btn--action-icon letter-write__tab"
               }
               type="button"
               role="tab"
@@ -141,8 +143,8 @@ export function LetterWrite({
             <button
               className={
                 activeTab === "date"
-                  ? "letter-write__tab letter-write__tab--active"
-                  : "letter-write__tab"
+                  ? "btn btn--action-icon letter-write__tab letter-write__tab--active"
+                  : "btn btn--action-icon letter-write__tab"
               }
               type="button"
               role="tab"
@@ -236,25 +238,13 @@ export function LetterWrite({
                   : undefined
               }
             />
-            <div className="letter-write__title-wrap">
-              <input
-                className="letter-write__paper-title"
-                type="text"
-                name="letter-title"
-                placeholder="제목"
-                aria-label="제목 작성"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </div>
             <div
               className="letter-write__paper-body"
               contentEditable
               role="textbox"
               aria-multiline="true"
-              aria-label="본문 작성"
-              data-placeholder="본문을 입력하세요"
-              onInput={(e) => setBody(e.currentTarget.textContent ?? "")}
+              aria-label="편지 작성"
+              onInput={(e) => setContent(e.currentTarget.innerText ?? "")}
               suppressContentEditableWarning
             />
           </div>

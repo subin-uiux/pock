@@ -1,3 +1,5 @@
+import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
+
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
 export function GuideMarkup() {
   return (
@@ -2154,17 +2156,17 @@ export function GuideMarkup() {
                         <div className="letter-write__main">
                           <div className="letter-write__top">
                             <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="letter-write__friend" type="button">친구 선택</button>
+                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
                             <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
                                 <span>편지지</span>
                               </button>
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
                                 <span>사진</span>
                               </button>
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
                                 <span>개봉일</span>
                               </button>
@@ -2173,15 +2175,12 @@ export function GuideMarkup() {
                           <div className="letter-write__paper" role="group" aria-label="편지 작성">
                             <div className="letter-write__compose">
                               <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div className="letter-write__title-wrap">
-                                <input className="letter-write__paper-title" type="text" name="letter-title" placeholder="제목" aria-label="제목 작성" />
-                              </div>
                               <div
                                 className="letter-write__paper-body"
                                 contentEditable={true}
                                 role="textbox"
                                 aria-multiline="true"
-                                aria-label="본문 작성"
+                                aria-label="편지 작성"
                               ></div>
                             </div>
                             <div className="letter-write__paper-foot">
@@ -2209,17 +2208,17 @@ export function GuideMarkup() {
                         <div className="letter-write__main">
                           <div className="letter-write__top">
                             <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="letter-write__friend" type="button">친구 선택</button>
+                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
                             <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
                                 <span>편지지</span>
                               </button>
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
                                 <span>사진</span>
                               </button>
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
                                 <span>개봉일</span>
                               </button>
@@ -2228,15 +2227,12 @@ export function GuideMarkup() {
                           <div className="letter-write__paper" role="group" aria-label="편지 작성">
                             <div className="letter-write__compose">
                               <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div className="letter-write__title-wrap">
-                                <input className="letter-write__paper-title" type="text" name="letter-title" placeholder="제목" aria-label="제목 작성" />
-                              </div>
                               <div
                                 className="letter-write__paper-body"
                                 contentEditable={true}
                                 role="textbox"
                                 aria-multiline="true"
-                                aria-label="본문 작성"
+                                aria-label="편지 작성"
                               ></div>
                             </div>
                             <div className="letter-write__paper-foot">
@@ -2264,17 +2260,17 @@ export function GuideMarkup() {
                         <div className="letter-write__main">
                           <div className="letter-write__top">
                             <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="letter-write__friend" type="button">친구 선택</button>
+                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
                             <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
                                 <span>편지지</span>
                               </button>
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
                                 <span>사진</span>
                               </button>
-                              <button className="letter-write__tab" type="button">
+                              <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
                                 <span>개봉일</span>
                               </button>
@@ -2283,15 +2279,12 @@ export function GuideMarkup() {
                           <div className="letter-write__paper" role="group" aria-label="편지 작성">
                             <div className="letter-write__compose">
                               <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div className="letter-write__title-wrap">
-                                <input className="letter-write__paper-title" type="text" name="letter-title" placeholder="제목" aria-label="제목 작성" />
-                              </div>
                               <div
                                 className="letter-write__paper-body"
                                 contentEditable={true}
                                 role="textbox"
                                 aria-multiline="true"
-                                aria-label="본문 작성"
+                                aria-label="편지 작성"
                               ></div>
                             </div>
                             <div className="letter-write__paper-foot">
@@ -2316,7 +2309,7 @@ export function GuideMarkup() {
                   <h2 className="overlay-system__title" id="overlay-system-title">DIMMED OVERLAY</h2>
                   <p className="overlay-system__lead">POCK의 상황별 공통 팝업 UI 시스템</p>
                   <p className="overlay-system__groups">적용 범위 | Popup · Modal · Onboarding Guide · Navigation Guide · Search Field</p>
-                  <p className="overlay-system__desc">정보 안내, 경고, 공유, 첫 진입 가이드, 서치필드 백그라운드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Share · Onboarding Guide로 구분합니다.</p>
+                  <p className="overlay-system__desc">정보 안내, 경고, 첫 진입 가이드, 서치필드 백그라운드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Onboarding Guide로 구분합니다.</p>
                 </div>
 
                 <p className="overlay-system__label">Dimmed Overlay</p>
@@ -2338,8 +2331,8 @@ export function GuideMarkup() {
                 <div className="popup-system__panel">
                   <h2 className="popup-system__title" id="popup-system-title">POPUP</h2>
                   <p className="popup-system__lead">POCK의 상황별 공통 팝업 UI 시스템</p>
-                  <p className="popup-system__groups">총 9가지 유형 | Info · Warning · Share · Onboarding Guide</p>
-                  <p className="popup-system__desc">정보 안내, 경고, 공유, 첫 진입 가이드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Share · Onboarding Guide로 구분합니다.</p>
+                  <p className="popup-system__groups">총 3가지 유형 | Info · Warning · Onboarding Guide</p>
+                  <p className="popup-system__desc">정보 안내, 경고, 첫 진입 가이드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Onboarding Guide로 구분합니다.</p>
                 </div>
 
                 <p className="popup-system__label">Window - popup</p>
@@ -2351,7 +2344,6 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--info pock-popup--mo" aria-label="정보">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
                           <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
                             </span>
@@ -2372,7 +2364,6 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--info pock-popup--tb" aria-label="정보">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
                           <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
                             </span>
@@ -2393,7 +2384,6 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--warning pock-popup--mo" aria-label="경고">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
                           <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
                             </span>
@@ -2417,7 +2407,6 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--warning pock-popup--tb" aria-label="경고">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
                           <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
                             </span>
@@ -2437,66 +2426,9 @@ export function GuideMarkup() {
                       </article>
                     </div>
                     <div className="popup-system__sample">
-                      <p className="popup-system__caption">Share Popup (Mo)</p>
-                      <article className="pock-popup pock-popup--share pock-popup--mo" aria-label="공유">
-                        <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-popup__body">
-                          <img className="pock-popup__icon" src="/assets/images/Share%20_Popup-icon.svg" alt="" width={40} height={34} />
-                          <p className="pock-popup__text">내 POCK에 놀러와!</p>
-                        </div>
-                        <div className="pock-popup__actions">
-                          <button className="btn btn--popup" type="button">링크 복사</button>
-                          <button className="btn btn--popup" type="button">닫기</button>
-                        </div>
-                      </article>
-                    </div>
-                    <div className="popup-system__sample">
-                      <p className="popup-system__caption">Share Popup (Tb, Pc)</p>
-                      <article className="pock-popup pock-popup--share pock-popup--tb" aria-label="공유">
-                        <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-popup__body">
-                          <img className="pock-popup__icon" src="/assets/images/Share%20_Popup-icon.svg" alt="" width={40} height={34} />
-                          <p className="pock-popup__text">내 POCK에 놀러와!</p>
-                        </div>
-                        <div className="pock-popup__actions">
-                          <button className="btn btn--popup" type="button">링크 복사</button>
-                          <button className="btn btn--popup" type="button">닫기</button>
-                        </div>
-                      </article>
-                    </div>
-                    <div className="popup-system__sample">
                       <p className="popup-system__caption">Onboarding Guide Popup</p>
                       <div className="popup-system__stage">
-                        <article className="onboard-popup" aria-label="온보딩 가이드">
-                          <h4 className="onboard-popup__title">내 프로필</h4>
-                          <p className="onboard-popup__desc">내 닉네임과 보유한 코인을<br />언제든지 확인할 수 있어요.</p>
-                          <ol className="onboard-popup__dots" aria-label="가이드 단계">
-                            <li className="onboard-popup__dot is-active"></li>
-                            <li className="onboard-popup__dot"></li>
-                            <li className="onboard-popup__dot"></li>
-                            <li className="onboard-popup__dot"></li>
-                            <li className="onboard-popup__dot"></li>
-                            <li className="onboard-popup__dot"></li>
-                          </ol>
-                          <div className="onboard-popup__nav">
-                            <button className="onboard-popup__skip" type="button">건너뛰기</button>
-                            <button className="btn btn--push" type="button">다음</button>
-                          </div>
-                        </article>
+                        <GuideOnboardDemo />
                       </div>
                     </div>
                   </div>
@@ -2518,11 +2450,11 @@ export function GuideMarkup() {
                     <p className="search-system__caption">Search Input</p>
                     <label className="search-input search-input--mo">
                       <img className="search-input__icon" src="/assets/images/search-icon.svg" alt="" width={22} height={22} />
-                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" />
+                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" maxLength={10} />
                     </label>
                     <label className="search-input search-input--wide">
                       <img className="search-input__icon" src="/assets/images/search-icon.svg" alt="" width={22} height={22} />
-                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" />
+                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" maxLength={10} />
                     </label>
                   </div>
                 </div>

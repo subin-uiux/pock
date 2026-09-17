@@ -86,31 +86,34 @@
 .letter--heart::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 0.375rem; /* 6 — 편지지와 간격 */
+  right: 0.375rem; /* 6 */
   z-index: 0;
   height: 2.0625rem; /* 33 — letter-heart-pattern */
-  background-image: url("/assets/images/letter/letter-heart-pattern.svg");
+  background-image: url("/assets/images/letter/letter-heart-pattern.webp");
   background-repeat: repeat-x;
   background-size: auto 100%;
   pointer-events: none;
 }
 
 .letter--heart::before {
-  top: 0;
+  top: 0.375rem; /* 6 — 편지지와 간격 */
   background-position: center top;
 }
 
 .letter--heart::after {
-  bottom: 0;
+  bottom: 0.375rem; /* 6 — 편지지와 간격 */
   background-position: center bottom;
 }
 
-.letter--heart .letter__expand,
 .letter--heart .letter__media,
 .letter--heart .letter__content {
   position: relative;
   z-index: 1;
+}
+
+.letter--heart .letter__expand {
+  z-index: 2; /* absolute 유지 · 패턴 위에 표시 */
 }
 
 .letter--star {
@@ -143,6 +146,40 @@
     #e7ffea 90%,
     #caffca 100%
   );
+}
+
+.letter--clover::before,
+.letter--clover::after {
+  content: "";
+  position: absolute;
+  top: 0.375rem; /* 6 — 편지지와 간격 */
+  bottom: 0.375rem; /* 6 */
+  z-index: 0;
+  width: 1.1875rem; /* 19 — letter-clover-pattern */
+  background-image: url("/assets/images/letter/letter-clover-pattern.svg");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  pointer-events: none;
+}
+
+.letter--clover::before {
+  left: 0.375rem; /* 6 — 편지지와 간격 */
+  background-position: left center;
+}
+
+.letter--clover::after {
+  right: 0.375rem; /* 6 — 편지지와 간격 */
+  background-position: right center;
+}
+
+.letter--clover .letter__media,
+.letter--clover .letter__content {
+  position: relative;
+  z-index: 1;
+}
+
+.letter--clover .letter__expand {
+  z-index: 2; /* absolute 유지 · 패턴 위에 표시 */
 }
 
 .letter__media {
