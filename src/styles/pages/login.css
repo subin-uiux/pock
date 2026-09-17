@@ -1,0 +1,62 @@
+/**
+ * login.css
+ */
+
+.page--login {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 208, 0.92), rgba(255, 255, 255, 0.98)),
+    url("/assets/images/background/bg-light-1.svg") center / cover no-repeat;
+}
+
+.page--login .main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.login {
+  width: 100%;
+  max-width: 22.5rem;
+}
+
+.login__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.login__logo {
+  display: block;
+  width: 6rem;
+  height: auto;
+}
+
+.login__title {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+}
+
+.login__lead {
+  margin: 0;
+  color: var(--color-base-800, #4e4e4e);
+}
+
+.login__note {
+  margin: 0 0 0.5rem;
+  color: var(--color-base-600, #898989);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.login__kakao-button {
+  margin-top: 0.5rem;
+  background-color: #fee500;
+  color: #191919;
+  border-color: #e5cf00;
+}

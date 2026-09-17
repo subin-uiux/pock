@@ -1,55 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POCK — 미래의 나에게 보내는 타임캡슐</title>
-  <meta name="description" content="POCK은 메시지와 사진을 미래의 특정 시점에 열어볼 수 있는 디지털 타임캡슐 웹앱입니다.">
-
-  <!-- Common styles -->
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/common.css">
-
-  <!-- Components -->
-  <link rel="stylesheet" href="css/components/header.css">
-  <link rel="stylesheet" href="css/components/button.css">
-
-  <!-- Page -->
-  <link rel="stylesheet" href="css/pages/index.css">
-</head>
-<body class="page page--index">
-  <!--
-    index.html
-    역할: POCK 랜딩 / 서비스 소개 페이지
-    추후: 히어로, 서비스 소개, CTA(시작하기/로그인) 등 UI 구현
-  -->
-
-  <div class="page__wrapper" id="smooth-wrapper">
-    <div class="page__content" id="smooth-content">
-
-      <header class="header">
-        <!-- 공통 헤더 영역 (추후 구현) -->
-      </header>
-
-      <main class="main main--index">
-        <!-- 랜딩 콘텐츠 영역 (추후 디자인 지시 후 구현) -->
-      </main>
-
-      <footer class="footer">
-        <!-- 푸터 영역 (추후 구현) -->
-      </footer>
-
-    </div>
-  </div>
-
-  <!-- GSAP CDN (추후 애니메이션에서 사용) -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollSmoother.min.js"></script>
-
-  <script src="js/common.js"></script>
-  <script src="js/animation.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="POCK은 메시지와 사진을 미래의 특정 시점에 열어볼 수 있는 디지털 타임캡슐 웹앱입니다."
+    />
+    <title>POCK — 미래의 나에게 보내는 타임캡슐</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

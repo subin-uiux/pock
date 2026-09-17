@@ -1,0 +1,191 @@
+# POCK
+
+미래의 나에게 보내는 디지털 타임캡슐 웹앱.
+
+**스택:** Vite + React + TypeScript + React Router  
+**스타일:** 기존 BEM CSS (CSS Modules / Tailwind 사용 안 함)  
+**디자인 레퍼런스:** React [`/guide`](http://localhost:5173/guide) (`src/pages/GuidePage.tsx`)  
+**정적 원본:** `legacy/pages/guide.html` (실행·서빙하지 않음)
+
+---
+
+## 시작
+
+Node.js 18+ 권장.
+
+```bash
+npm install
+npm run dev
+```
+
+| 화면 | URL |
+|------|-----|
+| 랜딩 | [http://localhost:5173/](http://localhost:5173/) |
+| 컴포넌트 가이드 | [http://localhost:5173/guide](http://localhost:5173/guide) |
+
+## 스크립트
+
+| 명령 | 설명 |
+|------|------|
+| `npm run dev` | 개발 서버 |
+| `npm run build` | 타입체크 + 프로덕션 빌드 |
+| `npm run preview` | 빌드 결과 미리보기 |
+
+---
+
+## 폴더 구조
+
+```
+pock/
+├── index.html                 # Vite SPA 진입점 (유일하게 루트에서 서빙되는 HTML)
+├── public/assets/             # 런타임 정적 자원 → URL /assets/...
+│   ├── images/
+│   ├── icons/
+│   └── fonts/
+├── assets/                    # 디자인 원본 이미지·아이콘·폰트 (편집 후 public에 반영)
+│   └── css/                   # ⚠️ 레거시 잔존. 앱은 사용하지 않음 → src/styles 만 수정
+├── src/
+│   ├── main.tsx               # styles/index.css 진입
+│   ├── App.tsx                # 라우트
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   │   ├── GuidePage.tsx
+│   │   └── guide/GuideMarkup.tsx
+│   ├── hooks/
+│   ├── data/
+│   ├── lib/
+│   ├── types/
+│   └── styles/                # ✅ CSS 단일 소스
+│       ├── index.css          # 모든 CSS import (guide.css 포함)
+│       ├── variables.css
+│       ├── components/
+│       └── pages/
+├── _tools/
+│   └── convert-guide.mjs      # legacy guide.html → GuideMarkup 재생성
+└── legacy/                    # 전환 전 HTML/css/js/data (실행·배포 금지)
+    └── pages/guide.html
+```
+
+### CSS 소스 오브 트루스
+
+| 경로 | 상태 |
+|------|------|
+| **`src/styles/`** | **유일한 수정·사용 대상** (`main.tsx` → `index.css`) |
+| `assets/css/` | 구 가이드용 복사본. **수정하지 말 것** (정리 예정) |
+| `public/assets/css/` | `assets` 통째 복사 잔존. **앱 미사용** (정리 예정) |
+| `legacy/css/` | 구 루트 `css/` 스냅샷 |
+
+새 CSS 파일은 반드시 [`src/styles/index.css`](src/styles/index.css)에 `@import`를 추가한다.  
+가이드 페이지 깨짐 방지: `pages/guide.css` import가 빠져 있지 않은지 확인한다.
+
+### 라우트 · 인증
+
+| 구분 | 경로 |
+|------|------|
+| 비로그인 가능 | `/`, `/guide`, `/login`, `/privacy`, `/terms` |
+| 로그인 필요 (`RequireAuth`) | `/home`, `/notice`, `/settings`, `/mypage`, `/coin`, `/letter-store`, `/pock-received`, `/pock-sent`, `/pock-send`, `/pock-detail/:id`, `/pock-hint/:id` |
+
+비로그인으로 보호 라우트 접근 시 `/login`으로 이동한다. (카카오는 **목업만**, 실연동 금지)
+
+---
+
+## 개발 규칙
+
+### 1. 기술 스택
+
+- **React(Vite) SPA** + TypeScript + React Router만 사용한다.
+- **jQuery 금지.** Swiper·GSAP은 필요 시 `ref` / `useEffect`로만 연동한다.
+- 빌드·번들링은 Vite를 쓴다. 레거시 정적 마크업 방식으로 되돌리지 않는다.
+- 디자인 시스템 가이드는 **`/guide`** (`GuidePage` + `src/styles`).
+
+### 2. 시안·카피
+
+- 시안(`/guide`, `GuideMarkup`)에 없는 UI·카피·색을 **임의로 만들지 않는다.**
+- 미확정 값은 코드/CSS 주석에 `임시값`이라고 적는다.
+- UI 마크업·클래스의 원본은 **가이드 샘플**이다. 페이지를 새로 꾸밀 때도 guide BEM을 우선한다.
+- 가이드 마크업 대량 갱신: `_tools/convert-guide.mjs`로 `legacy/pages/guide.html` → `src/pages/guide/GuideMarkup.tsx` 재생성 후 검수한다.
+
+### 3. 스타일 (CSS)
+
+- **BEM** (`block__element--modifier`). JSX에는 기존 `className`을 그대로 쓴다.
+- **CSS Modules / Tailwind / styled-components로 재설계하지 않는다.**
+- 클래스만 스타일한다. ID·태그 셀렉터로 화면 스타일을 주지 않는다.
+- 길이는 **rem** (`1rem = 16px`). `html` font-size는 `100%` 유지. `62.5%` 트릭 금지.
+- px 예외: `1px` 헤어라인, 미디어쿼리 경계값만.
+- 색·간격·타이포는 [`src/styles/variables.css`](src/styles/variables.css) 토큰을 우선한다.
+- **모바일 퍼스트.** 기본 = 390 캔버스. 확장은 `min-width`만 사용한다.
+  - 태블릿: `1024px`
+  - 데스크톱: `1920px`
+- 390 / 1024 / 1920은 **디자인 캔버스**다. 뷰포트를 그 너비로 고정하지 않고, 구간 안에서는 유동 폭으로 맞춘다.
+- `:focus-visible` 윤곽을 지우지 않는다.
+- `prefers-reduced-motion: reduce`에서는 애니메이션·전환을 거의 끈다.
+
+```css
+/* ❌ BAD */
+.card { width: 320px; }
+@media (max-width: 767px) { .card { width: 100%; } }
+
+/* ✅ GOOD */
+.card { width: 100%; }
+@media (min-width: 1024px) { .card { width: 20rem; } }
+```
+
+### 4. 파일 배치
+
+| 종류 | 위치 |
+|------|------|
+| 페이지 | `src/pages/` |
+| 공통 UI | `src/components/` |
+| 레이아웃 | `src/layouts/` |
+| 훅 | `src/hooks/` |
+| 데이터·상태 유틸 | `src/data/`, `src/lib/` |
+| 공통 CSS | `src/styles/` |
+| 컴포넌트 CSS | `src/styles/components/` |
+| 페이지 CSS | `src/styles/pages/` (+ `index.css`에 import) |
+| 런타임 정적 파일 | `public/assets/...` |
+| 원본 에셋 보관 | 루트 `assets/` (이미지·폰트 추가 시 `public/assets`에도 복사) |
+
+공개 URL 경로는 **`/assets/...`** 를 쓴다.
+
+### 5. React / 접근성
+
+- 일반 앱 페이지는 `AppLayout`(헤더 + `main#main` + 하단 내비)을 재사용한다.
+- `/guide`는 가이드 전용 레이아웃(`GuidePage`)을 쓴다. `AppLayout`에 넣지 않는다.
+- 클릭 가능한 UI는 `button` / `Link` / `NavLink`를 쓴다. `div`+`onClick`만으로 만들지 않는다.
+- 장식 이미지: `alt=""`. 정보 이미지: 의미 있는 대체 텍스트.
+- 제목은 `h1`부터 건너뛰지 않는다.
+- 인라인 스타일은 시안 대응·동적 배경 등 불가피할 때만 최소한으로 쓴다.
+
+### 6. 데이터·상태
+
+- 서버 API 없이 **localStorage + 목 데이터**로 동작한다 (`src/lib/storage.ts`).
+- 코인: `src/lib/coin.ts` / `useCoin`
+- 편지지 스토어: `src/lib/store.ts` / `useLetterStore`
+- POCK 목록·전송: `src/lib/pock.ts` (샘플 + 사용자가 보낸 항목)
+- 로그인: `useAuth` (카카오 **목업만**)
+
+주요 키 예: `pock.auth`, `pock.coin`, `pock.ownedLetters`, `pock.userSent`, `pock.unlockedHints`
+
+### 7. 반응형 컴포넌트
+
+- `useBreakpoint()` → `"mo" | "tb" | "pc"` (1024 / 1920 기준).
+- LetterWrite·FriendWindow·Navigation 등은 브레이크포인트에 맞는 modifier 클래스를 붙인다 (`letter-write--mo`, `navigation--pad` 등).
+
+### 8. 하지 말 것
+
+- 루트 또는 `public/`에 **`guide.html`을 다시 두지 않는다.**  
+  Vite가 `/guide`로 HTML을 우선 서빙하면 리다이렉트 스텁과 겹쳐 **무한 새로고침**이 난다. 가이드는 React 라우트 `/guide`만 사용한다.
+- 루트 레거시 HTML을 다시 앱 진입점으로 쓰기
+- `legacy/`를 실행·배포 대상으로 삼기
+- `assets/css`·`public/assets/css`만 고치고 `src/styles`를 안 고치기
+- Kakao 실연동·백엔드 API를 시안 작업과 한꺼번에 넣기
+- ScrollSmoother 등 라이선스 플러그인을 임의 추가
+
+---
+
+## 참고
+
+- 컴포넌트·컬러·타이포 시안: 개발 서버 **[/guide](http://localhost:5173/guide)**
+- Cursor 에이전트용 요약 규칙: [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc)
+- 전환 전 스냅샷: [`legacy/README.md`](legacy/README.md)

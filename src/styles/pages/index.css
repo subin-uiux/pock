@@ -1,0 +1,53 @@
+/**
+ * index.css
+ * Page: .page--index — 랜딩
+ */
+
+.page--index {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 208, 0.9), rgba(255, 255, 255, 0.95)),
+    url("/assets/images/background/bg-light-1.svg") center / cover no-repeat;
+}
+
+.main--index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem 1.25rem;
+}
+
+.landing__logo {
+  display: block;
+  width: 8.25rem;
+  height: auto;
+}
+
+.landing__brand {
+  margin: 0;
+  font-family: var(--font-family-display, var(--font-family-base));
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+}
+
+.landing__lead {
+  margin: 0;
+  max-width: 16rem;
+  color: var(--color-base-700, #6e6e6e);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.landing__actions {
+  margin-top: 0.5rem;
+}

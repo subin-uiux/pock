@@ -1,0 +1,28 @@
+/**
+ * coin.css
+ * Block: .coin
+ */
+
+.coin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-base-900, #333);
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.coin__icon {
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.coin__value {
+  white-space: nowrap;
+}
+
+.coin--header {
+  min-height: 2.75rem;
+}

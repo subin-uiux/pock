@@ -1,0 +1,84 @@
+/**
+ * letter-store.css
+ */
+
+.letter-store {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.letter-store__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.letter-store__title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.letter-store__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.letter-store__item {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem;
+  border: 0.5px solid #6e6e6e;
+  border-radius: 0.625rem;
+  background: #fff;
+}
+
+.letter-store__preview {
+  width: 5.5rem;
+  height: 6.875rem;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  background: #f3f3f3;
+}
+
+.letter-store__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.letter-store__name {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.letter-store__desc {
+  margin: 0;
+  color: var(--color-base-700, #6e6e6e);
+  font-size: 0.8125rem;
+}
+
+.letter-store__price {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.letter-store__owned {
+  color: #32c065;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 1024px) {
+  .letter-store__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

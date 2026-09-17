@@ -1,0 +1,22 @@
+/**
+ * pock-send.css
+ */
+
+.page--pock-send .main {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.pock-send {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pock-send__stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

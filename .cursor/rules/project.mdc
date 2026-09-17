@@ -5,16 +5,22 @@ alwaysApply: true
 
 # POCK 작업 원칙
 
-- 정적 마크업. HTML, CSS, JavaScript, jQuery, Swiper, GSAP만 사용한다. 빌드 단계와 npm 번들링을 추가하지 않는다.
+- React(Vite) SPA. TypeScript, React Router를 사용한다.
+- 디자인 시스템 가이드는 `/guide` (`src/pages/GuidePage.tsx`). 정적 원본은 `legacy/pages/guide.html`.
+- 스타일 단일 소스: `src/styles`. BEM CSS 유지. CSS Modules·Tailwind로 재설계하지 않는다. 시안 클래스를 JSX `className`에 그대로 쓴다.
 - 모바일 퍼스트. 기본 스타일은 모바일 캔버스(390) 기준이고, 태블릿(1024)·데스크톱(1920)은 `min-width`로만 확장한다.
 - 390/1024/1920은 디자인 캔버스다. 뷰포트를 그 너비로 고정하지 않고, 구간 안에서는 유동 폭으로 맞춘다.
 - 새 파일은 용도 폴더에 둔다.
-  - 공통 CSS: `assets/css`
-  - 컴포넌트 CSS: `assets/css/components`
-  - 페이지 CSS: `assets/css/pages`
-  - 라이브러리: `assets/js/lib`, `assets/css/lib`
-  - 페이지 JS: `assets/js/pages`
-  - 이미지: `assets/images/{영역}`
-- 진입점은 루트 `index.html`, 서브 페이지는 `pages/`, 디자인 시스템은 `guide.html`.
-- 경로는 상대 경로만 쓴다. `pages/`에서는 `../assets/`.
+  - 앱 소스: `src/`
+  - 공통·컴포넌트·페이지 CSS: `src/styles`, `src/styles/components`, `src/styles/pages`
+  - 정적 이미지·아이콘·폰트: `public/assets` (원본 이미지 등은 루트 `assets/` 유지 가능)
+  - 컴포넌트: `src/components`
+  - 레이아웃: `src/layouts`
+  - 페이지: `src/pages`
+  - 데이터·훅: `src/data`, `src/hooks`
+  - 전환 전 스냅샷: `legacy/` (실행하지 않음)
+- 진입점은 Vite `index.html` → `src/main.tsx`.
+- 공개 정적 경로는 `/assets/...`를 쓴다.
 - 시안에 없는 UI·카피·색을 임의로 만들지 않는다. 미확정 값은 주석에 임시값이라고 적는다.
+- jQuery는 사용하지 않는다. Swiper·GSAP은 필요 시 React에서 ref/`useEffect`로 연동한다.
+- 가이드 대량 갱신: `_tools/convert-guide.mjs`로 Markup 재생성 후 검수.

@@ -1,0 +1,57 @@
+/**
+ * coin.css — page
+ */
+
+.coin-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.coin-page__hero {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 0.5px solid #6e6e6e;
+  border-radius: 0.625rem;
+  background: linear-gradient(180deg, #fff8d0 0%, #ffffff 100%);
+}
+
+.coin-page__title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.coin-page__balance {
+  font-size: 1.25rem;
+}
+
+.coin-page__lead {
+  margin: 0;
+  color: var(--color-base-700, #6e6e6e);
+  font-size: 0.875rem;
+}
+
+.coin-page__history {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coin-page__history-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 0.875rem;
+}
+
+.coin-page__history-item--earn {
+  color: #32c065;
+}
+
+.coin-page__history-item--spend {
+  color: #e6640a;
+}

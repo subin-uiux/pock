@@ -1,0 +1,60 @@
+/**
+ * fonts.css
+ * 웹폰트와 타이포그래피 기본값
+ * 파일 위치: assets/fonts/NeoDunggeunmo.woff
+ */
+
+@font-face {
+  font-family: "NeoDunggeunmo";
+  src: url("/assets/fonts/NeoDunggeunmo.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("/assets/fonts/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-family-base: "NeoDunggeunmo", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-family-display: "NeoDunggeunmo", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-family-document: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-loose: 1.75;
+  --letter-spacing-base: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+}

@@ -1,0 +1,40 @@
+/* Global styles — assets CSS ported into React */
+@import "./reset.css";
+@import "./variables.css";
+@import "./fonts.css";
+@import "./common.css";
+
+@import "./components/skip-link.css";
+@import "./components/header.css";
+@import "./components/footer.css";
+@import "./components/navigation.css";
+@import "./components/button.css";
+@import "./components/search-input.css";
+@import "./components/form.css";
+@import "./components/modal.css";
+@import "./components/dimmed-overlay.css";
+@import "./components/popup.css";
+@import "./components/letter-card.css";
+@import "./components/letter.css";
+@import "./components/letter-write.css";
+@import "./components/window.css";
+@import "./components/grid.css";
+@import "./components/coin.css";
+@import "./components/pock-card.css";
+
+@import "./pages/index.css";
+@import "./pages/login.css";
+@import "./pages/home.css";
+@import "./pages/notice.css";
+@import "./pages/settings.css";
+@import "./pages/mypage.css";
+@import "./pages/coin.css";
+@import "./pages/letter-store.css";
+@import "./pages/pock-received.css";
+@import "./pages/pock-sent.css";
+@import "./pages/pock-send.css";
+@import "./pages/pock-hint.css";
+@import "./pages/pock-detail.css";
+@import "./pages/privacy.css";
+@import "./pages/terms.css";
+@import "./pages/guide.css";

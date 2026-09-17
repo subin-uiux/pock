@@ -1,0 +1,238 @@
+/**
+ * letter.css
+ * 편지지(Letter) 카드. normal 7색 · special 5종. 모바일 기본.
+ */
+
+.letter {
+  --letter-line-gap: 0.3125rem; /* 5 — 줄과 텍스트 간격 */
+  --letter-line-height: calc(0.875rem + var(--letter-line-gap)); /* Mo 14 + 5 */
+  --letter-line-count: 9;
+  --letter-line-color: var(--color-base-500);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 2.5rem 0 0; /* 상 40 · 좌우는 미디어/텍스트별도 */
+  border: 1px solid var(--color-base-300);
+  color: var(--color-base-900);
+}
+
+.letter--mo {
+  width: 20rem; /* 320 */
+  height: 31.25rem; /* 500 */
+}
+
+.letter--tb {
+  --letter-line-height: calc(1rem + var(--letter-line-gap)); /* Tb 제목 16 + 5 */
+  width: 25rem; /* 400 */
+  height: 35.9375rem; /* 575 */
+  max-width: 100%;
+}
+
+.letter--red {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-red-light) 100%);
+}
+
+.letter--orange {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-orange-light) 100%);
+}
+
+.letter--yellow {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-yellow-light) 100%);
+}
+
+.letter--green {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-green-light) 100%);
+}
+
+.letter--blue {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-blue-light) 100%);
+}
+
+.letter--purple {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-purple-light) 100%);
+}
+
+.letter--pink {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-pink-light) 100%);
+}
+
+.letter--rainbow {
+  background: linear-gradient(
+    180deg,
+    var(--color-rainbow-red-light) 0%,
+    var(--color-rainbow-orange-light) 22%,
+    var(--color-rainbow-yellow-light) 46%,
+    var(--color-rainbow-green-light) 75%,
+    var(--color-rainbow-blue-light) 100%
+  );
+}
+
+.letter--heart,
+.letter--star,
+.letter--stripe,
+.letter--clover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.letter--heart {
+  background-color: var(--color-rainbow-pink-light);
+  background-image: url("../../images/letter/heart.png");
+}
+
+.letter--star {
+  --letter-line-color: var(--color-base-400);
+  background-image: url("../../images/letter/star.png");
+  color: var(--color-base-0);
+}
+
+.letter--star .letter__body,
+.letter--star .letter__from,
+.letter--star .letter__date {
+  color: var(--color-base-200);
+}
+
+.letter--star .letter__expand-icon {
+  filter: invert(1);
+}
+
+.letter--stripe {
+  background-color: var(--color-base-0);
+  background-image: url("../../images/letter/stripe.png");
+}
+
+.letter--clover {
+  background-color: var(--color-rainbow-green-light);
+  background-image: url("../../images/letter/clover.png");
+}
+
+.letter__media {
+  flex: 0 0 auto;
+  width: 12.5rem; /* 200px — 320 기준 좌/우 60 */
+  height: 9.375rem; /* 150px */
+  margin: 0 auto 1.25rem; /* 이미지–텍스트 20 */
+  background-color: var(--color-base-400); /* 회색 플레이스홀더 */
+}
+
+.letter--tb .letter__media {
+  width: 18.75rem; /* 300 */
+  height: 14.0625rem; /* 225 */
+}
+
+.letter__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.letter__expand {
+  position: absolute;
+  top: 1.1875rem; /* 편지지 상 19 */
+  right: 1.1875rem; /* 편지지 우 19 */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem; /* 18 */
+  height: 1.125rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.letter__expand-icon {
+  display: block;
+  width: 1.125rem; /* 18 */
+  height: 1.125rem;
+  image-rendering: pixelated;
+}
+
+.letter__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: auto;
+  min-height: 0;
+  margin: 0 1rem; /* 텍스트–편지지 좌/우 16 */
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 첫 줄 제목 + 이어지는 본문. 가로줄 9줄 */
+.letter__text {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  height: calc(var(--letter-line-count) * var(--letter-line-height));
+  overflow: hidden;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--letter-line-height) - 1px),
+    var(--letter-line-color) calc(var(--letter-line-height) - 1px),
+    var(--letter-line-color) var(--letter-line-height)
+  );
+  background-position: 0 0;
+  background-size: 100% var(--letter-line-height);
+  background-repeat: repeat;
+}
+
+.letter__title {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: var(--letter-line-height);
+}
+
+.letter__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-base-800);
+  font-size: 0.875rem; /* Mo 14 */
+  line-height: var(--letter-line-height);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.letter__foot {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0;
+  min-width: 0;
+  font-size: 0.875rem; /* Mo 14 */
+  line-height: var(--letter-line-height);
+}
+
+.letter__from,
+.letter__date {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-base-700);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.letter--tb .letter__title {
+  font-size: 1rem;
+}
+
+.letter--tb .letter__body {
+  font-size: 0.875rem;
+}
+
+.letter--tb .letter__foot {
+  font-size: 0.875rem; /* 임시값: Tb 하단 시안 미확정, Mo와 동일 14 */
+}
