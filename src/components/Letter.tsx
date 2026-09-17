@@ -24,7 +24,7 @@ export function Letter({
       <article className={`letter letter--${size} letter--before-open`} aria-label="개봉 전 편지">
         <img
           className="letter__before-image"
-          src="/assets/images/letter/letter_Before-opening.png"
+          src="/assets/images/letter/letter_Before-opening.webp"
           alt=""
         />
       </article>

@@ -59,7 +59,7 @@ export function LetterCard({
           <span className="letter-card__lock" aria-hidden="true">
             <img
               className="letter-card__lock-image"
-              src="/assets/images/letter/letter-lock-icon.png"
+              src="/assets/images/letter/letter-lock-icon.svg"
               alt=""
               width={40}
               height={40}

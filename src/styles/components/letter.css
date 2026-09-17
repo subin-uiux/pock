@@ -70,23 +70,52 @@
   );
 }
 
-.letter--heart,
 .letter--star,
-.letter--stripe,
-.letter--clover {
+.letter--stripe {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
 .letter--heart {
-  background-color: var(--color-rainbow-pink-light);
-  background-image: url("/assets/images/letter/heart.png");
+  background-color: #ffdde9; /* Rainbow / pink base */
+  background-image: none;
+}
+
+.letter--heart::before,
+.letter--heart::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: 2.0625rem; /* 33 — letter-heart-pattern */
+  background-image: url("/assets/images/letter/letter-heart-pattern.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  pointer-events: none;
+}
+
+.letter--heart::before {
+  top: 0;
+  background-position: center top;
+}
+
+.letter--heart::after {
+  bottom: 0;
+  background-position: center bottom;
+}
+
+.letter--heart .letter__expand,
+.letter--heart .letter__media,
+.letter--heart .letter__content {
+  position: relative;
+  z-index: 1;
 }
 
 .letter--star {
   --letter-line-color: var(--color-base-400);
-  background-image: url("/assets/images/letter/star.png");
+  background-image: url("/assets/images/letter/star.webp");
   color: var(--color-base-0);
 }
 
@@ -102,12 +131,18 @@
 
 .letter--stripe {
   background-color: var(--color-base-0);
-  background-image: url("/assets/images/letter/stripe.png");
+  background-image: url("/assets/images/letter/stripe.webp");
 }
 
 .letter--clover {
-  background-color: var(--color-rainbow-green-light);
-  background-image: url("/assets/images/letter/clover.png");
+  background-color: #caffca;
+  background-image: radial-gradient(
+    circle at center,
+    #ffffff 25%,
+    #f7fff8 60%,
+    #e7ffea 90%,
+    #caffca 100%
+  );
 }
 
 .letter__media {

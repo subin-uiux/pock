@@ -1,15 +1,15 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="36.000000pt" height="36.000000pt" viewBox="0 0 36.000000 36.000000"
- preserveAspectRatio="xMidYMid meet">
-
-<g transform="translate(0.000000,36.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M238 278 c-21 -6 -38 -14 -38 -20 0 -5 -12 -8 -27 -6 -46 5 -132 -22
--144 -44 -14 -25 -5 -73 21 -116 59 -97 192 -96 264 1 29 39 29 125 0 163 -24
-33 -29 35 -76 22z m-38 -123 c0 -78 -2 -85 -20 -85 -18 0 -20 7 -20 85 0 78 2
-85 20 85 18 0 20 -7 20 -85z"/>
-</g>
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="18" cy="18" r="17" fill="url(#paint0_linear_618_41639)" stroke="url(#paint1_linear_618_41639)" stroke-width="2"/>
+<circle cx="17.8333" cy="8.83333" r="1.83333" fill="white"/>
+<rect x="16" y="12.5" width="3.66667" height="16.5" fill="white"/>
+<defs>
+<linearGradient id="paint0_linear_618_41639" x1="13.3608" y1="-1.69603e-08" x2="22.6392" y2="36" gradientUnits="userSpaceOnUse">
+<stop stop-color="#879EE3"/>
+<stop offset="1" stop-color="#092DD5"/>
+</linearGradient>
+<linearGradient id="paint1_linear_618_41639" x1="18" y1="0" x2="18" y2="36" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E9E9E9"/>
+<stop offset="1" stop-color="#9F9F9F"/>
+</linearGradient>
+</defs>
 </svg>

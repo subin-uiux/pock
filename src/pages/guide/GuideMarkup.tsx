@@ -997,7 +997,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--progress">
@@ -1024,7 +1024,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--timer">22:07:32</div>
@@ -1037,7 +1037,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--unopened">미오픈</div>
@@ -1079,7 +1079,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--progress">
@@ -1106,7 +1106,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--timer">22:07:32</div>
@@ -1119,7 +1119,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--unopened">미오픈</div>
@@ -1161,7 +1161,7 @@ export function GuideMarkup() {
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Box)</p>
                         <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 수신 카드">
-                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.png" alt="" width={960} height={620} />
+                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
                         </article>
                       </li>
                       <li className="card-system__item">
@@ -1169,7 +1169,7 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--mo">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
@@ -1201,7 +1201,7 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--mo">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
@@ -1246,7 +1246,7 @@ export function GuideMarkup() {
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Box)</p>
                         <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 수신 카드">
-                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.png" alt="" width={960} height={620} />
+                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
                         </article>
                       </li>
                       <li className="card-system__item">
@@ -1254,7 +1254,7 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--tb">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
@@ -1286,7 +1286,7 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--tb">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
