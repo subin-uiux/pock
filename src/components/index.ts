@@ -9,3 +9,5 @@ export { Letter } from "./Letter";
 export { LetterWrite } from "./LetterWrite";
 export { FriendWindow } from "./FriendWindow";
 export { CoinBadge } from "./CoinBadge";
+export { PockSendCategory } from "./PockSendCategory";
+export { PockSendTabs } from "./PockSendTabs";

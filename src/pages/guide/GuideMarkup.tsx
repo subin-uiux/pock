@@ -1,6 +1,9 @@
 import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
 
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
+import { GuideSendCategorySection } from "@/pages/guide/GuideSendCategorySection";
+import { GuideSendTabsSection } from "@/pages/guide/GuideSendTabsSection";
+
 export function GuideMarkup() {
   return (
     <>
@@ -2302,6 +2305,10 @@ export function GuideMarkup() {
                   </div>
                 </div>
               </section>
+
+              <GuideSendCategorySection />
+
+              <GuideSendTabsSection />
 
               <section className="overlay-system" id="overlay-system" aria-labelledby="overlay-system-title">
                 <p className="overlay-system__eyebrow">POCK · Dimmed Overlay</p>

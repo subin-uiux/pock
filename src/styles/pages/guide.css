@@ -55,6 +55,16 @@
   background-color: transparent;
 }
 
+.send-category-system,
+.send-tabs-system {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-inline: calc(var(--layout-gutter) * -1);
+  padding: var(--spacing-lg) var(--layout-gutter) var(--spacing-xl);
+  background-color: transparent;
+}
+
 .logo-system {
   margin-top: calc(var(--spacing-md) * -1);
   padding-bottom: 0;
@@ -70,7 +80,9 @@
 .window-system,
 .overlay-system,
 .popup-system,
-.search-system {
+.search-system,
+.send-category-system,
+.send-tabs-system {
   padding-top: 0;
 }
 
@@ -85,7 +97,9 @@
 .window-system__eyebrow,
 .overlay-system__eyebrow,
 .popup-system__eyebrow,
-.search-system__eyebrow {
+.search-system__eyebrow,
+.send-category-system__eyebrow,
+.send-tabs-system__eyebrow {
   color: var(--color-base-0);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-tight);
@@ -102,7 +116,9 @@
 .window-system__panel,
 .overlay-system__panel,
 .popup-system__panel,
-.search-system__panel {
+.search-system__panel,
+.send-category-system__panel,
+.send-tabs-system__panel {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -124,7 +140,9 @@
 .window-system__title,
 .overlay-system__title,
 .popup-system__title,
-.search-system__title {
+.search-system__title,
+.send-category-system__title,
+.send-tabs-system__title {
   font-size: var(--font-size-3xl);
   line-height: var(--line-height-tight);
   letter-spacing: 0.04em;
@@ -141,7 +159,9 @@
 .window-system__lead,
 .overlay-system__lead,
 .popup-system__lead,
-.search-system__lead {
+.search-system__lead,
+.send-category-system__lead,
+.send-tabs-system__lead {
   font-size: var(--font-size-sm);
   line-height: var(--line-height-base);
 }
@@ -166,7 +186,9 @@
 .overlay-system__desc,
 .popup-system__groups,
 .popup-system__desc,
-.search-system__desc {
+.search-system__desc,
+.send-category-system__desc,
+.send-tabs-system__desc {
   color: var(--color-panel-muted);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-loose);
@@ -183,7 +205,9 @@
 .window-system__label,
 .overlay-system__label,
 .popup-system__label,
-.search-system__label {
+.search-system__label,
+.send-category-system__label,
+.send-tabs-system__label {
   color: var(--color-base-0);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-tight);
@@ -875,6 +899,53 @@
   line-height: var(--line-height-tight);
 }
 
+.send-category-system__board,
+.send-tabs-system__board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 100%;
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-radius: 1.25rem;
+  background-color: var(--color-base-0);
+  overflow-x: auto;
+}
+
+.send-category-system__card-title,
+.send-tabs-system__card-title {
+  color: var(--color-label);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+}
+
+.send-category-system__stage,
+.send-tabs-system__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-md);
+  border-radius: 1.25rem;
+  background-color: var(--color-base-100);
+}
+
+.send-category-system__samples,
+.send-tabs-system__samples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.send-category-system__caption,
+.send-tabs-system__caption {
+  color: var(--color-base-900);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-tight);
+}
+
 .nav-system__card-title {
   color: var(--color-label);
   font-size: var(--font-size-lg);
@@ -1005,8 +1076,23 @@
   .window-system__panel,
   .overlay-system__panel,
   .popup-system__panel,
-  .search-system__panel {
+  .search-system__panel,
+  .send-category-system__panel,
+.send-tabs-system__panel {
     padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .send-category-system__samples,
+.send-tabs-system__samples {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .send-category-system__stage,
+.send-tabs-system__stage {
+    width: auto;
+    min-width: 16rem;
   }
 
   .card-system__columns {
