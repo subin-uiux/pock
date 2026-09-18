@@ -431,6 +431,8 @@
   text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
+  cursor: default;
+  user-select: none;
 }
 
 /* 보내기 — Push btn · 창 하단만 radius 10 */

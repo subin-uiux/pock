@@ -70,7 +70,7 @@
   justify-content: center;
   box-sizing: border-box;
   margin: 0;
-  border: 0.5px solid var(--color-base-700);
+  border: 0; /* stroke 없음 */
   border-radius: 0.0825rem; /* 1.32 */
   cursor: default;
   pointer-events: none;
@@ -238,6 +238,7 @@
 
 .pock-window__scroll {
   position: absolute;
+  top: 1.875rem; /* 30 — 스크롤바 위 간격 */
   right: 0.625rem; /* 10 — Tb/Pc */
   left: auto;
   z-index: 1;
@@ -251,6 +252,7 @@
 
 .pock-window__scroll-thumb {
   position: absolute;
+  top: 0;
   left: 0;
   width: 0.5rem; /* 8 */
   height: 3.625rem; /* 58 */

@@ -270,13 +270,13 @@ export function Letter_write({
                 onChange={(e) => setFrom(e.target.value)}
               />
             </label>
-            <input
+            <time
               className="letter-write__date"
-              type="text"
-              readOnly
+              dateTime={writtenDate.replace(/\./g, "-")}
               aria-label="작성일"
-              value={writtenDate}
-            />
+            >
+              {writtenDate}
+            </time>
           </div>
         </div>
       </div>
