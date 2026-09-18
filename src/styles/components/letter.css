@@ -91,19 +91,18 @@
   z-index: 0;
   height: 2.0625rem; /* 33 — letter-heart-pattern */
   background-image: url("/assets/images/letter/letter-heart-pattern.svg");
-  background-repeat: repeat-x;
-  background-size: auto 100%;
+  background-repeat: no-repeat; /* 상·하 각 하트 7개만 */
+  background-position: center;
+  background-size: 100% 100%; /* Mo·Tb·Pc 폭에 맞춰 하트 늘어남 */
   pointer-events: none;
 }
 
 .letter--heart::before {
   top: 0.375rem; /* 6 — 편지지와 간격 */
-  background-position: center top;
 }
 
 .letter--heart::after {
   bottom: 0.375rem; /* 6 — 편지지와 간격 */
-  background-position: center bottom;
 }
 
 .letter--heart .letter__media,
@@ -158,18 +157,17 @@
   width: 1.1875rem; /* 19 — letter-clover-pattern */
   background-image: url("/assets/images/letter/letter-clover-pattern.svg");
   background-repeat: repeat-y;
-  background-size: 100% auto;
+  background-size: 1.1875rem 27.75rem; /* 19×444 — SVG 원본 타일 */
+  background-position: top center;
   pointer-events: none;
 }
 
 .letter--clover::before {
   left: 0.375rem; /* 6 — 편지지와 간격 */
-  background-position: left center;
 }
 
 .letter--clover::after {
   right: 0.375rem; /* 6 — 편지지와 간격 */
-  background-position: right center;
 }
 
 .letter--clover .letter__media,

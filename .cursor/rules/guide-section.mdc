@@ -1,0 +1,54 @@
+---
+description: /guide 섹션 레이아웃 규칙 — 새 컴포넌트 가이드 추가 시 필수
+globs: src/pages/guide/**/*.{tsx,ts},src/styles/pages/guide.css
+alwaysApply: false
+---
+
+# 가이드 섹션 레이아웃
+
+`/guide`에 컴포넌트·시스템을 추가할 때 **아래 구조를 반드시** 따른다.  
+CSS는 class 이름 패턴으로 자동 적용되므로, 마크업만 맞추면 카드·제목·구분선이 붙는다.
+
+## 필수 마크업
+
+```tsx
+<section
+  className="{name}-system"
+  id="{name}-system"
+  aria-labelledby="{name}-system-title"
+>
+  <h2 className="{name}-system__title" id="{name}-system-title">
+    SECTION NAME
+  </h2>
+  <div className="{name}-system__board">
+    {/* 샘플만. 실제 UI 컴포넌트는 Neo 폰트 유지 */}
+  </div>
+</section>
+```
+
+- class는 **반드시 `-system`으로 끝난다** (예: `send-tabs-system`).
+- 섹션은 `.guide`의 **직속 자식**이어야 한다 (`GuideMarkup` 안에 두거나, 같은 레벨로 렌더).
+- 섹션 직속 자식으로 **`{name}-system__title` 하나만** 둔다 (eyebrow / panel / lead / desc / label **금지**).
+- 샘플은 `__board` 안에 둔다. 필요 시 `__card-title`, `__caption`, `__stage` 사용.
+
+## 자동 적용되는 스타일 (`guide.css`)
+
+| 선택자 | 효과 |
+|--------|------|
+| `.guide > [class$="-system"]` | 카드: 배경 `base/100`, padding 40×60, radius 20px |
+| `.guide > [class$="-system"] > [class$="__title"]` | 제목 24px/600 + `base/300` 구분선 + 아래 20px |
+
+새 섹션마다 카드·타이틀 CSS를 **다시 나열하지 않는다**. 샘플 전용 스타일만 추가한다.
+
+## 파일 위치
+
+- 섹션 컴포넌트: `src/pages/guide/Guide{Name}Section.tsx`
+- `GuideMarkup.tsx`에서 import 후 적절한 위치에 배치
+- 실제 UI: `src/components/` (가이드 표기 이름 = export 이름)
+- 컴포넌트 CSS: `src/styles/components/` + `index.css`에 `@import`
+
+## 하지 말 것
+
+- `__eyebrow`, `__panel`, `__lead`, `__desc`, `__groups`, `__label` 다시 넣기
+- 섹션 카드용 `margin-inline: calc(var(--layout-gutter) * -1)` 풀블리드 되돌리기
+- 가이드 설명용 텍스트에 NeoDunggeunmo 강제 (메타는 Pretendard, 샘플 컴포넌트만 Neo)
