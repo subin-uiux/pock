@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FriendWindow } from "@/components/FriendWindow";
-import { LetterWrite } from "@/components/LetterWrite";
 import {
   PockSendCategory,
   type PockSendCategoryId,
@@ -10,6 +8,8 @@ import {
   PockSendTabs,
   type PockSendTabId,
 } from "@/components/PockSendTabs";
+import { Friend_list } from "@/components/Friend_list";
+import { Letter_write } from "@/components/Letter_write";
 import { Popup } from "@/components/Popup";
 import { friendItems } from "@/data/friend-data";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
@@ -103,7 +103,7 @@ export function PockSendPage() {
         />
       </div>
       <div className="pock-send__stage">
-        <LetterWrite
+        <Letter_write
           size={size === "pc" ? "pc" : size === "tb" ? "tb" : "mo"}
           coinCost={SEND_COST}
           friend={friend}
@@ -112,7 +112,7 @@ export function PockSendPage() {
         />
       </div>
 
-      <FriendWindow
+      <Friend_list
         open={friendOpen}
         size={size === "pc" ? "pc" : size === "tb" ? "tb" : "mo"}
         friends={friendItems}

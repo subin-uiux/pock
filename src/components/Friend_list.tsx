@@ -3,7 +3,7 @@ import { SearchInput } from "@/components/SearchInput";
 import type { PockUser } from "@/types";
 import { useMemo, useState } from "react";
 
-interface FriendWindowProps {
+interface Friend_listProps {
   open: boolean;
   friends: PockUser[];
   selectedId?: string | null;
@@ -13,7 +13,7 @@ interface FriendWindowProps {
   onManage?: () => void;
 }
 
-export function FriendWindow({
+export function Friend_list({
   open,
   friends,
   selectedId,
@@ -21,7 +21,7 @@ export function FriendWindow({
   onSelect,
   onClose,
   onManage,
-}: FriendWindowProps) {
+}: Friend_listProps) {
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {

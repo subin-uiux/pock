@@ -30,7 +30,7 @@ export function saveUserSentPocks(items: PockItem[]): boolean {
   return storage.set(USER_SENT_KEY, items);
 }
 
-/** LetterWrite payload → 전송함 아이템으로 저장 */
+/** Letter_write payload → 전송함 아이템으로 저장 */
 export function addSentPockFromPayload(payload: LetterWritePayload): PockItem | null {
   if (!payload.friend) return null;
 
