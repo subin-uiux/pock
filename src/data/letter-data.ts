@@ -1,6 +1,6 @@
 import type { LetterItem } from "@/types";
 
-/** 편지지 스토어 샘플 — 시안 PNG 없을 때 SVG 플레이스홀더 사용 */
+/** 편지지 스토어 샘플 — 프리뷰는 public/assets/images/letter (임시 SVG, 시안 입수 시 교체) */
 export const letterItems: LetterItem[] = [
   {
     id: "letter-blue",

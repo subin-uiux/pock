@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1; /* 100% — 미지정 시 기본 */
   -webkit-font-smoothing: antialiased;
 }
 

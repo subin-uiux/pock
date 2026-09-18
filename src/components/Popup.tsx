@@ -48,7 +48,6 @@ export function Popup({
       >
         <header className={barClass}>
           <div className="pock-window__actions">
-            <span className="pock-window__control pock-window__control--min" aria-hidden="true" />
             <button
               type="button"
               className="pock-window__control pock-window__control--close"
