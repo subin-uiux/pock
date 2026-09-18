@@ -21,6 +21,8 @@
 @import "./components/grid.css";
 @import "./components/coin.css";
 @import "./components/pock-card.css";
+@import "./components/pock-send-category.css";
+@import "./components/pock-send-tabs.css";
 
 @import "./pages/index.css";
 @import "./pages/login.css";

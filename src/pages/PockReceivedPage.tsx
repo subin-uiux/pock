@@ -1,4 +1,4 @@
-import { LetterCard } from "@/components/LetterCard";
+import { Card } from "@/components/Card";
 import { getPockDday, getReceivedPocks } from "@/lib/pock";
 
 function variantFor(status: string) {
@@ -21,7 +21,7 @@ export function PockReceivedPage() {
       <ul className="pock-list__items">
         {items.map((item) => (
           <li key={item.id}>
-            <LetterCard
+            <Card
               target={item.sender.name}
               variant={variantFor(item.status)}
               moreHref={`/pock-detail/${item.id}`}

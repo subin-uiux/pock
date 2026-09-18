@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { LetterCard } from "@/components/LetterCard";
+import { Card } from "@/components/Card";
 import { CoinBadge } from "@/components/CoinBadge";
 import { useCoin } from "@/hooks/useCoin";
 import { getPockDday, getReceivedPocks, getSentPocks } from "@/lib/pock";
@@ -37,7 +37,7 @@ export function HomePage() {
           <Swiper spaceBetween={12} slidesPerView="auto" className="home__swiper">
             {received.map((item) => (
               <SwiperSlide key={item.id}>
-                <LetterCard
+                <Card
                   target={item.sender.name}
                   variant={variantFor(item.status)}
                   moreHref={`/pock-detail/${item.id}`}
@@ -62,7 +62,7 @@ export function HomePage() {
         <ul className="home__sent-list">
           {sent.slice(0, 2).map((item) => (
             <li key={item.id}>
-              <LetterCard
+              <Card
                 target={item.receiver.name}
                 variant={variantFor(item.status)}
                 moreHref={`/pock-detail/${item.id}`}

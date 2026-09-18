@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FriendWindow } from "@/components/FriendWindow";
-import { LetterWrite } from "@/components/LetterWrite";
+import {
+  PockSendCategory,
+  type PockSendCategoryId,
+} from "@/components/PockSendCategory";
+import {
+  PockSendTabs,
+  type PockSendTabId,
+} from "@/components/PockSendTabs";
+import { Friend_list } from "@/components/Friend_list";
+import { Letter_write } from "@/components/Letter_write";
 import { Popup } from "@/components/Popup";
 import { friendItems } from "@/data/friend-data";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
@@ -16,12 +24,21 @@ export function PockSendPage() {
   const navigate = useNavigate();
   const size = useBreakpoint();
   const { refresh } = useCoin();
+  const [category, setCategory] = useState<PockSendCategoryId>("array");
+  const [tab, setTab] = useState<PockSendTabId>("locked");
   const [friendOpen, setFriendOpen] = useState(false);
   const [friend, setFriend] = useState<PockUser | null>(null);
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [sentOk, setSentOk] = useState(false);
   const [sentId, setSentId] = useState<string | null>(null);
+
+  const handleCategoryChange = (id: PockSendCategoryId) => {
+    setCategory(id);
+    if (id === "friends") {
+      setFriendOpen(true);
+    }
+  };
 
   const handleSend = (payload: LetterWritePayload) => {
     if (!payload.friend) {
@@ -73,8 +90,20 @@ export function PockSendPage() {
       <h1 className="visually-hidden" id="send-title">
         POCK 보내기
       </h1>
+      <div className="pock-send__toolbar">
+        <PockSendCategory
+          size={size === "pc" ? "pc" : size === "tb" ? "tb" : "mo"}
+          value={category}
+          onChange={handleCategoryChange}
+        />
+        <PockSendTabs
+          size={size === "pc" ? "pc" : size === "tb" ? "tb" : "mo"}
+          value={tab}
+          onChange={setTab}
+        />
+      </div>
       <div className="pock-send__stage">
-        <LetterWrite
+        <Letter_write
           size={size === "pc" ? "pc" : size === "tb" ? "tb" : "mo"}
           coinCost={SEND_COST}
           friend={friend}
@@ -83,7 +112,7 @@ export function PockSendPage() {
         />
       </div>
 
-      <FriendWindow
+      <Friend_list
         open={friendOpen}
         size={size === "pc" ? "pc" : size === "tb" ? "tb" : "mo"}
         friends={friendItems}
