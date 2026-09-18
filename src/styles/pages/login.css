@@ -1,62 +1,252 @@
 /**
  * login.css
+ * Page: .page--login
  */
 
 .page--login {
-  background:
-    linear-gradient(180deg, rgba(255, 248, 208, 0.92), rgba(255, 255, 255, 0.98)),
-    url("/assets/images/background/bg-light-1.svg") center / cover no-repeat;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-mo.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page--login .page__wrapper {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .page--login .main {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
+  padding: 1.5rem 1.25rem;
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
 }
 
 .login {
-  width: 100%;
-  max-width: 22.5rem;
-}
-
-.login__card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  padding: 2rem 1.25rem;
-  text-align: center;
+  width: 100%;
+  max-width: 20rem; /* 320 — input 기준 */
+  font-family: var(--font-family-base);
 }
 
+/* 로고 92 × 122 */
 .login__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 5.75rem; /* 92 */
+  height: 7.625rem; /* 122 */
+}
+
+.login__mark {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 4.5625rem; /* ~73 */
+  height: 5.25rem; /* ~84 */
+  overflow: visible;
+}
+
+.login__pocket {
+  position: relative;
+  z-index: 2;
   display: block;
-  width: 6rem;
+  width: 100%;
   height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.login__fork {
+  position: absolute;
+  z-index: 1;
+  top: -92%;
+  left: 50%;
+  display: block;
+  width: 2.625rem; /* ~42 */
+  height: auto;
+  transform: translateX(-50%);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  pointer-events: none;
+}
+
+.login__wordmark {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem; /* 8 — 로고 블록 안에 맞춤 */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .login__title {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 0.04em;
+  margin: 2.5rem 0 0; /* gap 40 from logo */
+  color: #333333;
+  font-size: 1.5rem; /* 24 */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+  text-align: center;
 }
 
 .login__lead {
-  margin: 0;
-  color: var(--color-base-800, #4e4e4e);
-}
-
-.login__note {
-  margin: 0 0 0.5rem;
-  color: var(--color-base-600, #898989);
-  font-size: 0.75rem;
+  margin: 1.125rem 0 0; /* gap 18 */
+  color: var(--color-base-700);
+  font-size: 0.875rem; /* 14 */
   line-height: 1.4;
+  text-align: center;
 }
 
-.login__kakao-button {
-  margin-top: 0.5rem;
-  background-color: #fee500;
-  color: #191919;
-  border-color: #e5cf00;
+.login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 2.5rem; /* gap 40 from lead */
+}
+
+.login__field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 0.5rem; /* 8 */
+}
+
+.login__label {
+  color: #333333;
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+  text-align: left;
+}
+
+.login__input-shell {
+  box-sizing: border-box;
+  width: 20rem; /* 320 */
+  max-width: 100%;
+  height: 3.375rem; /* 54 */
+  background-color: transparent;
+  background-image: url("/assets/images/input-box.svg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.login__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-base-900);
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: var(--line-height-tight);
+  outline: none;
+}
+
+.login__input::placeholder {
+  color: var(--color-base-400);
+}
+
+.login__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8 */
+  width: 100%;
+  margin-top: 1.25rem; /* 20 */
+}
+
+.login__actions .btn {
+  min-height: 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.login__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.625rem; /* 10 */
+  margin: 1.25rem 0 0; /* 20 */
+  font-size: 0.75rem; /* 12 */
+  line-height: var(--line-height-tight);
+  text-align: center;
+}
+
+.login__footer-text {
+  color: var(--color-base-700);
+}
+
+.login__signup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-brand-rainbow-base);
+  font-family: inherit;
+  font-size: 0.75rem; /* 12 */
+  line-height: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .page--login {
+    background-image: url("/assets/images/background/bg-pad.png");
+  }
+
+  .login {
+    max-width: 28.75rem; /* 460 — push btn 최대 */
+  }
+
+  /* 로고 126 × 206 */
+  .login__logo {
+    width: 7.875rem; /* 126 */
+    height: 12.875rem; /* 206 */
+  }
+
+  .login__mark {
+    width: 6.5rem;
+    height: 9.5rem;
+  }
+
+  .login__fork {
+    width: 3.75rem;
+  }
+
+  .login__title {
+    margin-top: 3.125rem; /* gap 50 */
+  }
+
+  .login__input-shell {
+    width: 22.0625rem; /* 353 */
+  }
+
+  .login__field {
+    width: 22.0625rem; /* 353 — 라벨·인풋 좌측 정렬 기준 */
+    align-self: center;
+  }
+
+  .login__actions {
+    width: 100%;
+    max-width: 28.75rem; /* 460 */
+  }
 }
