@@ -14,26 +14,12 @@ export function GuideFriendCheckboxSection() {
       id="friend-checkbox-system"
       aria-labelledby="friend-checkbox-system-title"
     >
-      <p className="friend-checkbox-system__eyebrow">POCK · Friend Checkbox</p>
-      <div className="friend-checkbox-system__panel">
-        <h2
-          className="friend-checkbox-system__title"
-          id="friend-checkbox-system-title"
-        >
-          FRIEND CHECKBOX
-        </h2>
-        <p className="friend-checkbox-system__lead">
-          친구목록 선택 = 하나의 체크박스
-        </p>
-        <p className="friend-checkbox-system__desc">
-          친구목록에서 사용하는 체크박스입니다. 기본은 배경 #fff, stroke 1.5px
-          base/400이며, hover·click 시 배경만 base/300으로 부드럽게 전환됩니다.
-          체크 시 checkbox-check 아이콘을 중앙에 표시합니다. 모바일 20×20(아이콘
-          12×12), 태블릿·PC 30×30(아이콘 18×18)입니다.
-        </p>
-      </div>
-
-      <p className="friend-checkbox-system__label">Friend Checkbox</p>
+      <h2
+        className="friend-checkbox-system__title"
+        id="friend-checkbox-system-title"
+      >
+        FRIEND CHECKBOX
+      </h2>
       <div className="friend-checkbox-system__board">
         <h3 className="friend-checkbox-system__card-title">Friend Checkbox</h3>
         <div className="friend-checkbox-system__samples">

@@ -19,26 +19,12 @@ export function GuideSelectionBoxSection() {
       id="selection-box-system"
       aria-labelledby="selection-box-system-title"
     >
-      <p className="selection-box-system__eyebrow">POCK · Selection Box</p>
-      <div className="selection-box-system__panel">
-        <h2
-          className="selection-box-system__title"
-          id="selection-box-system-title"
-        >
-          SELECTION BOX
-        </h2>
-        <p className="selection-box-system__lead">
-          캐릭터 · 옷 · 배경 선택 = 하나의 선택 상자
-        </p>
-        <p className="selection-box-system__desc">
-          로그인 캐릭터 설정과 설정 화면에서 사용하는 선택 UI입니다. 기본은
-          base/0 배경이며, 선택 시 배경은 #C7DDFF, stroke 3px는
-          Navigation/home/selected(#2753F7), 하단 중앙에 check-blue 아이콘이
-          표시됩니다.
-        </p>
-      </div>
-
-      <p className="selection-box-system__label">Selection Box</p>
+      <h2
+        className="selection-box-system__title"
+        id="selection-box-system-title"
+      >
+        SELECTION BOX
+      </h2>
       <div className="selection-box-system__board">
         <h3 className="selection-box-system__card-title">Selection Box</h3>
         <div className="selection-box-system__samples">

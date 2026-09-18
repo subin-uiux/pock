@@ -33,18 +33,12 @@
   padding: var(--spacing-lg) var(--layout-gutter) var(--spacing-xxl);
 }
 
-.logo-system,
-.grid-system,
-.color-system,
-.type-system,
-.nav-system,
-.btn-system,
-.card-system,
-.letter-system,
-.window-system,
-.overlay-system,
-.popup-system,
-.search-system {
+/*
+ * 가이드 섹션 카드 — 자동 적용
+ * `.guide` 직속 자식 중 class가 `-system`으로 끝나면 카드 레이아웃이 적용된다.
+ * 새 섹션: <section className="foo-system"> … </section>
+ */
+.guide > [class$="-system"] {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
@@ -55,61 +49,25 @@
   box-shadow: none;
 }
 
-
 /* 가이드 메타 텍스트: Pretendard (실제 컴포넌트에는 적용하지 않음) */
-.logo-system__title,
-.grid-system__title,
-.color-system__title,
-.type-system__title,
-.nav-system__title,
-.btn-system__title,
-.card-system__title,
-.letter-system__title,
-.window-system__title,
-.overlay-system__title,
-.popup-system__title,
-.search-system__title,
-.logo-system__card-title,
-.grid-system__caption,
-.grid-system__meta,
-.color-system__group-title,
+.guide > [class$="-system"] [class$="__title"],
+.guide > [class$="-system"] [class$="__card-title"],
+.guide > [class$="-system"] [class$="__caption"],
+.guide > [class$="-system"] [class$="__meta"],
+.guide > [class$="-system"] [class$="__group-title"],
+.guide > [class$="-system"] [class$="__scroll-hint"],
+.guide > [class$="-system"] [class$="__pending"],
+.guide > [class$="-system"] [class$="__spec"],
 .color-swatch__name,
-.color-swatch__hex,
-.btn-system__card-title,
-.card-system__card-title,
-.card-system__caption,
-.letter-system__card-title,
-.letter-system__caption,
-.window-system__card-title,
-.window-system__caption,
-.overlay-system__card-title,
-.overlay-system__caption,
-.overlay-system__spec,
-.popup-system__card-title,
-.popup-system__caption,
-.search-system__card-title,
-.search-system__caption,
-.nav-system__card-title,
-.type-system__card-title,
-.type-system__scroll-hint,
-.type-system__pending {
+.color-swatch__hex {
   font-family: var(--font-family-document);
 }
 
-/* 섹션 구분 타이틀 (패널·설명 제거 후) */
-.logo-system__title,
-.grid-system__title,
-.color-system__title,
-.type-system__title,
-.nav-system__title,
-.btn-system__title,
-.card-system__title,
-.letter-system__title,
-.window-system__title,
-.overlay-system__title,
-.popup-system__title,
-
-.search-system__title {
+/*
+ * 섹션 구분 타이틀 — 자동 적용
+ * 섹션 직속 자식 `*-system__title` (eyebrow/panel/desc 없이 제목만)
+ */
+.guide > [class$="-system"] > [class$="__title"] {
   display: block;
   width: 100%;
   margin: 0 0 1.25rem; /* 구분선 아래 20px */
@@ -124,34 +82,18 @@
   text-transform: uppercase;
 }
 
-
 /* board 안 가이드 제목: weight 600 */
-.logo-system__card-title,
-.btn-system__card-title,
-.card-system__card-title,
-.letter-system__card-title,
-.window-system__card-title,
-.overlay-system__card-title,
-.popup-system__card-title,
-.search-system__card-title,
-.nav-system__card-title,
-.type-system__card-title {
+.guide > [class$="-system"] [class$="__card-title"] {
   font-size: 1.125rem;
   font-weight: 600;
   line-height: var(--line-height-tight);
 }
 
-.grid-system__caption,
-.grid-system__meta,
-.card-system__caption,
-.letter-system__caption,
-.window-system__caption,
-.overlay-system__caption,
-.popup-system__caption,
-.search-system__caption,
-.type-system__scroll-hint,
-.type-system__pending,
-.overlay-system__spec {
+.guide > [class$="-system"] [class$="__caption"],
+.guide > [class$="-system"] [class$="__meta"],
+.guide > [class$="-system"] [class$="__scroll-hint"],
+.guide > [class$="-system"] [class$="__pending"],
+.guide > [class$="-system"] [class$="__spec"] {
   font-size: 1rem;
   line-height: var(--line-height-base);
 }
@@ -170,17 +112,7 @@
 }
 
 /* 가이드 샘플 카드(보드): 그림자 제거 · radius 20px — 실제 컴포넌트 radius는 변경하지 않음 */
-.grid-system__board,
-.color-system__board,
-.type-system__board,
-.nav-system__board,
-.btn-system__board,
-.card-system__board,
-.letter-system__board,
-.window-system__board,
-.overlay-system__board,
-.popup-system__board,
-.search-system__board {
+.guide > [class$="-system"] [class$="__board"] {
   border-radius: 1.25rem; /* 20px */
   box-shadow: none;
 }
@@ -194,7 +126,12 @@
 .guide .popup,
 .guide .search-input,
 .guide .navigation,
-.guide .header {
+.guide .header,
+.guide .selection-box,
+.guide .friend-checkbox,
+.guide .signup-step-gauge,
+.guide .pock-send-category,
+.guide .pock-send-tabs {
   font-family: var(--font-family-display);
 }
 
@@ -1166,56 +1103,7 @@
   padding-bottom: var(--spacing-lg);
 }
 
-/* Friend Checkbox guide section */
-.friend-checkbox-system {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  margin-inline: calc(var(--layout-gutter) * -1);
-  padding: 0 var(--layout-gutter) var(--spacing-xl);
-  background-color: transparent;
-}
-
-.friend-checkbox-system__eyebrow {
-  color: var(--color-base-0);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-tight);
-}
-
-.friend-checkbox-system__panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  max-width: 40rem;
-  padding: var(--spacing-lg) var(--spacing-md);
-  border-radius: 1.25rem;
-  background-color: var(--color-panel);
-  color: var(--color-base-0);
-}
-
-.friend-checkbox-system__title {
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-tight);
-  letter-spacing: 0.04em;
-}
-
-.friend-checkbox-system__lead {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-base);
-}
-
-.friend-checkbox-system__desc {
-  color: var(--color-panel-muted);
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-loose);
-}
-
-.friend-checkbox-system__label {
-  color: var(--color-base-0);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-tight);
-}
-
+/* Friend Checkbox guide — 샘플 영역만 (카드·타이틀은 공통 선택자 자동 적용) */
 .friend-checkbox-system__board {
   display: flex;
   flex-direction: column;
@@ -1223,15 +1111,8 @@
   width: 100%;
   max-width: 100%;
   padding: var(--spacing-lg) var(--spacing-md);
-  border-radius: 1.25rem;
   background-color: var(--color-base-0);
   overflow-x: auto;
-}
-
-.friend-checkbox-system__card-title {
-  color: var(--color-label);
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-tight);
 }
 
 .friend-checkbox-system__samples {
@@ -1254,7 +1135,7 @@
 
 .friend-checkbox-system__caption {
   color: var(--color-base-900);
-  font-size: var(--font-size-sm);
+  font-size: 1rem;
   line-height: var(--line-height-tight);
 }
 
@@ -1266,10 +1147,6 @@
 }
 
 @media (min-width: 1024px) {
-  .friend-checkbox-system__panel {
-    padding: var(--spacing-xl) var(--spacing-lg);
-  }
-
   .friend-checkbox-system__samples {
     flex-direction: row;
     flex-wrap: wrap;
