@@ -23,7 +23,7 @@ const GUIDE_NAV = [
     height: 54,
   },
   {
-    href: "#letter-write-system",
+    href: "#send-category-system",
     label: "보내기",
     icon: "/assets/icons/navigation/sand.svg",
     width: 44,
