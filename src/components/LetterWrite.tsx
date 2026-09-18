@@ -6,6 +6,14 @@ import type { LetterWritePayload, PockUser } from "@/types";
 export type LetterWriteTab = "paper" | "photo" | "date" | null;
 export type { LetterWritePayload };
 
+/** 작성일 표시 형식 YYYY.MM.DD */
+function formatWriteDate(d = new Date()): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}.${m}.${day}`;
+}
+
 interface LetterWriteProps {
   coinCost?: number;
   size?: "mo" | "tb" | "pc";
@@ -25,7 +33,8 @@ export function LetterWrite({
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [from, setFrom] = useState("나");
-  const [date, setDate] = useState("");
+  const [writtenDate] = useState(() => formatWriteDate());
+  const [date, setDate] = useState(""); // 개봉일
   const [letterId, setLetterId] = useState(letters[0]?.id ?? "letter-blue");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<LetterWriteTab>(null);
@@ -263,11 +272,9 @@ export function LetterWrite({
             <input
               className="letter-write__date"
               type="text"
-              placeholder="2000.00.00"
-              aria-label="개봉일"
-              inputMode="numeric"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
+              readOnly
+              aria-label="작성일"
+              value={writtenDate}
             />
           </div>
         </div>
