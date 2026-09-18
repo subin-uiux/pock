@@ -9,7 +9,7 @@ import { GuideFriendCheckboxSection } from "@/pages/guide/GuideFriendCheckboxSec
 import { GuideFriendListSample } from "@/pages/guide/GuideFriendListSample";
 import { SearchInput } from "@/components/SearchInput";
 
-function guideWriteDate(): string {
+function guideDisplayDate(): string {
   const today = new Date();
   const y = today.getFullYear();
   const m = String(today.getMonth() + 1).padStart(2, "0");
@@ -18,7 +18,8 @@ function guideWriteDate(): string {
 }
 
 export function GuideMarkup() {
-  const writeDate = guideWriteDate();
+  const writeDate = guideDisplayDate();
+  const receivedDate = guideDisplayDate();
   return (
     <>
       <div className="guide">
@@ -1297,7 +1298,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1321,7 +1322,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1345,7 +1346,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1369,7 +1370,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1393,7 +1394,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1417,7 +1418,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1441,7 +1442,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1470,7 +1471,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1494,7 +1495,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1518,7 +1519,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1542,7 +1543,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1566,7 +1567,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1590,7 +1591,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1614,7 +1615,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1643,7 +1644,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1667,7 +1668,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1691,7 +1692,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1715,7 +1716,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1739,7 +1740,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1768,7 +1769,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1792,7 +1793,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1816,7 +1817,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1840,7 +1841,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1864,7 +1865,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
