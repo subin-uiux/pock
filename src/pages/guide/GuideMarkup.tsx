@@ -6,6 +6,8 @@ import { GuideSendTabsSection } from "@/pages/guide/GuideSendTabsSection";
 import { GuideSignUpStepGaugeSection } from "@/pages/guide/GuideSignUpStepGaugeSection";
 import { GuideSelectionBoxSection } from "@/pages/guide/GuideSelectionBoxSection";
 import { GuideFriendCheckboxSection } from "@/pages/guide/GuideFriendCheckboxSection";
+import { GuideFriendListSample } from "@/pages/guide/GuideFriendListSample";
+import { SearchInput } from "@/components/SearchInput";
 
 function guideWriteDate(): string {
   const today = new Date();
@@ -1877,141 +1879,15 @@ export function GuideMarkup() {
                   <h3 className="window-system__card-title">01 / Friend_list</h3>
                   <div className="window-system__samples">
                     <div className="window-system__sample">
-                      <article className="pock-window pock-window--friend pock-window--mo" aria-label="친구목록">
-                        <header className="pock-window__bar">
-                          <h4 className="pock-window__title">친구목록</h4>
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-window__rule" aria-hidden="true"></div>
-                        <div className="pock-window__body">
-                          <div className="pock-window__pane">
-                            <div className="pock-window__scroll" aria-hidden="true">
-                              <div className="pock-window__scroll-thumb"></div>
-                            </div>
-                            <ul className="pock-window__list">
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <footer className="pock-window__foot">
-                          <button className="pock-window__manage" type="button">
-                            <img className="pock-window__manage-icon" src="/assets/images/friends-management-icon.svg" alt="" width={18} height={18} />
-                            <span>친구 관리</span>
-                          </button>
-                        </footer>
-                      </article>
+                      <GuideFriendListSample size="mo" />
                     </div>
 
                     <div className="window-system__sample">
-                      <article className="pock-window pock-window--friend pock-window--tb" aria-label="친구목록">
-                        <header className="pock-window__bar">
-                          <h4 className="pock-window__title">친구목록</h4>
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-window__rule" aria-hidden="true"></div>
-                        <div className="pock-window__body">
-                          <div className="pock-window__pane">
-                            <div className="pock-window__scroll" aria-hidden="true">
-                              <div className="pock-window__scroll-thumb"></div>
-                            </div>
-                            <ul className="pock-window__list">
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <footer className="pock-window__foot">
-                          <button className="pock-window__manage" type="button">
-                            <img className="pock-window__manage-icon" src="/assets/images/friends-management-icon.svg" alt="" width={18} height={18} />
-                            <span>친구 관리</span>
-                          </button>
-                        </footer>
-                      </article>
+                      <GuideFriendListSample size="tb" />
                     </div>
 
                     <div className="window-system__sample">
-                      <article className="pock-window pock-window--friend pock-window--pc" aria-label="친구목록">
-                        <header className="pock-window__bar">
-                          <h4 className="pock-window__title">친구목록</h4>
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-window__rule" aria-hidden="true"></div>
-                        <div className="pock-window__body">
-                          <div className="pock-window__pane">
-                            <div className="pock-window__scroll" aria-hidden="true">
-                              <div className="pock-window__scroll-thumb"></div>
-                            </div>
-                            <ul className="pock-window__list">
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <footer className="pock-window__foot">
-                          <button className="pock-window__manage" type="button">
-                            <img className="pock-window__manage-icon" src="/assets/images/friends-management-icon.svg" alt="" width={18} height={18} />
-                            <span>친구 관리</span>
-                          </button>
-                        </footer>
-                      </article>
+                      <GuideFriendListSample size="pc" />
                     </div>
                   </div>
                 </div>
@@ -2357,14 +2233,16 @@ export function GuideMarkup() {
                   <h3 className="search-system__card-title">Search Input</h3>
                   <div className="search-system__stage">
                     <p className="search-system__caption">Search Input</p>
-                    <label className="search-input search-input--mo">
-                      <img className="search-input__icon" src="/assets/images/search-icon.svg" alt="" width={22} height={22} />
-                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" maxLength={10} />
-                    </label>
-                    <label className="search-input search-input--wide">
-                      <img className="search-input__icon" src="/assets/images/search-icon.svg" alt="" width={22} height={22} />
-                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" maxLength={10} />
-                    </label>
+                    <SearchInput
+                      id="guide-search-mo"
+                      className="search-input--mo"
+                      label="검색어"
+                    />
+                    <SearchInput
+                      id="guide-search-wide"
+                      className="search-input--wide"
+                      label="검색어"
+                    />
                   </div>
                 </div>
               </section>
