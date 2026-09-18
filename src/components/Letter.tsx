@@ -55,7 +55,13 @@ export function Letter({
         </div>
         <div className="letter__foot">
           <span className="letter__from">FROM. {from}</span>
-          <span className="letter__date">{date}</span>
+          <time
+            className="letter__date"
+            dateTime={date.includes(".") ? date.replace(/\./g, "-") : date}
+            aria-label="받은 날짜"
+          >
+            {date}
+          </time>
         </div>
       </div>
     </article>
