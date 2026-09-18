@@ -1,4 +1,6 @@
 import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
+import { GuideNavigationDemo } from "@/pages/guide/GuideNavigationDemo";
+import { LetterCardTimerText } from "@/components/LetterCardTimerText";
 
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
 import { GuideSendCategorySection } from "@/pages/guide/GuideSendCategorySection";
@@ -808,109 +810,55 @@ export function GuideMarkup() {
                 <h2 className="nav-system__title" id="nav-system-title">NAVIGATION</h2>
                 <div className="nav-system__board">
                   <h3 className="nav-system__card-title">Navigation</h3>
-                  <div className="nav-system__variant">
-                    <p className="nav-system__device">Mo</p>
-                    <nav className="navigation navigation--preview navigation--mo" aria-label="모바일 내비게이션 예시">
-                      <ul className="navigation__list">
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/home.svg" alt="" width={50} height={42} />
-                            <span className="navigation__label">홈</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link navigation__link--active" href="#nav-system" aria-current="page">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Storage%20Box.svg" alt="" width={60} height={60} />
-                            <span className="navigation__label">보관함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/sand.svg" alt="" width={44} height={50} />
-                            <span className="navigation__label">보내기</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Sent.svg" alt="" width={42} height={43} />
-                            <span className="navigation__label">전송함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/setting.svg" alt="" width={54} height={54} />
-                            <span className="navigation__label">설정</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div className="nav-system__variant">
-                    <p className="nav-system__device">Pad / Pc</p>
-                    <nav className="navigation navigation--preview navigation--pad" aria-label="패드와 PC 내비게이션 예시">
-                      <ul className="navigation__list">
-                        <li className="navigation__item">
-                          <a className="navigation__link navigation__link--active" href="#nav-system" aria-current="page">
-                            <img className="navigation__icon" src="/assets/icons/navigation/home.svg" alt="" width={60} height={60} />
-                            <span className="navigation__label">홈</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Storage%20Box.svg" alt="" width={54} height={54} />
-                            <span className="navigation__label">보관함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/sand.svg" alt="" width={44} height={50} />
-                            <span className="navigation__label">보내기</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Sent.svg" alt="" width={42} height={43} />
-                            <span className="navigation__label">전송함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/setting.svg" alt="" width={54} height={54} />
-                            <span className="navigation__label">설정</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
+                  <GuideNavigationDemo />
                 </div>
+
               </section>
 
               <section className="btn-system" id="btn-system" aria-labelledby="btn-system-title">
                 <h2 className="btn-system__title" id="btn-system-title">BUTTON</h2>
 
-                <div className="btn-system__rows">
-                  <div className="btn-system__row">
-                    <div className="btn-system__board">
-                      <h3 className="btn-system__card-title">01 / Push btn</h3>
-                      <div className="btn-system__sample">
-                        <p className="btn-system__state">Default</p>
-                        <div className="btn-system__stack">
-                          <button type="button" className="btn btn--push-muted btn--block">Text</button>
-                          <button type="button" className="btn btn--push btn--block">Text</button>
-                          <button type="button" className="btn btn--push-green btn--block">Text</button>
-                        </div>
-                        <p className="btn-system__state">Guide Button</p>
-                        <button type="button" className="btn btn--guide">Text</button>
+                <div className="btn-system__board btn-system__board--push">
+                  <h3 className="btn-system__card-title">01 / Push btn</h3>
+                  <div className="btn-system__sample">
+                    <p className="btn-system__state">Default · Mo 320~460</p>
+                    <p className="btn-system__hint" id="btn-push-resize-hint">
+                      오른쪽 아래 모서리를 드래그해 너비를 조절하세요. Push 버튼은 320~460 사이에서
+                      컨테이너에 맞춰 늘어납니다.
+                    </p>
+                    <div
+                      className="btn-system__resize"
+                      role="group"
+                      aria-labelledby="btn-push-resize-hint"
+                    >
+                      <div className="btn-system__stack">
+                        <button type="button" className="btn btn--push-muted btn--block">
+                          Text
+                        </button>
+                        <button type="button" className="btn btn--push btn--block">
+                          Text
+                        </button>
+                        <button type="button" className="btn btn--push-green btn--block">
+                          Text
+                        </button>
                       </div>
                     </div>
+                    <p className="btn-system__state">Guide Button</p>
+                    <button type="button" className="btn btn--guide">
+                      Text
+                    </button>
                   </div>
+                </div>
 
+                <div className="btn-system__rows">
                   <div className="btn-system__row">
                     <div className="btn-system__board">
                       <h3 className="btn-system__card-title">02 / Popup_btn</h3>
                       <div className="btn-system__sample">
                         <p className="btn-system__state">Default</p>
-                        <button type="button" className="btn btn--popup">Text</button>
+                        <button type="button" className="btn btn--popup">
+                          Text
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -925,7 +873,9 @@ export function GuideMarkup() {
                           Text
                         </button>
                         <p className="btn-system__state">Type = Text</p>
-                        <button type="button" className="btn btn--action-text">Text</button>
+                        <button type="button" className="btn btn--action-text">
+                          Text
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -944,7 +894,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--progress">
@@ -971,10 +921,12 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--timer">22:07:32</div>
+                            <div className="letter-card__status letter-card__status--timer">
+                              <LetterCardTimerText />
+                            </div>
                           </div>
                         </article>
                       </li>
@@ -984,7 +936,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--unopened">미오픈</div>
@@ -1026,7 +978,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--progress">
@@ -1053,10 +1005,12 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--timer">22:07:32</div>
+                            <div className="letter-card__status letter-card__status--timer">
+                              <LetterCardTimerText />
+                            </div>
                           </div>
                         </article>
                       </li>
@@ -1066,7 +1020,7 @@ export function GuideMarkup() {
                           <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">To.Text</p>
                             <div className="letter-card__status letter-card__status--unopened">미오픈</div>
@@ -1114,7 +1068,7 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--mo">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
@@ -1146,11 +1100,13 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--mo">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--timer">22:07:32</div>
+                              <div className="letter-card__status letter-card__status--timer">
+                              <LetterCardTimerText />
+                            </div>
                               <button type="button" className="letter-card__reward">
                                 <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
                                 <span>초성 보기</span>
@@ -1199,7 +1155,7 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--tb">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
@@ -1231,11 +1187,13 @@ export function GuideMarkup() {
                         <article className="letter-card letter-card--locked letter-card--tb">
                           <div className="letter-card__body">
                             <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
                             </span>
                             <p className="letter-card__target">From.Text</p>
                             <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--timer">22:07:32</div>
+                              <div className="letter-card__status letter-card__status--timer">
+                              <LetterCardTimerText />
+                            </div>
                               <button type="button" className="letter-card__reward">
                                 <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
                                 <span>초성 보기</span>
