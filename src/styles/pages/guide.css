@@ -49,8 +49,8 @@
   box-shadow: none;
 }
 
-/* 가이드 메타 텍스트: Pretendard (실제 컴포넌트에는 적용하지 않음) */
-.guide > [class$="-system"] [class$="__title"],
+/* 가이드 메타 텍스트: Pretendard (실제 컴포넌트 `*__title`에는 적용하지 않음) */
+.guide > [class$="-system"] [class$="-system__title"],
 .guide > [class$="-system"] [class$="__card-title"],
 .guide > [class$="-system"] [class$="__caption"],
 .guide > [class$="-system"] [class$="__meta"],
@@ -67,7 +67,7 @@
  * 섹션 구분 타이틀 — 자동 적용
  * 섹션 직속 자식 `*-system__title` (eyebrow/panel/desc 없이 제목만)
  */
-.guide > [class$="-system"] > [class$="__title"] {
+.guide > [class$="-system"] > [class$="-system__title"] {
   display: block;
   width: 100%;
   margin: 0 0 1.25rem; /* 구분선 아래 20px */
@@ -123,6 +123,8 @@
 .guide .letter,
 .guide .letter-write,
 .guide .pock-window,
+.guide .pock-popup,
+.guide .onboard-popup,
 .guide .popup,
 .guide .search-input,
 .guide .navigation,
@@ -775,6 +777,120 @@
   line-height: var(--line-height-tight);
 }
 
+.window-system__hint {
+  margin: 0;
+  color: var(--color-base-600);
+  font-family: var(--font-family-document);
+  font-size: 1rem;
+  line-height: var(--line-height-base);
+}
+
+/* Letter_write Mo 반응형: 점선 = 가상 뷰포트 · 오른쪽 핸들 드래그 360~768 */
+.window-system__letter-resize {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px dashed var(--color-base-400);
+  border-radius: 0.75rem;
+  background-color: var(--color-base-0);
+}
+
+/* ~540: 점선 박스 ↔ 안쪽 좌우 20 (360 → 안쪽 320) */
+.window-system__letter-resize--inset {
+  display: flex;
+  justify-content: center;
+}
+
+.window-system__letter-resize-inner {
+  max-width: 100%;
+}
+
+.window-system__letter-resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 0.75rem; /* 12 — 드래그 히트 영역 */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: transparent;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.window-system__letter-resize-handle:hover,
+.window-system__letter-resize-handle:focus-visible {
+  background-color: rgba(39, 83, 247, 0.12); /* brand/window 임시 하이라이트 */
+}
+
+.window-system__letter-resize-handle:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: -2px;
+}
+
+/* Mo: 안쪽 컨테이너 폭에 맞춤 / Tb(541~): 아래 Tb 샘플과 동일 크기(500) */
+.window-system__letter-resize .letter-write--mo {
+  width: 100%;
+  max-width: none;
+}
+
+.window-system__letter-resize .letter-write--mo .letter-write__paper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.window-system__letter-resize .letter-write--mo .letter-write__top {
+  width: 100%; /* 편지지와 동일 폭 · 오른쪽 끝 맞춤 */
+  max-width: 100%;
+  align-self: stretch;
+}
+
+.window-system__letter-resize .letter-write--mo .letter-write__heading {
+  flex: 1 0 100%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.window-system__letter-resize .letter-write--tb {
+  width: 31.25rem; /* 500 — Mo 구간 541~ 에서 Tb 샘플과 동일 */
+  max-width: none;
+  margin-inline: auto;
+}
+
+/* Tb 반응형 769~1024: 좌우 64 · 안쪽 폭에 Tb가 맞춰 늘어남 */
+.window-system__letter-resize--tb .letter-write--tb {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.window-system__letter-resize--tb .letter-write--tb .letter-write__main {
+  width: 100%;
+}
+
+.window-system__letter-resize--tb .letter-write--tb .letter-write__top,
+.window-system__letter-resize--tb .letter-write--tb .letter-write__paper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.window-system__letter-resize--tb .letter-write--tb .letter-write__tabs {
+  flex-wrap: nowrap;
+}
+
+.window-system__letter-resize--tb .letter-write--tb .letter-write__tab {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+}
+
 .window-system__header-samples {
   display: flex;
   flex-direction: column;
@@ -1244,6 +1360,44 @@
   .friend-checkbox-system__stage {
     width: auto;
     min-width: 16rem;
+  }
+}
+
+/* Onboarding Guide Popup — Push 460 고정보다 나중에 로드되어 75×32 확정 */
+.guide .onboard-popup {
+  width: fit-content;
+  max-width: 100%;
+  padding: 1.5rem 1.0625rem 1.0625rem 1rem; /* 24 17 17 16 */
+  border-radius: 0.875rem; /* 14 */
+}
+
+.guide .onboard-popup .onboard-popup__title {
+  font-family: var(--font-family-display); /* NeoDunggeunmo */
+  font-size: 1.125rem; /* 18 */
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  border-bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.guide .onboard-popup .onboard-popup__next.btn.btn--push {
+  flex: 0 0 4.6875rem;
+  width: 4.6875rem; /* 75 */
+  min-width: 4.6875rem;
+  max-width: 4.6875rem;
+  height: 2rem; /* 32 */
+  min-height: 2rem;
+  padding: 0;
+  border-radius: 0.625rem; /* 10 */
+}
+
+@media (min-width: 1024px) {
+  .guide .onboard-popup .onboard-popup__next.btn.btn--push {
+    width: 4.6875rem;
+    min-width: 4.6875rem;
+    max-width: 4.6875rem;
   }
 }
 

@@ -32,7 +32,7 @@ export function GuideOnboardDemo() {
           건너뛰기
         </button>
         <button
-          className="btn btn--push"
+          className="btn btn--push onboard-popup__next"
           type="button"
           onClick={() =>
             setStep((current) => (current >= STEP_COUNT - 1 ? 0 : current + 1))

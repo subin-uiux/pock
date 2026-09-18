@@ -1,5 +1,7 @@
 import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
 import { GuideNavigationDemo } from "@/pages/guide/GuideNavigationDemo";
+import { GuideLetterWriteMoResize } from "@/pages/guide/GuideLetterWriteMoResize";
+import { GuideLetterWriteTbResize } from "@/pages/guide/GuideLetterWriteTbResize";
 import { LetterCardTimerText } from "@/components/LetterCardTimerText";
 
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
@@ -1955,111 +1957,12 @@ export function GuideMarkup() {
                 <div className="window-system__board">
                   <h3 className="window-system__card-title" id="letter-write-system-title">02 / Letter_write</h3>
                   <div className="window-system__samples">
-                    <div className="window-system__sample">
-                      <article className="letter-write letter-write--mo" aria-label="POCK 작성">
-                        <div className="letter-write__status">
-                          <img className="letter-write__signal" src="/assets/images/Signal.svg" alt="" width={18} height={12} />
-                          <div className="letter-write__coin">
-                            <img className="letter-write__coin-icon" src="/assets/images/coin.svg" alt="" width={14} height={14} />
-                            <span>10 coin</span>
-                          </div>
-                        </div>
-                        <div className="letter-write__main">
-                          <div className="letter-write__top">
-                            <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
-                            <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
-                                <span>편지지</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
-                                <span>사진</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
-                                <span>개봉일</span>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="letter-write__paper" role="group" aria-label="편지 작성">
-                            <div className="letter-write__compose">
-                              <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div
-                                className="letter-write__paper-body"
-                                contentEditable={true}
-                                role="textbox"
-                                aria-multiline="true"
-                                aria-label="편지 작성"
-                              ></div>
-                            </div>
-                            <div className="letter-write__paper-foot">
-                              <label className="letter-write__from-field">
-                                <span className="letter-write__from-prefix">FROM.</span>
-                                <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
-                              </label>
-                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
-                            </div>
-                          </div>
-                        </div>
-                        <button className="btn btn--push btn--block letter-write__send" type="button">보내기</button>
-                      </article>
-                    </div>
+                    <GuideLetterWriteMoResize />
+
+                    <GuideLetterWriteTbResize />
 
                     <div className="window-system__sample">
-                      <article className="letter-write letter-write--tb" aria-label="POCK 작성">
-                        <div className="letter-write__status">
-                          <img className="letter-write__signal" src="/assets/images/Signal.svg" alt="" width={18} height={12} />
-                          <div className="letter-write__coin">
-                            <img className="letter-write__coin-icon" src="/assets/images/coin.svg" alt="" width={14} height={14} />
-                            <span>10 coin</span>
-                          </div>
-                        </div>
-                        <div className="letter-write__main">
-                          <div className="letter-write__top">
-                            <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
-                            <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
-                                <span>편지지</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
-                                <span>사진</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
-                                <span>개봉일</span>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="letter-write__paper" role="group" aria-label="편지 작성">
-                            <div className="letter-write__compose">
-                              <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div
-                                className="letter-write__paper-body"
-                                contentEditable={true}
-                                role="textbox"
-                                aria-multiline="true"
-                                aria-label="편지 작성"
-                              ></div>
-                            </div>
-                            <div className="letter-write__paper-foot">
-                              <label className="letter-write__from-field">
-                                <span className="letter-write__from-prefix">FROM.</span>
-                                <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
-                              </label>
-                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
-                            </div>
-                          </div>
-                        </div>
-                        <button className="btn btn--push btn--block letter-write__send" type="button">보내기</button>
-                      </article>
-                    </div>
-
-                    <div className="window-system__sample">
+                      <p className="window-system__caption">Letter_write (Pc)</p>
                       <article className="letter-write letter-write--pc" aria-label="POCK 작성">
                         <div className="letter-write__status">
                           <img className="letter-write__signal" src="/assets/images/Signal.svg" alt="" width={18} height={12} />
@@ -2070,8 +1973,10 @@ export function GuideMarkup() {
                         </div>
                         <div className="letter-write__main">
                           <div className="letter-write__top">
-                            <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
+                            <div className="letter-write__heading">
+                              <h4 className="letter-write__title">POCK 작성</h4>
+                              <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
+                            </div>
                             <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
                               <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
@@ -2101,7 +2006,7 @@ export function GuideMarkup() {
                             <div className="letter-write__paper-foot">
                               <label className="letter-write__from-field">
                                 <span className="letter-write__from-prefix">FROM.</span>
-                                <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
+                                <input className="letter-write__from" type="text" defaultValue="아빵이" placeholder="아빵이" aria-label="보내는 사람" />
                               </label>
                               <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
                             </div>
@@ -2225,7 +2130,9 @@ export function GuideMarkup() {
                           <img className="pock-popup__icon" src="/assets/images/Warning%20_Popup-icon.svg" alt="" width={36} height={36} />
                           <p className="pock-popup__text">
                             <span className="pock-popup__heading">POCK을 정말 떠나시겠어요?</span><br />
-                            탈퇴하면 지금까지의 편지와 기록이 모두 삭제되며 다시 복구할 수 없습니다.
+                            탈퇴하면 지금까지의 편지와<br />
+                            기록이 모두 삭제되며 다시<br />
+                            복구할 수 없습니다.
                           </p>
                         </div>
                         <div className="pock-popup__actions">

@@ -33,10 +33,10 @@ export function Letter_write({
   const letters = getAllLetters();
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [from, setFrom] = useState("나");
+  const [from, setFrom] = useState("아빵이");
   const [writtenDate] = useState(() => formatWriteDate());
   const [date, setDate] = useState(""); // 개봉일
-  const [letterId, setLetterId] = useState(letters[0]?.id ?? "letter-blue");
+  const [letterId, setLetterId] = useState("letter-cream");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Letter_writeTab>(null);
   const [content, setContent] = useState("");
@@ -96,14 +96,16 @@ export function Letter_write({
 
       <div className="letter-write__main">
         <div className="letter-write__top">
-          <h4 className="letter-write__title">POCK 작성</h4>
-          <button
-            className="btn btn--action-text letter-write__friend"
-            type="button"
-            onClick={onSelectFriend}
-          >
-            {friend ? friend.name : "친구 선택"}
-          </button>
+          <div className="letter-write__heading">
+            <h4 className="letter-write__title">POCK 작성</h4>
+            <button
+              className="btn btn--action-text letter-write__friend"
+              type="button"
+              onClick={onSelectFriend}
+            >
+              {friend ? friend.name : "친구 선택"}
+            </button>
+          </div>
           <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
             <button
               className={
@@ -264,7 +266,7 @@ export function Letter_write({
               <input
                 className="letter-write__from"
                 type="text"
-                placeholder="아방이~*"
+                placeholder="아빵이"
                 aria-label="보내는 사람"
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}

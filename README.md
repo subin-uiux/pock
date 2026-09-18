@@ -2,8 +2,10 @@
 
 미래의 나에게 보내는 디지털 타임캡슐 웹앱.
 
-**스택:** Vite + React + TypeScript + React Router  
+**스택:** Vite + React 19 + TypeScript + React Router  
 **스타일:** 기존 BEM CSS (CSS Modules / Tailwind 사용 안 함)  
+**부가 라이브러리:** Swiper · GSAP (필요 시 `ref` / `useEffect`로만)  
+**경로 별칭:** `@/` → `src/` (`vite.config.ts`)  
 **디자인 레퍼런스:** React [`/guide`](http://localhost:5173/guide) (`src/pages/GuidePage.tsx`)  
 **정적 원본:** `legacy/pages/guide.html` (실행·서빙하지 않음)
 
@@ -47,17 +49,17 @@ pock/
 │   ├── main.tsx               # styles/index.css 진입
 │   ├── App.tsx                # 라우트
 │   ├── components/            # 가이드 export 이름과 동일 (Friend_list, Letter_write …)
-│   ├── layouts/
+│   ├── layouts/               # AppLayout (헤더 + main + 내비)
 │   ├── pages/
 │   │   ├── GuidePage.tsx
 │   │   └── guide/             # GuideMarkup + 가이드 전용 인터랙티브 샘플
 │   ├── hooks/
-│   ├── data/
-│   ├── lib/
+│   ├── data/                  # 목 데이터 (letter / friend / pock / coin / notice)
+│   ├── lib/                   # storage · coin · store · pock
 │   ├── types/
 │   └── styles/                # ✅ CSS 수정 위치
 │       ├── index.css          # 모든 CSS import (guide.css 포함)
-│       ├── variables.css
+│       ├── reset.css · fonts.css · common.css · variables.css
 │       ├── components/
 │       └── pages/
 ├── _tools/
@@ -65,6 +67,8 @@ pock/
 └── legacy/                    # 전환 전 HTML/css/js/data (실행·배포 금지)
     └── pages/guide.html
 ```
+
+루트 `assets/` · `css/` · `js/` · `data/` · `pages/` 와 `public/assets/css` · `js` 는 **빈 껍데기**다. 파일을 채우지 말고 두지 않는 것이 맞다(앱 소스는 `src/`, 정적은 `public/assets/`의 images·icons·fonts·videos만).
 
 ### 수정 위치 (두 곳만)
 
@@ -95,6 +99,7 @@ pock/
 ### 1. 기술 스택
 
 - **React(Vite) SPA** + TypeScript + React Router만 사용한다.
+- import는 **`@/`** 별칭을 쓴다 (`@/components/Button` 등 → `src/`).
 - **jQuery 금지.** Swiper·GSAP은 필요 시 `ref` / `useEffect`로만 연동한다.
 - 빌드·번들링은 Vite를 쓴다. 레거시 정적 마크업 방식으로 되돌리지 않는다.
 - 디자인 시스템 가이드는 **`/guide`** (`GuidePage` + `src/styles`).
@@ -105,10 +110,11 @@ pock/
 - 미확정 값은 코드/CSS 주석에 `임시값`이라고 적는다.
 - UI 마크업·클래스의 원본은 **가이드 샘플**이다. 페이지를 새로 꾸밀 때도 guide BEM을 우선한다.
 - **가이드에 적힌 컴포넌트 이름 = React export 이름.**  
-  예: `Card`, `Friend_list`, `Letter_write`, `Button`, `SearchInput` — 임의 개명 금지.
+  예: `Card`, `Friend_list`, `Letter_write`, `Button`, `SearchInput`, `PockSendCategory`, `SelectionBox` — 임의 개명 금지.
 - **가이드 섹션 레이아웃:** 새 블록 class는 `*-system`, 직속 자식은 `*-system__title` + `*-system__board`만 둔다.  
   상세: [`.cursor/rules/guide-section.mdc`](.cursor/rules/guide-section.mdc)
-- 인터랙티브 가이드 샘플(온보딩·Friend_list 스크롤 등)은 `src/pages/guide/`에 두고 `GuideMarkup`에서 import한다.
+- 인터랙티브·분리 가이드 샘플은 `src/pages/guide/`에 두고 `GuideMarkup`에서 import한다.  
+  예: `GuideOnboardDemo`, `GuideNavigationDemo`, `GuideFriendListSample`, `GuideLetterWriteMoResize` / `TbResize`, `GuideSendCategorySection`, `GuideSendTabsSection`, `GuideSignUpStepGaugeSection`, `GuideSelectionBoxSection`, `GuideFriendCheckboxSection`
 - 가이드 마크업 대량 갱신: `_tools/convert-guide.mjs`로 `legacy/pages/guide.html` → `src/pages/guide/GuideMarkup.tsx` 재생성 후 검수한다.  
   변환 후에도 위 섹션 레이아웃·export 이름 규칙을 맞춘다.
 
@@ -167,10 +173,13 @@ pock/
 ### 6. 데이터·상태
 
 - 서버 API 없이 **localStorage + 목 데이터**로 동작한다 (`src/lib/storage.ts`).
+- 목 데이터: `src/data/` (`letter-data`, `friend-data`, `pock-data`, `coin-data`, `notice-data`)
 - 코인: `src/lib/coin.ts` / `useCoin`
 - 편지지 스토어: `src/lib/store.ts` / `useLetterStore`
 - POCK 목록·전송: `src/lib/pock.ts` (샘플 + 사용자가 보낸 항목)
 - 로그인: `useAuth` (카카오 **목업만**)
+- 기타 훅: `useBreakpoint`, `useDesignScrollbar`, `useCountdownHms` (카드 타이머 `HH:MM:SS`)
+- 공유 타입: `src/types` (`PockItem`, `LetterItem`, `LetterCardVariant`, `PopupVariant`, `LetterWritePayload` 등)
 
 주요 키 예: `pock.auth`, `pock.coin`, `pock.ownedLetters`, `pock.userSent`, `pock.unlockedHints`
 
@@ -178,14 +187,25 @@ pock/
 
 - `useBreakpoint()` → `"mo" | "tb" | "pc"` (1024 / 1920 기준).
 - Letter_write·Friend_list·Navigation 등은 브레이크포인트에 맞는 modifier 클래스를 붙인다 (`letter-write--mo`, `navigation--pad` 등).
+- `/guide` Letter_write 구간은 점선 박스를 가상 뷰포트로 두고 너비를 드래그해 미리본다.
+  - **Mo** (`GuideLetterWriteMoResize`): 360~768 · ~540까지 좌우 inset **20** · **541~** 부터 Tb 레이아웃·크기
+  - **Tb** (`GuideLetterWriteTbResize`): 769~1024 · 좌우 inset **64** (안쪽 폭에 Tb가 맞춤)
 
 | 컴포넌트 | 메모 |
 |----------|------|
-| `Letter` | 편지지 하단 오른쪽 날짜 = **받은 날짜** (`aria-label="받은 날짜"`) |
-| `Letter_write` | 하단 날짜 = **작성일** (읽기 전용 `time`) |
-| `Friend_list` | 헤더·「친구 관리」고정. 연한 파란 pane 안 목록만 세로 스크롤. 디자인 스크롤바(색·두께·배치) 유지 + thumb 연동 (`PockWindowScrollbar` / `useDesignScrollbar`) |
+| `Letter` | Mo `320×500` · Tb/Pc `400×575`. normal 7색 · special(Rainbow/Heart/Star/Stripe/Clover). 하단 오른쪽 날짜 = **받은 날짜** |
+| `Letter_write` | 하단 날짜 = **작성일**. 기본 보낸이 `아빵이` · 기본 편지지 cream · paper stroke `#E65322`. Mo/Tb 유동 폭은 위 가이드 리사이즈 데모 기준 |
+| `Card` | variant `progress` / `timer` / `unopened` / `open`. timer는 `LetterCardTimerText` + `useCountdownHms` |
+| `Friend_list` | 헤더·「친구 관리」고정. 연한 파란 pane 안 목록만 세로 스크롤. 디자인 스크롤바 + thumb 연동 (`PockWindowScrollbar` / `useDesignScrollbar`) |
+| `FriendCheckbox` | Mo `20×20` · Tb/Pc `30×30` |
+| `SelectionBox` | 선택 시 `#C7DDFF` + Navigation blue 3px stroke + `check-blue` |
+| `PockSendCategory` | 배열 / 검색 / 친구 (`array` · `search` · `friends`) |
+| `PockSendTabs` | 잠김 / 열림 (`locked` · `open`) |
+| `SignUpStepGauge` | 기본 4단계. Mo용·Tb/Pc용 에셋 분리 (`public/assets/images/signup/`) |
+| `Navigation` | 홈·보관함·보내기·전송함·설정. 디바이스 `mo` / `pad` (`GuideNavigationDemo`) |
+| `Popup` | `info` · `warning` · `share` (+ dimmed). 온보딩 가이드는 `GuideOnboardDemo` (점 8개, 마지막 버튼 **완료**) |
 | `SearchInput` | 기본 placeholder `검색어를 입력하세요.` · **포커스 시 숨김**, blur 시 복구 |
-| Onboarding Guide Popup | `/guide` 데모 `GuideOnboardDemo` — 점 8개, 마지막 단계에서 버튼 문구 **완료** |
+| `DimmedOverlay` | 팝업·모달 뒤 딤 |
 
 ### 8. 하지 말 것
 
@@ -193,7 +213,7 @@ pock/
   Vite가 `/guide`로 HTML을 우선 서빙하면 리다이렉트 스텁과 겹쳐 **무한 새로고침**이 난다. 가이드는 React 라우트 `/guide`만 사용한다.
 - 루트 레거시 HTML을 다시 앱 진입점으로 쓰기
 - `legacy/`를 실행·배포 대상으로 삼기
-- 루트 `assets/` 또는 `public/assets/css`·`js`를 다시 만들고 CSS를 이중 관리하기
+- 루트 `assets/` · `css/` · `js/` · `data/` · `pages/` 또는 `public/assets/css`·`js`에 파일을 다시 두고 CSS·JS를 이중 관리하기
 - Kakao 실연동·백엔드 API를 시안 작업과 한꺼번에 넣기
 - ScrollSmoother 등 라이선스 플러그인을 임의 추가
 
@@ -202,6 +222,5 @@ pock/
 ## 참고
 
 - 컴포넌트·컬러·타이포 시안: 개발 서버 **[/guide](http://localhost:5173/guide)**
-- Cursor 에이전트용 요약 규칙: [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc)
-- 가이드 섹션 레이아웃: [`.cursor/rules/guide-section.mdc`](.cursor/rules/guide-section.mdc)
+- Cursor 규칙: [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc) · [guide-section](.cursor/rules/guide-section.mdc) · [css](.cursor/rules/css.mdc) · [html](.cursor/rules/html.mdc) · [js](.cursor/rules/js.mdc)
 - 전환 전 스냅샷: [`legacy/README.md`](legacy/README.md)
