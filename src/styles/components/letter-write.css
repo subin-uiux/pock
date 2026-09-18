@@ -4,7 +4,8 @@
  */
 
 .letter-write {
-  --lw-line-height: 1.5rem; /* 24 — 가로선 간격 */
+  --lw-font-size: 0.875rem; /* 14 */
+  --lw-line-height: var(--lw-font-size); /* 100% — 미지정 시 기본 · 가로선 간격 */
   --lw-side-line-count: 5; /* 이미지 옆 가로선 */
   --lw-below-line-count: 5; /* 이미지 아래 가로선 */
   --lw-line-color: var(--color-base-500);
@@ -136,7 +137,7 @@
   padding: 0.75rem 0.375rem; /* 12 6 */
   border-radius: 0.5rem; /* 8 — 시안 (Action_btn Icon 12 덮음) */
   gap: 0.25rem; /* 4 — 아이콘 ↔ 텍스트 */
-  font-size: 0.875rem; /* 14 */
+  font-size: var(--lw-font-size); /* 14 */
   white-space: nowrap;
 }
 
@@ -257,7 +258,8 @@
 
 /*
  * 편지 작성 영역
- * - 사진: float:left
+ * - 사진: absolute (클릭용)
+ * - 작성면 ::before float로 사진+여백만큼 비움 → caret/텍스트가 옆 가로선에서 시작
  * - 가로선: 이미지 옆 5줄 · 이미지 아래 5줄(전체 폭)
  * - 사진(+오른쪽 15 여백) 구간에는 선 숨김
  */
@@ -269,6 +271,7 @@
   --lw-lines-total-h: calc(
     (var(--lw-side-line-count) + var(--lw-below-line-count)) * var(--lw-line-height)
   ); /* 옆 5 + 아래 5 */
+  position: relative;
   flex: 1 1 auto;
   min-height: var(--lw-lines-total-h);
   overflow: hidden;
@@ -295,17 +298,19 @@
 }
 
 .letter-write__media {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
   width: var(--lw-media-w); /* 88 */
   height: var(--lw-media-h); /* 110 */
-  margin: 0 var(--lw-media-gap) 0.3125rem 0; /* right 15 · bottom 5 */
+  margin: 0;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--color-base-400);
   background-color: var(--color-base-400);
   cursor: pointer;
   appearance: none;
-  shape-outside: margin-box;
 }
 
 .letter-write__media-image {
@@ -322,6 +327,11 @@
  *  2) overflow로 BFC를 만들면 오른쪽 칸에 갇힘
  * 이므로 float를 감싸 흐르는 줄 박스가 가능한 contenteditable 사용.
  */
+/*
+ * 작성면 — 단일 입력 (줄은 CSS background).
+ * ::before float가 사진 자리를 비워 빈 caret도 가로선 쪽에서 시작.
+ * 사진 높이 아래부터는 전체 폭으로 이어짐.
+ */
 .letter-write__paper-body {
   display: block;
   box-sizing: border-box;
@@ -336,13 +346,22 @@
   background-color: transparent;
   color: var(--color-base-900);
   font-family: inherit;
-  font-size: 0.875rem; /* 14 */
+  font-size: var(--lw-font-size); /* 14 */
   line-height: var(--lw-line-height);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: break-word;
   outline: none;
   caret-color: var(--color-base-900);
+}
+
+/* 사진+여백만큼 비움 — 빈 입력 caret이 왼쪽(사진)에서 시작하지 않도록 */
+.letter-write__paper-body::before {
+  content: "";
+  float: left;
+  width: calc(var(--lw-media-w) + var(--lw-media-gap));
+  height: var(--lw-media-h);
+  margin: 0 0 0.3125rem 0; /* bottom 5 — 사진 ↔ 아래 가로선 */
 }
 
 .letter-write__paper-body > * {
@@ -369,7 +388,7 @@
   background-color: transparent;
   color: var(--color-base-900);
   font-family: inherit;
-  font-size: 0.875rem; /* 14 */
+  font-size: var(--lw-font-size); /* 14 */
   line-height: var(--lw-line-height);
   outline: none;
   appearance: none;
@@ -396,7 +415,7 @@
   margin-top: 0.5rem;
   min-width: 0;
   font-family: var(--font-family-display);
-  font-size: 0.875rem; /* 14 */
+  font-size: var(--lw-font-size); /* 14 */
   line-height: var(--line-height-tight);
 }
 
