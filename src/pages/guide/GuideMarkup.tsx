@@ -7,7 +7,16 @@ import { GuideSignUpStepGaugeSection } from "@/pages/guide/GuideSignUpStepGaugeS
 import { GuideSelectionBoxSection } from "@/pages/guide/GuideSelectionBoxSection";
 import { GuideFriendCheckboxSection } from "@/pages/guide/GuideFriendCheckboxSection";
 
+function guideWriteDate(): string {
+  const today = new Date();
+  const y = today.getFullYear();
+  const m = String(today.getMonth() + 1).padStart(2, "0");
+  const d = String(today.getDate()).padStart(2, "0");
+  return `${y}.${m}.${d}`;
+}
+
 export function GuideMarkup() {
+  const writeDate = guideWriteDate();
   return (
     <>
       <div className="guide">
@@ -2194,7 +2203,7 @@ export function GuideMarkup() {
                                 <span className="letter-write__from-prefix">FROM.</span>
                                 <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
                               </label>
-                              <input className="letter-write__date" type="text" placeholder="2000.00.00" aria-label="개봉일" inputMode="numeric" />
+                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
                             </div>
                           </div>
                         </div>
@@ -2246,7 +2255,7 @@ export function GuideMarkup() {
                                 <span className="letter-write__from-prefix">FROM.</span>
                                 <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
                               </label>
-                              <input className="letter-write__date" type="text" placeholder="2000.00.00" aria-label="개봉일" inputMode="numeric" />
+                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
                             </div>
                           </div>
                         </div>
@@ -2298,7 +2307,7 @@ export function GuideMarkup() {
                                 <span className="letter-write__from-prefix">FROM.</span>
                                 <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
                               </label>
-                              <input className="letter-write__date" type="text" placeholder="2000.00.00" aria-label="개봉일" inputMode="numeric" />
+                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
                             </div>
                           </div>
                         </div>
@@ -2360,6 +2369,7 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--info pock-popup--mo" aria-label="정보">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
                           <div className="pock-window__actions">
+                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
                             </span>
@@ -2380,6 +2390,7 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--info pock-popup--tb" aria-label="정보">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
                           <div className="pock-window__actions">
+                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
                             </span>
@@ -2400,6 +2411,7 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--warning pock-popup--mo" aria-label="경고">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar">
                           <div className="pock-window__actions">
+                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
                             </span>
@@ -2423,6 +2435,7 @@ export function GuideMarkup() {
                       <article className="pock-popup pock-popup--warning pock-popup--tb" aria-label="경고">
                         <header className="pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar">
                           <div className="pock-window__actions">
+                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
                               <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
                             </span>

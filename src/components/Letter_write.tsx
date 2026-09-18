@@ -3,6 +3,15 @@ import { Button } from "@/components/Button";
 import { getAllLetters } from "@/lib/store";
 import type { LetterWritePayload, PockUser } from "@/types";
 
+function formatWriteDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+
+  return `${year}.${month}.${day}`;
+}
+
 export type Letter_writeTab = "paper" | "photo" | "date" | null;
 export type { LetterWritePayload };
 
@@ -25,7 +34,8 @@ export function Letter_write({
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [from, setFrom] = useState("나");
-  const [date, setDate] = useState("");
+  const [writtenDate] = useState(() => formatWriteDate());
+  const [date, setDate] = useState(""); // 개봉일
   const [letterId, setLetterId] = useState(letters[0]?.id ?? "letter-blue");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Letter_writeTab>(null);
@@ -260,15 +270,13 @@ export function Letter_write({
                 onChange={(e) => setFrom(e.target.value)}
               />
             </label>
-            <input
+            <time
               className="letter-write__date"
-              type="text"
-              placeholder="2000.00.00"
-              aria-label="개봉일"
-              inputMode="numeric"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
+              dateTime={writtenDate.replace(/\./g, "-")}
+              aria-label="작성일"
+            >
+              {writtenDate}
+            </time>
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --line-height-tight: 1.25;
-  --line-height-base: 1; /* 100% — 미지정 시 기본 */
+  --line-height-base: 1.5;
   --line-height-loose: 1.75;
   --letter-spacing-base: 0;
 }

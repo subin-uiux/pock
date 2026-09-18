@@ -26,6 +26,8 @@
   max-width: none;
 }
 
+/* 상단바 아래 stroke — .pock-window__bar의 border-bottom:0 덮음 */
+.pock-popup .pock-window__bar,
 .pock-popup__bar {
   border-bottom: 0.5px solid #6e6e6e; /* base/700 */
 }
