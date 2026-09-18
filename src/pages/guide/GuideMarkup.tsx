@@ -824,10 +824,10 @@ export function GuideMarkup() {
                 <div className="btn-system__board btn-system__board--push">
                   <h3 className="btn-system__card-title">01 / Push btn</h3>
                   <div className="btn-system__sample">
-                    <p className="btn-system__state">Default · Mo 320~460</p>
+                    <p className="btn-system__state">Default · Mo 320~460 (드래그) · Pad/Pc 앱은 460 고정</p>
                     <p className="btn-system__hint" id="btn-push-resize-hint">
-                      오른쪽 아래 모서리를 드래그해 너비를 조절하세요. Push 버튼은 320~460 사이에서
-                      컨테이너에 맞춰 늘어납니다.
+                      오른쪽 아래 모서리를 드래그해 너비를 조절하세요 (320~460). 버튼 폭이 점선 박스에
+                      맞춰 변합니다.
                     </p>
                     <div
                       className="btn-system__resize"
@@ -893,81 +893,96 @@ export function GuideMarkup() {
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--progress">
-                              <div className="letter-card__meter" aria-hidden="true">
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--progress">
+                                <div className="letter-card__meter" aria-hidden="true">
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block letter-card__block--empty"></span>
+                                  <span className="letter-card__block letter-card__block--empty"></span>
+                                  <span className="letter-card__block letter-card__block--empty"></span>
+                                </div>
+                                <span className="letter-card__dday">D-7</span>
                               </div>
-                              <span className="letter-card__dday">D-7</span>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--timer">
-                              <LetterCardTimerText />
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--timer">
+                                <LetterCardTimerText />
+                              </div>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Unopened)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--unopened">미오픈</div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--unopened">미오픈</div>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-sent (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
+                        <p className="card-system__caption">letter-card-sent (Open) · Mo 90×120 · 텍스트 14 · gap 10</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--open letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">개봉일: 20xx.00.00.XX</p>
+                                <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">개봉일</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">수신자</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -977,81 +992,96 @@ export function GuideMarkup() {
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--progress">
-                              <div className="letter-card__meter" aria-hidden="true">
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--progress">
+                                <div className="letter-card__meter" aria-hidden="true">
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block"></span>
+                                  <span className="letter-card__block letter-card__block--empty"></span>
+                                  <span className="letter-card__block letter-card__block--empty"></span>
+                                  <span className="letter-card__block letter-card__block--empty"></span>
+                                </div>
+                                <span className="letter-card__dday">D-7</span>
                               </div>
-                              <span className="letter-card__dday">D-7</span>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--timer">
-                              <LetterCardTimerText />
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--timer">
+                                <LetterCardTimerText />
+                              </div>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Unopened)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--unopened">미오픈</div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--unopened">미오픈</div>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-sent (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
+                        <p className="card-system__caption">letter-card-sent (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 12</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--open letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">개봉일: 20xx.00.00.XX</p>
+                                <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">개봉일</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">수신자</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -1062,84 +1092,98 @@ export function GuideMarkup() {
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Box)</p>
-                        <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 수신 카드">
-                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 수신 카드">
+                            <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--progress">
-                                <div className="letter-card__meter" aria-hidden="true">
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
+                        <p className="card-system__caption">letter-card-received (Countdown) · 초성보기 미결제</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">From.Text</p>
+                              <div className="letter-card__status-group">
+                                <div className="letter-card__status letter-card__status--progress">
+                                  <div className="letter-card__meter" aria-hidden="true">
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block letter-card__block--empty"></span>
+                                    <span className="letter-card__block letter-card__block--empty"></span>
+                                    <span className="letter-card__block letter-card__block--empty"></span>
+                                  </div>
+                                  <span className="letter-card__dday">D-7</span>
                                 </div>
-                                <span className="letter-card__dday">D-7</span>
+                                <button type="button" className="letter-card__reward">
+                                  <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
+                                  <span>초성 보기</span>
+                                </button>
                               </div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--timer">
-                              <LetterCardTimerText />
+                        <p className="card-system__caption">letter-card-received (Timer) · 초성보기 결제완료</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">From.Text</p>
+                              <div className="letter-card__status-group">
+                                <div className="letter-card__status letter-card__status--timer">
+                                  <LetterCardTimerText />
+                                </div>
+                                <button type="button" className="letter-card__reward">
+                                  <span>초성 보기</span>
+                                </button>
+                              </div>
                             </div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
-                            </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
+                        <p className="card-system__caption">letter-card-received (Open) · Mo 90×120 · 텍스트 14 · gap 10</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--open letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">받은일시: 20xx.00.00.XX</p>
+                                <p className="letter-card__line">발신인: zl존킹킹</p>
                               </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">받은일시</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">발신인</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -1149,84 +1193,98 @@ export function GuideMarkup() {
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Box)</p>
-                        <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 수신 카드">
-                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 수신 카드">
+                            <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--progress">
-                                <div className="letter-card__meter" aria-hidden="true">
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
+                        <p className="card-system__caption">letter-card-received (Countdown) · 초성보기 미결제</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">From.Text</p>
+                              <div className="letter-card__status-group">
+                                <div className="letter-card__status letter-card__status--progress">
+                                  <div className="letter-card__meter" aria-hidden="true">
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block"></span>
+                                    <span className="letter-card__block letter-card__block--empty"></span>
+                                    <span className="letter-card__block letter-card__block--empty"></span>
+                                    <span className="letter-card__block letter-card__block--empty"></span>
+                                  </div>
+                                  <span className="letter-card__dday">D-7</span>
                                 </div>
-                                <span className="letter-card__dday">D-7</span>
+                                <button type="button" className="letter-card__reward">
+                                  <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
+                                  <span>초성 보기</span>
+                                </button>
                               </div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--timer">
-                              <LetterCardTimerText />
+                        <p className="card-system__caption">letter-card-received (Timer) · 초성보기 결제완료</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">From.Text</p>
+                              <div className="letter-card__status-group">
+                                <div className="letter-card__status letter-card__status--timer">
+                                  <LetterCardTimerText />
+                                </div>
+                                <button type="button" className="letter-card__reward">
+                                  <span>초성 보기</span>
+                                </button>
+                              </div>
                             </div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
-                            </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
+                        <p className="card-system__caption">letter-card-received (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 12</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--open letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">받은일시: 20xx.00.00.XX</p>
+                                <p className="letter-card__line">발신인: zl존킹킹</p>
                               </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">받은일시</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">발신인</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>

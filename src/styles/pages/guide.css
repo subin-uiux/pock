@@ -555,25 +555,37 @@
   line-height: var(--line-height-base);
 }
 
-/* Push Mo: 드래그로 320~460 폭 확인 */
+/* Push Mo 미리보기: 기본 320, 드래그 320~460 — 패딩 없이 박스=버튼 폭 */
 .btn-system__resize {
   box-sizing: border-box;
-  width: 28.75rem; /* 460 — 최대에서 시작 */
+  width: 20rem; /* 320에서 시작 */
   min-width: 20rem; /* 320 */
-  max-width: min(28.75rem, 100%); /* 460 */
-  padding: var(--spacing-md);
-  overflow: auto;
+  max-width: 28.75rem; /* 460 */
+  padding: 0;
+  overflow: hidden;
   resize: horizontal;
   border: 1px dashed var(--color-base-400);
   border-radius: 0.75rem;
   background-color: var(--color-base-0);
 }
 
+/* 점선 박스 폭에 버튼이 그대로 따라감 */
+.btn-system__resize .btn--push-muted,
+.btn-system__resize .btn--push,
+.btn-system__resize .btn--push-green {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
 .btn-system__stack {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+  box-sizing: border-box;
   width: 100%;
+  min-width: 0;
+  padding: var(--spacing-md);
 }
 
 .nav-system__board {
@@ -599,7 +611,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--spacing-md);
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
   padding: var(--spacing-md);
   border-radius: 1.25rem;
@@ -607,7 +619,7 @@
 }
 
 .card-system__board--wide {
-  width: fit-content;
+  width: 100%;
 }
 
 .card-system__card-title {
@@ -629,6 +641,43 @@
   flex-direction: column;
   gap: var(--spacing-xs);
   width: 100%;
+}
+
+.card-system__hint {
+  margin: 0;
+  color: var(--color-base-600);
+  font-family: var(--font-family-document);
+  font-size: 1rem;
+  line-height: var(--line-height-base);
+}
+
+/* 카드 리사이즈: 패딩 없이 카드가 점선 박스에 맞춤 — 줄여도 내부 스크롤 없음 */
+.card-system__resize {
+  box-sizing: border-box;
+  width: min(100%, 28.75rem); /* 기본 최대 460 */
+  min-width: 17.25rem; /* 276 */
+  max-width: 100%;
+  padding: 0;
+  overflow: hidden;
+  resize: horizontal;
+  border: 1px dashed var(--color-base-400);
+  border-radius: 0.75rem;
+  background-color: var(--color-base-100);
+}
+
+.card-system__resize--tb {
+  width: min(100%, 40rem);
+  min-width: 32.5rem; /* Tb 520 */
+}
+
+.card-system__resize .letter-card--open,
+.card-system__resize .letter-card--mo,
+.card-system__resize .letter-card--tb,
+.card-system__resize .letter-card--locked,
+.card-system__resize .letter-card--gift {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
 }
 
 .card-system__caption {
@@ -977,12 +1026,17 @@
   width: 100%;
   min-width: 22.5rem; /* 360 — 아이콘 묶음 최소 */
   max-width: 100%;
-  padding: var(--spacing-md);
-  overflow: auto;
+  padding: 0;
+  overflow: hidden;
   resize: horizontal;
   border: 1px dashed var(--color-base-400);
   border-radius: 0.75rem;
   background-color: var(--color-base-0);
+}
+
+.nav-system__resize .navigation {
+  width: 100%;
+  min-width: 0;
 }
 
 .nav-system__pad-frame {

@@ -15,6 +15,9 @@ interface CardProps {
   title?: string;
   openDate?: string;
   receiver?: string;
+  /** open 카드 메타 라인 — 없으면 제목/개봉일/수신자 조합 */
+  lines?: string[];
+  thumbSrc?: string;
   filledBlocks?: number;
   totalBlocks?: number;
 }
@@ -36,14 +39,27 @@ export function Card({
   title,
   openDate,
   receiver,
+  lines,
+  thumbSrc,
   filledBlocks = 7,
   totalBlocks = 10,
 }: CardProps) {
   const isOpen = variant === "open";
+  const openLines =
+    lines ??
+    ([
+      `제목: ${title ?? "Text"}`,
+      `개봉일: ${openDate ?? "20xx.00.00"}`,
+      `수신자: ${receiver ?? "Text"}`,
+    ] as const);
 
   return (
     <article
-      className={`letter-card letter-card--${isOpen ? "open" : "locked"} letter-card--mo`}
+      className={
+        isOpen
+          ? "letter-card letter-card--open"
+          : "letter-card letter-card--locked letter-card--mo"
+      }
     >
       <Link className="letter-card__more" to={moreHref}>
         전체보기 &gt;
@@ -51,21 +67,24 @@ export function Card({
 
       {isOpen ? (
         <div className="letter-card__open">
-          <div className="letter-card__thumb" aria-hidden="true" />
-          <dl className="letter-card__meta">
-            <div className="letter-card__row">
-              <dt className="letter-card__key">제목</dt>
-              <dd className="letter-card__value">{title ?? "Text"}</dd>
-            </div>
-            <div className="letter-card__row">
-              <dt className="letter-card__key">개봉일</dt>
-              <dd className="letter-card__value">{openDate ?? "20xx.00.00"}</dd>
-            </div>
-            <div className="letter-card__row">
-              <dt className="letter-card__key">수신자</dt>
-              <dd className="letter-card__value">{receiver ?? "Text"}</dd>
-            </div>
-          </dl>
+          {thumbSrc ? (
+            <img
+              className="letter-card__thumb"
+              src={thumbSrc}
+              alt=""
+              width={90}
+              height={120}
+            />
+          ) : (
+            <div className="letter-card__thumb" aria-hidden="true" />
+          )}
+          <div className="letter-card__meta">
+            {openLines.map((line) => (
+              <p className="letter-card__line" key={line}>
+                {line}
+              </p>
+            ))}
+          </div>
         </div>
       ) : (
         <div className="letter-card__body">
