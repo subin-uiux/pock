@@ -3,6 +3,9 @@ import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
 import { GuideSendCategorySection } from "@/pages/guide/GuideSendCategorySection";
 import { GuideSendTabsSection } from "@/pages/guide/GuideSendTabsSection";
+import { GuideSignUpStepGaugeSection } from "@/pages/guide/GuideSignUpStepGaugeSection";
+import { GuideSelectionBoxSection } from "@/pages/guide/GuideSelectionBoxSection";
+import { GuideFriendCheckboxSection } from "@/pages/guide/GuideFriendCheckboxSection";
 
 function guideWriteDate(): string {
   const today = new Date();
@@ -18,13 +21,7 @@ export function GuideMarkup() {
     <>
       <div className="guide">
               <section className="logo-system" aria-labelledby="logo-system-title">
-                <p className="logo-system__eyebrow">POCK · Logo system</p>
-                <div className="logo-system__panel">
-                  <h1 className="logo-system__title" id="logo-system-title">LOGO</h1>
-                  <p className="logo-system__lead">심벌 + 워드마크 = 하나의 로고</p>
-                  <p className="logo-system__desc">POCK의 브랜드 아이덴티티를 나타내는 기본 로고입니다. 포크 심벌과 워드마크의 조합으로 구성하며, 모든 화면에서 동일한 비율과 형태를 유지하여 사용합니다.</p>
-                </div>
-                <h2 className="logo-system__label" id="logo-system-board">Logo</h2>
+                <h1 className="logo-system__title" id="logo-system-title">LOGO</h1>
                 <div className="logo-system__board">
                   <p className="logo-system__card-title">Logo</p>
                   <div className="logo-system__frame">
@@ -34,14 +31,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="grid-system" id="grid-system" aria-labelledby="grid-system-title">
-                <p className="grid-system__eyebrow">POCK · Grid system</p>
-                <div className="grid-system__panel">
-                  <h2 className="grid-system__title" id="grid-system-title">GRID</h2>
-                  <p className="grid-system__lead">설계 · 가이드라인 · 레이아웃 안내</p>
-                  <p className="grid-system__desc">POCK은 화면 크기에 따라 컬럼과 콘텐츠 영역이 유동적으로 조정됩니다.<br />Mobile은 360–768px, Tablet은 769–1024px을 기준으로 반응하며,<br />1025–1920px에서는 Tablet의 최대 너비를 유지한 채 화면 중앙에 정렬됩니다.</p>
-                </div>
-
-                <p className="grid-system__label">Mobile</p>
+                <h2 className="grid-system__title" id="grid-system-title">GRID</h2>
                 <div className="grid-system__board grid-system__board--mobile">
                   <p className="grid-system__caption">Mobile – (360~768)</p>
                   <div className="grid-system__viewport grid-system__viewport--mobile">
@@ -62,8 +52,6 @@ export function GuideMarkup() {
                     </div>
                   </div>
                 </div>
-
-                <p className="grid-system__label">Pad</p>
                 <div className="grid-system__board grid-system__board--pad">
                   <p className="grid-system__caption">Pad – (769~1024)</p>
                   <div className="grid-system__viewport grid-system__viewport--pad">
@@ -92,8 +80,6 @@ export function GuideMarkup() {
                     </div>
                   </div>
                 </div>
-
-                <p className="grid-system__label">Pc (Pad 최대 사이즈 가운데 정렬)</p>
                 <div className="grid-system__board grid-system__board--pc">
                   <p className="grid-system__caption">Pc – (1025~1920)</p>
                   <div className="grid-system__viewport grid-system__viewport--pc">
@@ -127,15 +113,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="color-system" aria-labelledby="color-system-title">
-                <p className="color-system__eyebrow">POCK · Color system</p>
-                <div className="color-system__panel">
-                  <h2 className="color-system__title" id="color-system-title">COLOR</h2>
-                  <p className="color-system__lead">역할 + 명도 + 용도 = 하나의 컬러</p>
-                  <p className="color-system__groups">총 6가지 컬러 그룹 | Brand Core · Rainbow Base · Rainbow Light · Functional · Navigation · Black/Grey/White</p>
-                  <p className="color-system__desc">브랜드 아이덴티티와 UI의 역할에 따라 컬러를 구분하여 사용합니다. Base / Light 단계로 명도를 구분하고, 기능·내비게이션·텍스트·배경 등 각 목적에 맞는 컬러를 적용합니다.</p>
-                </div>
-
-                <p className="color-system__label" id="color-system-board">Color</p>
+                <h2 className="color-system__title" id="color-system-title">COLOR</h2>
                 <div className="color-system__board">
                   <section className="color-system__group" aria-labelledby="color-brand">
                     <h3 className="color-system__group-title" id="color-brand">BRAND CORE</h3>
@@ -351,15 +329,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="type-system" aria-labelledby="type-system-title">
-                <p className="type-system__eyebrow">POCK · Typography system</p>
-                <div className="type-system__panel">
-                  <h2 className="type-system__title" id="type-system-title">TYPOGRAPHY — MOBILE</h2>
-                  <p className="type-system__lead">같은 폰트 + 같은 크기 + 같은 자간 = 하나의 그룹</p>
-                  <p className="type-system__groups">총 2그룹 | 기본 14 · 문서 6 | UI는 NeoDunggeunmo 400으로 통합</p>
-                  <p className="type-system__desc">Title1 · Body1 · Caption1 형식의 그룹명입니다. 행간·굵기 차이는 같은 행에 함께 표시했습니다. 통합 수는 원본 서식 구간 수(숨김 포함)입니다.</p>
-                </div>
-
-                <p className="type-system__label">01 / NeoDunggeunmo · 기본 14개</p>
+                <h2 className="type-system__title" id="type-system-title">TYPOGRAPHY — MOBILE</h2>
                 <div className="type-system__board">
                   <h3 className="type-system__card-title" id="type-neo">01 / NeoDunggeunmo · 기본 14개</h3>
                   <p className="type-system__scroll-hint">표를 옆으로 밀면 전체 항목을 볼 수 있습니다.</p>
@@ -507,8 +477,6 @@ export function GuideMarkup() {
                     </table>
                   </div>
                 </div>
-
-                <p className="type-system__label">02 / Pretendard · 문서 6개</p>
                 <div className="type-system__board">
                   <h3 className="type-system__card-title" id="type-doc">02 / Pretendard · 문서 6개</h3>
                   <p className="type-system__scroll-hint">표를 옆으로 밀면 전체 항목을 볼 수 있습니다.</p>
@@ -584,16 +552,7 @@ export function GuideMarkup() {
                     </table>
                   </div>
                 </div>
-
-                <p className="type-system__eyebrow">POCK · Typography system</p>
-                <div className="type-system__panel">
-                  <h2 className="type-system__title" id="type-system-pad-title">TYPOGRAPHY — PAD / PC</h2>
-                  <p className="type-system__lead">같은 폰트 + 같은 크기 + 같은 자간 = 하나의 그룹</p>
-                  <p className="type-system__groups">모바일 360–768 · PAD 최대 기준 1024 · PC 콘텐츠 최대 1024 · 가운데 정렬</p>
-                  <p className="type-system__desc">PC는 PAD(1024)에서 쓰는 글자 크기·행간·자간을 유지합니다. 화면이 더 넓어져도 텍스트는 더 커지지 않습니다.</p>
-                </div>
-
-                <p className="type-system__label">PAD / PC · 01 / NeoDunggeunmo · 기본 17개</p>
+                <h2 className="type-system__title" id="type-system-pad-title">TYPOGRAPHY — PAD / PC</h2>
                 <div className="type-system__board">
                   <h3 className="type-system__card-title" id="type-neo-pad">01 / NeoDunggeunmo · 기본 17개</h3>
                   <p className="type-system__scroll-hint">표를 옆으로 밀면 전체 항목을 볼 수 있습니다.</p>
@@ -768,8 +727,6 @@ export function GuideMarkup() {
                     </table>
                   </div>
                 </div>
-
-                <p className="type-system__label">PAD / PC · 02 / Pretendard · 문서·보조 6개</p>
                 <div className="type-system__board">
                   <h3 className="type-system__card-title" id="type-doc-pad">02 / Pretendard · 문서·보조 6개</h3>
                   <p className="type-system__scroll-hint">표를 옆으로 밀면 전체 항목을 볼 수 있습니다.</p>
@@ -848,14 +805,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="nav-system" id="nav-system" aria-labelledby="nav-system-title">
-                <p className="nav-system__eyebrow">POCK · Navigation system</p>
-                <div className="nav-system__panel">
-                  <h2 className="nav-system__title" id="nav-system-title">NAVIGATION</h2>
-                  <p className="nav-system__lead">메뉴 + 디바이스 = 하나의 내비게이션</p>
-                  <p className="nav-system__groups">총 5가지 메뉴 | 홈 · 보관함 · 보내기 · 전송함 · 설정</p>
-                  <p className="nav-system__desc">주요 화면으로 이동하는 공통 내비게이션으로, Mobile과 PAD / PC 환경에 따라 레이아웃과 형태를 구분하여 사용합니다.</p>
-                </div>
-                <p className="nav-system__label">Navigation</p>
+                <h2 className="nav-system__title" id="nav-system-title">NAVIGATION</h2>
                 <div className="nav-system__board">
                   <h3 className="nav-system__card-title">Navigation</h3>
                   <div className="nav-system__variant">
@@ -936,17 +886,10 @@ export function GuideMarkup() {
               </section>
 
               <section className="btn-system" id="btn-system" aria-labelledby="btn-system-title">
-                <p className="btn-system__eyebrow">POCK · Button system</p>
-                <div className="btn-system__panel">
-                  <h2 className="btn-system__title" id="btn-system-title">BUTTON</h2>
-                  <p className="btn-system__lead">역할 + 상태 + 타입 = 하나의 버튼</p>
-                  <p className="btn-system__groups">총 3가지 버튼 유형 | Push_btn · Popup_btn · Action_btn</p>
-                  <p className="btn-system__desc">상태는 Default / Pressed를 기준으로 하며, 버튼의 용도에 따라 Guide 및 Icon 타입을 함께 사용합니다. Push는 주요 액션, Popup은 팝업 내 액션, Action은 Icon / Text 타입의 기능 실행 버튼으로 사용합니다.</p>
-                </div>
+                <h2 className="btn-system__title" id="btn-system-title">BUTTON</h2>
 
                 <div className="btn-system__rows">
                   <div className="btn-system__row">
-                    <p className="btn-system__label">01 / Push_btn</p>
                     <div className="btn-system__board">
                       <h3 className="btn-system__card-title">01 / Push btn</h3>
                       <div className="btn-system__sample">
@@ -963,7 +906,6 @@ export function GuideMarkup() {
                   </div>
 
                   <div className="btn-system__row">
-                    <p className="btn-system__label">02 / Popup_btn</p>
                     <div className="btn-system__board">
                       <h3 className="btn-system__card-title">02 / Popup_btn</h3>
                       <div className="btn-system__sample">
@@ -974,7 +916,6 @@ export function GuideMarkup() {
                   </div>
 
                   <div className="btn-system__row">
-                    <p className="btn-system__label">03 / Action_btn</p>
                     <div className="btn-system__board">
                       <h3 className="btn-system__card-title">03 / Action_btn</h3>
                       <div className="btn-system__sample">
@@ -992,15 +933,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="card-system" id="card-system" aria-labelledby="card-system-title">
-                <p className="card-system__eyebrow">POCK · Card system</p>
-                <div className="card-system__panel">
-                  <h2 className="card-system__title" id="card-system-title">Card</h2>
-                  <p className="card-system__lead">구분 + 상태 = 하나의 카드</p>
-                  <p className="card-system__groups">총 2가지 카드 유형 | Sent Card · Received Card</p>
-                  <p className="card-system__desc">카드는 발신함과 수신함에서 메시지의 상태를 확인하기 위한 공통 컴포넌트입니다. 발신 카드는 D-day / Timer / Open 상태로 구분하며, 수신 카드는 Box / D-day / Timer / Open 상태로 구성합니다.</p>
-                </div>
-
-                <p className="card-system__label">01 / 발신함</p>
+                <h2 className="card-system__title" id="card-system-title">Card</h2>
                 <div className="card-system__columns">
                   <div className="card-system__board">
                     <h3 className="card-system__card-title">01 / 발신함 (Mo)</h3>
@@ -1166,8 +1099,6 @@ export function GuideMarkup() {
                     </ul>
                   </div>
                 </div>
-
-                <p className="card-system__label">02 / 수신함</p>
                 <div className="card-system__columns">
                   <div className="card-system__board">
                     <h3 className="card-system__card-title">02 / 수신함 (Mo)</h3>
@@ -1341,15 +1272,7 @@ export function GuideMarkup() {
                 </div>
               </section>
               <section className="letter-system" id="letter-system" aria-labelledby="letter-system-title">
-                <p className="letter-system__eyebrow">POCK · Letter system</p>
-                <div className="letter-system__panel">
-                  <h2 className="letter-system__title" id="letter-system-title">LETTER</h2>
-                  <p className="letter-system__lead">편지지 + 색상 + 정렬 = 하나의 Letter</p>
-                  <p className="letter-system__groups">총 7가지 색상 | Red · Orange · Yellow · Green · Blue · Purple · Pink</p>
-                  <p className="letter-system__desc">Letter는 메시지를 읽고 쓰는 편지지 컴포넌트입니다. 이미지·제목·본문·발신 정보로 구성되며, Rainbow Light 7색을 배경으로 사용합니다.</p>
-                </div>
-
-                <p className="letter-system__label">01 / Letter card - normal (Mo)</p>
+                <h2 className="letter-system__title" id="letter-system-title">LETTER</h2>
                 <div className="letter-system__board">
                   <h3 className="letter-system__card-title">01 / Letter card - normal (Mo)</h3>
                   <ul className="letter-system__list">
@@ -1523,8 +1446,6 @@ export function GuideMarkup() {
                       </li>
                   </ul>
                 </div>
-
-                <p className="letter-system__label">01 / Letter card - normal (Tb, Pc)</p>
                 <div className="letter-system__board letter-system__board--wide">
                   <h3 className="letter-system__card-title">01 / Letter card - normal (Tb, Pc)</h3>
                   <ul className="letter-system__list">
@@ -1698,8 +1619,6 @@ export function GuideMarkup() {
                       </li>
                   </ul>
                 </div>
-
-                <p className="letter-system__label">02 / Letter card - special (Mo)</p>
                 <div className="letter-system__board">
                   <h3 className="letter-system__card-title">02 / Letter - special (Mo)</h3>
                   <ul className="letter-system__list">
@@ -1825,8 +1744,6 @@ export function GuideMarkup() {
                       </li>
                   </ul>
                 </div>
-
-                <p className="letter-system__label">02 / Letter - special (Tb, Pc)</p>
                 <div className="letter-system__board letter-system__board--wide">
                   <h3 className="letter-system__card-title">02 / Letter - special (Tb, Pc)</h3>
                   <ul className="letter-system__list">
@@ -1955,15 +1872,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="window-system" id="window-system" aria-labelledby="window-system-title">
-                <p className="window-system__eyebrow">POCK · WINDOW GRAPHGIC</p>
-                <div className="window-system__panel">
-                  <h2 className="window-system__title" id="window-system-title">WINDOW GRAPHGIC</h2>
-                  <p className="window-system__lead">POCK의 레트로 윈도우 UI 시스템</p>
-                  <p className="window-system__groups">총 2가지 유형 | Friend_list, Letter_write</p>
-                  <p className="window-system__desc">POCK의 주요 인터페이스에 공통으로 적용되는 윈도우 그래픽입니다. Letter Card, Letter Write 등 기능에 따라 형태와 구성이 달라지며, 동일한 타이틀 바와 프레임 규칙을 적용해 일관된 화면 경험을 제공합니다.</p>
-                </div>
-
-                <p className="window-system__label">01 / Friend_list</p>
+                <h2 className="window-system__title" id="window-system-title">WINDOW GRAPHGIC</h2>
                 <div className="window-system__board">
                   <h3 className="window-system__card-title">01 / Friend_list</h3>
                   <div className="window-system__samples">
@@ -2106,8 +2015,6 @@ export function GuideMarkup() {
                     </div>
                   </div>
                 </div>
-
-                <p className="window-system__label">01-1 / Window Header</p>
                 <div className="window-system__board window-system__board--header">
                   <h3 className="window-system__card-title">01-1 / Window Header</h3>
                   <div className="window-system__header-samples">
@@ -2152,7 +2059,6 @@ export function GuideMarkup() {
               </section>
 
               <section className="window-system" id="letter-write-system" aria-labelledby="letter-write-system-title">
-                <p className="window-system__label">02 / Letter_write</p>
                 <div className="window-system__board">
                   <h3 className="window-system__card-title" id="letter-write-system-title">02 / Letter_write</h3>
                   <div className="window-system__samples">
@@ -2319,16 +2225,14 @@ export function GuideMarkup() {
 
               <GuideSendTabsSection />
 
-              <section className="overlay-system" id="overlay-system" aria-labelledby="overlay-system-title">
-                <p className="overlay-system__eyebrow">POCK · Dimmed Overlay</p>
-                <div className="overlay-system__panel">
-                  <h2 className="overlay-system__title" id="overlay-system-title">DIMMED OVERLAY</h2>
-                  <p className="overlay-system__lead">POCK의 상황별 공통 팝업 UI 시스템</p>
-                  <p className="overlay-system__groups">적용 범위 | Popup · Modal · Onboarding Guide · Navigation Guide · Search Field</p>
-                  <p className="overlay-system__desc">정보 안내, 경고, 첫 진입 가이드, 서치필드 백그라운드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Onboarding Guide로 구분합니다.</p>
-                </div>
+              <GuideSignUpStepGaugeSection />
 
-                <p className="overlay-system__label">Dimmed Overlay</p>
+              <GuideSelectionBoxSection />
+
+              <GuideFriendCheckboxSection />
+
+              <section className="overlay-system" id="overlay-system" aria-labelledby="overlay-system-title">
+                <h2 className="overlay-system__title" id="overlay-system-title">DIMMED OVERLAY</h2>
                 <div className="overlay-system__board">
                   <h3 className="overlay-system__card-title">Dimmed Overlay</h3>
                   <div className="overlay-system__stage">
@@ -2343,15 +2247,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="popup-system" id="popup-system" aria-labelledby="popup-system-title">
-                <p className="popup-system__eyebrow">POCK · POPUP</p>
-                <div className="popup-system__panel">
-                  <h2 className="popup-system__title" id="popup-system-title">POPUP</h2>
-                  <p className="popup-system__lead">POCK의 상황별 공통 팝업 UI 시스템</p>
-                  <p className="popup-system__groups">총 3가지 유형 | Info · Warning · Onboarding Guide</p>
-                  <p className="popup-system__desc">정보 안내, 경고, 첫 진입 가이드 등 사용자의 확인과 행동이 필요한 상황에 사용합니다. 용도에 따라 Info · Warning · Onboarding Guide로 구분합니다.</p>
-                </div>
-
-                <p className="popup-system__label">Window - popup</p>
+                <h2 className="popup-system__title" id="popup-system-title">POPUP</h2>
                 <div className="popup-system__board">
                   <h3 className="popup-system__card-title">Window - popup</h3>
                   <div className="popup-system__samples">
@@ -2456,14 +2352,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="search-system" id="search-system" aria-labelledby="search-system-title">
-                <p className="search-system__eyebrow">POCK · SEARCH INPUT</p>
-                <div className="search-system__panel">
-                  <h2 className="search-system__title" id="search-system-title">SEARCH INPUT</h2>
-                  <p className="search-system__lead">POCK의 공통 검색 입력 UI 시스템</p>
-                  <p className="search-system__desc">검색 아이콘과 플레이스홀더를 포함한 검색 전용 입력 컴포넌트입니다. 사용자가 원하는 콘텐츠를 빠르게 탐색할 수 있도록 사용하며, 화면 크기에 따라 너비가 유동적으로 조정되는 반응형 구조로 적용합니다.</p>
-                </div>
-
-                <p className="search-system__label">Search Input</p>
+                <h2 className="search-system__title" id="search-system-title">SEARCH INPUT</h2>
                 <div className="search-system__board">
                   <h3 className="search-system__card-title">Search Input</h3>
                   <div className="search-system__stage">

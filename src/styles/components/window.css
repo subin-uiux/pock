@@ -466,6 +466,11 @@ button.pock-window__item {
   color: inherit;
 }
 
+button.pock-window__item:hover .friend-checkbox,
+button.pock-window__item:active .friend-checkbox {
+  background-color: var(--color-base-300);
+}
+
 button.pock-window__item--selected .pock-window__thumb {
   box-shadow: 0 0 0 2px #2753f7;
 }
