@@ -23,6 +23,9 @@
 @import "./components/pock-card.css";
 @import "./components/pock-send-category.css";
 @import "./components/pock-send-tabs.css";
+@import "./components/signup-step-gauge.css";
+@import "./components/selection-box.css";
+@import "./components/friend-checkbox.css";
 
 @import "./pages/index.css";
 @import "./pages/login.css";
