@@ -3,6 +3,9 @@ import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
 import { GuideSendCategorySection } from "@/pages/guide/GuideSendCategorySection";
 import { GuideSendTabsSection } from "@/pages/guide/GuideSendTabsSection";
+import { GuideSignUpStepGaugeSection } from "@/pages/guide/GuideSignUpStepGaugeSection";
+import { GuideSelectionBoxSection } from "@/pages/guide/GuideSelectionBoxSection";
+import { GuideFriendCheckboxSection } from "@/pages/guide/GuideFriendCheckboxSection";
 
 export function GuideMarkup() {
   return (
@@ -2309,6 +2312,12 @@ export function GuideMarkup() {
               <GuideSendCategorySection />
 
               <GuideSendTabsSection />
+
+              <GuideSignUpStepGaugeSection />
+
+              <GuideSelectionBoxSection />
+
+              <GuideFriendCheckboxSection />
 
               <section className="overlay-system" id="overlay-system" aria-labelledby="overlay-system-title">
                 <p className="overlay-system__eyebrow">POCK · Dimmed Overlay</p>

@@ -11,3 +11,6 @@ export { FriendWindow } from "./FriendWindow";
 export { CoinBadge } from "./CoinBadge";
 export { PockSendCategory } from "./PockSendCategory";
 export { PockSendTabs } from "./PockSendTabs";
+export { SignUpStepGauge } from "./SignUpStepGauge";
+export { SelectionBox } from "./SelectionBox";
+export { FriendCheckbox } from "./FriendCheckbox";

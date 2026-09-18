@@ -1,4 +1,5 @@
 import { DimmedOverlay } from "@/components/DimmedOverlay";
+import { FriendCheckbox } from "@/components/FriendCheckbox";
 import { SearchInput } from "@/components/SearchInput";
 import type { PockUser } from "@/types";
 import { useMemo, useState } from "react";
@@ -91,6 +92,7 @@ export function FriendWindow({
                         height={48}
                       />
                       <p className="pock-window__name">{friend.name}</p>
+                      <FriendCheckbox size={size} checked={selected} />
                     </button>
                   </li>
                 );
