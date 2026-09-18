@@ -39,18 +39,18 @@ npm run dev
 pock/
 ├── index.html                 # Vite SPA 진입점 (유일하게 루트에서 서빙되는 HTML)
 ├── public/assets/             # ✅ 정적 자원 수정 위치 → URL /assets/...
-│   ├── images/
+│   ├── images/                # svg / webp 이미지 (여기만)
 │   ├── icons/
 │   ├── fonts/
 │   └── videos/
 ├── src/
 │   ├── main.tsx               # styles/index.css 진입
 │   ├── App.tsx                # 라우트
-│   ├── components/
+│   ├── components/            # 가이드 export 이름과 동일 (Friend_list, Letter_write …)
 │   ├── layouts/
 │   ├── pages/
 │   │   ├── GuidePage.tsx
-│   │   └── guide/GuideMarkup.tsx
+│   │   └── guide/             # GuideMarkup + 가이드 전용 인터랙티브 샘플
 │   ├── hooks/
 │   ├── data/
 │   ├── lib/
@@ -72,6 +72,7 @@ pock/
 |--------|------|
 | **CSS** | **`src/styles/`** 만 (`main.tsx` → `index.css`) |
 | **이미지·아이콘·폰트·영상** | **`public/assets/`** 만 (URL은 `/assets/...`) |
+| **svg / webp** | **`public/assets/images/`** 만 |
 
 `legacy/`는 참고용 스냅샷이다. 앱 CSS·에셋을 여기서 고치지 않는다.
 
@@ -98,12 +99,18 @@ pock/
 - 빌드·번들링은 Vite를 쓴다. 레거시 정적 마크업 방식으로 되돌리지 않는다.
 - 디자인 시스템 가이드는 **`/guide`** (`GuidePage` + `src/styles`).
 
-### 2. 시안·카피
+### 2. 시안·카피 · 가이드
 
 - 시안(`/guide`, `GuideMarkup`)에 없는 UI·카피·색을 **임의로 만들지 않는다.**
 - 미확정 값은 코드/CSS 주석에 `임시값`이라고 적는다.
 - UI 마크업·클래스의 원본은 **가이드 샘플**이다. 페이지를 새로 꾸밀 때도 guide BEM을 우선한다.
-- 가이드 마크업 대량 갱신: `_tools/convert-guide.mjs`로 `legacy/pages/guide.html` → `src/pages/guide/GuideMarkup.tsx` 재생성 후 검수한다.
+- **가이드에 적힌 컴포넌트 이름 = React export 이름.**  
+  예: `Card`, `Friend_list`, `Letter_write`, `Button`, `SearchInput` — 임의 개명 금지.
+- **가이드 섹션 레이아웃:** 새 블록 class는 `*-system`, 직속 자식은 `*-system__title` + `*-system__board`만 둔다.  
+  상세: [`.cursor/rules/guide-section.mdc`](.cursor/rules/guide-section.mdc)
+- 인터랙티브 가이드 샘플(온보딩·Friend_list 스크롤 등)은 `src/pages/guide/`에 두고 `GuideMarkup`에서 import한다.
+- 가이드 마크업 대량 갱신: `_tools/convert-guide.mjs`로 `legacy/pages/guide.html` → `src/pages/guide/GuideMarkup.tsx` 재생성 후 검수한다.  
+  변환 후에도 위 섹션 레이아웃·export 이름 규칙을 맞춘다.
 
 ### 3. 스타일 (CSS)
 
@@ -142,7 +149,9 @@ pock/
 | 공통 CSS | `src/styles/` |
 | 컴포넌트 CSS | `src/styles/components/` |
 | 페이지 CSS | `src/styles/pages/` (+ `index.css`에 import) |
+| 가이드 전용 데모 | `src/pages/guide/` |
 | 정적 파일 (이미지·아이콘·폰트·영상) | `public/assets/...` |
+| svg / webp | `public/assets/images/...` |
 
 공개 URL 경로는 **`/assets/...`** 를 쓴다. 루트 `assets/` 폴더는 두지 않는다.
 
@@ -165,10 +174,18 @@ pock/
 
 주요 키 예: `pock.auth`, `pock.coin`, `pock.ownedLetters`, `pock.userSent`, `pock.unlockedHints`
 
-### 7. 반응형 컴포넌트
+### 7. 반응형 · 주요 컴포넌트
 
 - `useBreakpoint()` → `"mo" | "tb" | "pc"` (1024 / 1920 기준).
 - Letter_write·Friend_list·Navigation 등은 브레이크포인트에 맞는 modifier 클래스를 붙인다 (`letter-write--mo`, `navigation--pad` 등).
+
+| 컴포넌트 | 메모 |
+|----------|------|
+| `Letter` | 편지지 하단 오른쪽 날짜 = **받은 날짜** (`aria-label="받은 날짜"`) |
+| `Letter_write` | 하단 날짜 = **작성일** (읽기 전용 `time`) |
+| `Friend_list` | 헤더·「친구 관리」고정. 연한 파란 pane 안 목록만 세로 스크롤. 디자인 스크롤바(색·두께·배치) 유지 + thumb 연동 (`PockWindowScrollbar` / `useDesignScrollbar`) |
+| `SearchInput` | 기본 placeholder `검색어를 입력하세요.` · **포커스 시 숨김**, blur 시 복구 |
+| Onboarding Guide Popup | `/guide` 데모 `GuideOnboardDemo` — 점 8개, 마지막 단계에서 버튼 문구 **완료** |
 
 ### 8. 하지 말 것
 
@@ -186,4 +203,5 @@ pock/
 
 - 컴포넌트·컬러·타이포 시안: 개발 서버 **[/guide](http://localhost:5173/guide)**
 - Cursor 에이전트용 요약 규칙: [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc)
+- 가이드 섹션 레이아웃: [`.cursor/rules/guide-section.mdc`](.cursor/rules/guide-section.mdc)
 - 전환 전 스냅샷: [`legacy/README.md`](legacy/README.md)
