@@ -157,18 +157,17 @@
   width: 1.1875rem; /* 19 — letter-clover-pattern */
   background-image: url("/assets/images/letter/letter-clover-pattern.svg");
   background-repeat: repeat-y;
-  background-size: 100% auto;
+  background-size: 1.1875rem 27.75rem; /* 19×444 — SVG 원본 타일 */
+  background-position: top center;
   pointer-events: none;
 }
 
 .letter--clover::before {
   left: 0.375rem; /* 6 — 편지지와 간격 */
-  background-position: left center;
 }
 
 .letter--clover::after {
   right: 0.375rem; /* 6 — 편지지와 간격 */
-  background-position: right center;
 }
 
 .letter--clover .letter__media,
