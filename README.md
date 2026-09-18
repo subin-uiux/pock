@@ -38,12 +38,11 @@ npm run dev
 ```
 pock/
 ├── index.html                 # Vite SPA 진입점 (유일하게 루트에서 서빙되는 HTML)
-├── public/assets/             # 런타임 정적 자원 → URL /assets/...
+├── public/assets/             # ✅ 정적 자원 수정 위치 → URL /assets/...
 │   ├── images/
 │   ├── icons/
-│   └── fonts/
-├── assets/                    # 디자인 원본 이미지·아이콘·폰트 (편집 후 public에 반영)
-│   └── css/                   # ⚠️ 레거시 잔존. 앱은 사용하지 않음 → src/styles 만 수정
+│   ├── fonts/
+│   └── videos/
 ├── src/
 │   ├── main.tsx               # styles/index.css 진입
 │   ├── App.tsx                # 라우트
@@ -56,7 +55,7 @@ pock/
 │   ├── data/
 │   ├── lib/
 │   ├── types/
-│   └── styles/                # ✅ CSS 단일 소스
+│   └── styles/                # ✅ CSS 수정 위치
 │       ├── index.css          # 모든 CSS import (guide.css 포함)
 │       ├── variables.css
 │       ├── components/
@@ -67,14 +66,14 @@ pock/
     └── pages/guide.html
 ```
 
-### CSS 소스 오브 트루스
+### 수정 위치 (두 곳만)
 
-| 경로 | 상태 |
-|------|------|
-| **`src/styles/`** | **유일한 수정·사용 대상** (`main.tsx` → `index.css`) |
-| `assets/css/` | 구 가이드용 복사본. **수정하지 말 것** (정리 예정) |
-| `public/assets/css/` | `assets` 통째 복사 잔존. **앱 미사용** (정리 예정) |
-| `legacy/css/` | 구 루트 `css/` 스냅샷 |
+| 무엇을 | 어디 |
+|--------|------|
+| **CSS** | **`src/styles/`** 만 (`main.tsx` → `index.css`) |
+| **이미지·아이콘·폰트·영상** | **`public/assets/`** 만 (URL은 `/assets/...`) |
+
+`legacy/`는 참고용 스냅샷이다. 앱 CSS·에셋을 여기서 고치지 않는다.
 
 새 CSS 파일은 반드시 [`src/styles/index.css`](src/styles/index.css)에 `@import`를 추가한다.  
 가이드 페이지 깨짐 방지: `pages/guide.css` import가 빠져 있지 않은지 확인한다.
@@ -143,10 +142,9 @@ pock/
 | 공통 CSS | `src/styles/` |
 | 컴포넌트 CSS | `src/styles/components/` |
 | 페이지 CSS | `src/styles/pages/` (+ `index.css`에 import) |
-| 런타임 정적 파일 | `public/assets/...` |
-| 원본 에셋 보관 | 루트 `assets/` (이미지·폰트 추가 시 `public/assets`에도 복사) |
+| 정적 파일 (이미지·아이콘·폰트·영상) | `public/assets/...` |
 
-공개 URL 경로는 **`/assets/...`** 를 쓴다.
+공개 URL 경로는 **`/assets/...`** 를 쓴다. 루트 `assets/` 폴더는 두지 않는다.
 
 ### 5. React / 접근성
 
@@ -170,7 +168,7 @@ pock/
 ### 7. 반응형 컴포넌트
 
 - `useBreakpoint()` → `"mo" | "tb" | "pc"` (1024 / 1920 기준).
-- LetterWrite·FriendWindow·Navigation 등은 브레이크포인트에 맞는 modifier 클래스를 붙인다 (`letter-write--mo`, `navigation--pad` 등).
+- Letter_write·Friend_list·Navigation 등은 브레이크포인트에 맞는 modifier 클래스를 붙인다 (`letter-write--mo`, `navigation--pad` 등).
 
 ### 8. 하지 말 것
 
@@ -178,7 +176,7 @@ pock/
   Vite가 `/guide`로 HTML을 우선 서빙하면 리다이렉트 스텁과 겹쳐 **무한 새로고침**이 난다. 가이드는 React 라우트 `/guide`만 사용한다.
 - 루트 레거시 HTML을 다시 앱 진입점으로 쓰기
 - `legacy/`를 실행·배포 대상으로 삼기
-- `assets/css`·`public/assets/css`만 고치고 `src/styles`를 안 고치기
+- 루트 `assets/` 또는 `public/assets/css`·`js`를 다시 만들고 CSS를 이중 관리하기
 - Kakao 실연동·백엔드 API를 시안 작업과 한꺼번에 넣기
 - ScrollSmoother 등 라이선스 플러그인을 임의 추가
 

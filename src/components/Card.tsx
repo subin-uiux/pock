@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { LetterCardVariant } from "@/types";
 
-interface LetterCardProps {
+interface CardProps {
   target: string;
   variant: LetterCardVariant;
   moreHref?: string;
@@ -14,7 +14,7 @@ interface LetterCardProps {
   totalBlocks?: number;
 }
 
-export function LetterCard({
+export function Card({
   target,
   variant,
   moreHref = "#",
@@ -25,7 +25,7 @@ export function LetterCard({
   receiver,
   filledBlocks = 7,
   totalBlocks = 10,
-}: LetterCardProps) {
+}: CardProps) {
   const isOpen = variant === "open";
 
   return (

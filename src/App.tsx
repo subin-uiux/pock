@@ -29,7 +29,6 @@ export default function App() {
           element={
             <AppLayout
               pageClassName="page--login"
-              showHeader={false}
               showNav={false}
             />
           }
@@ -57,7 +56,7 @@ export default function App() {
         </Route>
 
         <Route element={<RequireAuth />}>
-          <Route element={<AppLayout pageClassName="page--home" title="POCK" />}>
+          <Route element={<AppLayout pageClassName="page--home" />}>
             <Route path="/home" element={<HomePage />} />
           </Route>
 
