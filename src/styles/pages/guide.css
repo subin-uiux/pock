@@ -495,7 +495,7 @@
 
 .btn-system__rows {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
   gap: var(--spacing-md);
 }
@@ -517,6 +517,10 @@
   padding: var(--spacing-lg) var(--spacing-md);
   border-radius: 1.25rem;
   background-color: var(--color-base-0);
+}
+
+.btn-system__board--push {
+  margin-bottom: var(--spacing-md);
 }
 
 .btn-system__card-title {
@@ -541,6 +545,28 @@
   color: var(--color-base-800);
   font-size: 1rem;
   line-height: var(--line-height-tight);
+}
+
+.btn-system__hint {
+  margin: 0;
+  color: var(--color-base-600);
+  font-family: var(--font-family-document);
+  font-size: 1rem;
+  line-height: var(--line-height-base);
+}
+
+/* Push Mo: 드래그로 320~460 폭 확인 */
+.btn-system__resize {
+  box-sizing: border-box;
+  width: 28.75rem; /* 460 — 최대에서 시작 */
+  min-width: 20rem; /* 320 */
+  max-width: min(28.75rem, 100%); /* 460 */
+  padding: var(--spacing-md);
+  overflow: auto;
+  resize: horizontal;
+  border: 1px dashed var(--color-base-400);
+  border-radius: 0.75rem;
+  background-color: var(--color-base-0);
 }
 
 .btn-system__stack {
@@ -937,24 +963,32 @@
   line-height: var(--line-height-tight);
 }
 
-.navigation--preview {
-  position: static;
+.nav-system__hint {
+  margin: 0;
+  color: var(--color-base-600);
+  font-family: var(--font-family-document);
+  font-size: 1rem;
+  line-height: var(--line-height-base);
+}
+
+/* Mo: 드래그로 너비 조절 → 그라데이션만 늘어남 확인 */
+.nav-system__resize {
+  box-sizing: border-box;
   width: 100%;
-  padding: 0;
-  background: transparent;
+  min-width: 22.5rem; /* 360 — 아이콘 묶음 최소 */
+  max-width: 100%;
+  padding: var(--spacing-md);
+  overflow: auto;
+  resize: horizontal;
+  border: 1px dashed var(--color-base-400);
+  border-radius: 0.75rem;
+  background-color: var(--color-base-0);
 }
 
-.navigation--mo,
-.navigation--mo .navigation__list {
-  width: min(100%, 22.5rem);
-}
-
-.navigation--pad {
-  width: min(100%, 30.4375rem);
-}
-
-.navigation--preview .navigation__list::before {
-  border-radius: 0.625rem 0.625rem 0 0;
+.nav-system__pad-frame {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .type-system__board {

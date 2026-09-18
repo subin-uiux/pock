@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import {
+  LetterCardTimerText,
+  LETTER_CARD_DEFAULT_TIMER,
+} from "@/components/LetterCardTimerText";
 import type { LetterCardVariant } from "@/types";
 
 interface CardProps {
@@ -6,6 +10,7 @@ interface CardProps {
   variant: LetterCardVariant;
   moreHref?: string;
   dday?: string;
+  /** 타이머 시작값 "HH:MM:SS" — variant="timer"일 때 실시간 감소 */
   timer?: string;
   title?: string;
   openDate?: string;
@@ -14,12 +19,20 @@ interface CardProps {
   totalBlocks?: number;
 }
 
+function LetterCardTimerStatus({ initial }: { initial: string }) {
+  return (
+    <div className="letter-card__status letter-card__status--timer">
+      <LetterCardTimerText initial={initial} />
+    </div>
+  );
+}
+
 export function Card({
   target,
   variant,
   moreHref = "#",
   dday,
-  timer,
+  timer = LETTER_CARD_DEFAULT_TIMER,
   title,
   openDate,
   receiver,
@@ -59,7 +72,7 @@ export function Card({
           <span className="letter-card__lock" aria-hidden="true">
             <img
               className="letter-card__lock-image"
-              src="/assets/images/letter/letter-lock-icon.svg"
+              src="/assets/images/letter/letter-lock-icon.png"
               alt=""
               width={40}
               height={40}
@@ -86,9 +99,7 @@ export function Card({
           ) : null}
 
           {variant === "timer" ? (
-            <div className="letter-card__status letter-card__status--timer">
-              {timer ?? "22:07:32"}
-            </div>
+            <LetterCardTimerStatus initial={timer} />
           ) : null}
 
           {variant === "unopened" ? (
@@ -101,3 +112,5 @@ export function Card({
     </article>
   );
 }
+
+export { LetterCardTimerText } from "@/components/LetterCardTimerText";

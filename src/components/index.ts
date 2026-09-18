@@ -4,7 +4,7 @@ export { Button } from "./Button";
 export { SearchInput } from "./SearchInput";
 export { DimmedOverlay } from "./DimmedOverlay";
 export { Popup } from "./Popup";
-export { Card } from "./Card";
+export { Card, LetterCardTimerText } from "./Card";
 export { Letter } from "./Letter";
 export { Letter_write } from "./Letter_write";
 export { Friend_list } from "./Friend_list";

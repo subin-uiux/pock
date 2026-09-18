@@ -1,13 +1,36 @@
 /**
  * navigation.css
- * 하단 내비게이션. 메뉴 글자는 1rem(16px).
+ * 하단 내비게이션.
+ * Mo: 아이콘 묶음 360(패딩 20 포함) · 그라데이션 풀폭 · 높이 72
+ * Pad/Pc: 아이콘 gap 26 · 그라데이션 485 고정 · 높이 66
+ * 아이콘: Mo 54→56, Pad/Pc 50→56 (활성·hover)
  */
 
 .page--has-navigation,
 .navigation {
-  --navigation-bar-width: 30.4375rem; /* 487px */
-  --navigation-bar-height: 4.5rem; /* 72px */
-  --navigation-icon-size: 2.75rem;
+  --navigation-bar-height: 4.5rem; /* Mo 72 */
+  --navigation-shell-width: 100%;
+  --navigation-list-width: 22.5rem; /* Mo 아이콘 묶음 360 */
+  --navigation-list-padding-x: 1.25rem; /* 20 */
+  /* 레이아웃 슬롯 = 기본 크기 → space-between 간격 확보. 확대는 scale만 */
+  --navigation-icon-size: 3.375rem; /* Mo 54 */
+  --navigation-icon-size-active: 3.5rem; /* 56 — 세로 여유 */
+  --navigation-icon-scale-active: calc(56 / 54);
+}
+
+.navigation--pad {
+  --navigation-bar-height: 4.125rem; /* 66 */
+  --navigation-shell-width: 30.3125rem; /* 485 */
+  --navigation-list-width: 100%;
+  --navigation-list-padding-x: 0;
+  --navigation-icon-size: 3.125rem; /* Pad/Pc 50 */
+  --navigation-icon-scale-active: calc(56 / 50);
+}
+
+@media (min-width: 1024px) {
+  .page--has-navigation {
+    --navigation-bar-height: 4.125rem; /* Pad/Pc 하단 여백 */
+  }
 }
 
 .navigation--fixed {
@@ -16,21 +39,20 @@
   bottom: 0;
   left: 0;
   z-index: var(--z-index-navigation);
+  display: flex;
+  justify-content: center;
   padding: 0 0 env(safe-area-inset-bottom);
 }
 
-.navigation__list {
+.navigation__shell {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: min(100%, var(--navigation-bar-width));
-  min-height: calc(var(--navigation-bar-height) + 1.75rem);
-  margin: 0 auto;
-  padding: 1.75rem 1.25rem 1.25rem;
+  box-sizing: border-box;
+  width: var(--navigation-shell-width);
+  max-width: 100%;
 }
 
-.navigation__list::before {
+/* 그라데이션 바 — Mo는 shell=100%라 화면만큼, Pad/Pc는 485 고정 */
+.navigation__shell::before {
   content: "";
   position: absolute;
   right: 0;
@@ -40,7 +62,31 @@
   height: var(--navigation-bar-height);
   border: 1px solid var(--color-base-700);
   border-radius: 0.625rem 0.625rem 0 0;
-  background: linear-gradient(180deg, var(--color-base-0) 0%, var(--color-base-400) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-base-0) 0%,
+    var(--color-base-400) 100%
+  );
+}
+
+.navigation__list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: min(100%, var(--navigation-list-width));
+  min-height: calc(var(--navigation-bar-height) + 1.75rem);
+  margin: 0 auto;
+  padding: 1.75rem var(--navigation-list-padding-x) 1.25rem;
+  list-style: none;
+}
+
+.navigation--pad .navigation__list {
+  justify-content: center;
+  gap: 1.625rem; /* 26 */
+  width: 100%;
 }
 
 .navigation__item {
@@ -57,27 +103,43 @@
   align-items: center;
   justify-content: flex-end;
   gap: 0.125rem;
-  min-height: 2.75rem;
+  min-height: var(--navigation-icon-size-active);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
   color: var(--color-base-900);
+  font: inherit;
   font-size: 1rem;
   line-height: var(--line-height-tight);
   text-align: center;
+  cursor: pointer;
 }
 
 .navigation__icon {
+  /* 슬롯 = 기본 크기(54/50). hover·활성만 scale → 옆 아이템 안 밀림 */
+  display: block;
   width: var(--navigation-icon-size);
   height: var(--navigation-icon-size);
   object-fit: contain;
+  transform: scale(1);
+  transform-origin: center bottom;
+  transition: transform var(--duration-base, 250ms) var(--ease-base, ease);
 }
 
 .navigation__label {
   display: block;
   white-space: nowrap;
+  /* stroke 색은 항상 white — 두께만 활성 시 적용 (보간 시 검정 깜빡임 방지) */
+  -webkit-text-stroke: 0 #ffffff;
+  paint-order: stroke fill;
 }
 
+/* 활성 · hover: stroke + 아이콘 확대 (레이아웃 크기 불변) */
+.navigation__link:hover .navigation__icon,
+.navigation__link:focus-visible .navigation__icon,
 .navigation__link--active .navigation__icon {
-  width: 3.75rem; /* 60px */
-  height: 3.75rem;
+  transform: scale(var(--navigation-icon-scale-active));
   filter:
     drop-shadow(0.125rem 0 0 #ffffff)
     drop-shadow(-0.125rem 0 0 #ffffff)
@@ -89,29 +151,37 @@
     drop-shadow(-0.0875rem -0.0875rem 0 #ffffff);
 }
 
+.navigation__link:hover .navigation__label,
+.navigation__link:focus-visible .navigation__label,
 .navigation__link--active .navigation__label {
   -webkit-text-stroke: 0.125rem #ffffff; /* 2px */
-  paint-order: stroke fill;
 }
 
 .page--has-navigation .page__wrapper {
-  padding-bottom: calc(var(--navigation-bar-height) + 2.25rem + env(safe-area-inset-bottom));
+  padding-bottom: calc(
+    var(--navigation-bar-height) + 2.25rem + env(safe-area-inset-bottom)
+  );
 }
 
-.navigation--mo,
-.navigation--mo .navigation__list {
-  width: min(100%, 22.5rem); /* 360 */
+/* 가이드 미리보기: fixed 해제 */
+.navigation--preview {
+  position: static;
+  padding: 0;
+  background: transparent;
 }
 
-.navigation--pad,
-.navigation--pad .navigation__list {
-  width: min(100%, var(--navigation-bar-width)); /* 487 */
+.navigation--preview.navigation--mo {
+  width: 100%;
 }
 
-@media (min-width: 1024px) {
-  .navigation--pad .navigation__list {
-    padding-inline: 1.5rem;
+.navigation--preview.navigation--pad {
+  width: var(--navigation-shell-width); /* 485 */
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation__icon {
+    transition: none;
   }
 }
-
-
