@@ -6,6 +6,7 @@ export { DimmedOverlay } from "./DimmedOverlay";
 export { Popup } from "./Popup";
 export { Card, LetterCardTimerText } from "./Card";
 export { Letter } from "./Letter";
+export { MailboxLetterLayer } from "./MailboxLetterLayer";
 export { Letter_write } from "./Letter_write";
 export { Friend_list } from "./Friend_list";
 export { CoinBadge } from "./CoinBadge";

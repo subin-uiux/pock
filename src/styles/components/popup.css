@@ -167,3 +167,11 @@
   line-height: var(--line-height-tight); /* 임시값 */
   cursor: pointer;
 }
+
+.onboard-popup__next {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 4.6875rem; /* 75 */
+  min-width: 4.6875rem; /* Push btn 320~460 해제 */
+  max-width: 4.6875rem;
+}

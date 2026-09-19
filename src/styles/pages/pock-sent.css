@@ -1,8 +1,4 @@
 /**
  * pock-sent.css
- * 목록 레이아웃은 pock-received.css의 .pock-list 공유
+ * 목록 레이아웃은 pock-received.css의 .pock-mailbox 공유
  */
-
-.page--pock-sent .pock-list__title {
-  color: var(--color-base-900);
-}

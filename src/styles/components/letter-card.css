@@ -1,6 +1,6 @@
 /**
  * letter-card.css
- * 발신함·수신함 카드. 모바일 기본.
+ * 전송함·보관함 카드. 모바일 기본.
  */
 
 .letter-card {
@@ -37,8 +37,7 @@
   box-sizing: border-box;
   width: 100%;
   min-width: 17.25rem; /* 276 */
-  height: auto;
-  min-height: 0;
+  height: 12.5rem; /* 200 — 잠김·Box 카드와 동일 */
   padding: 0.75rem;
   border: 1px solid var(--color-base-300);
   background: linear-gradient(180deg, var(--color-base-0) 0%, #ffe9f0 100%);
@@ -46,20 +45,18 @@
   font-family: var(--font-family-base); /* Neo */
 }
 
-/* Open Mo: 고정 276×200 해제 → 컨테이너 폭에 맞춤 */
+/* Open: 폭만 컨테이너에 맞춤, 높이는 다른 카드와 200 유지 */
 .letter-card--open.letter-card--mo {
   width: 100%;
   min-width: 17.25rem; /* 276 */
-  height: auto;
-  min-height: calc(7.5rem + 1.5rem); /* thumb 120 + pad 12×2 */
+  height: 12.5rem;
 }
 
 .letter-card--open.letter-card--tb {
   width: 100%;
   min-width: 17.25rem; /* 276 */
   max-width: none;
-  height: auto;
-  min-height: calc(9.375rem + 1.5rem); /* thumb 150 + pad */
+  height: 12.5rem;
 }
 
 .letter-card__body {
@@ -117,6 +114,7 @@
   justify-content: center;
   box-sizing: border-box;
   width: 15.625rem; /* 250px */
+  max-width: 100%;
   height: 1.5rem; /* 24px */
   padding: 0 0.5rem;
   border: 1px solid var(--color-base-700);
@@ -225,6 +223,7 @@
   align-items: flex-end;
   gap: 0.25rem;
   width: 15.625rem; /* status 250px 기준 */
+  max-width: 100%;
 }
 
 .letter-card__reward {
@@ -275,6 +274,8 @@
   border-radius: 0;
   background-color: var(--color-base-200);
   object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .letter-card__meta {
@@ -301,11 +302,17 @@
   position: absolute;
   top: 0.9375rem; /* 15px */
   right: 0.9375rem; /* 15px */
-  z-index: 1;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--color-base-300);
   font-family: var(--font-family-base); /* Neo */
   font-size: 0.75rem; /* 12px */
   line-height: var(--line-height-tight);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .letter-card--tb .letter-card__target,
@@ -338,7 +345,7 @@
 
 @media (min-width: 1024px) {
   .letter-card--open:not(.letter-card--mo) {
-    min-height: calc(9.375rem + 1.5rem);
+    height: 12.5rem; /* 200 — 다른 카드와 동일 */
   }
 
   .letter-card--open:not(.letter-card--mo) .letter-card__open {
