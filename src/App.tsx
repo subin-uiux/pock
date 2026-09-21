@@ -56,6 +56,29 @@ export default function App() {
           <Route path="/terms" element={<TermsPage />} />
         </Route>
 
+        {/* 검수용 — 로그인 없이 보관함·전송함 확인 */}
+        <Route element={<AppLayout pageClassName="page--pock-received" />}>
+          <Route path="/pock-received" element={<PockReceivedPage />} />
+        </Route>
+
+        <Route element={<AppLayout pageClassName="page--pock-sent" />}>
+          <Route path="/pock-sent" element={<PockSentPage />} />
+        </Route>
+
+        <Route
+          element={
+            <AppLayout
+              pageClassName="page--pock-mailbox-friends"
+              showNav={false}
+            />
+          }
+        >
+          <Route
+            path="/pock-mailbox-friends"
+            element={<PockMailboxFriendsPage />}
+          />
+        </Route>
+
         <Route element={<RequireAuth />}>
           <Route element={<AppLayout pageClassName="page--home" />}>
             <Route path="/home" element={<HomePage />} />
@@ -79,28 +102,6 @@ export default function App() {
 
           <Route element={<AppLayout pageClassName="page--letter-store" />}>
             <Route path="/letter-store" element={<LetterStorePage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--pock-received" />}>
-            <Route path="/pock-received" element={<PockReceivedPage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--pock-sent" />}>
-            <Route path="/pock-sent" element={<PockSentPage />} />
-          </Route>
-
-          <Route
-            element={
-              <AppLayout
-                pageClassName="page--pock-mailbox-friends"
-                showNav={false}
-              />
-            }
-          >
-            <Route
-              path="/pock-mailbox-friends"
-              element={<PockMailboxFriendsPage />}
-            />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--pock-send" />}>

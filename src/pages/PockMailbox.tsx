@@ -294,7 +294,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
                 sender={isReceived ? item.target : undefined}
                 receiver={isReceived ? undefined : item.target}
                 onMoreClick={
-                  tab === "open" && item.variant === "open"
+                  mailbox === "sent" || item.variant === "open"
                     ? () => openFull(item)
                     : undefined
                 }
