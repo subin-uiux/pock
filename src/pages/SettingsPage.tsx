@@ -115,7 +115,7 @@ export function SettingsPage() {
           <div className="settings-profile__avatar">
             <img
               className="settings-profile__avatar-img"
-              src="/assets/images/setting/girl-profile.png"
+              src="/assets/images/setting/girl.svg"
               alt=""
               width={80}
               height={80}

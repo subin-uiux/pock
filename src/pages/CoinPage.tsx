@@ -75,10 +75,17 @@ export function CoinPage() {
   const [selectedPack, setSelectedPack] = useState<(typeof COIN_PACKS)[number] | null>(
     null,
   );
+  const [toastOpen, setToastOpen] = useState(false);
 
   useEffect(() => {
     document.title = "코인 상점 ㅣ POCK";
   }, []);
+
+  useEffect(() => {
+    if (!toastOpen) return;
+    const timer = window.setTimeout(() => setToastOpen(false), 2500);
+    return () => window.clearTimeout(timer);
+  }, [toastOpen]);
 
   const goBack = () => {
     if (window.history.length > 1) {
@@ -96,6 +103,11 @@ export function CoinPage() {
   const closeBuyPopup = () => {
     setBuyOpen(false);
     setSelectedPack(null);
+  };
+
+  const confirmBuy = () => {
+    closeBuyPopup();
+    setToastOpen(true);
   };
 
   return (
@@ -231,10 +243,17 @@ export function CoinPage() {
         message="코인을 구매하시겠습니까?"
         confirmLabel="확인"
         cancelLabel="취소"
-        onConfirm={closeBuyPopup}
+        onConfirm={confirmBuy}
         onCancel={closeBuyPopup}
         onClose={closeBuyPopup}
       />
+
+      {toastOpen ? (
+        <div className="coin-toast" role="status" aria-live="polite">
+          <span className="coin-toast__icon" aria-hidden="true" />
+          <p className="coin-toast__text">코인 구매를 성공했습니다!</p>
+        </div>
+      ) : null}
     </section>
   );
 }

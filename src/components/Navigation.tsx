@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 const NAV_ITEMS = [
@@ -32,6 +32,15 @@ const NAV_ITEMS = [
 
 type NavTo = (typeof NAV_ITEMS)[number]["to"];
 
+/** 설정 하위 경로 — 코인샵·마이페이지도 설정 활성 */
+const SETTINGS_ACTIVE_PATHS = ["/settings", "/coin", "/mypage"] as const;
+
+function isSettingsActivePath(pathname: string) {
+  return SETTINGS_ACTIVE_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+}
+
 interface NavigationProps {
   /** 가이드 미리보기용 — fixed 해제 */
   preview?: boolean;
@@ -41,6 +50,7 @@ interface NavigationProps {
 
 export function Navigation({ preview = false, forceDevice }: NavigationProps) {
   const size = useBreakpoint();
+  const location = useLocation();
   const isMo =
     forceDevice === "mo" || (forceDevice !== "pad" && size === "mo");
   const deviceClass = isMo ? "navigation--mo" : "navigation--pad";
@@ -81,28 +91,38 @@ export function Navigation({ preview = false, forceDevice }: NavigationProps) {
               ) : (
                 <NavLink
                   to={item.to}
-                  className={({ isActive }) =>
-                    isActive
+                  className={({ isActive }) => {
+                    const active =
+                      isActive ||
+                      (item.to === "/settings" &&
+                        isSettingsActivePath(location.pathname));
+                    return active
                       ? "navigation__link navigation__link--active"
-                      : "navigation__link"
-                  }
+                      : "navigation__link";
+                  }}
                   end={item.to === "/home"}
                 >
-                  {({ isActive }) => (
-                    <>
-                      <img
-                        className="navigation__icon"
-                        src={item.icon}
-                        alt=""
-                        width={56}
-                        height={56}
-                      />
-                      <span className="navigation__label">{item.label}</span>
-                      {isActive ? (
-                        <span className="visually-hidden">(현재 페이지)</span>
-                      ) : null}
-                    </>
-                  )}
+                  {({ isActive }) => {
+                    const active =
+                      isActive ||
+                      (item.to === "/settings" &&
+                        isSettingsActivePath(location.pathname));
+                    return (
+                      <>
+                        <img
+                          className="navigation__icon"
+                          src={item.icon}
+                          alt=""
+                          width={56}
+                          height={56}
+                        />
+                        <span className="navigation__label">{item.label}</span>
+                        {active ? (
+                          <span className="visually-hidden">(현재 페이지)</span>
+                        ) : null}
+                      </>
+                    );
+                  }}
                 </NavLink>
               )}
             </li>

@@ -57,13 +57,21 @@ export default function App() {
           <Route path="/terms" element={<TermsPage />} />
         </Route>
 
-        {/* 검수용 — 로그인 없이 보관함·전송함 확인 */}
+        {/* 검수용 — 로그인 없이 확인 */}
         <Route element={<AppLayout pageClassName="page--pock-received" />}>
           <Route path="/pock-received" element={<PockReceivedPage />} />
         </Route>
 
         <Route element={<AppLayout pageClassName="page--pock-sent" />}>
           <Route path="/pock-sent" element={<PockSentPage />} />
+        </Route>
+
+        <Route element={<AppLayout pageClassName="page--coin" />}>
+          <Route path="/coin" element={<CoinPage />} />
+        </Route>
+
+        <Route element={<AppLayout pageClassName="page--mypage" />}>
+          <Route path="/mypage" element={<MyPage />} />
         </Route>
 
         <Route
@@ -99,14 +107,6 @@ export default function App() {
             }
           >
             <Route path="/Friend_list" element={<Friend_listPage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--mypage" />}>
-            <Route path="/mypage" element={<MyPage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--coin" />}>
-            <Route path="/coin" element={<CoinPage />} />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--letter-store" />}>

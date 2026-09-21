@@ -294,4 +294,60 @@
     height: 3.9375rem; /* 63 */
     min-height: 3.9375rem;
   }
+
+  /* Pad/Pc 네비 아이콘 50 */
+  .coin-toast {
+    bottom: calc(
+      env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+        3.125rem + 1.0625rem
+    );
+  }
+}
+
+/* 구매 성공 토스트 — 436×51 · 모서리 10 · rainbow/blue/base */
+.coin-toast {
+  position: fixed;
+  left: 50%;
+  /* 네비: 하단패딩20 + 라벨(1rem×1.25) + gap2 + 아이콘 + 간격17 */
+  bottom: calc(
+    env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+      var(--navigation-icon-size, 3.375rem) + 1.0625rem
+  );
+  z-index: var(--z-index-toast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 — 아이콘↔텍스트 */
+  box-sizing: border-box;
+  width: 27.25rem; /* 436 */
+  max-width: calc(100% - 2.5rem);
+  height: 3.1875rem; /* 51 */
+  padding: 0 1.25rem; /* 좌우 임시값 */
+  border-radius: 0.625rem; /* 10 */
+  background-color: var(--color-rainbow-blue-base); /* #058aff */
+  box-shadow: inset 0 0.25rem 0.3125rem 0 rgba(255, 255, 255, 0.25); /* #fff 25% · Y4 blur5 */
+  color: var(--color-base-0);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.coin-toast__icon {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 1rem; /* 16 */
+  height: 1rem; /* 16 */
+  border: 1.5px solid var(--color-base-0);
+  border-radius: var(--radius-full);
+  background-color: var(--color-base-0);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%23058AFF' d='M4.5 8.5L2 6l.7-.7 1.8 1.8L9.3 2.3l.7.7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.625rem 0.625rem;
+}
+
+.coin-toast__text {
+  margin: 0;
+  font-size: 0.875rem; /* 14 — 임시값 */
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
 }
