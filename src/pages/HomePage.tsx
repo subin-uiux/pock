@@ -1,8 +1,13 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FriendProfilePopup } from "@/components/FriendProfilePopup";
+import { OnboardGuide } from "@/components/OnboardGuide";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { homeFriendNames as HOME_FRIEND_NAMES } from "@/data/home-friends";
+import {
+  markHomeOnboardSeen,
+  shouldOpenHomeOnboard,
+} from "@/lib/home-onboard";
 import {
   CHARACTER_BASE,
   getOutfitById,
@@ -29,6 +34,7 @@ const DEMO_HOME_ALERT_UNREAD = true;
  */
 export function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const listRef = useRef<HTMLUListElement>(null);
   const saved = getProfileSetup();
   const character = saved.character;
@@ -38,6 +44,11 @@ export function HomePage() {
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
   const [friends, setFriends] = useState<string[]>(() => [...HOME_FRIEND_NAMES]);
   const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+  const [onboardOpen, setOnboardOpen] = useState(() => {
+    const fromComplete =
+      (location.state as { showOnboard?: boolean } | null)?.showOnboard === true;
+    return fromComplete || shouldOpenHomeOnboard();
+  });
 
   const outfit = useMemo(
     () => (character ? getOutfitById(character, saved.outfit) : null),
@@ -47,6 +58,13 @@ export function HomePage() {
   useEffect(() => {
     document.title = "홈 ㅣ POCK";
   }, []);
+
+  useEffect(() => {
+    const state = location.state as { showOnboard?: boolean } | null;
+    if (!state?.showOnboard) return;
+    setOnboardOpen(true);
+    navigate(location.pathname, { replace: true, state: {} });
+  }, [location.pathname, location.state, navigate]);
 
   useEffect(() => {
     const mqTb = window.matchMedia(MQ_TB);
@@ -67,6 +85,11 @@ export function HomePage() {
 
   const popupSize = size === "mo" ? "mo" : "tb";
 
+  const finishOnboard = () => {
+    markHomeOnboardSeen();
+    setOnboardOpen(false);
+  };
+
   return (
     <section className="home" aria-label="홈">
       <button
@@ -75,6 +98,7 @@ export function HomePage() {
           hasAlert ? "home__alert home__alert--unread" : "home__alert"
         }
         aria-label={hasAlert ? "알림, 새 알림 있음" : "알림"}
+        data-onboard="alert"
         onClick={() => navigate("/notice")}
       >
         <img
@@ -90,7 +114,11 @@ export function HomePage() {
       </button>
 
       <div className="home__stage">
-        <aside className="home__profile" aria-label="내 프로필">
+        <aside
+          className="home__profile"
+          aria-label="내 프로필"
+          data-onboard="profile"
+        >
           <div className="home__profile-figure" aria-hidden="true">
             {character ? (
               <>
@@ -164,11 +192,12 @@ export function HomePage() {
                   syncKey={friends.length}
                 />
                 <ul className="pock-window__list" ref={listRef}>
-                  {friends.map((name) => (
+                  {friends.map((name, index) => (
                     <li key={name}>
                       <button
                         type="button"
                         className="pock-window__item"
+                        data-onboard={index === 0 ? "friend" : undefined}
                         onClick={() => setSelectedFriend(name)}
                       >
                         <span
@@ -211,6 +240,12 @@ export function HomePage() {
           if (!selectedFriend) return;
           setFriends((prev) => prev.filter((n) => n !== selectedFriend));
         }}
+      />
+
+      <OnboardGuide
+        open={onboardOpen}
+        onSkip={finishOnboard}
+        onComplete={finishOnboard}
       />
     </section>
   );

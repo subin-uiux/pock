@@ -1,32 +1,89 @@
 /**
  * pock-send.css
+ * Page: .page--pock-send — Navigation 보내기 탭
  */
 
-.page--pock-send .main {
+.page--pock-send {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-mo.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page--pock-send .page__wrapper {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* 네비 위 영역 정중앙 · 상하 여백 100 · 편지지 잘림 없이 스크롤 */
+.page--pock-send .main,
+.page--pock-send.page--has-navigation .main {
+  display: flex;
+  flex: 1 1 auto;
   justify-content: center;
-  padding-top: 1rem;
+  align-items: safe center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 6.25rem 1.25rem; /* 상하 100 · 좌우 20 */
 }
 
 .pock-send {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
-  width: 100%;
-}
-
-.pock-send__toolbar {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: var(--spacing-md);
+  box-sizing: border-box;
   width: 100%;
+  max-width: 38.9375rem; /* 623 — Letter_write Tb/Pc 상한 */
+  min-width: 0;
+  margin-inline: auto;
+  flex-shrink: 0;
 }
 
 .pock-send__stage {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.pock-send__stage .letter-write {
+  margin-inline: auto;
+  flex-shrink: 0;
+}
+
+.pock-send__stage .letter-write--mo {
+  width: 100%;
+  max-width: 100%;
+}
+
+.pock-send__stage .letter-write--tb,
+.pock-send__stage .letter-write--pc {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 769px) {
+  .page--pock-send {
+    background-image: url("/assets/images/background/bg-pad.png");
+  }
+
+  /* 상하 여백 40 */
+  .page--pock-send .main,
+  .page--pock-send.page--has-navigation .main {
+    padding: 2.5rem 2rem; /* 상하 40 · 좌우 32 */
+  }
 }

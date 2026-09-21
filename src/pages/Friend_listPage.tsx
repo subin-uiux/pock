@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Friend_list } from "@/components/Friend_list";
+import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { friendItems } from "@/data/friend-data";
 import type { PockUser } from "@/types";
 
@@ -17,16 +18,17 @@ function getFriendListSize(): FriendListSize {
 }
 
 /**
- * 친구목록 `/Friend_list`
- * Friend_list 컴포넌트 페이지
+ * 친구 목록 관리 `/Friend_list`
+ * 설정 → 친구 목록 관리하기 · 홈 친구목록 → 친구 관리
  */
 export function Friend_listPage() {
   const navigate = useNavigate();
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [friends, setFriends] = useState<PockUser[]>(() => [...friendItems]);
+  const [selected, setSelected] = useState<PockUser | null>(null);
 
   useEffect(() => {
-    document.title = "친구목록 ㅣ POCK";
+    document.title = "친구 목록 관리 ㅣ POCK";
   }, []);
 
   useEffect(() => {
@@ -50,17 +52,32 @@ export function Friend_listPage() {
     navigate("/settings", { replace: true });
   };
 
+  const popupSize = size === "mo" ? "mo" : "tb";
+
   return (
-    <section className="friend-list-page" aria-label="친구목록">
+    <section className="friend-list-page" aria-label="친구 목록 관리">
       <Friend_list
         open
-        friends={friendItems}
-        selectedId={selectedId}
+        friends={friends}
+        selectedId={selected?.id ?? null}
         size={size}
+        showManage={false}
         onSelect={(friend: PockUser) => {
-          setSelectedId((prev) => (prev === friend.id ? null : friend.id));
+          setSelected((prev) => (prev?.id === friend.id ? null : friend));
         }}
         onClose={goBack}
+      />
+
+      <FriendProfilePopup
+        open={selected !== null}
+        name={selected?.name ?? ""}
+        profileImage={selected?.profileImage}
+        popupSize={popupSize}
+        onClose={() => setSelected(null)}
+        onDelete={() => {
+          if (!selected) return;
+          setFriends((prev) => prev.filter((f) => f.id !== selected.id));
+        }}
       />
     </section>
   );

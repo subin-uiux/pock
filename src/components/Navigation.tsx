@@ -1,32 +1,38 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { askLeave, shouldBlockLeave } from "@/lib/leave-guard";
 
 const NAV_ITEMS = [
   {
     to: "/home",
     label: "홈",
     icon: "/assets/icons/navigation/home.svg",
+    onboard: "nav-home",
   },
   {
     to: "/pock-received",
     label: "보관함",
     icon: "/assets/icons/navigation/Storage%20Box.svg",
+    onboard: "nav-received",
   },
   {
     to: "/pock-send",
     label: "보내기",
     icon: "/assets/icons/navigation/sand.svg",
+    onboard: "nav-send",
   },
   {
     to: "/pock-sent",
     label: "전송함",
     icon: "/assets/icons/navigation/Sent.svg",
+    onboard: "nav-sent",
   },
   {
     to: "/settings",
     label: "설정",
     icon: "/assets/icons/navigation/setting.svg",
+    onboard: "nav-settings",
   },
 ] as const;
 
@@ -41,6 +47,8 @@ interface NavigationProps {
 
 export function Navigation({ preview = false, forceDevice }: NavigationProps) {
   const size = useBreakpoint();
+  const navigate = useNavigate();
+  const location = useLocation();
   const isMo =
     forceDevice === "mo" || (forceDevice !== "pad" && size === "mo");
   const deviceClass = isMo ? "navigation--mo" : "navigation--pad";
@@ -67,6 +75,7 @@ export function Navigation({ preview = false, forceDevice }: NavigationProps) {
                       : "navigation__link"
                   }
                   aria-current={previewActive === item.to ? "page" : undefined}
+                  data-onboard={item.onboard}
                   onClick={() => setPreviewActive(item.to)}
                 >
                   <img
@@ -81,12 +90,19 @@ export function Navigation({ preview = false, forceDevice }: NavigationProps) {
               ) : (
                 <NavLink
                   to={item.to}
+                  data-onboard={item.onboard}
                   className={({ isActive }) =>
                     isActive
                       ? "navigation__link navigation__link--active"
                       : "navigation__link"
                   }
                   end={item.to === "/home"}
+                  onClick={(event) => {
+                    if (item.to === location.pathname) return;
+                    if (!shouldBlockLeave()) return;
+                    event.preventDefault();
+                    askLeave(() => navigate(item.to));
+                  }}
                 >
                   {({ isActive }) => (
                     <>

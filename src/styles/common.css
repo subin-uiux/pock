@@ -95,6 +95,11 @@
   z-index: 1;
 }
 
+.popup-layer .pock-window {
+  position: relative;
+  z-index: 1;
+}
+
 .page-section {
   display: flex;
   flex-direction: column;

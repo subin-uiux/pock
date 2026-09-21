@@ -1,24 +1,28 @@
 import { useState } from "react";
+import { HOME_ONBOARD_STEPS } from "@/data/home-onboard";
 
-const STEP_COUNT = 8;
-
-/** 가이드용 온보딩 팝업 데모 — 단계 카피 미확정, 페이지네이션만 동작 */
+/** 가이드용 온보딩 팝업 데모 — 홈 온보딩과 동일 단계 카피 */
 export function GuideOnboardDemo() {
   const [step, setStep] = useState(0);
-  const isLast = step === STEP_COUNT - 1;
+  const current = HOME_ONBOARD_STEPS[step];
+  const isLast = step === HOME_ONBOARD_STEPS.length - 1;
+  const descLines = current.description.split("\n");
 
   return (
     <article className="onboard-popup" aria-label="온보딩 가이드">
-      <h4 className="onboard-popup__title">내 프로필</h4>
+      <h4 className="onboard-popup__title">{current.title}</h4>
       <p className="onboard-popup__desc">
-        내 닉네임과 보유한 코인을
-        <br />
-        언제든지 확인할 수 있어요.
+        {descLines.map((line, index) => (
+          <span key={`${current.id}-${index}`}>
+            {index > 0 ? <br /> : null}
+            {line}
+          </span>
+        ))}
       </p>
       <ol className="onboard-popup__dots" aria-label="가이드 단계">
-        {Array.from({ length: STEP_COUNT }, (_, index) => (
+        {HOME_ONBOARD_STEPS.map((item, index) => (
           <li
-            key={index}
+            key={item.id}
             className={`onboard-popup__dot${index === step ? " is-active" : ""}`}
           />
         ))}
@@ -35,7 +39,11 @@ export function GuideOnboardDemo() {
           className="btn btn--push onboard-popup__next"
           type="button"
           onClick={() =>
-            setStep((current) => (current >= STEP_COUNT - 1 ? 0 : current + 1))
+            setStep((currentStep) =>
+              currentStep >= HOME_ONBOARD_STEPS.length - 1
+                ? 0
+                : currentStep + 1,
+            )
           }
         >
           {isLast ? "완료" : "다음"}
