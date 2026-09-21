@@ -26,6 +26,9 @@
 @import "./components/signup-step-gauge.css";
 @import "./components/selection-box.css";
 @import "./components/friend-checkbox.css";
+@import "./components/mailbox-letter.css";
+@import "./components/mailbox-sort.css";
+@import "./components/mailbox-search.css";
 
 @import "./pages/index.css";
 @import "./pages/login.css";
@@ -37,6 +40,7 @@
 @import "./pages/letter-store.css";
 @import "./pages/pock-received.css";
 @import "./pages/pock-sent.css";
+@import "./pages/pock-mailbox-friends.css";
 @import "./pages/pock-send.css";
 @import "./pages/pock-hint.css";
 @import "./pages/pock-detail.css";

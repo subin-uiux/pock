@@ -21,7 +21,7 @@
 .pock-send-category__divider {
   flex-shrink: 0;
   width: 1px;
-  background-color: var(--color-base-800);
+  background-color: var(--color-base-600); /* grey/600 */
 }
 
 .pock-send-category__button {
@@ -31,7 +31,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--color-base-800);
+  color: var(--color-base-800); /* 미선택 */
   cursor: pointer;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .pock-send-category__button--selected {
-  color: var(--color-brand-base); /* brand/cyworld/base */
+  color: var(--color-brand-base); /* brand/cyworld/base · 선택 */
 }
 
 /* Mobile — icon 24px */

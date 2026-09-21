@@ -1,6 +1,8 @@
 /**
  * button.css
  * 버튼 시스템. Push / Popup / Action.
+ * Push(Mo): 폭 min 320 · max 460, 화면(컨테이너)에 따라 유동
+ * Push(Pad/Pc): 460 고정
  * hover / pressed: #000000 10% overlay (시안)
  */
 
@@ -51,6 +53,27 @@
   border-radius: 0.625rem; /* 10 */
   border-color: var(--color-base-700);
   box-shadow: inset 0 0.25rem 0.3125rem 0 rgba(255, 255, 255, 0.25); /* #fff 25%, Y4 blur5 */
+}
+
+/* Push Mo: 컨테이너에 맞춰 늘어나되 320~460 */
+.btn--push-muted,
+.btn--push,
+.btn--push-green {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: min(100%, 20rem); /* 320 */
+  max-width: 28.75rem; /* 460 */
+}
+
+@media (min-width: 1024px) {
+  /* Push Pad/Pc: 460 고정 */
+  .btn--push-muted,
+  .btn--push,
+  .btn--push-green {
+    width: 28.75rem; /* 460 */
+    min-width: 28.75rem;
+    max-width: 28.75rem;
+  }
 }
 
 .btn--push-muted {

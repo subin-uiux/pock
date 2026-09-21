@@ -1,8 +1,9 @@
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { FriendCheckbox } from "@/components/FriendCheckbox";
+import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { SearchInput } from "@/components/SearchInput";
 import type { PockUser } from "@/types";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 interface Friend_listProps {
   open: boolean;
@@ -24,6 +25,7 @@ export function Friend_list({
   onManage,
 }: Friend_listProps) {
   const [query, setQuery] = useState("");
+  const listRef = useRef<HTMLUListElement>(null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -66,11 +68,11 @@ export function Friend_list({
               label="친구 검색"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="친구 검색"
             />
           </div>
           <div className="pock-window__pane">
-            <ul className="pock-window__list">
+            <PockWindowScrollbar listRef={listRef} syncKey={filtered.length} />
+            <ul className="pock-window__list" ref={listRef}>
               {filtered.map((friend) => {
                 const selected = friend.id === selectedId;
                 return (

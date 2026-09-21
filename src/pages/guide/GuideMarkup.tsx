@@ -1,4 +1,8 @@
 import { GuideOnboardDemo } from "@/pages/guide/GuideOnboardDemo";
+import { GuideNavigationDemo } from "@/pages/guide/GuideNavigationDemo";
+import { Card } from "@/components/Card";
+import { LetterCardTimerText } from "@/components/LetterCardTimerText";
+import { letterDateFromToday } from "@/lib/letter-progress";
 
 /* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
 import { GuideSendCategorySection } from "@/pages/guide/GuideSendCategorySection";
@@ -6,8 +10,10 @@ import { GuideSendTabsSection } from "@/pages/guide/GuideSendTabsSection";
 import { GuideSignUpStepGaugeSection } from "@/pages/guide/GuideSignUpStepGaugeSection";
 import { GuideSelectionBoxSection } from "@/pages/guide/GuideSelectionBoxSection";
 import { GuideFriendCheckboxSection } from "@/pages/guide/GuideFriendCheckboxSection";
+import { GuideFriendListSample } from "@/pages/guide/GuideFriendListSample";
+import { SearchInput } from "@/components/SearchInput";
 
-function guideWriteDate(): string {
+function guideDisplayDate(): string {
   const today = new Date();
   const y = today.getFullYear();
   const m = String(today.getMonth() + 1).padStart(2, "0");
@@ -15,8 +21,13 @@ function guideWriteDate(): string {
   return `${y}.${m}.${d}`;
 }
 
+/** 가이드 Countdown 샘플 — 전체 10일 · 7일 경과 → 7칸 · D-3 */
+const GUIDE_COUNTDOWN_SEND = letterDateFromToday(-7);
+const GUIDE_COUNTDOWN_OPEN = letterDateFromToday(3);
+
 export function GuideMarkup() {
-  const writeDate = guideWriteDate();
+  const writeDate = guideDisplayDate();
+  const receivedDate = guideDisplayDate();
   return (
     <>
       <div className="guide">
@@ -808,109 +819,55 @@ export function GuideMarkup() {
                 <h2 className="nav-system__title" id="nav-system-title">NAVIGATION</h2>
                 <div className="nav-system__board">
                   <h3 className="nav-system__card-title">Navigation</h3>
-                  <div className="nav-system__variant">
-                    <p className="nav-system__device">Mo</p>
-                    <nav className="navigation navigation--preview navigation--mo" aria-label="모바일 내비게이션 예시">
-                      <ul className="navigation__list">
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/home.svg" alt="" width={50} height={42} />
-                            <span className="navigation__label">홈</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link navigation__link--active" href="#nav-system" aria-current="page">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Storage%20Box.svg" alt="" width={60} height={60} />
-                            <span className="navigation__label">보관함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/sand.svg" alt="" width={44} height={50} />
-                            <span className="navigation__label">보내기</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Sent.svg" alt="" width={42} height={43} />
-                            <span className="navigation__label">전송함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/setting.svg" alt="" width={54} height={54} />
-                            <span className="navigation__label">설정</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div className="nav-system__variant">
-                    <p className="nav-system__device">Pad / Pc</p>
-                    <nav className="navigation navigation--preview navigation--pad" aria-label="패드와 PC 내비게이션 예시">
-                      <ul className="navigation__list">
-                        <li className="navigation__item">
-                          <a className="navigation__link navigation__link--active" href="#nav-system" aria-current="page">
-                            <img className="navigation__icon" src="/assets/icons/navigation/home.svg" alt="" width={60} height={60} />
-                            <span className="navigation__label">홈</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Storage%20Box.svg" alt="" width={54} height={54} />
-                            <span className="navigation__label">보관함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/sand.svg" alt="" width={44} height={50} />
-                            <span className="navigation__label">보내기</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/Sent.svg" alt="" width={42} height={43} />
-                            <span className="navigation__label">전송함</span>
-                          </a>
-                        </li>
-                        <li className="navigation__item">
-                          <a className="navigation__link" href="#nav-system">
-                            <img className="navigation__icon" src="/assets/icons/navigation/setting.svg" alt="" width={54} height={54} />
-                            <span className="navigation__label">설정</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
+                  <GuideNavigationDemo />
                 </div>
+
               </section>
 
               <section className="btn-system" id="btn-system" aria-labelledby="btn-system-title">
                 <h2 className="btn-system__title" id="btn-system-title">BUTTON</h2>
 
-                <div className="btn-system__rows">
-                  <div className="btn-system__row">
-                    <div className="btn-system__board">
-                      <h3 className="btn-system__card-title">01 / Push btn</h3>
-                      <div className="btn-system__sample">
-                        <p className="btn-system__state">Default</p>
-                        <div className="btn-system__stack">
-                          <button type="button" className="btn btn--push-muted btn--block">Text</button>
-                          <button type="button" className="btn btn--push btn--block">Text</button>
-                          <button type="button" className="btn btn--push-green btn--block">Text</button>
-                        </div>
-                        <p className="btn-system__state">Guide Button</p>
-                        <button type="button" className="btn btn--guide">Text</button>
+                <div className="btn-system__board btn-system__board--push">
+                  <h3 className="btn-system__card-title">01 / Push btn</h3>
+                  <div className="btn-system__sample">
+                    <p className="btn-system__state">Default · Mo 320~460 (드래그) · Pad/Pc 앱은 460 고정</p>
+                    <p className="btn-system__hint" id="btn-push-resize-hint">
+                      오른쪽 아래 모서리를 드래그해 너비를 조절하세요 (320~460). 버튼 폭이 점선 박스에
+                      맞춰 변합니다.
+                    </p>
+                    <div
+                      className="btn-system__resize"
+                      role="group"
+                      aria-labelledby="btn-push-resize-hint"
+                    >
+                      <div className="btn-system__stack">
+                        <button type="button" className="btn btn--push-muted btn--block">
+                          Text
+                        </button>
+                        <button type="button" className="btn btn--push btn--block">
+                          Text
+                        </button>
+                        <button type="button" className="btn btn--push-green btn--block">
+                          Text
+                        </button>
                       </div>
                     </div>
+                    <p className="btn-system__state">Guide Button</p>
+                    <button type="button" className="btn btn--guide">
+                      Text
+                    </button>
                   </div>
+                </div>
 
+                <div className="btn-system__rows">
                   <div className="btn-system__row">
                     <div className="btn-system__board">
                       <h3 className="btn-system__card-title">02 / Popup_btn</h3>
                       <div className="btn-system__sample">
                         <p className="btn-system__state">Default</p>
-                        <button type="button" className="btn btn--popup">Text</button>
+                        <button type="button" className="btn btn--popup">
+                          Text
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -925,7 +882,9 @@ export function GuideMarkup() {
                           Text
                         </button>
                         <p className="btn-system__state">Type = Text</p>
-                        <button type="button" className="btn btn--action-text">Text</button>
+                        <button type="button" className="btn btn--action-text">
+                          Text
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -936,336 +895,332 @@ export function GuideMarkup() {
                 <h2 className="card-system__title" id="card-system-title">Card</h2>
                 <div className="card-system__columns">
                   <div className="card-system__board">
-                    <h3 className="card-system__card-title">01 / 발신함 (Mo)</h3>
+                    <h3 className="card-system__card-title">01 / 전송함 (Mo)</h3>
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--progress">
-                              <div className="letter-card__meter" aria-hidden="true">
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                              </div>
-                              <span className="letter-card__dday">D-7</span>
-                            </div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다. 보낸 날→개봉일 경과 비율로 10칸 게이지가 채워집니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <Card
+                            mailbox="sent"
+                            variant="progress"
+                            size="mo"
+                            target="Text"
+                            moreHref="#card-system"
+                            sendDate={GUIDE_COUNTDOWN_SEND}
+                            openDate={GUIDE_COUNTDOWN_OPEN}
+                          />
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--timer">22:07:32</div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--timer">
+                                <LetterCardTimerText />
+                              </div>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Unopened)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--unopened">미오픈</div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--unopened">미오픈</div>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-sent (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
+                        <p className="card-system__caption">letter-card-sent (Open) · Mo 90×120 · 텍스트 14 · gap 10</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--open letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">개봉일: 20xx.00.00</p>
+                                <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">개봉일</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">수신자</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-system__board card-system__board--wide">
-                    <h3 className="card-system__card-title">01 / 발신함 (Tb, Pc)</h3>
+                    <h3 className="card-system__card-title">01 / 전송함 (Tb, Pc)</h3>
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--progress">
-                              <div className="letter-card__meter" aria-hidden="true">
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                                <span className="letter-card__block letter-card__block--empty"></span>
-                              </div>
-                              <span className="letter-card__dday">D-7</span>
-                            </div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다. 보낸 날→개봉일 경과 비율로 10칸 게이지가 채워집니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <Card
+                            mailbox="sent"
+                            variant="progress"
+                            size="tb"
+                            target="Text"
+                            moreHref="#card-system"
+                            sendDate={GUIDE_COUNTDOWN_SEND}
+                            openDate={GUIDE_COUNTDOWN_OPEN}
+                          />
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--timer">22:07:32</div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--timer">
+                                <LetterCardTimerText />
+                              </div>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Unopened)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">To.Text</p>
-                            <div className="letter-card__status letter-card__status--unopened">미오픈</div>
-                          </div>
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">To.Text</p>
+                              <div className="letter-card__status letter-card__status--unopened">미오픈</div>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-sent (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
+                        <p className="card-system__caption">letter-card-sent (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 12</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--open letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">개봉일: 20xx.00.00</p>
+                                <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">개봉일</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">수신자</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                            </div>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div className="card-system__columns">
                   <div className="card-system__board">
-                    <h3 className="card-system__card-title">02 / 수신함 (Mo)</h3>
+                    <h3 className="card-system__card-title">02 / 보관함 (Mo)</h3>
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Box)</p>
-                        <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 수신 카드">
-                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 보관함 카드">
+                            <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--progress">
-                                <div className="letter-card__meter" aria-hidden="true">
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
+                        <p className="card-system__caption">letter-card-received (Countdown) · 초성보기 미결제</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다. 보낸 날→개봉일 경과 비율로 10칸 게이지가 채워집니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <Card
+                            mailbox="received"
+                            variant="progress"
+                            size="mo"
+                            target="Text"
+                            hintPaid={false}
+                            sendDate={GUIDE_COUNTDOWN_SEND}
+                            openDate={GUIDE_COUNTDOWN_OPEN}
+                          />
+                        </div>
+                      </li>
+                      <li className="card-system__item">
+                        <p className="card-system__caption">letter-card-received (Timer) · 초성보기 결제완료</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--locked letter-card--mo">
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">From.Text</p>
+                              <div className="letter-card__status-group">
+                                <div className="letter-card__status letter-card__status--timer">
+                                  <LetterCardTimerText />
                                 </div>
-                                <span className="letter-card__dday">D-7</span>
+                                <button type="button" className="letter-card__reward">
+                                  <span>초성 보기</span>
+                                </button>
                               </div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--mo">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--timer">22:07:32</div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
+                        <p className="card-system__caption">letter-card-received (Open) · Mo 90×120 · 텍스트 14 · gap 10</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize" role="group">
+                          <article className="letter-card letter-card--open letter-card--mo">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">받은일시: 20xx.00.00</p>
+                                <p className="letter-card__line">발신인: zl존킹킹</p>
+                              </div>
                             </div>
-                          </div>
-                        </article>
-                      </li>
-                      <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--mo">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">받은일시</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">발신인</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
 
                   <div className="card-system__board card-system__board--wide">
-                    <h3 className="card-system__card-title">02 / 수신함 (Tb, Pc)</h3>
+                    <h3 className="card-system__card-title">02 / 보관함 (Tb, Pc)</h3>
                     <ul className="card-system__list">
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Box)</p>
-                        <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 수신 카드">
-                          <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
-                        </article>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 보관함 카드">
+                            <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Countdown)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--progress">
-                                <div className="letter-card__meter" aria-hidden="true">
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
-                                  <span className="letter-card__block letter-card__block--empty"></span>
+                        <p className="card-system__caption">letter-card-received (Countdown) · 초성보기 미결제</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다. 보낸 날→개봉일 경과 비율로 10칸 게이지가 채워집니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <Card
+                            mailbox="received"
+                            variant="progress"
+                            size="tb"
+                            target="Text"
+                            hintPaid={false}
+                            sendDate={GUIDE_COUNTDOWN_SEND}
+                            openDate={GUIDE_COUNTDOWN_OPEN}
+                          />
+                        </div>
+                      </li>
+                      <li className="card-system__item">
+                        <p className="card-system__caption">letter-card-received (Timer) · 초성보기 결제완료</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 카드는 최소 276부터 컨테이너에 맞춰
+                          늘어납니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--locked letter-card--tb">
+                            <div className="letter-card__body">
+                              <span className="letter-card__lock" aria-hidden="true">
+                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                              </span>
+                              <p className="letter-card__target">From.Text</p>
+                              <div className="letter-card__status-group">
+                                <div className="letter-card__status letter-card__status--timer">
+                                  <LetterCardTimerText />
                                 </div>
-                                <span className="letter-card__dday">D-7</span>
+                                <button type="button" className="letter-card__reward">
+                                  <span>초성 보기</span>
+                                </button>
                               </div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
                             </div>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Timer)</p>
-                        <article className="letter-card letter-card--locked letter-card--tb">
-                          <div className="letter-card__body">
-                            <span className="letter-card__lock" aria-hidden="true">
-                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.svg" alt="" width={40} height={40} />
-                            </span>
-                            <p className="letter-card__target">From.Text</p>
-                            <div className="letter-card__status-group">
-                              <div className="letter-card__status letter-card__status--timer">22:07:32</div>
-                              <button type="button" className="letter-card__reward">
-                                <img className="letter-card__coin" src="/assets/images/coin.svg" alt="" width={13} height={10} />
-                                <span>초성 보기</span>
-                              </button>
+                        <p className="card-system__caption">letter-card-received (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 12</p>
+                        <p className="card-system__hint">
+                          점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
+                          고정됩니다.
+                        </p>
+                        <div className="card-system__resize card-system__resize--tb" role="group">
+                          <article className="letter-card letter-card--open letter-card--tb">
+                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                            <div className="letter-card__open">
+                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                              <div className="letter-card__meta">
+                                <p className="letter-card__line">제목: 안녕하신교</p>
+                                <p className="letter-card__line">받은일시: 20xx.00.00</p>
+                                <p className="letter-card__line">발신인: zl존킹킹</p>
+                              </div>
                             </div>
-                          </div>
-                        </article>
-                      </li>
-                      <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Open)</p>
-                        <article className="letter-card letter-card--open letter-card--tb">
-                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                          <div className="letter-card__open">
-                            <div className="letter-card__thumb" aria-hidden="true"></div>
-                            <dl className="letter-card__meta">
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">제목</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">받은일시</dt>
-                                <dd className="letter-card__value">20xx.00.00</dd>
-                              </div>
-                              <div className="letter-card__row">
-                                <dt className="letter-card__key">발신인</dt>
-                                <dd className="letter-card__value">Text</dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </article>
+                          </article>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -1295,7 +1250,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1319,7 +1274,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1343,7 +1298,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1367,7 +1322,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1391,7 +1346,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1415,7 +1370,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1439,7 +1394,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1468,7 +1423,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1492,7 +1447,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1516,7 +1471,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1540,7 +1495,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1564,7 +1519,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1588,7 +1543,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1612,7 +1567,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1641,7 +1596,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1665,7 +1620,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1689,7 +1644,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1713,7 +1668,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1737,7 +1692,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1766,7 +1721,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1790,7 +1745,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1814,7 +1769,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1838,7 +1793,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1862,7 +1817,7 @@ export function GuideMarkup() {
                             </div>
                             <div className="letter__foot">
                               <span className="letter__from">FROM. 발신인</span>
-                              <span className="letter__date">20XX.XX.XX</span>
+                              <time className="letter__date" dateTime={receivedDate.replace(/\./g, "-")} aria-label="받은 날짜">{receivedDate}</time>
                             </div>
                           </div>
                         </article>
@@ -1877,141 +1832,15 @@ export function GuideMarkup() {
                   <h3 className="window-system__card-title">01 / Friend_list</h3>
                   <div className="window-system__samples">
                     <div className="window-system__sample">
-                      <article className="pock-window pock-window--friend pock-window--mo" aria-label="친구목록">
-                        <header className="pock-window__bar">
-                          <h4 className="pock-window__title">친구목록</h4>
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-window__rule" aria-hidden="true"></div>
-                        <div className="pock-window__body">
-                          <div className="pock-window__pane">
-                            <div className="pock-window__scroll" aria-hidden="true">
-                              <div className="pock-window__scroll-thumb"></div>
-                            </div>
-                            <ul className="pock-window__list">
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <footer className="pock-window__foot">
-                          <button className="pock-window__manage" type="button">
-                            <img className="pock-window__manage-icon" src="/assets/images/friends-management-icon.svg" alt="" width={18} height={18} />
-                            <span>친구 관리</span>
-                          </button>
-                        </footer>
-                      </article>
+                      <GuideFriendListSample size="mo" />
                     </div>
 
                     <div className="window-system__sample">
-                      <article className="pock-window pock-window--friend pock-window--tb" aria-label="친구목록">
-                        <header className="pock-window__bar">
-                          <h4 className="pock-window__title">친구목록</h4>
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-window__rule" aria-hidden="true"></div>
-                        <div className="pock-window__body">
-                          <div className="pock-window__pane">
-                            <div className="pock-window__scroll" aria-hidden="true">
-                              <div className="pock-window__scroll-thumb"></div>
-                            </div>
-                            <ul className="pock-window__list">
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <footer className="pock-window__foot">
-                          <button className="pock-window__manage" type="button">
-                            <img className="pock-window__manage-icon" src="/assets/images/friends-management-icon.svg" alt="" width={18} height={18} />
-                            <span>친구 관리</span>
-                          </button>
-                        </footer>
-                      </article>
+                      <GuideFriendListSample size="tb" />
                     </div>
 
                     <div className="window-system__sample">
-                      <article className="pock-window pock-window--friend pock-window--pc" aria-label="친구목록">
-                        <header className="pock-window__bar">
-                          <h4 className="pock-window__title">친구목록</h4>
-                          <div className="pock-window__actions">
-                            <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
-                            <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
-                            </span>
-                          </div>
-                        </header>
-                        <div className="pock-window__rule" aria-hidden="true"></div>
-                        <div className="pock-window__body">
-                          <div className="pock-window__pane">
-                            <div className="pock-window__scroll" aria-hidden="true">
-                              <div className="pock-window__scroll-thumb"></div>
-                            </div>
-                            <ul className="pock-window__list">
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                              <li className="pock-window__item">
-                                <div className="pock-window__thumb" aria-hidden="true"></div>
-                                <p className="pock-window__name">Text</p>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                        <footer className="pock-window__foot">
-                          <button className="pock-window__manage" type="button">
-                            <img className="pock-window__manage-icon" src="/assets/images/friends-management-icon.svg" alt="" width={18} height={18} />
-                            <span>친구 관리</span>
-                          </button>
-                        </footer>
-                      </article>
+                      <GuideFriendListSample size="pc" />
                     </div>
                   </div>
                 </div>
@@ -2063,110 +1892,7 @@ export function GuideMarkup() {
                   <h3 className="window-system__card-title" id="letter-write-system-title">02 / Letter_write</h3>
                   <div className="window-system__samples">
                     <div className="window-system__sample">
-                      <article className="letter-write letter-write--mo" aria-label="POCK 작성">
-                        <div className="letter-write__status">
-                          <img className="letter-write__signal" src="/assets/images/Signal.svg" alt="" width={18} height={12} />
-                          <div className="letter-write__coin">
-                            <img className="letter-write__coin-icon" src="/assets/images/coin.svg" alt="" width={14} height={14} />
-                            <span>10 coin</span>
-                          </div>
-                        </div>
-                        <div className="letter-write__main">
-                          <div className="letter-write__top">
-                            <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
-                            <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
-                                <span>편지지</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
-                                <span>사진</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
-                                <span>개봉일</span>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="letter-write__paper" role="group" aria-label="편지 작성">
-                            <div className="letter-write__compose">
-                              <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div
-                                className="letter-write__paper-body"
-                                contentEditable={true}
-                                role="textbox"
-                                aria-multiline="true"
-                                aria-label="편지 작성"
-                              ></div>
-                            </div>
-                            <div className="letter-write__paper-foot">
-                              <label className="letter-write__from-field">
-                                <span className="letter-write__from-prefix">FROM.</span>
-                                <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
-                              </label>
-                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
-                            </div>
-                          </div>
-                        </div>
-                        <button className="btn btn--push btn--block letter-write__send" type="button">보내기</button>
-                      </article>
-                    </div>
-
-                    <div className="window-system__sample">
-                      <article className="letter-write letter-write--tb" aria-label="POCK 작성">
-                        <div className="letter-write__status">
-                          <img className="letter-write__signal" src="/assets/images/Signal.svg" alt="" width={18} height={12} />
-                          <div className="letter-write__coin">
-                            <img className="letter-write__coin-icon" src="/assets/images/coin.svg" alt="" width={14} height={14} />
-                            <span>10 coin</span>
-                          </div>
-                        </div>
-                        <div className="letter-write__main">
-                          <div className="letter-write__top">
-                            <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
-                            <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
-                                <span>편지지</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/picture-icon.svg" alt="" width={16} height={16} />
-                                <span>사진</span>
-                              </button>
-                              <button className="btn btn--action-icon letter-write__tab" type="button">
-                                <img className="letter-write__tab-icon" src="/assets/images/Release-date-icon.svg" alt="" width={16} height={16} />
-                                <span>개봉일</span>
-                              </button>
-                            </div>
-                          </div>
-                          <div className="letter-write__paper" role="group" aria-label="편지 작성">
-                            <div className="letter-write__compose">
-                              <button className="letter-write__media" type="button" aria-label="사진 추가"></button>
-                              <div
-                                className="letter-write__paper-body"
-                                contentEditable={true}
-                                role="textbox"
-                                aria-multiline="true"
-                                aria-label="편지 작성"
-                              ></div>
-                            </div>
-                            <div className="letter-write__paper-foot">
-                              <label className="letter-write__from-field">
-                                <span className="letter-write__from-prefix">FROM.</span>
-                                <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
-                              </label>
-                              <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
-                            </div>
-                          </div>
-                        </div>
-                        <button className="btn btn--push btn--block letter-write__send" type="button">보내기</button>
-                      </article>
-                    </div>
-
-                    <div className="window-system__sample">
+                      <p className="window-system__caption">Letter_write (Pc)</p>
                       <article className="letter-write letter-write--pc" aria-label="POCK 작성">
                         <div className="letter-write__status">
                           <img className="letter-write__signal" src="/assets/images/Signal.svg" alt="" width={18} height={12} />
@@ -2177,8 +1903,10 @@ export function GuideMarkup() {
                         </div>
                         <div className="letter-write__main">
                           <div className="letter-write__top">
-                            <h4 className="letter-write__title">POCK 작성</h4>
-                            <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
+                            <div className="letter-write__heading">
+                              <h4 className="letter-write__title">POCK 작성</h4>
+                              <button className="btn btn--action-text letter-write__friend" type="button">친구 선택</button>
+                            </div>
                             <div className="letter-write__tabs" role="tablist" aria-label="작성 옵션">
                               <button className="btn btn--action-icon letter-write__tab" type="button">
                                 <img className="letter-write__tab-icon" src="/assets/images/letter-icon.svg" alt="" width={16} height={16} />
@@ -2208,7 +1936,7 @@ export function GuideMarkup() {
                             <div className="letter-write__paper-foot">
                               <label className="letter-write__from-field">
                                 <span className="letter-write__from-prefix">FROM.</span>
-                                <input className="letter-write__from" type="text" placeholder="아방이~*" aria-label="보내는 사람" />
+                                <input className="letter-write__from" type="text" defaultValue="아빵이" placeholder="아빵이" aria-label="보내는 사람" />
                               </label>
                               <time className="letter-write__date" dateTime={writeDate.replace(/\./g, "-")} aria-label="작성일">{writeDate}</time>
                             </div>
@@ -2332,7 +2060,9 @@ export function GuideMarkup() {
                           <img className="pock-popup__icon" src="/assets/images/Warning%20_Popup-icon.svg" alt="" width={36} height={36} />
                           <p className="pock-popup__text">
                             <span className="pock-popup__heading">POCK을 정말 떠나시겠어요?</span><br />
-                            탈퇴하면 지금까지의 편지와 기록이 모두 삭제되며 다시 복구할 수 없습니다.
+                            탈퇴하면 지금까지의 편지와<br />
+                            기록이 모두 삭제되며 다시<br />
+                            복구할 수 없습니다.
                           </p>
                         </div>
                         <div className="pock-popup__actions">
@@ -2357,14 +2087,16 @@ export function GuideMarkup() {
                   <h3 className="search-system__card-title">Search Input</h3>
                   <div className="search-system__stage">
                     <p className="search-system__caption">Search Input</p>
-                    <label className="search-input search-input--mo">
-                      <img className="search-input__icon" src="/assets/images/search-icon.svg" alt="" width={22} height={22} />
-                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" maxLength={10} />
-                    </label>
-                    <label className="search-input search-input--wide">
-                      <img className="search-input__icon" src="/assets/images/search-icon.svg" alt="" width={22} height={22} />
-                      <input className="search-input__field" type="search" placeholder="검색어를 입력하세요." aria-label="검색어" maxLength={10} />
-                    </label>
+                    <SearchInput
+                      id="guide-search-mo"
+                      className="search-input--mo"
+                      label="검색어"
+                    />
+                    <SearchInput
+                      id="guide-search-wide"
+                      className="search-input--wide"
+                      label="검색어"
+                    />
                   </div>
                 </div>
               </section>

@@ -3,13 +3,20 @@ import { storage } from "@/lib/storage";
 import type { CoinState } from "@/types";
 
 const STORAGE_KEY = "pock.coin";
+export const COIN_CHANGE_EVENT = "pock:coin-change";
+
+function notifyCoinChange(): void {
+  window.dispatchEvent(new Event(COIN_CHANGE_EVENT));
+}
 
 export function getCoinState(): CoinState {
   return storage.get<CoinState>(STORAGE_KEY) ?? { ...initialCoinState };
 }
 
 export function saveCoinState(state: CoinState): boolean {
-  return storage.set(STORAGE_KEY, state);
+  const ok = storage.set(STORAGE_KEY, state);
+  if (ok) notifyCoinChange();
+  return ok;
 }
 
 export function getCoinBalance(): number {
@@ -48,7 +55,11 @@ export function earnCoin(amount: number, reason = ""): boolean {
   return saveCoinState(state);
 }
 
-export function markAttendance(): { success: boolean; amount?: number; reason?: string } {
+export function markAttendance(): {
+  success: boolean;
+  amount?: number;
+  reason?: string;
+} {
   const state = getCoinState();
   if (state.attendance) {
     return { success: false, reason: "already_checked" };
@@ -56,7 +67,8 @@ export function markAttendance(): { success: boolean; amount?: number; reason?: 
 
   const nextDay = (state.attendanceDays || 0) + 1;
   const amount =
-    state.attendanceRewards.find((r) => r.day === nextDay)?.amount ?? state.reward;
+    state.attendanceRewards.find((r) => r.day === nextDay)?.amount ??
+    state.reward;
 
   state.attendance = true;
   state.attendanceDays = nextDay;

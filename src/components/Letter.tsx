@@ -1,11 +1,14 @@
+import type { LetterTheme } from "@/types";
+
 interface LetterProps {
   title: string;
   body: string;
   from: string;
   date: string;
-  theme?: "rainbow" | "heart" | "star" | "stripe" | "clover";
+  theme?: LetterTheme;
   size?: "mo" | "tb";
   beforeOpen?: boolean;
+  imageSrc?: string;
   onClose?: () => void;
 }
 
@@ -17,6 +20,7 @@ export function Letter({
   theme = "rainbow",
   size = "mo",
   beforeOpen = false,
+  imageSrc,
   onClose,
 }: LetterProps) {
   if (beforeOpen) {
@@ -47,7 +51,11 @@ export function Letter({
           height={18}
         />
       </button>
-      <div className="letter__media" />
+      <div className="letter__media">
+        {imageSrc ? (
+          <img className="letter__image" src={imageSrc} alt="" />
+        ) : null}
+      </div>
       <div className="letter__content">
         <div className="letter__text">
           <h4 className="letter__title">{title}</h4>
@@ -55,7 +63,13 @@ export function Letter({
         </div>
         <div className="letter__foot">
           <span className="letter__from">FROM. {from}</span>
-          <span className="letter__date">{date}</span>
+          <time
+            className="letter__date"
+            dateTime={date.includes(".") ? date.replace(/\./g, "-") : date}
+            aria-label="받은 날짜"
+          >
+            {date}
+          </time>
         </div>
       </div>
     </article>

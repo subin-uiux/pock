@@ -28,7 +28,7 @@ const CATEGORIES: CategoryItem[] = [
 ];
 
 interface PockSendCategoryProps {
-  value: PockSendCategoryId;
+  value: PockSendCategoryId | null;
   onChange: (id: PockSendCategoryId) => void;
   size?: PockSendCategorySize;
   className?: string;

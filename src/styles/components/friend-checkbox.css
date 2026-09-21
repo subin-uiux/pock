@@ -26,12 +26,16 @@ button.friend-checkbox {
 
 button.friend-checkbox:hover,
 button.friend-checkbox:active {
-  background-color: var(--color-base-300);
+  background-color: var(--color-base-200);
 }
 
 button.friend-checkbox:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+.friend-checkbox--checked {
+  background-color: var(--color-base-200);
 }
 
 .friend-checkbox__icon {

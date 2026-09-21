@@ -219,13 +219,30 @@
   background: linear-gradient(180deg, #d9d9d9 0%, #cddaeb 100%);
 }
 
+/* 안 박스 — Mo #E9FBFF 80% */
+.pock-window__pane {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: rgba(233, 251, 255, 0.8); /* #E9FBFF 80% */
+}
+
+/* Friend_list — 연한 파란 pane 안에서 목록만 세로 스크롤 (헤더·친구관리 고정) */
 .pock-window--friend .pock-window__pane {
   position: relative;
+  overflow: hidden;
 }
 
 .pock-window--friend .pock-window__list {
   height: 100%;
-  overflow: hidden;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -236,10 +253,12 @@
   height: 0;
 }
 
+/* 디자인 스크롤바 — 색·두께·배치 유지 · thumb만 이동 */
 .pock-window__scroll {
   position: absolute;
   top: 1.875rem; /* 30 — 스크롤바 위 간격 */
   right: 0.625rem; /* 10 — Tb/Pc */
+  bottom: 0.625rem; /* 10 — 트랙 하단 */
   left: auto;
   z-index: 1;
   width: 0.5rem; /* 8 */
@@ -258,21 +277,14 @@
   height: 3.625rem; /* 58 */
   border-radius: 0.3125rem; /* 5 */
   background: linear-gradient(180deg, #6eb2ff 0%, #2753f7 100%);
-  pointer-events: none;
-  cursor: default;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
   user-select: none;
 }
 
-/* 안 박스 — Mo #E9FBFF 80% */
-.pock-window__pane {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  background-color: rgba(233, 251, 255, 0.8); /* #E9FBFF 80% */
+.pock-window__scroll-thumb:active {
+  cursor: grabbing;
 }
 
 .pock-window__list {
@@ -317,10 +329,11 @@
 }
 
 .pock-window--mo .pock-window__pane {
-  /* Mo 안박스 — 이전 331×409에 가깝게 채움 */
+  /* Mo 안박스 — 이전 331×409에 가깝게 채움 · 내부만 스크롤 */
   width: 100%;
   height: 25.5625rem; /* 409 — 임시 유지 */
   flex: 0 0 auto;
+  min-height: 0;
 }
 
 /* Tb = 2차: 바깥 좌우14 상하17 · 프로필 120×150 · 안박스 60% */
@@ -332,6 +345,7 @@
   width: 100%;
   height: 100%;
   flex: 1 1 auto;
+  min-height: 0;
   background-color: rgba(233, 251, 255, 0.6); /* #E9FBFF 60% */
 }
 
@@ -361,6 +375,7 @@
   width: 100%;
   height: 100%;
   flex: 1 1 auto;
+  min-height: 0;
   background-color: rgba(233, 251, 255, 0.6); /* #E9FBFF 60% */
 }
 
@@ -468,7 +483,7 @@ button.pock-window__item {
 
 button.pock-window__item:hover .friend-checkbox,
 button.pock-window__item:active .friend-checkbox {
-  background-color: var(--color-base-300);
+  background-color: var(--color-base-200);
 }
 
 button.pock-window__item--selected .pock-window__thumb {
