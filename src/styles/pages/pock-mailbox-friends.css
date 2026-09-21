@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 보관함·전송함 친구 검색 페이지
  */
 
@@ -35,6 +35,14 @@
   min-height: 0;
   box-sizing: border-box;
   padding: 3.125rem 1.25rem 0; /* 상 50 · 좌우 20 */
+}
+
+.mailbox-friends__inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
 }
 
 .mailbox-friends__back {
@@ -157,4 +165,40 @@
   display: flex;
   justify-content: center;
   padding: 1.25rem 0 1.875rem; /* 위 임시 20 · 아래 30 */
+}
+
+@media (min-width: 769px) {
+  .mailbox-friends {
+    align-items: center;
+  }
+
+  .mailbox-friends__inner {
+    width: 37.5rem; /* 600 고정 */
+    max-width: 37.5rem;
+  }
+
+  .mailbox-friends__back-text,
+  .mailbox-friends__name {
+    font-size: 1.125rem; /* 18 */
+  }
+
+  .mailbox-friends__search .search-input,
+  .mailbox-friends__search .search-input--wide {
+    width: 100%;
+    max-width: 100%;
+    height: 2.5rem; /* 40 — Search Input Wide/Tb */
+  }
+
+  .mailbox-friends__avatar {
+    width: 3.125rem; /* 50 */
+    height: 3.125rem;
+  }
+
+  /* 위 영역(600)과 동일 폭 · 기본 Push Tb 460 고정 해제 */
+  .mailbox-friends__apply.btn--push {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    font-size: 1.125rem; /* 18 */
+  }
 }

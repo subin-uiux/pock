@@ -37,7 +37,7 @@ export function MailboxLetterLayer({
   const displayTitle = mode === "choseong" ? toChoseong(title) : title;
   const displayBody = mode === "choseong" ? toChoseong(body) : body;
   const from = mailbox === "received" ? (sample?.target ?? "발신인") : "나";
-  const date = sample?.openDate ?? "20xx.00.00";
+  const date = sample?.openDate ?? "2026.09.01";
   const theme = sample?.theme ?? "rainbow";
   const imageSrc = sample?.imageSrc;
 

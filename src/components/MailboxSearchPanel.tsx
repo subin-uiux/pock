@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from "react";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { SearchInput } from "@/components/SearchInput";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface MailboxSearchPanelProps {
   open: boolean;
@@ -17,6 +18,8 @@ export function MailboxSearchPanel({
   onClose,
 }: MailboxSearchPanelProps) {
   const inputId = useId();
+  const breakpoint = useBreakpoint();
+  const isMo = breakpoint === "mo";
   const [draft, setDraft] = useState(value);
 
   useEffect(() => {
@@ -41,30 +44,33 @@ export function MailboxSearchPanel({
     >
       <DimmedOverlay open onClick={onClose} />
       <div className="mailbox-search">
-        <SearchInput
-          id={inputId}
-          label="검색어"
-          value={draft}
-          onChange={(event) => setDraft(event.target.value)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              onApply(draft);
-            }
-          }}
-        />
-        <p className="mailbox-search__hint">
-          <span className="mailbox-search__hint-mark" aria-hidden="true" />
-          편지 제목 혹은 친구 이름을 입력하세요!
-        </p>
-        <div className="mailbox-search__actions">
-          <Button
-            variant="action-text"
-            className="mailbox-search__apply"
-            onClick={() => onApply(draft)}
-          >
-            적용하기
-          </Button>
+        <div className="mailbox-search__inner">
+          <SearchInput
+            id={inputId}
+            className={isMo ? "search-input--mo" : "search-input--wide"}
+            label="검색어"
+            value={draft}
+            onChange={(event) => setDraft(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                onApply(draft);
+              }
+            }}
+          />
+          <p className="mailbox-search__hint">
+            <span className="mailbox-search__hint-mark" aria-hidden="true" />
+            편지 제목 혹은 친구 이름을 입력하세요!
+          </p>
+          <div className="mailbox-search__actions">
+            <Button
+              variant="action-text"
+              className="mailbox-search__apply"
+              onClick={() => onApply(draft)}
+            >
+              적용하기
+            </Button>
+          </div>
         </div>
       </div>
     </div>

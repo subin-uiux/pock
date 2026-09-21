@@ -1,4 +1,4 @@
-/**
+﻿/**
  * guide.css
  * 디자인 시스템 가이드. 모바일 기본.
  */
@@ -1241,7 +1241,7 @@
   background-color: var(--color-base-0);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 
   .send-category-system__samples,
   .send-tabs-system__samples,
@@ -1350,7 +1350,7 @@
   gap: var(--spacing-md);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .friend-checkbox-system__samples {
     flex-direction: row;
     flex-wrap: wrap;
@@ -1393,7 +1393,7 @@
   border-radius: 0.625rem; /* 10 */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .guide .onboard-popup .onboard-popup__next.btn.btn--push {
     width: 4.6875rem;
     min-width: 4.6875rem;

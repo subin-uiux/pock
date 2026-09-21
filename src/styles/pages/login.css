@@ -1,4 +1,4 @@
-/**
+﻿/**
  * login.css
  * Page: .page--login
  */
@@ -165,7 +165,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .page--login {
     background-image: url("/assets/images/background/bg-pad.png");
   }

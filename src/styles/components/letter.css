@@ -15,7 +15,7 @@
   box-sizing: border-box;
   overflow: hidden;
   padding: 2.5rem 0 0; /* 상 40 · 좌우는 미디어/텍스트별도 */
-  border: 1px solid var(--color-base-300);
+  border: 0;
   color: var(--color-base-900);
 }
 
