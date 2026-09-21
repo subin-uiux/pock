@@ -8,8 +8,10 @@ alwaysApply: true
 - React(Vite) SPA. TypeScript, React Router를 사용한다.
 - 디자인 시스템 가이드는 `/guide` (`src/pages/GuidePage.tsx`). 정적 원본은 `legacy/pages/guide.html`.
 - 스타일 단일 소스: `src/styles`만 수정. BEM CSS 유지. CSS Modules·Tailwind로 재설계하지 않는다. 시안 클래스를 JSX `className`에 그대로 쓴다.
-- 모바일 퍼스트. 기본 스타일은 모바일 캔버스(390) 기준이고, 태블릿(1024)·데스크톱(1920)은 `min-width`로만 확장한다.
-- 390/1024/1920은 디자인 캔버스다. 뷰포트를 그 너비로 고정하지 않고, 구간 안에서는 유동 폭으로 맞춘다.
+- 모바일 퍼스트. 기본 스타일은 모바일(360~768) 기준이고, 태블릿(769~)은 `min-width: 769px`로만 확장한다.
+- 데스크톱(1025~)은 태블릿과 **동일 레이아웃**이다. 콘텐츠 폭은 유지하고 양옆 배경·여백만 늘어난다. 데스크톱 전용 UI를 만들지 않는다.
+- 뷰포트를 캔버스 너비로 고정하지 않고, 구간 안에서는 유동 폭으로 맞춘다.
+- 분기점: 모바일 `~768` / 태블릿·데스크톱 `min-width: 769px` (콘텐츠 max 1024 가운데 정렬).
 - 새 파일은 용도 폴더에 둔다.
   - 앱 소스: `src/`
   - CSS: `src/styles`만 (`components/`, `pages/` 포함). 루트·`public`에 CSS를 두지 않는다.

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * common.css
  * 공통 레이아웃과 접근성 유틸리티
  */
@@ -65,17 +65,11 @@
   outline-offset: 0.125rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .main {
     width: min(100%, var(--layout-content-width));
     margin-inline: auto;
     padding-block: var(--spacing-lg);
-  }
-}
-
-@media (min-width: 1920px) {
-  .main {
-    padding-block: var(--spacing-xl);
   }
 }
 

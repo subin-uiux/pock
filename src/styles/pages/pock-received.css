@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 보관함 · 전송함 공통 레이아웃
  * Mo: 상단 가로 탭 · 카테고리 / 파란 보드
  * Tb·Pc(1024+): 좌우 64 · 파란 보드(상 20·좌우 42) · 우측 세로 탭 · 보드 안 카테고리
@@ -37,7 +37,7 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  padding: 3.125rem 1.25rem 0; /* 상단 50 · 좌우 20 */
+  padding: 2.5rem 1.25rem 0; /* 상단 40 · 좌우 20 */
 }
 
 .pock-mailbox {
@@ -186,31 +186,51 @@
   max-width: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .page--pock-received .main,
   .page--pock-sent .main {
-    padding: 0 4rem; /* 좌우 64 */
+    padding: 2.5rem 4rem 0; /* 상단 40 · 좌우 64 */
+    /* 탭이 보드(카드+42) 밖으로 나와 main 우측 여백에 그려지도록 */
+    overflow-x: visible;
+    overflow-y: hidden;
+  }
+
+  .page--pock-received .page__wrapper,
+  .page--pock-sent .page__wrapper,
+  .page--pock-received.page--has-navigation .page__wrapper,
+  .page--pock-sent.page--has-navigation .page__wrapper {
+    overflow-x: visible;
   }
 
   .pock-mailbox__stage {
+    position: relative;
     flex: 1;
     min-height: 0;
-    /* 탭이 보드 밖으로 살짝 나와도 잘리지 않게 */
     overflow: visible;
   }
 
   /*
-   * 파란 보드: 위 20 · 좌우 42 패딩 (피그마 프레임 여백)
-   * 탭은 absolute라 42 계산에서 제외
-   * 하단은 네비 밑까지 이어짐 (여백은 카드 스크롤 패딩으로)
+   * 파란 보드: 위·아래 20 · 좌우 42 — 흰 카드 기준 대칭
+   * 탭은 stage에 두어 폭 계산에서 제외 (카드 오른쪽에 absolute)
    */
   .pock-mailbox__board {
     flex: 1;
     min-width: 0;
+    min-height: 0;
     margin: 0;
-    padding: 1.25rem 2.625rem 0; /* 위 20 · 좌우 42 · 아래 0 */
-    /* 탭이 보드 밖으로 나와도 보이도록 · 높이 제약은 flex min-height:0 */
-    overflow: visible;
+    padding: 1.25rem 2.625rem; /* 위·아래 20 · 좌우 42 동일 */
+    padding-bottom: calc(
+      1.25rem + var(--navigation-bar-height, 4.125rem) + 2.25rem +
+        env(safe-area-inset-bottom)
+    );
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pock-mailbox__board::-webkit-scrollbar {
+    display: none;
   }
 
   .pock-mailbox__meta {
@@ -235,44 +255,32 @@
     height: 1.5rem;
   }
 
-  /* 하얀 박스 행 — 탭은 position으로 우측 부착 (폭 계산 제외) */
+  /* 하얀 박스 — 편지 높이만큼 · 길면 보드가 스크롤 */
   .pock-mailbox__panel {
     position: relative;
     display: flex;
-    flex: 1;
+    flex: 0 0 auto;
     flex-direction: column;
     min-width: 0;
-    min-height: 0;
     margin: 0;
   }
 
   .pock-mailbox__cards {
-    flex: 1;
+    flex: 0 0 auto;
     width: 100%;
     min-width: 0;
-    min-height: 0;
+    height: auto;
     margin: 0;
-    /* 네비 아래로 박스는 이어지고, 스크롤 끝은 네비에 가리지 않게 */
-    padding-bottom: calc(
-      var(--navigation-bar-height, 4.125rem) + 2.25rem +
-        env(safe-area-inset-bottom)
-    );
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    padding: 0.625rem; /* 위·아래·좌우 10 동일 */
+    overflow: visible;
   }
 
-  .pock-mailbox__cards::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* 하얀 박스 오른쪽 · 박스 상단에서 40 아래 (레이아웃 폭 미포함) */
+  /* 흰 카드 오른쪽 끝 = 보드 우측 패딩(42) 안쪽 · 탭은 그 밖(페이지 여백)으로 */
   .pock-mailbox__tabs {
     position: absolute;
-    top: 2.5rem; /* 40 */
-    left: 100%;
-    z-index: 1;
+    top: calc(1.25rem + 2.5rem + 0.625rem + 2.5rem); /* 보드20+메타40+간격10+40 */
+    left: calc(100% - 2.625rem); /* 흰 카드 오른쪽 = 보드 우측 42 안쪽 */
+    z-index: 5;
     width: max-content;
     margin: 0;
   }

@@ -371,20 +371,20 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
                 </li>
               ))}
             </ul>
-            {!isMo ? (
-              <PockSendTabs
-                className="pock-mailbox__tabs"
-                size="tb"
-                value={tab}
-                onChange={(next) => {
-                  setTab(next);
-                  setSortOpen(false);
-                  setSearchOpen(false);
-                }}
-              />
-            ) : null}
           </div>
         </div>
+        {!isMo ? (
+          <PockSendTabs
+            className="pock-mailbox__tabs"
+            size="tb"
+            value={tab}
+            onChange={(next) => {
+              setTab(next);
+              setSortOpen(false);
+              setSearchOpen(false);
+            }}
+          />
+        ) : null}
       </div>
       <MailboxSearchPanel
         open={searchOpen}

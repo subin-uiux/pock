@@ -1,4 +1,4 @@
-/**
+﻿/**
  * home.css
  */
 
@@ -69,7 +69,7 @@
   list-style: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .home {
     gap: 1.75rem;
   }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * letter-card.css
  * 전송함·보관함 카드. 모바일 기본.
  */
@@ -516,7 +516,7 @@
   font-size: 1rem; /* 16 */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .letter-card--open:not(.letter-card--mo) {
     height: 12.5rem; /* 200 — 다른 카드와 동일 */
   }

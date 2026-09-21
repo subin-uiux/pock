@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 보관함·전송함 정렬 드롭다운
  */
 
@@ -81,4 +81,34 @@
 .mailbox-sort__text {
   flex: 1 1 auto;
   min-width: 0;
+}
+
+@media (min-width: 769px) {
+  .mailbox-sort {
+    width: auto;
+    min-width: 12.5rem; /* 임시값 — 옵션 텍스트 맞춤 */
+    height: auto;
+    padding: 1.25rem; /* 상하좌우 20 */
+  }
+
+  .mailbox-sort__label {
+    margin: 0 0 0.625rem; /* 아래 10 */
+    padding: 0;
+    font-size: 0.875rem; /* 14 */
+  }
+
+  .mailbox-sort__rule {
+    margin: 0.375rem 0; /* 좌우 패딩은 패널에 */
+  }
+
+  .mailbox-sort__option {
+    gap: 0.625rem; /* 10 — 체크 ↔ 텍스트 */
+    padding: 0;
+    font-size: 1.125rem; /* 18 */
+  }
+
+  .mailbox-sort__check {
+    width: 1.125rem; /* 18 */
+    height: 1.125rem;
+  }
 }

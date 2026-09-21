@@ -1,4 +1,4 @@
-/**
+﻿/**
  * index.css
  * Page: .page--index — 진입 스플래시
  */
@@ -81,7 +81,7 @@
   image-rendering: crisp-edges;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .page--index {
     background-image: url("/assets/images/background/bg-pad.png");
   }
