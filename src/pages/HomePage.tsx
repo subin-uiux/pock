@@ -234,6 +234,7 @@ export function HomePage() {
       <FriendProfilePopup
         open={selectedFriend !== null}
         name={selectedFriend ?? ""}
+        friendId={selectedFriend ? `home-${selectedFriend}` : undefined}
         popupSize={popupSize}
         onClose={() => setSelectedFriend(null)}
         onDelete={() => {

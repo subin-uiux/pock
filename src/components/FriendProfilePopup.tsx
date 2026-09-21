@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { Popup } from "@/components/Popup";
+import type { PockUser } from "@/types";
 
 export interface FriendProfilePopupProps {
   open: boolean;
   name: string;
+  /** 있으면 보내기 화면 To.에 그대로 전달 */
+  friendId?: string;
   /** 프로필 이미지 — 비우면 placeholder */
   profileImage?: string;
   /** 친구가 보낸 POCK 수 — 임시값 */
@@ -24,6 +27,7 @@ export interface FriendProfilePopupProps {
 export function FriendProfilePopup({
   open,
   name,
+  friendId,
   profileImage = "",
   receivedCount = 3,
   sentCount = 2,
@@ -40,6 +44,16 @@ export function FriendProfilePopup({
     setConfirmOpen(false);
     onDelete();
     onClose();
+  };
+
+  const handleGoSend = () => {
+    const friend: PockUser = {
+      id: friendId || `friend-${name}`,
+      name,
+      profileImage,
+    };
+    onClose();
+    navigate("/pock-send", { state: { friend } });
   };
 
   return (
@@ -112,7 +126,7 @@ export function FriendProfilePopup({
             type="button"
             variant="push-green"
             className="friend-profile-popup__send"
-            onClick={() => navigate("/pock-send")}
+            onClick={handleGoSend}
           >
             편지 보내러 가기
           </Button>

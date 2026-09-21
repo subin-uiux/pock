@@ -71,6 +71,7 @@ export function Friend_listPage() {
       <FriendProfilePopup
         open={selected !== null}
         name={selected?.name ?? ""}
+        friendId={selected?.id}
         profileImage={selected?.profileImage}
         popupSize={popupSize}
         onClose={() => setSelected(null)}

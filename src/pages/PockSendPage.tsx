@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Friend_list } from "@/components/Friend_list";
 import { Letter_write } from "@/components/Letter_write";
 import { Popup } from "@/components/Popup";
@@ -13,16 +13,24 @@ import {
 import { addSentPockFromPayload } from "@/lib/pock";
 import type { LetterWritePayload, PockUser } from "@/types";
 
+type PockSendLocationState = {
+  friend?: PockUser;
+};
+
 /**
  * POCK 보내기 `/pock-send`
  * Navigation 「보내기」탭 — Letter_write 화면 중앙
  */
 export function PockSendPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const breakpoint = useBreakpoint();
   const size = breakpoint === "mo" ? "mo" : "tb";
   const popupSize = size === "mo" ? "mo" : "tb";
-  const [friend, setFriend] = useState<PockUser | null>(null);
+  const [friend, setFriend] = useState<PockUser | null>(() => {
+    const state = location.state as PockSendLocationState | null;
+    return state?.friend ?? null;
+  });
   const [friendOpen, setFriendOpen] = useState(false);
   const [dirty, setDirty] = useState(false);
   const [leaveOpen, setLeaveOpen] = useState(false);
@@ -33,6 +41,13 @@ export function PockSendPage() {
   useEffect(() => {
     document.title = "POCK 작성 ㅣ POCK";
   }, []);
+
+  useEffect(() => {
+    const state = location.state as PockSendLocationState | null;
+    if (!state?.friend) return;
+    setFriend(state.friend);
+    navigate(location.pathname, { replace: true, state: {} });
+  }, [location.pathname, location.state, navigate]);
 
   useEffect(() => {
     setDraftLeaveGuard({
