@@ -47,7 +47,7 @@ interface CardProps {
   onGiftOpened?: () => void;
 }
 
-const GIFT_OPEN_MS = 1300;
+const GIFT_OPEN_MS = 1350;
 
 const GIFT_PIXELS = [
   { x: "8%", y: "18%", color: "#ff5a5a", delay: "0ms", kind: "plus" },
@@ -256,13 +256,15 @@ export function Card({
 
         <div className="letter-card__gift-veil" aria-hidden="true" />
 
-        <img
-          className="letter-card__gift-image"
-          src="/assets/images/letter/letter_Before-opening.webp"
-          alt=""
-          width={960}
-          height={620}
-        />
+        <div className="letter-card__gift-box" aria-hidden="true">
+          <img
+            className="letter-card__gift-image"
+            src="/assets/images/letter/letter_Before-opening.webp"
+            alt=""
+            width={960}
+            height={620}
+          />
+        </div>
 
         {giftOpening ? (
           <div className="letter-card__gift-pixels" aria-hidden="true">
@@ -308,14 +310,27 @@ export function Card({
   return (
     <article
       className={
-        isOpen
-          ? openClass
-          : `letter-card letter-card--locked letter-card--${size}`
+        [
+          isOpen
+            ? openClass
+            : `letter-card letter-card--locked letter-card--${size}`,
+          isOpen && onMoreClick ? "letter-card--clickable" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")
       }
+      onClick={isOpen && onMoreClick ? onMoreClick : undefined}
     >
       {showMore ? (
         onMoreClick ? (
-          <button className="letter-card__more" type="button" onClick={onMoreClick}>
+          <button
+            className="letter-card__more"
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onMoreClick();
+            }}
+          >
             전체보기 &gt;
           </button>
         ) : (

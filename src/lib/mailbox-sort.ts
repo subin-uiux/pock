@@ -16,8 +16,8 @@ export interface MailboxSortOption {
 
 /** 잠김 탭 */
 export const LOCKED_SORT_OPTIONS: MailboxSortOption[] = [
-  { id: "soon", label: "곧 열리는 순" },
-  { id: "longest", label: "오래 남은 순" },
+  { id: "soon", label: "개봉 임박 순" },
+  { id: "longest", label: "개봉일 먼 순" },
 ];
 
 /** 열림 탭 */
