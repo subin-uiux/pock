@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
+  COIN_CHANGE_EVENT,
   earnCoin,
   getCoinBalance,
   getCoinState,
@@ -13,6 +14,16 @@ export function useCoin() {
   const refresh = useCallback(() => {
     setState(getCoinState());
   }, []);
+
+  useEffect(() => {
+    const onChange = () => refresh();
+    window.addEventListener(COIN_CHANGE_EVENT, onChange);
+    window.addEventListener("storage", onChange);
+    return () => {
+      window.removeEventListener(COIN_CHANGE_EVENT, onChange);
+      window.removeEventListener("storage", onChange);
+    };
+  }, [refresh]);
 
   const spend = useCallback(
     (amount: number, reason?: string) => {

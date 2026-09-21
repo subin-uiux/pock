@@ -13,6 +13,7 @@ import { LetterStorePage } from "@/pages/LetterStorePage";
 import { PockReceivedPage } from "@/pages/PockReceivedPage";
 import { PockSentPage } from "@/pages/PockSentPage";
 import { PockSendPage } from "@/pages/PockSendPage";
+import { PockMailboxFriendsPage } from "@/pages/PockMailboxFriendsPage";
 import { PockHintPage } from "@/pages/PockHintPage";
 import { PockDetailPage } from "@/pages/PockDetailPage";
 import { PrivacyPage } from "@/pages/PrivacyPage";
@@ -55,6 +56,29 @@ export default function App() {
           <Route path="/terms" element={<TermsPage />} />
         </Route>
 
+        {/* 검수용 — 로그인 없이 보관함·전송함 확인 */}
+        <Route element={<AppLayout pageClassName="page--pock-received" />}>
+          <Route path="/pock-received" element={<PockReceivedPage />} />
+        </Route>
+
+        <Route element={<AppLayout pageClassName="page--pock-sent" />}>
+          <Route path="/pock-sent" element={<PockSentPage />} />
+        </Route>
+
+        <Route
+          element={
+            <AppLayout
+              pageClassName="page--pock-mailbox-friends"
+              showNav={false}
+            />
+          }
+        >
+          <Route
+            path="/pock-mailbox-friends"
+            element={<PockMailboxFriendsPage />}
+          />
+        </Route>
+
         <Route element={<RequireAuth />}>
           <Route element={<AppLayout pageClassName="page--home" />}>
             <Route path="/home" element={<HomePage />} />
@@ -78,14 +102,6 @@ export default function App() {
 
           <Route element={<AppLayout pageClassName="page--letter-store" />}>
             <Route path="/letter-store" element={<LetterStorePage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--pock-received" />}>
-            <Route path="/pock-received" element={<PockReceivedPage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--pock-sent" />}>
-            <Route path="/pock-sent" element={<PockSentPage />} />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--pock-send" />}>

@@ -1,0 +1,84 @@
+/**
+ * 보관함·전송함 정렬 드롭다운
+ */
+
+.mailbox-sort {
+  position: absolute;
+  top: calc(100% + 0.1875rem); /* 카테고리 아래 3 */
+  right: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  width: 10rem; /* 160 */
+  height: 6.5rem; /* 104 */
+  padding: 1.25rem 0; /* 상하 20 */
+  border: 1px solid var(--color-base-600);
+  border-radius: 0.3125rem; /* 5 */
+  background-color: var(--color-base-0);
+}
+
+.mailbox-sort__label {
+  margin: 0 0 0.625rem; /* 아래 10 */
+  padding: 0 0.75rem; /* 임시값 — 좌우 시안 미기재 */
+  color: var(--color-base-500);
+  font-size: 0.75rem; /* 12 */
+  line-height: var(--line-height-tight);
+}
+
+.mailbox-sort__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mailbox-sort__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.mailbox-sort__rule {
+  display: block;
+  height: 1px;
+  margin: 0.375rem 0.75rem; /* 옵션 사이 상하 6 · 좌우 임시 */
+  background-color: var(--color-base-300);
+}
+
+.mailbox-sort__option {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* 4 — 아이콘 ↔ 텍스트 */
+  width: 100%;
+  margin: 0;
+  padding: 0 0.75rem; /* 임시값 */
+  border: 0;
+  background: transparent;
+  color: var(--color-base-900);
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mailbox-sort__option:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: -2px;
+}
+
+.mailbox-sort__check {
+  flex: 0 0 auto;
+  width: 0.75rem; /* 12 */
+  height: 0.75rem;
+  visibility: hidden;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.mailbox-sort__option--selected .mailbox-sort__check {
+  visibility: visible;
+}
+
+.mailbox-sort__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}

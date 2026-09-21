@@ -63,7 +63,28 @@ export interface NoticeItem {
   isNew: boolean;
 }
 
-export type LetterCardVariant = "progress" | "timer" | "unopened" | "open";
+export type LetterCardMailbox = "sent" | "received";
+export type LetterCardSize = "mo" | "tb";
+export type LetterCardVariant =
+  | "progress"
+  | "timer"
+  | "unopened"
+  | "open"
+  | "gift";
+
+export type LetterTheme =
+  | "red"
+  | "orange"
+  | "yellow"
+  | "green"
+  | "blue"
+  | "purple"
+  | "pink"
+  | "rainbow"
+  | "heart"
+  | "star"
+  | "stripe"
+  | "clover";
 
 export type PopupVariant = "info" | "warning" | "share";
 

@@ -107,6 +107,7 @@
   margin: 0;
   padding-right: 1.25rem; /* 20 — 제목 ↔ 친구 선택 */
   color: #ffffff;
+  font-family: var(--font-family-base); /* Neo — Title2 */
   font-size: 2rem; /* 32 */
   line-height: var(--line-height-tight);
   white-space: nowrap;
@@ -490,12 +491,12 @@
   user-select: none;
 }
 
-/* 보내기 — Push btn · 창 전체 폭 · 하단만 radius 10 */
+/* 보내기 — Push btn · 카드(창) 폭 100% · 하단만 radius 10 */
 .letter-write__send {
   flex: 0 0 auto;
   box-sizing: border-box;
   width: 100%;
-  min-width: 0;
+  min-width: 0; /* Push btn 320~460 고정폭 해제 */
   max-width: none;
   height: 2.5rem; /* 40 — Push min-height와 동일 */
   min-height: 2.5rem;

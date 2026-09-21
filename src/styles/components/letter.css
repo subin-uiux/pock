@@ -31,35 +31,43 @@
   max-width: 100%;
 }
 
-.letter--red {
+.letter--red,
+.letter-card--open.letter-card--red {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-red-light) 100%);
 }
 
-.letter--orange {
+.letter--orange,
+.letter-card--open.letter-card--orange {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-orange-light) 100%);
 }
 
-.letter--yellow {
+.letter--yellow,
+.letter-card--open.letter-card--yellow {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-yellow-light) 100%);
 }
 
-.letter--green {
+.letter--green,
+.letter-card--open.letter-card--green {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-green-light) 100%);
 }
 
-.letter--blue {
+.letter--blue,
+.letter-card--open.letter-card--blue {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-blue-light) 100%);
 }
 
-.letter--purple {
+.letter--purple,
+.letter-card--open.letter-card--purple {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-purple-light) 100%);
 }
 
-.letter--pink {
+.letter--pink,
+.letter-card--open.letter-card--pink {
   background: linear-gradient(180deg, #ffffff 0%, var(--color-rainbow-pink-light) 100%);
 }
 
-.letter--rainbow {
+.letter--rainbow,
+.letter-card--open.letter-card--rainbow {
   background: linear-gradient(
     180deg,
     var(--color-rainbow-red-light) 0%,
@@ -71,42 +79,58 @@
 }
 
 .letter--star,
-.letter--stripe {
+.letter-card--open.letter-card--star {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* 비율 유지 · 찌그러짐 방지 */
+}
+
+.letter--stripe,
+.letter-card--open.letter-card--stripe {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
-.letter--heart {
+.letter--heart,
+.letter-card--open.letter-card--heart {
   background-color: #ffdde9; /* Rainbow / pink base */
   background-image: none;
 }
 
 .letter--heart::before,
-.letter--heart::after {
+.letter--heart::after,
+.letter-card--open.letter-card--heart::before,
+.letter-card--open.letter-card--heart::after {
   content: "";
   position: absolute;
-  left: 0.375rem; /* 6 — 편지지와 간격 */
-  right: 0.375rem; /* 6 */
+  left: 0;
+  right: 0;
   z-index: 0;
-  height: 2.0625rem; /* 33 — letter-heart-pattern */
-  background-image: url("/assets/images/letter/letter-heart-pattern.svg");
-  background-repeat: no-repeat; /* 상·하 각 하트 7개만 */
-  background-position: center;
-  background-size: 100% 100%; /* Mo·Tb·Pc 폭에 맞춰 하트 늘어남 */
+  height: 2.0625rem; /* 33 */
+  background-image: url("/assets/images/letter/letter-heart-unit.webp");
+  /* 동일 하트 가로 나열 · 폭에 정수 배로 맞춰 오른쪽 끝까지 채움 */
+  background-repeat: round no-repeat;
+  background-position: left center;
+  background-size: 3.0625rem 2.0625rem; /* 49×33 — 하트 41 + 간격 8 */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
   pointer-events: none;
 }
 
-.letter--heart::before {
+.letter--heart::before,
+.letter-card--open.letter-card--heart::before {
   top: 0.375rem; /* 6 — 편지지와 간격 */
 }
 
-.letter--heart::after {
+.letter--heart::after,
+.letter-card--open.letter-card--heart::after {
   bottom: 0.375rem; /* 6 — 편지지와 간격 */
 }
 
 .letter--heart .letter__media,
-.letter--heart .letter__content {
+.letter--heart .letter__content,
+.letter-card--open.letter-card--heart .letter-card__open {
   position: relative;
   z-index: 1;
 }
@@ -115,7 +139,8 @@
   z-index: 2; /* absolute 유지 · 패턴 위에 표시 */
 }
 
-.letter--star {
+.letter--star,
+.letter-card--open.letter-card--star {
   --letter-line-color: var(--color-base-400);
   background-image: url("/assets/images/letter/star.webp");
   color: var(--color-base-0);
@@ -123,7 +148,9 @@
 
 .letter--star .letter__body,
 .letter--star .letter__from,
-.letter--star .letter__date {
+.letter--star .letter__date,
+.letter-card--open.letter-card--star .letter-card__line,
+.letter-card--open.letter-card--star .letter-card__meta {
   color: var(--color-base-200);
 }
 
@@ -131,12 +158,18 @@
   filter: invert(1);
 }
 
-.letter--stripe {
+.letter-card--open.letter-card--star .letter-card__more {
+  color: var(--color-base-200);
+}
+
+.letter--stripe,
+.letter-card--open.letter-card--stripe {
   background-color: var(--color-base-0);
   background-image: url("/assets/images/letter/stripe.webp");
 }
 
-.letter--clover {
+.letter--clover,
+.letter-card--open.letter-card--clover {
   background-color: #caffca;
   background-image: radial-gradient(
     circle at center,
@@ -148,7 +181,9 @@
 }
 
 .letter--clover::before,
-.letter--clover::after {
+.letter--clover::after,
+.letter-card--open.letter-card--clover::before,
+.letter-card--open.letter-card--clover::after {
   content: "";
   position: absolute;
   top: 0.375rem; /* 6 — 편지지와 간격 */
@@ -162,16 +197,19 @@
   pointer-events: none;
 }
 
-.letter--clover::before {
+.letter--clover::before,
+.letter-card--open.letter-card--clover::before {
   left: 0.375rem; /* 6 — 편지지와 간격 */
 }
 
-.letter--clover::after {
+.letter--clover::after,
+.letter-card--open.letter-card--clover::after {
   right: 0.375rem; /* 6 — 편지지와 간격 */
 }
 
 .letter--clover .letter__media,
-.letter--clover .letter__content {
+.letter--clover .letter__content,
+.letter-card--open.letter-card--clover .letter-card__open {
   position: relative;
   z-index: 1;
 }
@@ -198,6 +236,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .letter__expand {

@@ -483,7 +483,7 @@ button.pock-window__item {
 
 button.pock-window__item:hover .friend-checkbox,
 button.pock-window__item:active .friend-checkbox {
-  background-color: var(--color-base-300);
+  background-color: var(--color-base-200);
 }
 
 button.pock-window__item--selected .pock-window__thumb {

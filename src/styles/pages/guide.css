@@ -49,8 +49,8 @@
   box-shadow: none;
 }
 
-/* 가이드 메타 텍스트: Pretendard (실제 컴포넌트 `*__title`에는 적용하지 않음) */
-.guide > [class$="-system"] [class$="-system__title"],
+/* 가이드 메타 텍스트: Pretendard (실제 컴포넌트에는 적용하지 않음)
+ * `*-system__title`은 아래 직속 자식 규칙에서 처리 — 컴포넌트 `__title`과 구분 */
 .guide > [class$="-system"] [class$="__card-title"],
 .guide > [class$="-system"] [class$="__caption"],
 .guide > [class$="-system"] [class$="__meta"],

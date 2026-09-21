@@ -1,0 +1,160 @@
+/**
+ * 보관함·전송함 친구 검색 페이지
+ */
+
+.page--pock-mailbox-friends {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-base-0);
+}
+
+.page--pock-mailbox-friends .page__wrapper,
+.page--pock-mailbox-friends.page--has-navigation .page__wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.page--pock-mailbox-friends .main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.mailbox-friends {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 3.125rem 1.25rem 0; /* 상 50 · 좌우 20 */
+}
+
+.mailbox-friends__back {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.625rem; /* 10 */
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-base-900);
+  cursor: pointer;
+}
+
+.mailbox-friends__back:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.mailbox-friends__back-icon {
+  display: block;
+  width: 1.5rem; /* 24 */
+  height: 1.5rem;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.mailbox-friends__back-text {
+  font-size: 1rem; /* 임시값 — 시안 미기재 */
+  line-height: var(--line-height-tight);
+}
+
+.mailbox-friends__search {
+  flex: 0 0 auto;
+  margin-top: 1.625rem; /* 뒤로가기 아래 26 */
+}
+
+.mailbox-friends__search .search-input {
+  width: 100%;
+  height: 2rem; /* 32 — Search Input Mo */
+}
+
+.mailbox-friends__list {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  margin: 1.25rem 0 0; /* 검색 아래 20 */
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  list-style: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mailbox-friends__list::-webkit-scrollbar {
+  display: none;
+}
+
+.mailbox-friends__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.mailbox-friends__item--spaced {
+  margin-top: 1.25rem; /* 친구끼리 20 */
+}
+
+.mailbox-friends__rule {
+  display: block;
+  height: 1px;
+  margin: 0.625rem 0; /* 나 아래 · 상하 10 */
+  background-color: var(--color-base-200);
+}
+
+.mailbox-friends__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mailbox-friends__row:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.mailbox-friends__row:hover .friend-checkbox,
+.mailbox-friends__row:active .friend-checkbox {
+  background-color: var(--color-base-200);
+}
+
+.mailbox-friends__avatar {
+  flex: 0 0 auto;
+  width: 2.25rem; /* 36 */
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--color-base-200); /* 캐릭터 임시 — 시안 미기재 */
+}
+
+.mailbox-friends__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0.625rem; /* 원 ↔ 이름 10 */
+  color: var(--color-base-900);
+  font-size: 1rem; /* 16 */
+  line-height: var(--line-height-tight);
+}
+
+.mailbox-friends__footer {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 0 1.875rem; /* 위 임시 20 · 아래 30 */
+}
