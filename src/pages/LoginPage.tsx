@@ -29,31 +29,13 @@ export function LoginPage() {
 
   return (
     <section className="login" aria-label="로그인">
-      <div className="login__logo">
-        <div className="login__mark" aria-hidden="true">
-          <img
-            className="login__fork"
-            src="/assets/images/pork-logo.svg"
-            alt=""
-            width={28}
-            height={71}
-          />
-          <img
-            className="login__pocket"
-            src="/assets/images/pocket-logo.svg"
-            alt=""
-            width={49}
-            height={45}
-          />
-        </div>
-        <img
-          className="login__wordmark"
-          src="/assets/images/pocktext-logo.svg"
-          alt="POCK"
-          width={92}
-          height={19}
-        />
-      </div>
+      <img
+        className="login__logo"
+        src="/assets/images/logo.svg"
+        alt="POCK"
+        width={92}
+        height={123}
+      />
       <h1 className="login__title">로그인</h1>
       <p className="login__lead">
         현재는 데모 계정만 준비되어 있습니다.
