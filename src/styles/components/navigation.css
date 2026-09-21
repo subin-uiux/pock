@@ -1,4 +1,4 @@
-/**
+﻿/**
  * navigation.css
  * 하단 내비게이션.
  * Mo: 아이콘 묶음 360(패딩 20 포함) · 그라데이션 풀폭 · 높이 72
@@ -27,7 +27,7 @@
   --navigation-icon-scale-active: calc(56 / 50);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .page--has-navigation {
     --navigation-bar-height: 4.125rem; /* Pad/Pc 하단 여백 */
   }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * letter-store.css
  */
 
@@ -76,7 +76,7 @@
   font-size: 0.875rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .letter-store__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * letter-write.css
  * 02 / Letter_write. Mo · Tb · Pc.
  */
@@ -505,7 +505,7 @@
 }
 
 /* Pad/Pc Push 460 고정이 Letter_write 창 폭을 넘지 않도록 */
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   .letter-write .letter-write__send.btn--push,
   .letter-write .letter-write__send.btn--push-muted,
   .letter-write .letter-write__send.btn--push-green {

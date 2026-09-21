@@ -1,4 +1,4 @@
-/**
+﻿/**
  * button.css
  * 버튼 시스템. Push / Popup / Action.
  * Push(Mo): 폭 min 320 · max 460, 화면(컨테이너)에 따라 유동
@@ -65,7 +65,7 @@
   max-width: 28.75rem; /* 460 */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   /* Push Pad/Pc: 460 고정 */
   .btn--push-muted,
   .btn--push,
@@ -153,4 +153,23 @@
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
   color: #353535;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn:disabled::before,
+.btn[aria-disabled="true"]::before {
+  opacity: 0;
+}
+
+.btn--push-muted:disabled,
+.btn--push:disabled {
+  background-color: var(--color-base-600);
+  border-color: var(--color-base-700);
+  color: var(--color-base-0);
+  opacity: 1;
 }

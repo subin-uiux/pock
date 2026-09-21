@@ -1,0 +1,265 @@
+/**
+ * background-setup.css
+ * Page: .page--background-setup — 프로필 배경 선택
+ */
+
+.page--background-setup {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #edf7fd;
+  background-image: var(--gradient-profile-setup);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.page--background-setup .page__wrapper {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page--background-setup .main {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.background-setup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family-base);
+}
+
+.background-setup__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 6.25rem; /* 100 — mo */
+  padding-bottom: 6.25rem; /* 100 — mo */
+  box-sizing: border-box;
+}
+
+.background-setup__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  max-width: 20.75rem; /* 332 — 100×3 + 16×2 */
+  margin-inline: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background-setup__steps {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.background-setup__gauge--pad {
+  display: none;
+}
+
+.background-setup__gauge--mo {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.background-setup__gauge--mo .signup-step-gauge__item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.background-setup__gauge--mo .signup-step-gauge__image {
+  width: 100%;
+  height: auto;
+}
+
+.background-setup__title {
+  margin: 2.5rem 0 0; /* 40 */
+  color: var(--color-base-900);
+  font-size: 1.5rem; /* 24 */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.background-setup__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 10.625rem; /* 170 — mo */
+  height: 13.625rem; /* 218 — mo */
+  margin-top: 2.5rem; /* 40 */
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.background-setup__figure {
+  position: relative;
+  width: 6.625rem; /* 106 */
+  height: 11.125rem; /* 178 */
+}
+
+.background-setup__base {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.background-setup__wear {
+  position: absolute;
+  left: 50%;
+  top: 48.3%;
+  z-index: 1;
+  display: block;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.background-setup__choices {
+  display: grid;
+  grid-template-columns: repeat(3, 6.25rem); /* 100 — mo 3×2 */
+  column-gap: 0.625rem; /* 10 */
+  row-gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.5rem; /* 40 */
+  padding: 0;
+}
+
+.background-setup__swatch.selection-box {
+  width: 6.25rem; /* 100 */
+  height: 6.25rem; /* 100 */
+  aspect-ratio: auto;
+  flex-shrink: 0;
+  padding: 0;
+  background-color: transparent;
+  background-image: var(--background-swatch);
+}
+
+.background-setup__swatch.selection-box--selected {
+  /* 그라데이션 유지 + 바깥 파란 스트로크·체크 (SelectionBox) */
+  background-color: transparent;
+  background-image: var(--background-swatch);
+}
+
+.background-setup__swatch .selection-box__media {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.background-setup__swatch-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-image: var(--background-swatch);
+}
+
+.background-setup__footer {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20.75rem; /* 332 */
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem 0 0; /* 20 */
+  box-sizing: border-box;
+}
+
+.background-setup__footer .btn {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .background-setup__form {
+    padding-top: 2.5rem; /* 40 */
+    padding-bottom: 2.5rem; /* 40 */
+  }
+
+  .background-setup__body {
+    max-width: 56rem;
+    padding: 0 2rem;
+  }
+
+  .background-setup__gauge--mo {
+    display: none;
+  }
+
+  .background-setup__gauge--pad {
+    display: flex;
+    width: auto;
+  }
+
+  .background-setup__title {
+    margin-top: 3.75rem; /* 60 */
+    font-size: 2.625rem; /* 42 */
+  }
+
+  .background-setup__preview {
+    width: 12.875rem; /* 206 — pad */
+    height: 17.625rem; /* 282 — pad/pc */
+    margin-top: 3.75rem; /* 60 */
+  }
+
+  .background-setup__figure {
+    width: 9.9375rem; /* 159 */
+    height: 16.6875rem; /* 267 */
+  }
+
+  .background-setup__choices {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 1.5rem; /* 24 — pad 일렬 */
+    margin-top: 3.75rem; /* 60 */
+  }
+
+  .background-setup__swatch.selection-box {
+    width: 7.5rem; /* 120 */
+    height: 7.5rem; /* 120 */
+  }
+
+  .background-setup__footer {
+    width: 100%;
+    max-width: 28.75rem; /* 460 */
+    padding: 3.125rem 0 0; /* 50 */
+  }
+
+  .background-setup__footer .btn {
+    width: 100%;
+    min-width: 0 !important;
+    max-width: 28.75rem !important;
+  }
+}

@@ -1,8 +1,8 @@
-/**
+﻿/**
  * variables.css
  * 디자인 토큰. 1rem = 16px.
  * 컬러는 컬러 시스템 시안 스와치 기준.
- * 캔버스: Mobile 390 / Tablet 1024 / Desktop 1920
+ * 구간: Mobile 360~768 / Tablet·Desktop 769~ (콘텐츠 max 1024, 양옆 여백)
  */
 
 :root {
@@ -76,6 +76,14 @@
   --color-error: var(--color-rainbow-red-base);
   --color-focus: var(--color-brand-rainbow-base);
 
+  /* 프로필 설정(닉네임~배경) 페이지 배경 — Linear (0% #E9F9E6 하단 → 100% #BCDAF9 상단) */
+  --gradient-profile-setup: linear-gradient(
+    to top,
+    #e9f9e6 0%,
+    #edf7fd 48%,
+    #bcdaf9 100%
+  );
+
   /* Spacing — 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 */
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
@@ -133,9 +141,9 @@
   --z-index-toast: 500;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
   :root {
-    /* Pad / Pc — 8 · margin 64 · gutter 24 · 콘텐츠 최대 1024 가운데 */
+    /* 태블릿·데스크톱 공통 — 콘텐츠 최대 1024 가운데, 양옆은 여백/배경 */
     --layout-max-width: 100%;
     --layout-content-width: 64rem; /* 1024 */
     --layout-gutter: 4rem; /* 64 */
@@ -143,13 +151,5 @@
     --grid-margin: 4rem; /* 64 */
     --grid-gutter: 1.5rem; /* 24 */
     --grid-max-width: 64rem; /* 1024 */
-  }
-}
-
-@media (min-width: 1920px) {
-  :root {
-    --layout-max-width: 100%;
-    --layout-content-width: 64rem; /* Pad 최대 유지 */
-    --grid-max-width: 64rem;
   }
 }

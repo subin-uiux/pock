@@ -1,0 +1,219 @@
+/**
+ * character-setup.css
+ * Page: .page--character-setup — 프로필 캐릭터 선택
+ */
+
+.page--character-setup {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #edf7fd;
+  background-image: var(--gradient-profile-setup);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.page--character-setup .page__wrapper {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page--character-setup .main {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.character-setup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family-base);
+}
+
+.character-setup__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 6.25rem; /* 100 — mo */
+  padding-bottom: 6.25rem; /* 100 — mo */
+  box-sizing: border-box;
+}
+
+.character-setup__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem; /* 320 — 154×2 + 12 */
+  margin-inline: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.character-setup__steps {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.character-setup__gauge--pad {
+  display: none;
+}
+
+.character-setup__gauge--mo {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.character-setup__gauge--mo .signup-step-gauge__item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.character-setup__gauge--mo .signup-step-gauge__image {
+  width: 100%;
+  height: auto;
+}
+
+.character-setup__title {
+  margin: 2.5rem 0 0; /* gap 40 from step */
+  color: var(--color-base-900);
+  font-size: 1.5rem; /* 24 */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.character-setup__desc {
+  margin: 0.4375rem 0 0; /* gap 7 from title — nickname과 동일 */
+  color: var(--color-base-700);
+  font-size: 0.875rem; /* 14 */
+  line-height: 1.4;
+  text-align: center;
+}
+
+.character-setup__choices {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem; /* 12 — 박스 사이 */
+  width: 100%;
+  margin-top: 2.5rem; /* 40 — desc↔choices mo */
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.character-setup__choice.selection-box {
+  width: 9.625rem; /* 154 */
+  height: 12.5rem; /* 200 */
+  aspect-ratio: auto;
+  flex-shrink: 0;
+}
+
+.character-setup__choice .selection-box__media {
+  overflow: visible;
+}
+
+.character-setup__choice .selection-box__media img,
+.character-setup__avatar {
+  /* 원본 106×178 1:1 — 비정수 스케일로 생기는 빈 픽셀 방지 */
+  width: 6.625rem; /* 106 */
+  height: 11.125rem; /* 178 */
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.character-setup__footer {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20rem; /* 320 — choices와 동일 */
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem 0 0; /* top 20 */
+  box-sizing: border-box;
+}
+
+.character-setup__footer .btn {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .character-setup__form {
+    padding-top: 2.5rem; /* 40 */
+    padding-bottom: 2.5rem; /* 40 */
+  }
+
+  .character-setup__body {
+    max-width: 56rem;
+    padding: 0 2rem;
+  }
+
+  .character-setup__gauge--mo {
+    display: none;
+  }
+
+  .character-setup__gauge--pad {
+    display: flex;
+    width: auto;
+  }
+
+  .character-setup__title {
+    margin-top: 3.75rem; /* 60 */
+    font-size: 2.625rem; /* 42 */
+  }
+
+  .character-setup__desc {
+    margin-top: 0.9375rem; /* 15 */
+    font-size: 1.375rem; /* 22 */
+  }
+
+  .character-setup__choices {
+    gap: 0.75rem; /* 12 — 박스 사이 */
+    margin-top: 3.75rem; /* 60 — desc↔choices pad/pc */
+    padding-top: 0;
+  }
+
+  .character-setup__choice.selection-box {
+    width: 13.125rem; /* 210 */
+    height: 17.25rem; /* 276 */
+  }
+
+  .character-setup__choice .selection-box__media img,
+  .character-setup__avatar {
+    width: 6.625rem; /* 106 — 원본 1:1 */
+    height: 11.125rem; /* 178 */
+  }
+
+  .character-setup__footer {
+    width: 100%;
+    max-width: 28.75rem; /* 460 — nickname과 동일 */
+    padding: 3.125rem 0 0; /* 50 */
+  }
+
+  .character-setup__footer .btn {
+    width: 100%;
+    min-width: 0 !important;
+    max-width: 28.75rem !important;
+  }
+}

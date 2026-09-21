@@ -24,7 +24,7 @@ export function LoginPage() {
 
   const handleDemo = () => {
     loginMock();
-    navigate("/home", { replace: true });
+    navigate("/profile/nickname", { replace: true });
   };
 
   return (

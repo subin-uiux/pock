@@ -1,0 +1,350 @@
+/**
+ * nickname-setup.css
+ * Page: .page--nickname-setup — 프로필 닉네임 설정
+ */
+
+.page--nickname-setup {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #edf7fd;
+  background-image: var(--gradient-profile-setup);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.page--nickname-setup .page__wrapper {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page--nickname-setup .main {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.nickname-setup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family-base);
+}
+
+.nickname-setup__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 6.25rem; /* 100 — mo 상단 여백 */
+  padding-bottom: 6.25rem; /* 100 — mo 하단 여백 */
+  box-sizing: border-box;
+}
+
+.nickname-setup__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  max-width: 21.75rem; /* 348 — mo chip 108×3 + gap 12×2 */
+  margin-inline: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nickname-setup__steps {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nickname-setup__gauge--pad {
+  display: none;
+}
+
+.nickname-setup__gauge--mo {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem; /* 화면 폭에 맞춤 */
+}
+
+.nickname-setup__gauge--mo .signup-step-gauge__item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.nickname-setup__gauge--mo .signup-step-gauge__image {
+  width: 100%;
+  height: auto;
+}
+
+.nickname-setup__title {
+  margin: 2.5rem 0 0; /* gap 40 from step */
+  color: var(--color-base-900);
+  font-size: 1.5rem; /* 24 */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.nickname-setup__desc {
+  margin: 0.4375rem 0 0; /* gap 7 from title — mo */
+  color: var(--color-base-700);
+  font-size: 0.875rem; /* 14 */
+  line-height: 1.4;
+  text-align: center;
+}
+
+.nickname-setup__field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 2.5rem; /* gap after desc — 시안 간격 유지 */
+}
+
+.nickname-setup__input-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 20rem; /* 320 */
+  height: 3.375rem; /* 54 */
+  margin-inline: auto;
+  background-color: transparent;
+  background-image: url("/assets/images/input-box-s.svg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.nickname-setup__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-base-900);
+  font-family: inherit;
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+  outline: none;
+}
+
+.nickname-setup__input::placeholder {
+  color: var(--color-base-400);
+}
+
+.nickname-setup__hint {
+  margin: 0.3125rem 0 0; /* gap 5 */
+  color: var(--color-base-600);
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+  text-align: right;
+}
+
+.nickname-setup__recommend {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: 21.75rem; /* 348 — mo 3열 */
+  max-width: 100%;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+}
+
+.nickname-setup__recommend-title {
+  margin: 0;
+  color: var(--color-base-900);
+  font-size: 0.875rem; /* 14 */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+  text-align: left;
+}
+
+.nickname-setup__recommend-list {
+  display: grid;
+  grid-template-columns: repeat(3, 6.75rem); /* 108 — mo 3열 2줄 */
+  column-gap: 0.75rem; /* 12 */
+  row-gap: 0.9375rem; /* 15 */
+  justify-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 21.75rem; /* 108×3 + 12×2 = 348 */
+  max-width: 100%;
+}
+
+.nickname-setup__recommend-item {
+  display: flex;
+  width: 6.75rem;
+  height: 2.125rem;
+}
+
+/* mo: 앞 6개만 (3×2), 7·8번째는 숨김 */
+.nickname-setup__recommend-item:nth-child(n + 7) {
+  display: none;
+}
+
+.nickname-setup__chip {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6.75rem; /* 108 */
+  min-width: 6.75rem;
+  max-width: 6.75rem;
+  height: 2.125rem; /* 34 */
+  min-height: 2.125rem;
+  margin: 0;
+  padding: 0 0.25rem;
+  border: 0;
+  border-radius: var(--radius-full); /* 100% */
+  background-color: var(--color-rainbow-blue-light);
+  color: var(--color-navigation-blue);
+  font-family: inherit;
+  font-size: 0.875rem; /* 14 */
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nickname-setup__chip:hover,
+.nickname-setup__chip:active {
+  filter: brightness(0.97);
+}
+
+.nickname-setup__footer {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 21.75rem; /* 348 — 추천 닉네임 그리드와 동일 */
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem 0 0; /* top 20 — list↔footer */
+  box-sizing: border-box;
+}
+
+.nickname-setup__footer .btn {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .nickname-setup__form {
+    padding-top: 2.5rem; /* 40 — pad/pc 상단 여백 */
+    padding-bottom: 2.5rem; /* 40 — pad/pc 하단 여백 */
+  }
+
+  .nickname-setup__body {
+    max-width: 56rem; /* 896 — name-input 폭 기준 */
+    padding: 0 2rem;
+  }
+
+  .nickname-setup__gauge--mo {
+    display: none;
+  }
+
+  .nickname-setup__gauge--pad {
+    display: flex;
+    width: auto;
+  }
+
+  .nickname-setup__title {
+    margin-top: 3.75rem; /* gap 60 */
+    font-size: 2.625rem; /* 42 */
+  }
+
+  .nickname-setup__desc {
+    margin-top: 0.9375rem; /* gap 15 from title — pad/pc */
+    font-size: 1.375rem; /* 22 */
+  }
+
+  .nickname-setup__field {
+    width: 100%;
+    max-width: 56rem; /* 896 */
+    margin-top: 3.75rem;
+  }
+
+  .nickname-setup__input-shell {
+    max-width: none;
+    width: 100%;
+    height: 5.3125rem; /* 85 — name-input */
+    background-image: url("/assets/images/name-input.svg");
+  }
+
+  .nickname-setup__input {
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem; /* 24 */
+  }
+
+  .nickname-setup__hint {
+    margin-top: 0.625rem; /* gap 10 */
+    font-size: 1.375rem; /* 22 */
+  }
+
+  .nickname-setup__recommend {
+    width: 100%;
+    max-width: 56rem;
+    margin-top: 1.875rem; /* gap 30 from input block */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .nickname-setup__recommend-title {
+    font-size: 1.375rem; /* 22 */
+  }
+
+  .nickname-setup__recommend-list {
+    grid-template-columns: repeat(4, 12.875rem); /* 206 */
+    width: auto;
+    max-width: none;
+    gap: 1.5rem; /* 24 — pad/pc */
+  }
+
+  .nickname-setup__recommend-item:nth-child(n + 7) {
+    display: flex;
+  }
+
+  .nickname-setup__recommend-item {
+    width: 12.875rem;
+    height: 3.375rem;
+  }
+
+  .nickname-setup__chip {
+    width: 12.875rem; /* 206 */
+    min-width: 12.875rem;
+    max-width: 12.875rem;
+    height: 3.375rem; /* 54 */
+    min-height: 3.375rem;
+    font-size: 1.375rem; /* 22 */
+  }
+
+  .nickname-setup__footer {
+    width: 100%;
+    max-width: 28.75rem; /* 460 */
+    padding: 3.125rem 0 0; /* top 50 — list↔footer */
+  }
+
+  .nickname-setup__footer .btn {
+    width: 100%;
+    min-width: 0 !important;
+    max-width: 28.75rem !important; /* 460 */
+  }
+}
