@@ -3,6 +3,11 @@ import { RequireAuth } from "@/components/RequireAuth";
 import { AppLayout } from "@/layouts/AppLayout";
 import { LandingPage } from "@/pages/LandingPage";
 import { LoginPage } from "@/pages/LoginPage";
+import { NicknameSetupPage } from "@/pages/NicknameSetupPage";
+import { CharacterSetupPage } from "@/pages/CharacterSetupPage";
+import { OutfitSetupPage } from "@/pages/OutfitSetupPage";
+import { BackgroundSetupPage } from "@/pages/BackgroundSetupPage";
+import { ProfileCompletePage } from "@/pages/ProfileCompletePage";
 import { GuidePage } from "@/pages/GuidePage";
 import { HomePage } from "@/pages/HomePage";
 import { NoticePage } from "@/pages/NoticePage";
@@ -80,6 +85,73 @@ export default function App() {
         </Route>
 
         <Route element={<RequireAuth />}>
+          <Route
+            element={
+              <AppLayout
+                pageClassName="page--nickname-setup"
+                showNav={false}
+              />
+            }
+          >
+            <Route
+              path="/profile/nickname"
+              element={<NicknameSetupPage />}
+            />
+          </Route>
+
+          <Route
+            element={
+              <AppLayout
+                pageClassName="page--character-setup"
+                showNav={false}
+              />
+            }
+          >
+            <Route
+              path="/profile/character"
+              element={<CharacterSetupPage />}
+            />
+          </Route>
+
+          <Route
+            element={
+              <AppLayout
+                pageClassName="page--outfit-setup"
+                showNav={false}
+              />
+            }
+          >
+            <Route path="/profile/outfit" element={<OutfitSetupPage />} />
+          </Route>
+
+          <Route
+            element={
+              <AppLayout
+                pageClassName="page--background-setup"
+                showNav={false}
+              />
+            }
+          >
+            <Route
+              path="/profile/background"
+              element={<BackgroundSetupPage />}
+            />
+          </Route>
+
+          <Route
+            element={
+              <AppLayout
+                pageClassName="page--profile-complete"
+                showNav={false}
+              />
+            }
+          >
+            <Route
+              path="/profile/complete"
+              element={<ProfileCompletePage />}
+            />
+          </Route>
+
           <Route element={<AppLayout pageClassName="page--home" />}>
             <Route path="/home" element={<HomePage />} />
           </Route>

@@ -3,9 +3,13 @@
  * 캐릭터 / 옷 / 배경 선택 상자
  * default: base/0
  * selected: fill #C7DDFF + stroke 3px Navigation/home/selected + check-blue
+ *
+ * stroke는 바깥 box-shadow — 선택 시 파란 선이 바깥으로 뚜렷하게 보임
  */
 
 .selection-box {
+  --selection-box-stroke: 3px;
+
   position: relative;
   display: inline-flex;
   flex-direction: column;
@@ -15,9 +19,10 @@
   width: 7.5rem; /* 120 — 임시값, 시안 확정 시 교체 */
   aspect-ratio: 3 / 4;
   padding: 0;
-  border: 3px solid transparent;
+  border: 0;
   border-radius: var(--radius-md);
   background-color: var(--color-base-0);
+  box-shadow: none;
   cursor: pointer;
 }
 
@@ -27,8 +32,9 @@
 }
 
 .selection-box--selected {
-  border-color: var(--color-navigation-blue); /* Navigation/home/selected */
   background-color: var(--color-rainbow-blue-light); /* #C7DDFF */
+  box-shadow: 0 0 0 var(--selection-box-stroke)
+    var(--color-navigation-blue); /* Navigation/home/selected — 바깥 스트로크 */
 }
 
 .selection-box__media {
@@ -39,7 +45,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: calc(var(--radius-md) - 0.125rem);
+  border-radius: inherit;
 }
 
 .selection-box__media img {

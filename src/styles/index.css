@@ -1,4 +1,4 @@
-/* Global styles — assets CSS ported into React */
+/* Global styles ? assets CSS ported into React */
 @import "./reset.css";
 @import "./variables.css";
 @import "./fonts.css";
@@ -32,6 +32,11 @@
 
 @import "./pages/index.css";
 @import "./pages/login.css";
+@import "./pages/nickname-setup.css";
+@import "./pages/character-setup.css";
+@import "./pages/outfit-setup.css";
+@import "./pages/background-setup.css";
+@import "./pages/profile-complete.css";
 @import "./pages/home.css";
 @import "./pages/notice.css";
 @import "./pages/settings.css";
