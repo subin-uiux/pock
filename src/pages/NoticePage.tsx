@@ -1,68 +1,20 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { alertGroups, type AlertItem } from "@/data/alert-data";
-
-/** 카드 높이 116 · 펼침 간격 16 */
-const CARD_H = 116;
-const CARD_GAP = 16;
-/** 접힘 시 뒤 카드 peek (세 장 기준) */
-const STACK_PEEK = 8;
-
-function AlertCard({
-  item,
-  onClick,
-  className = "",
-  style,
-}: {
-  item: AlertItem;
-  onClick?: () => void;
-  className?: string;
-  style?: CSSProperties;
-}) {
-  return (
-    <button
-      type="button"
-      className={["notice-card", "notice-card--button", className]
-        .filter(Boolean)
-        .join(" ")}
-      style={style}
-      onClick={onClick}
-    >
-      <div className="notice-card__inner">
-        <div className="notice-card__top">
-          <div className="notice-card__meta">
-            <img
-              className="notice-card__icon"
-              src={item.icon}
-              alt=""
-              width={item.iconW}
-              height={item.iconH}
-            />
-            <p className="notice-card__label">{item.label}</p>
-          </div>
-          <div className="notice-card__aside">
-            <time className="notice-card__time">{item.time}</time>
-            {item.unread ? (
-              <span className="notice-card__dot" aria-label="읽지 않음" />
-            ) : null}
-          </div>
-        </div>
-        <p className="notice-card__message">{item.message}</p>
-      </div>
-    </button>
-  );
-}
+import { noticeItems } from "@/data/notice-data";
 
 /**
- * 알림 `/notice`
- * 홈 main-alert → 진입
+ * 공지사항 `/notice`
+ * 설정 → 공지사항
+ * 반응형: Mo 좌우 20·540 · Tb/Pc 666
  */
 export function NoticePage() {
   const navigate = useNavigate();
-  const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const [openId, setOpenId] = useState<string | null>(
+    noticeItems[0]?.id ?? null,
+  );
 
   useEffect(() => {
-    document.title = "알림 ㅣ POCK";
+    document.title = "공지사항 ㅣ POCK";
   }, []);
 
   const goBack = () => {
@@ -70,89 +22,113 @@ export function NoticePage() {
       navigate(-1);
       return;
     }
-    navigate("/home", { replace: true });
+    navigate("/settings", { replace: true });
   };
 
-  const toggleStack = (groupId: string) => {
-    setExpandedIds((prev) =>
-      prev.includes(groupId)
-        ? prev.filter((id) => id !== groupId)
-        : [...prev, groupId],
-    );
+  const toggleItem = (id: string) => {
+    setOpenId((prev) => (prev === id ? null : id));
   };
 
   return (
-    <section className="notice" aria-label="알림">
-      <header className="notice__header">
+    <section className="notice-page" aria-label="공지사항">
+      <header className="notice-page__header">
         <button
           type="button"
-          className="notice__back"
-          aria-label="이전"
+          className="notice-page__back"
+          aria-label="뒤로가기"
           onClick={goBack}
         >
           <img
-            className="notice__back-icon"
-            src="/assets/images/arrow-before.svg"
+            className="notice-page__back-icon"
+            src="/assets/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}
           />
         </button>
-        <h1 className="notice__title">알림</h1>
+        <h1 className="notice-page__title">공지사항</h1>
       </header>
 
-      <ul className="notice__list">
-        {alertGroups.map((group) => {
-          const stacked = Boolean(group.stacked && group.items.length > 1);
-          const expanded = expandedIds.includes(group.id);
-          const front = group.items[0];
-          const count = Math.min(group.items.length, 3);
+      <article className="notice-page__window" aria-label="공지 목록">
+        <header className="pock-window__bar">
+          <h2 className="pock-window__title">공지사항</h2>
+          <div className="pock-window__actions">
+            <span
+              className="pock-window__control pock-window__control--min"
+              aria-hidden="true"
+            />
+            <button
+              type="button"
+              className="pock-window__control pock-window__control--close"
+              aria-label="닫기"
+              onClick={goBack}
+              style={{ pointerEvents: "auto", cursor: "pointer" }}
+            >
+              <img
+                className="pock-window__control-icon"
+                src="/assets/images/heart-icon.svg"
+                alt=""
+                width={9}
+                height={7}
+              />
+            </button>
+          </div>
+        </header>
 
-          if (!front) return null;
-
-          if (!stacked) {
-            return (
-              <li key={group.id} className="notice__item">
-                <AlertCard item={front} />
-              </li>
-            );
-          }
-
-          const items = group.items.slice(0, 3);
-          const collapsedH = CARD_H + STACK_PEEK * (count - 1);
-          const expandedH = count * CARD_H + (count - 1) * CARD_GAP;
-
-          return (
-            <li key={group.id} className="notice__item">
-              <div
-                className={
-                  expanded
-                    ? "notice-stack notice-stack--expanded"
-                    : "notice-stack notice-stack--collapsed"
-                }
-                style={{
-                  height: `${expanded ? expandedH : collapsedH}px`,
-                }}
-              >
-                {items.map((item, index) => (
-                  <AlertCard
-                    key={item.id}
-                    item={item}
-                    className={`notice-stack__card notice-stack__card--${index}`}
-                    style={
-                      {
-                        "--i": index,
-                        zIndex: expanded ? 1 : count - index,
-                      } as CSSProperties
+        <div className="notice-page__body">
+          <ul className="notice-page__list">
+            {noticeItems.map((item) => {
+              const open = openId === item.id;
+              return (
+                <li
+                  key={item.id}
+                  className={
+                    open
+                      ? "notice-page__item notice-page__item--open"
+                      : "notice-page__item"
+                  }
+                >
+                  <button
+                    type="button"
+                    className={
+                      open
+                        ? "notice-page__row notice-page__row--open"
+                        : "notice-page__row"
                     }
-                    onClick={() => toggleStack(group.id)}
-                  />
-                ))}
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+                    aria-expanded={open}
+                    onClick={() => toggleItem(item.id)}
+                  >
+                    <span className="notice-page__row-title">{item.title}</span>
+                    <img
+                      className="notice-page__chevron"
+                      src="/assets/icons/left-arrow.svg"
+                      alt=""
+                      width={16}
+                      height={16}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  {open ? (
+                    <div className="notice-page__panel">
+                      <p className="notice-page__text">
+                        {item.content.split("\n").map((line, index, lines) => (
+                          <span key={`${item.id}-line-${index}`}>
+                            {line}
+                            {index < lines.length - 1 ? <br /> : null}
+                          </span>
+                        ))}
+                      </p>
+                      <time className="notice-page__date" dateTime={item.date}>
+                        {item.date}
+                      </time>
+                    </div>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </article>
     </section>
   );
 }

@@ -65,8 +65,6 @@ export function HomePage() {
     ? { width: `${(outfit.width / CHARACTER_BASE.width) * 100}%` }
     : undefined;
 
-  const popupSize = size === "mo" ? "mo" : "tb";
-
   return (
     <section className="home" aria-label="홈">
       <button
@@ -75,7 +73,7 @@ export function HomePage() {
           hasAlert ? "home__alert home__alert--unread" : "home__alert"
         }
         aria-label={hasAlert ? "알림, 새 알림 있음" : "알림"}
-        onClick={() => navigate("/notice")}
+        onClick={() => navigate("/alerts")}
       >
         <img
           className="home__alert-icon"
@@ -205,12 +203,7 @@ export function HomePage() {
       <FriendProfilePopup
         open={selectedFriend !== null}
         name={selectedFriend ?? ""}
-        popupSize={popupSize}
         onClose={() => setSelectedFriend(null)}
-        onDelete={() => {
-          if (!selectedFriend) return;
-          setFriends((prev) => prev.filter((n) => n !== selectedFriend));
-        }}
       />
     </section>
   );

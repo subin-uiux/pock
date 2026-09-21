@@ -1,13 +1,242 @@
 /**
  * terms.css
- * Page: .page--terms
- * 역할: 이용약관 페이지
+ * Page: .page--terms — 약관 및 정책 (설정 →)
+ * 타이포: Document/* (Pretendard) — /guide TYPOGRAPHY
+ * 반응형: Mo 360~768 (기본) · Tb/Pc min-width 769px
  */
 
 .page--terms {
-  /* 추후 디자인 지시 후 구현 */
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #ffffff;
+  background-image: none;
 }
 
-.main--terms {
-  /* 추후 디자인 지시 후 구현 */
+.page--terms .page__wrapper {
+  max-width: 100%;
+}
+
+/* Mo 360~768 — 유동 폭 · 안쪽 패딩 없음 */
+.terms-page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0;
+  font-family: var(--font-family-document);
+  color: #000000;
+}
+
+/* 이전 / 다음 — NeoDunggeunmo 20 · 화살표 24 */
+.terms-page__nav {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 0 1.25rem; /* 아래 20 */
+}
+
+.terms-page__back,
+.terms-page__next {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.25rem; /* 4 — 임시값 */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
+}
+
+.terms-page__back-icon,
+.terms-page__next-icon {
+  display: block;
+  width: 1.5rem; /* 24 */
+  height: 1.5rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.terms-page__next-icon {
+  transform: scaleX(-1); /* left-arrow → 오른쪽 */
+}
+
+.terms-page__back-label,
+.terms-page__next-label {
+  font-family: var(--font-family-base); /* NeoDunggeunmo */
+  font-size: 1.25rem; /* 20 */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+}
+
+.terms-page__doc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-family-document); /* Pretendard */
+}
+
+/* 제목 — Pretendard SemiBold 24 */
+.terms-page__title {
+  margin: 0;
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 1.5rem; /* 24 */
+  font-weight: 600; /* SemiBold */
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* 시행일자 — Pretendard 14 */
+.terms-page__date {
+  margin: 0.75rem 0 0; /* 12 — 임시값 */
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 0.875rem; /* 14 */
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+}
+
+/* 안내 박스 — fill base/100 · 위아래 간격 25 */
+.terms-page__notice {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 1.5625rem; /* 25 */
+  margin-bottom: 1.5625rem; /* 25 */
+  padding: 0.625rem; /* 10 10 */
+  border-radius: 0;
+  background-color: var(--color-base-100);
+}
+
+/* 회색 박스 텍스트 — Pretendard SemiBold 14 */
+.terms-page__notice-text {
+  margin: 0;
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 0.875rem; /* 14 */
+  font-weight: 600; /* SemiBold */
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
+.terms-page__articles {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* 40 — 조 간격 */
+  margin-top: 0;
+}
+
+.terms-page__intro {
+  margin: 0;
+  margin-bottom: 1.5625rem; /* 25 — 본문 다음 한 줄 띄운 뒤 1. */
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 0.875rem; /* 14 */
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.terms-page__notice + .terms-page__intro {
+  margin-top: 0; /* 위 간격은 회색 박스 margin-bottom 25만 사용 */
+}
+
+.terms-page__intro + .terms-page__articles {
+  margin-top: 0;
+}
+
+.terms-page__article {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* 조항 타이틀 — Pretendard Medium 16 */
+.terms-page__article-title {
+  margin: 0;
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 1rem; /* 16 */
+  font-weight: 500; /* Medium */
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* 소제목 — 앞에 한 줄 띄움 (시안) */
+.terms-page__subtitle {
+  margin: 1.3125rem 0 0; /* 위 한 줄(14×1.5) */
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 1rem; /* 16 */
+  font-weight: 500; /* Medium */
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* 본문 — Pretendard 14 */
+.terms-page__paragraph {
+  margin: 0;
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 0.875rem; /* 14 */
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.terms-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.terms-page__list--plain {
+  padding-left: 0;
+}
+
+.terms-page__list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem; /* 4 */
+  color: #000000;
+  font-family: var(--font-family-document);
+  font-size: 0.875rem; /* 14 — Body4 */
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.terms-page__list-num,
+.terms-page__list-bullet {
+  flex: 0 0 auto;
+}
+
+.terms-page__list-bullet {
+  width: 0.75rem; /* 12 — 가운데 점 정렬용 */
+  text-align: center;
+}
+
+.terms-page__list-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* Tb / Pc — 콘텐츠 폭 666 가운데 */
+@media (min-width: 769px) {
+  .terms-page {
+    width: 41.625rem; /* 666 */
+    max-width: 41.625rem;
+  }
 }

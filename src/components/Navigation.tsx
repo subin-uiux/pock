@@ -33,7 +33,15 @@ const NAV_ITEMS = [
 type NavTo = (typeof NAV_ITEMS)[number]["to"];
 
 /** 설정 하위 경로 — 코인샵·마이페이지도 설정 활성 */
-const SETTINGS_ACTIVE_PATHS = ["/settings", "/coin", "/mypage"] as const;
+const SETTINGS_ACTIVE_PATHS = [
+  "/settings",
+  "/coin",
+  "/mypage",
+  "/Friend_list",
+  "/notice",
+  "/terms",
+  "/privacy",
+] as const;
 
 function isSettingsActivePath(pathname: string) {
   return SETTINGS_ACTIVE_PATHS.some(

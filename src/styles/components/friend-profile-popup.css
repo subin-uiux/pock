@@ -14,11 +14,15 @@
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  height: 28.625rem; /* 458 — mo */
   max-width: 24.875rem; /* 398 — 여백 고려 임시값 */
   padding: 2.5rem 1.3125rem 1.5rem; /* 40 21 24 — 시안 기준 임시값 */
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+  /* 아래→위 · base/300 → base/0(47%) */
+  background: linear-gradient(
+    to top,
+    var(--color-base-300) 0%,
+    var(--color-base-0) 47%
+  );
   font-family: var(--font-family-base);
 }
 
@@ -43,54 +47,59 @@
   height: 1rem;
 }
 
+/* 캐릭터 카드 140×165.38 · 모서리 8.19 · 캐릭터 중앙 */
 .friend-profile-popup__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 9.25rem; /* 148 — 임시값 */
-  height: 9.25rem;
+  width: 8.75rem; /* 140 */
+  height: 10.33625rem; /* 165.38 */
   overflow: hidden;
-  border-radius: var(--radius-md);
-  background-image: linear-gradient(
-    180deg,
-    #058aff 0%,
-    #c7ddff 100%
-  ); /* 임시값 — 시안 블루 그라데이션 */
+  border-radius: 0.511875rem; /* 8.19 */
 }
 
+/* 시안 — 남 #058AFF / 여 #FFB9F3 · 0% 50% → 100% 100% */
+.friend-profile-popup__avatar--male {
+  background-image: linear-gradient(
+    180deg,
+    rgba(5, 138, 255, 0.5) 0%,
+    #058aff 100%
+  );
+}
+
+.friend-profile-popup__avatar--female {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 185, 243, 0.5) 0%,
+    #ffb9f3 100%
+  );
+}
+
+/* 캐릭터 81.87 — 원본 비율 유지(106×178) · 중앙 */
 .friend-profile-popup__avatar-img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 5.116875rem; /* 81.87 */
+  height: auto;
+  aspect-ratio: 106 / 178;
+  max-height: 100%;
   object-fit: contain;
+  object-position: center;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
+.friend-profile-popup__avatar--female .friend-profile-popup__avatar-img {
+  transform: translateX(0.3125rem); /* 오른쪽 5 (기존 4 + 1) */
+}
+
 .friend-profile-popup__name {
-  margin: 1.25rem 0 0; /* 20 — avatar↔name */
+  margin: 1.25rem 0; /* 20 — 프로필↔닉네임 · 닉네임↔흰 영역 */
   color: var(--color-base-900);
   font-size: 1.125rem; /* 18 */
   font-weight: var(--font-weight-regular);
   line-height: 1.3;
   text-align: center;
-}
-
-.friend-profile-popup__delete {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  max-width: 22.375rem; /* 358 */
-  margin-top: 1.25rem; /* 20 — name↔삭제 */
-}
-
-.friend-profile-popup__delete-btn.btn--popup {
-  width: auto;
-  min-width: 0;
-  height: 1.625rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem; /* 14 */
 }
 
 .friend-profile-popup__stats {
@@ -102,8 +111,8 @@
   width: 100%;
   max-width: 22.375rem; /* 358 */
   height: 5.875rem; /* 94 */
-  margin-top: 1.25rem; /* 20 — 삭제↔통계 */
-  padding: 0.625rem 1.25rem; /* 10 20 */
+  margin-top: 0;
+  padding: 0.5rem 1.25rem; /* 상하 8 · 좌우 20 */
   border: 1px solid var(--color-base-300);
   border-radius: var(--radius-md);
   background-color: var(--color-base-0);
@@ -118,12 +127,12 @@
 }
 
 .friend-profile-popup__stat:first-child {
-  padding-bottom: 0.3125rem; /* 5 */
+  padding-bottom: 0.3125rem; /* 5 — 텍스트↔라인 */
   border-bottom: 1px solid var(--color-base-200);
 }
 
 .friend-profile-popup__stat:last-child {
-  padding-top: 0.3125rem; /* 5 */
+  padding-top: 0.3125rem; /* 5 — 라인↔텍스트 */
 }
 
 .friend-profile-popup__stat-label {
@@ -133,31 +142,21 @@
 }
 
 .friend-profile-popup__stat-value {
-  color: var(--color-functional-orange);
-  font-size: 1rem; /* 16 */
+  color: var(--color-functional-orange); /* Functional / orange */
+  font-size: 1.125rem; /* 18 */
   line-height: 1.3;
-}
-
-.friend-profile-popup__send.btn {
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 0 !important;
-  max-width: 22.375rem !important; /* 358 */
-  margin-top: 1.25rem; /* 20 — 통계↔편지 보내기 */
-  min-height: 3rem;
-  font-size: 1rem;
 }
 
 @media (min-width: 1024px) {
   .friend-profile-popup {
     width: 25rem; /* 400 */
-    height: 29.375rem; /* 470 */
     max-width: 25rem;
     padding: 2.75rem 1.3125rem 1.75rem; /* 임시값 */
   }
 
   .friend-profile-popup__avatar {
-    width: 10rem; /* 160 — pad 임시값 */
-    height: 10rem;
+    width: 8.75rem; /* 140 */
+    height: 10.33625rem; /* 165.38 */
+    border-radius: 0.511875rem; /* 8.19 */
   }
 }

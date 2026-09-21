@@ -10,6 +10,10 @@ interface PopupProps {
   message: ReactNode;
   confirmLabel?: string;
   cancelLabel?: string;
+  /** 기본 variant 아이콘 대신 사용 */
+  iconSrc?: string;
+  /** 아이콘 한 변(px). 기본 36 · share 기본 40 */
+  iconSize?: number;
   onConfirm?: () => void;
   onCancel?: () => void;
   onClose?: () => void;
@@ -28,6 +32,8 @@ export function Popup({
   message,
   confirmLabel = "확인",
   cancelLabel,
+  iconSrc,
+  iconSize,
   onConfirm,
   onCancel,
   onClose,
@@ -38,6 +44,9 @@ export function Popup({
     size === "mo"
       ? "pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar"
       : "pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar";
+
+  const resolvedIcon = iconSrc ?? ICONS[variant];
+  const resolvedSize = iconSize ?? (variant === "share" ? 40 : 36);
 
   return (
     <div className="popup-layer" role="dialog" aria-modal="true">
@@ -71,10 +80,11 @@ export function Popup({
         <div className="pock-popup__body">
           <img
             className="pock-popup__icon"
-            src={ICONS[variant]}
+            src={resolvedIcon}
             alt=""
-            width={36}
-            height={36}
+            width={resolvedSize}
+            height={resolvedSize}
+            style={{ width: resolvedSize, height: resolvedSize }}
           />
           <p className="pock-popup__text">{message}</p>
         </div>

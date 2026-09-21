@@ -10,6 +10,7 @@ import { BackgroundSetupPage } from "@/pages/BackgroundSetupPage";
 import { ProfileCompletePage } from "@/pages/ProfileCompletePage";
 import { GuidePage } from "@/pages/GuidePage";
 import { HomePage } from "@/pages/HomePage";
+import { AlertPage } from "@/pages/AlertPage";
 import { NoticePage } from "@/pages/NoticePage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { Friend_listPage } from "@/pages/Friend_listPage";
@@ -43,22 +44,11 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
         </Route>
 
-        <Route
-          element={
-            <AppLayout
-              pageClassName="page--privacy"
-              showNav={false}
-            />
-          }
-        >
+        <Route element={<AppLayout pageClassName="page--privacy" />}>
           <Route path="/privacy" element={<PrivacyPage />} />
         </Route>
 
-        <Route
-          element={
-            <AppLayout pageClassName="page--terms" showNav={false} />
-          }
-        >
+        <Route element={<AppLayout pageClassName="page--terms" />}>
           <Route path="/terms" element={<TermsPage />} />
         </Route>
 
@@ -167,9 +157,13 @@ export default function App() {
 
           <Route
             element={
-              <AppLayout pageClassName="page--notice" showNav={false} />
+              <AppLayout pageClassName="page--alert" showNav={false} />
             }
           >
+            <Route path="/alerts" element={<AlertPage />} />
+          </Route>
+
+          <Route element={<AppLayout pageClassName="page--notice" />}>
             <Route path="/notice" element={<NoticePage />} />
           </Route>
 
@@ -177,11 +171,7 @@ export default function App() {
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
 
-          <Route
-            element={
-              <AppLayout pageClassName="page--friend-list" showNav={false} />
-            }
-          >
+          <Route element={<AppLayout pageClassName="page--friend-list" />}>
             <Route path="/Friend_list" element={<Friend_listPage />} />
           </Route>
 

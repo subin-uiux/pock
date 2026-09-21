@@ -67,7 +67,7 @@ const COIN_PACKS: {
 
 /**
  * 코인 상점 `/coin`
- * 반응형: Mo <768 · Pad/Pc 768~1920
+ * 반응형: Mo 좌우 20·유동 · Tb/Pc 670
  */
 export function CoinPage() {
   const navigate = useNavigate();
@@ -123,8 +123,8 @@ export function CoinPage() {
             className="coin-page__back-icon"
             src="/assets/icons/left-arrow.svg"
             alt=""
-            width={12}
-            height={20}
+            width={24}
+            height={24}
           />
         </button>
 
@@ -177,7 +177,7 @@ export function CoinPage() {
             width={23}
             height={23}
           />
-          <span>광고보고 코인받기</span>
+          <span>광고보고 1 코인받기</span>
         </Button>
       </div>
 

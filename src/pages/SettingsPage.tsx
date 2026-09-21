@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useAuth } from "@/hooks/useAuth";
+import { getProfileSetup } from "@/lib/profile-setup";
 
 /** 임시값 — 프로필 닉네임 시안 샘플 */
-const PROFILE_NICKNAME = "zl존 킹왕짱";
+const DEFAULT_NICKNAME = "zl존 킹왕짱";
 /** 데모 보유 코인 */
 const DEMO_COIN = 1000;
 /** 데모 출석 완료 일수 — 시안: 1일차 완료 */
@@ -30,11 +31,16 @@ const ATTENDANCE_DAYS: {
 
 /**
  * 설정 `/settings`
- * 반응형: Mo <768 · Pad/Pc 768~1920
+ * 반응형: Mo 360~768 (1열) · Tb/Pc min-width 769px
  */
 export function SettingsPage() {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const savedNickname = getProfileSetup().nickname?.trim();
+  const nickname =
+    savedNickname && savedNickname.length > 0
+      ? savedNickname
+      : DEFAULT_NICKNAME;
   const [logoutOpen, setLogoutOpen] = useState(false);
   const [withdrawOpen, setWithdrawOpen] = useState(false);
 
@@ -122,7 +128,7 @@ export function SettingsPage() {
             />
           </div>
           <div className="settings-profile__meta">
-            <p className="settings-profile__name">{PROFILE_NICKNAME}</p>
+            <p className="settings-profile__name">{nickname}</p>
             <Button
               variant="popup"
               className="settings-profile__edit"
@@ -192,7 +198,14 @@ export function SettingsPage() {
                   }}
                 >
                   <span className="settings-menu__label">친구 초대하기</span>
-                  <span className="settings-menu__chevron" aria-hidden="true" />
+                  <img
+                    className="settings-menu__chevron"
+                    src="/assets/icons/left-arrow.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    aria-hidden="true"
+                  />
                 </button>
               </li>
               <li className="settings-menu__item">
@@ -204,7 +217,14 @@ export function SettingsPage() {
                   <span className="settings-menu__label">
                     친구 목록 관리하기
                   </span>
-                  <span className="settings-menu__chevron" aria-hidden="true" />
+                  <img
+                    className="settings-menu__chevron"
+                    src="/assets/icons/left-arrow.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    aria-hidden="true"
+                  />
                 </button>
               </li>
             </ul>
@@ -237,7 +257,14 @@ export function SettingsPage() {
                       />
                     ) : null}
                   </span>
-                  <span className="settings-menu__chevron" aria-hidden="true" />
+                  <img
+                    className="settings-menu__chevron"
+                    src="/assets/icons/left-arrow.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    aria-hidden="true"
+                  />
                 </button>
               </li>
               <li className="settings-menu__item">
@@ -247,7 +274,14 @@ export function SettingsPage() {
                   onClick={() => navigate("/terms")}
                 >
                   <span className="settings-menu__label">약관 및 정책</span>
-                  <span className="settings-menu__chevron" aria-hidden="true" />
+                  <img
+                    className="settings-menu__chevron"
+                    src="/assets/icons/left-arrow.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    aria-hidden="true"
+                  />
                 </button>
               </li>
               <li className="settings-menu__item">
@@ -259,7 +293,14 @@ export function SettingsPage() {
                   }}
                 >
                   <span className="settings-menu__label">문의하기</span>
-                  <span className="settings-menu__chevron" aria-hidden="true" />
+                  <img
+                    className="settings-menu__chevron"
+                    src="/assets/icons/left-arrow.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    aria-hidden="true"
+                  />
                 </button>
               </li>
             </ul>
