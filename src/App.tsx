@@ -7,6 +7,7 @@ import { GuidePage } from "@/pages/GuidePage";
 import { HomePage } from "@/pages/HomePage";
 import { NoticePage } from "@/pages/NoticePage";
 import { SettingsPage } from "@/pages/SettingsPage";
+import { Friend_listPage } from "@/pages/Friend_listPage";
 import { MyPage } from "@/pages/MyPage";
 import { CoinPage } from "@/pages/CoinPage";
 import { LetterStorePage } from "@/pages/LetterStorePage";
@@ -90,6 +91,14 @@ export default function App() {
 
           <Route element={<AppLayout pageClassName="page--settings" />}>
             <Route path="/settings" element={<SettingsPage />} />
+          </Route>
+
+          <Route
+            element={
+              <AppLayout pageClassName="page--friend-list" showNav={false} />
+            }
+          >
+            <Route path="/Friend_list" element={<Friend_listPage />} />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--mypage" />}>

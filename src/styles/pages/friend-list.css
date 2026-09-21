@@ -1,0 +1,25 @@
+/**
+ * friend-list.css
+ * Page: .page--friend-list · `/Friend_list`
+ */
+
+.page--friend-list {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #edf7fd;
+  background-image: linear-gradient(
+    180deg,
+    #bcdaf9 0%,
+    #edf7fd 48%,
+    #e9f9e6 100%
+  );
+}
+
+.page--friend-list .page__wrapper {
+  max-width: 100%;
+}
+
+.friend-list-page {
+  width: 100%;
+  min-height: 50vh;
+}
