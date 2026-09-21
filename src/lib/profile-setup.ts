@@ -35,6 +35,7 @@ export interface BackgroundOption {
 }
 
 interface ProfileSetupState {
+  nickname: string | null;
   character: CharacterId | null;
   outfit: OutfitId | null;
   background: BackgroundId | null;
@@ -43,6 +44,7 @@ interface ProfileSetupState {
 const KEY = "pock.profileSetup";
 
 const DEFAULT_STATE: ProfileSetupState = {
+  nickname: null,
   character: null,
   outfit: null,
   background: null,
@@ -145,6 +147,14 @@ export function getBackgroundById(
 
 export function getProfileSetup(): ProfileSetupState {
   return storage.get<ProfileSetupState>(KEY) ?? { ...DEFAULT_STATE };
+}
+
+export function setProfileNickname(nickname: string): void {
+  const prev = getProfileSetup();
+  storage.set(KEY, {
+    ...prev,
+    nickname: nickname.trim(),
+  });
 }
 
 export function setProfileCharacter(character: CharacterId): void {

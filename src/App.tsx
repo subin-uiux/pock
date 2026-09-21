@@ -157,7 +157,11 @@ export default function App() {
             <Route path="/home" element={<HomePage />} />
           </Route>
 
-          <Route element={<AppLayout pageClassName="page--notice" />}>
+          <Route
+            element={
+              <AppLayout pageClassName="page--notice" showNav={false} />
+            }
+          >
             <Route path="/notice" element={<NoticePage />} />
           </Route>
 

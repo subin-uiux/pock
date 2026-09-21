@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { SignUpStepGauge } from "@/components/SignUpStepGauge";
+import { setProfileNickname, getProfileSetup } from "@/lib/profile-setup";
 
 const NICKNAME_MAX = 10;
 
@@ -21,7 +22,9 @@ const RECOMMENDED_NICKNAMES = [
  */
 export function NicknameSetupPage() {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState(
+    () => getProfileSetup().nickname ?? "",
+  );
   const canNext = nickname.trim().length > 0;
 
   const handleChange = (value: string) => {
@@ -31,6 +34,7 @@ export function NicknameSetupPage() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!canNext) return;
+    setProfileNickname(nickname.trim());
     navigate("/profile/character");
   };
 
