@@ -253,42 +253,66 @@ export const RECEIVED_OPEN_SAMPLES: MailboxCardSample[] = [
   ),
 ];
 
-/** 잠김 · 곧 열리는 순: D-3 → D-4 → 미오픈·타이머 */
+/** 잠김 · 개봉 임박 순: D-3 → D-4 → 미오픈·타이머 */
 export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
-  {
-    id: "sent-locked-3",
-    variant: "progress",
-    target: "zl존킹킹",
-    sendDate: letterDateFromToday(-7),
-    openDate: letterDateFromToday(3),
-  },
-  {
-    id: "sent-locked-5",
-    variant: "progress",
-    target: "민수",
-    sendDate: letterDateFromToday(-6),
-    openDate: letterDateFromToday(4),
-  },
-  {
-    id: "sent-locked-1",
-    variant: "unopened",
-    target: "zl존킹킹",
-  },
-  {
-    id: "sent-locked-4",
-    variant: "unopened",
-    target: "하나",
-  },
-  {
-    id: "sent-locked-2",
-    variant: "timer",
-    target: "zl존킹킹",
-  },
-  {
-    id: "sent-locked-6",
-    variant: "timer",
-    target: "지우",
-  },
+  sample(
+    {
+      id: "sent-locked-3",
+      variant: "progress",
+      target: "zl존킹킹",
+      sendDate: letterDateFromToday(-7),
+      openDate: letterDateFromToday(3),
+    },
+    2,
+    { theme: "yellow" },
+  ),
+  sample(
+    {
+      id: "sent-locked-5",
+      variant: "progress",
+      target: "민수",
+      sendDate: letterDateFromToday(-6),
+      openDate: letterDateFromToday(4),
+    },
+    3,
+    { theme: "green" },
+  ),
+  sample(
+    {
+      id: "sent-locked-1",
+      variant: "unopened",
+      target: "zl존킹킹",
+    },
+    4,
+    { theme: "blue" },
+  ),
+  sample(
+    {
+      id: "sent-locked-4",
+      variant: "unopened",
+      target: "하나",
+    },
+    5,
+    { theme: "purple" },
+  ),
+  sample(
+    {
+      id: "sent-locked-2",
+      variant: "timer",
+      target: "zl존킹킹",
+    },
+    6,
+    { theme: "pink" },
+  ),
+  sample(
+    {
+      id: "sent-locked-6",
+      variant: "timer",
+      target: "지우",
+    },
+    7,
+    { theme: "orange" },
+  ),
 ];
 
 /** 열림 · 최근 열린 순: 09.14 → 07.22 → 03.01 */

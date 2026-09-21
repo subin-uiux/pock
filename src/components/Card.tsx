@@ -108,7 +108,14 @@ function LetterCardHintButton({
   onClick?: () => void;
 }) {
   return (
-    <button type="button" className="letter-card__reward" onClick={onClick}>
+    <button
+      type="button"
+      className="letter-card__reward"
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick?.();
+      }}
+    >
       {hintPaid ? null : (
         <img
           className="letter-card__coin"
@@ -164,6 +171,7 @@ export function Card({
   const showMore = !isGift && (mailbox === "sent" || isOpen);
   const showHint =
     isReceived && (variant === "progress" || variant === "timer");
+  const isClickable = Boolean(onMoreClick) && !isGift;
 
   const progress =
     variant === "progress" && sendDate && openDate
@@ -314,12 +322,12 @@ export function Card({
           isOpen
             ? openClass
             : `letter-card letter-card--locked letter-card--${size}`,
-          isOpen && onMoreClick ? "letter-card--clickable" : "",
+          isClickable ? "letter-card--clickable" : "",
         ]
           .filter(Boolean)
           .join(" ")
       }
-      onClick={isOpen && onMoreClick ? onMoreClick : undefined}
+      onClick={isClickable ? onMoreClick : undefined}
     >
       {showMore ? (
         onMoreClick ? (
