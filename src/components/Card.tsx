@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   LetterCardTimerText,
@@ -40,7 +41,28 @@ interface CardProps {
   imageSrc?: string;
   onMoreClick?: () => void;
   onHintClick?: () => void;
+  /** 선물 상자 클릭 — 개봉 애니 시작 전 (선택) */
+  onGiftClick?: () => void;
+  /** 선물 상자 개봉 애니 종료 */
+  onGiftOpened?: () => void;
 }
+
+const GIFT_OPEN_MS = 1300;
+
+const GIFT_PIXELS = [
+  { x: "8%", y: "18%", color: "#ff5a5a", delay: "0ms", kind: "plus" },
+  { x: "88%", y: "22%", color: "#5ec8ff", delay: "40ms", kind: "sq" },
+  { x: "18%", y: "78%", color: "#ffe14a", delay: "80ms", kind: "sq" },
+  { x: "78%", y: "72%", color: "#3b5bdb", delay: "50ms", kind: "plus" },
+  { x: "50%", y: "10%", color: "#fff", delay: "20ms", kind: "sq" },
+  { x: "12%", y: "48%", color: "#7af0ff", delay: "100ms", kind: "plus" },
+  { x: "90%", y: "55%", color: "#ff7ab8", delay: "60ms", kind: "sq" },
+  { x: "42%", y: "88%", color: "#5ec8ff", delay: "120ms", kind: "plus" },
+  { x: "65%", y: "14%", color: "#ffe14a", delay: "30ms", kind: "sq" },
+  { x: "30%", y: "30%", color: "#3b5bdb", delay: "90ms", kind: "sq" },
+  { x: "70%", y: "40%", color: "#fff", delay: "70ms", kind: "plus" },
+  { x: "55%", y: "68%", color: "#ff5a5a", delay: "110ms", kind: "sq" },
+] as const;
 
 function LetterCardTimerStatus({ initial }: { initial: string }) {
   return (
@@ -123,11 +145,14 @@ export function Card({
   imageSrc,
   onMoreClick,
   onHintClick,
+  onGiftClick,
+  onGiftOpened,
 }: CardProps) {
   const isReceived = mailbox === "received";
   const isOpen = variant === "open";
   const isGift = variant === "gift";
   const previewSrc = thumbSrc ?? imageSrc;
+  const [giftOpening, setGiftOpening] = useState(false);
   const openClass = [
     "letter-card",
     "letter-card--open",
@@ -149,8 +174,8 @@ export function Card({
   const dday = progress?.dday ?? ddayProp ?? "D-?";
 
   const openDateLine = isReceived
-    ? `받은일시: ${openDate ?? "20xx.00.00"}`
-    : `개봉일: ${openDate ?? "20xx.00.00"}`;
+    ? `받은일시: ${openDate ?? "2026.09.01"}`
+    : `개봉일: ${openDate ?? "2026.09.01"}`;
   const personLine = isReceived
     ? `발신인: ${sender ?? target}`
     : `수신자: ${receiver ?? target}`;
@@ -162,12 +187,75 @@ export function Card({
       personLine,
     ] as const);
 
+  useEffect(() => {
+    if (!giftOpening) return;
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ms = reduced ? 0 : GIFT_OPEN_MS;
+    const timerId = window.setTimeout(() => {
+      onGiftOpened?.();
+    }, ms);
+    return () => window.clearTimeout(timerId);
+    // onGiftOpened는 개봉 시작 시점 콜백만 사용 (의존성 제외)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [giftOpening]);
+
   if (isGift) {
+    const startOpen = () => {
+      if (giftOpening) return;
+      onGiftClick?.();
+      setGiftOpening(true);
+    };
+
     return (
       <article
-        className={`letter-card letter-card--gift letter-card--${size}`}
+        className={[
+          "letter-card",
+          "letter-card--open",
+          "letter-card--gift",
+          `letter-card--${size}`,
+          giftOpening ? "letter-card--gift-opening" : "",
+          theme ? `letter-card--${theme}` : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
         aria-label="새 보관함 카드"
       >
+        <div className="letter-card__open">
+          {previewSrc ? (
+            <img
+              className="letter-card__thumb"
+              src={previewSrc}
+              alt=""
+              width={size === "tb" ? 120 : 90}
+              height={size === "tb" ? 150 : 120}
+            />
+          ) : (
+            <div className="letter-card__thumb" aria-hidden="true" />
+          )}
+          <div className="letter-card__meta">
+            {openLines.map((line) => (
+              <p className="letter-card__line" key={line}>
+                {line}
+              </p>
+            ))}
+          </div>
+        </div>
+        <span className="letter-card__more" aria-hidden="true">
+          전체보기 &gt;
+        </span>
+
+        <button
+          type="button"
+          className="letter-card__gift-hit"
+          aria-label="선물 상자 열기"
+          disabled={giftOpening}
+          onClick={startOpen}
+        />
+
+        <div className="letter-card__gift-veil" aria-hidden="true" />
+
         <img
           className="letter-card__gift-image"
           src="/assets/images/letter/letter_Before-opening.webp"
@@ -175,6 +263,24 @@ export function Card({
           width={960}
           height={620}
         />
+
+        {giftOpening ? (
+          <div className="letter-card__gift-pixels" aria-hidden="true">
+            {GIFT_PIXELS.map((pixel, i) => (
+              <span
+                key={i}
+                className={`letter-card__gift-pixel letter-card__gift-pixel--${pixel.kind}`}
+                style={{
+                  left: pixel.x,
+                  top: pixel.y,
+                  backgroundColor: pixel.color,
+                  animationDelay: pixel.delay,
+                  color: pixel.color,
+                }}
+              />
+            ))}
+          </div>
+        ) : null}
       </article>
     );
   }

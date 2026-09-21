@@ -23,6 +23,7 @@ import {
   SENT_OPEN_SAMPLES,
   type MailboxCardSample,
 } from "@/data/pock-mailbox-samples";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useCoin } from "@/hooks/useCoin";
 import { HINT_COST, isHintPaid, markHintPaid } from "@/lib/hint";
 import {
@@ -31,9 +32,8 @@ import {
 } from "@/lib/mailbox-friend-filter";
 import {
   defaultMailboxSort,
-  RECEIVED_SORT_OPTIONS,
-  SENT_SORT_OPTIONS,
   sortMailboxCards,
+  sortOptionsForTab,
   type MailboxSortId,
 } from "@/lib/mailbox-sort";
 import type { LetterCardMailbox } from "@/types";
@@ -51,6 +51,9 @@ type HintDialog = "purchase" | "insufficient" | null;
 
 export function PockMailbox({ mailbox }: PockMailboxProps) {
   const navigate = useNavigate();
+  const breakpoint = useBreakpoint();
+  const isMo = breakpoint === "mo";
+  const uiSize = isMo ? "mo" : "tb";
   const { balance, spend } = useCoin();
   const [tab, setTab] = useState<PockSendTabId>("locked");
   const [category, setCategory] = useState<PockSendCategoryId>("array");
@@ -61,7 +64,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
     getMailboxFriendFilter(mailbox),
   );
   const [sortId, setSortId] = useState<MailboxSortId>(() =>
-    defaultMailboxSort(mailbox),
+    defaultMailboxSort("locked"),
   );
   const [viewer, setViewer] = useState<LetterViewer | null>(null);
   const [hintDialog, setHintDialog] = useState<HintDialog>(null);
@@ -70,18 +73,30 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
   );
   /** localStorage 결제 반영용 — markHintPaid 후 리렌더 */
   const [hintPaidTick, setHintPaidTick] = useState(0);
+  /** 이번 방문에서만 연 선물 — 새로고침·페이지 이탈 시 상자 복구 */
+  const [openedGiftIds, setOpenedGiftIds] = useState<string[]>([]);
+  /** 개봉 직후 자리 유지 — 새로고침·정렬 변경 시 해제 */
+  const [orderSnapshot, setOrderSnapshot] = useState<string[] | null>(null);
   const isReceived = mailbox === "received";
   const title = isReceived ? "보관함" : "전송함";
-  const sortOptions = isReceived
-    ? RECEIVED_SORT_OPTIONS
-    : SENT_SORT_OPTIONS;
+  const sortOptions = sortOptionsForTab(tab);
+
+  useEffect(() => {
+    setSortId(defaultMailboxSort(tab));
+    setOrderSnapshot(null);
+  }, [tab]);
 
   useEffect(() => {
     setFriendFilterNames(getMailboxFriendFilter(mailbox));
+    setOpenedGiftIds([]);
+    setOrderSnapshot(null);
+    setTab("locked");
+    setSortId(defaultMailboxSort("locked"));
   }, [mailbox]);
 
   const cards = useMemo(() => {
     void hintPaidTick;
+    const openedSet = new Set(openedGiftIds);
     const list = isReceived
       ? tab === "locked"
         ? RECEIVED_LOCKED_SAMPLES
@@ -90,12 +105,24 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
         ? SENT_LOCKED_SAMPLES
         : SENT_OPEN_SAMPLES;
 
-    const withPaid = list.map((item) => ({
-      ...item,
-      hintPaid: isHintPaid(item.id, item.hintPaid),
-    }));
+    const withPaid = list.map((item) => {
+      const openedGift = item.variant === "gift" && openedSet.has(item.id);
+      return {
+        ...item,
+        variant: openedGift ? ("open" as const) : item.variant,
+        hintPaid: isHintPaid(item.id, item.hintPaid),
+      };
+    });
 
-    const sorted = sortMailboxCards(withPaid, mailbox, sortId);
+    const byId = new Map(withPaid.map((item) => [item.id, item]));
+    const sorted = orderSnapshot
+      ? [
+          ...orderSnapshot
+            .map((id) => byId.get(id))
+            .filter((item): item is MailboxCardSample => Boolean(item)),
+          ...withPaid.filter((item) => !orderSnapshot.includes(item.id)),
+        ]
+      : sortMailboxCards(withPaid, sortId);
     const byFriend =
       friendFilterNames.length > 0
         ? sorted.filter((item) => friendFilterNames.includes(item.target))
@@ -112,11 +139,20 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
     isReceived,
     tab,
     hintPaidTick,
-    mailbox,
+    openedGiftIds,
+    orderSnapshot,
     sortId,
     searchQuery,
     friendFilterNames,
   ]);
+
+  const handleGiftOpened = useCallback((id: string) => {
+    setOrderSnapshot((prev) => {
+      if (prev) return prev;
+      return cards.map((item) => item.id);
+    });
+    setOpenedGiftIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+  }, [cards]);
 
   const closeSortMenu = useCallback(() => {
     setSortOpen(false);
@@ -173,6 +209,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
 
   const handleSortSelect = (id: MailboxSortId) => {
     setSortId(id);
+    setOrderSnapshot(null);
     setSortOpen(false);
   };
 
@@ -232,81 +269,122 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
   return (
     <div className="pock-mailbox">
       <h1 className="visually-hidden">{title}</h1>
-      <div className="pock-mailbox__toolbar">
-        <PockSendTabs
-          className="pock-mailbox__tabs"
-          size="mo"
-          value={tab}
-          onChange={(next) => {
-            setTab(next);
-            setSortOpen(false);
-            setSearchOpen(false);
-          }}
-        />
-        <div className="pock-mailbox__category">
-          <PockSendCategory
+      {isMo ? (
+        <div className="pock-mailbox__toolbar">
+          <PockSendTabs
+            className="pock-mailbox__tabs"
             size="mo"
-            value={categoryValue}
-            onChange={handleCategoryChange}
+            value={tab}
+            onChange={(next) => {
+              setTab(next);
+              setSortOpen(false);
+              setSearchOpen(false);
+            }}
           />
-          <MailboxSortMenu
-            open={sortOpen}
-            options={sortOptions}
-            value={sortId}
-            onSelect={handleSortSelect}
-            onClose={closeSortMenu}
-          />
-        </div>
-      </div>
-      <div className="pock-mailbox__board">
-        <div className="pock-mailbox__meta">
-          <p className="pock-mailbox__count">총 {cards.length}개</p>
-          <button
-            type="button"
-            className="pock-mailbox__refresh"
-            aria-label="검색·필터 초기화"
-            onClick={handleFiltersReset}
-          >
-            <img
-              className="pock-mailbox__refresh-icon"
-              src="/assets/icons/refresh-solid.svg"
-              alt=""
-              width={18}
-              height={18}
+          <div className="pock-mailbox__category">
+            <PockSendCategory
+              size="mo"
+              value={categoryValue}
+              onChange={handleCategoryChange}
             />
-          </button>
+            <MailboxSortMenu
+              open={sortOpen}
+              options={sortOptions}
+              value={sortId}
+              onSelect={handleSortSelect}
+              onClose={closeSortMenu}
+            />
+          </div>
         </div>
-        <ul className="pock-mailbox__cards">
-          {cards.map((item) => (
-            <li className="pock-mailbox__item" key={item.id}>
-              <Card
-                mailbox={mailbox}
-                variant={item.variant}
-                size="mo"
-                target={item.target}
-                title={item.title}
-                sendDate={item.sendDate}
-                openDate={item.openDate}
-                timer={item.timer}
-                hintPaid={item.hintPaid}
-                theme={item.theme}
-                imageSrc={item.imageSrc}
-                sender={isReceived ? item.target : undefined}
-                receiver={isReceived ? undefined : item.target}
-                onMoreClick={
-                  mailbox === "sent" || item.variant === "open"
-                    ? () => openFull(item)
-                    : undefined
-                }
-                onHintClick={
-                  isReceived && tab === "locked"
-                    ? () => handleHintClick(item)
-                    : undefined
-                }
+      ) : null}
+      <div className="pock-mailbox__stage">
+        <div className="pock-mailbox__board">
+          <div className="pock-mailbox__meta">
+            <div className="pock-mailbox__meta-lead">
+              <p className="pock-mailbox__count">총 {cards.length}개</p>
+              <button
+                type="button"
+                className="pock-mailbox__refresh"
+                aria-label="검색·필터 초기화"
+                onClick={handleFiltersReset}
+              >
+                <img
+                  className="pock-mailbox__refresh-icon"
+                  src="/assets/icons/refresh-solid.svg"
+                  alt=""
+                  width={isMo ? 18 : 24}
+                  height={isMo ? 18 : 24}
+                />
+              </button>
+            </div>
+            {!isMo ? (
+              <div className="pock-mailbox__category">
+                <PockSendCategory
+                  size="tb"
+                  value={categoryValue}
+                  onChange={handleCategoryChange}
+                />
+                <MailboxSortMenu
+                  open={sortOpen}
+                  options={sortOptions}
+                  value={sortId}
+                  onSelect={handleSortSelect}
+                  onClose={closeSortMenu}
+                />
+              </div>
+            ) : null}
+          </div>
+          <div className="pock-mailbox__panel">
+            <ul className="pock-mailbox__cards">
+              {cards.map((item) => (
+                <li className="pock-mailbox__item" key={item.id}>
+                  <Card
+                    mailbox={mailbox}
+                    variant={item.variant}
+                    size={uiSize}
+                    target={item.target}
+                    title={item.title}
+                    sendDate={item.sendDate}
+                    openDate={item.openDate}
+                    timer={item.timer}
+                    hintPaid={item.hintPaid}
+                    theme={item.theme}
+                    imageSrc={item.imageSrc}
+                    sender={isReceived ? item.target : undefined}
+                    receiver={isReceived ? undefined : item.target}
+                    onMoreClick={
+                      mailbox === "sent" || item.variant === "open"
+                        ? () => openFull(item)
+                        : undefined
+                    }
+                    onHintClick={
+                      isReceived && tab === "locked"
+                        ? () => handleHintClick(item)
+                        : undefined
+                    }
+                    onGiftOpened={
+                      item.variant === "gift"
+                        ? () => handleGiftOpened(item.id)
+                        : undefined
+                    }
+                  />
+                </li>
+              ))}
+            </ul>
+            {!isMo ? (
+              <PockSendTabs
+                className="pock-mailbox__tabs"
+                size="tb"
+                value={tab}
+                onChange={(next) => {
+                  setTab(next);
+                  setSortOpen(false);
+                  setSearchOpen(false);
+                }}
               />
-            </li>
-          ))}
-        </ul>
+            ) : null}
+          </div>
+        </div>
       </div>
       <MailboxSearchPanel
         open={searchOpen}

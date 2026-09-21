@@ -1,5 +1,7 @@
 /**
- * 보관함 · 전송함 공통 모바일 레이아웃
+ * 보관함 · 전송함 공통 레이아웃
+ * Mo: 상단 가로 탭 · 카테고리 / 파란 보드
+ * Tb·Pc(1024+): 좌우 64 · 파란 보드(상 20·좌우 42) · 우측 세로 탭 · 보드 안 카테고리
  */
 
 .page--pock-received,
@@ -53,6 +55,13 @@
   gap: 0.5rem;
 }
 
+.pock-mailbox__stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .pock-mailbox__tabs {
   flex: 0 0 auto;
   position: relative;
@@ -103,6 +112,14 @@
   margin: 0 0 0.5rem; /* 카드와 8 */
 }
 
+.pock-mailbox__meta-lead {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem; /* 8 */
+  min-width: 0;
+}
+
 .pock-mailbox__count {
   margin: 0;
   color: var(--color-base-900);
@@ -115,7 +132,7 @@
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 1.125rem; /* 18 */
+  width: 1.125rem; /* Mo 18 */
   height: 1.125rem;
   margin: 0;
   padding: 0;
@@ -131,7 +148,7 @@
 
 .pock-mailbox__refresh-icon {
   display: block;
-  width: 1.125rem; /* 18 */
+  width: 1.125rem; /* Mo 18 */
   height: 1.125rem;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
@@ -151,14 +168,114 @@
   background-color: var(--color-base-0);
 }
 
+.pock-mailbox__panel {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .pock-mailbox__item {
   min-width: 0;
+  overflow: visible;
 }
 
 .pock-mailbox__cards .letter-card {
   width: 100%;
   min-width: 0;
   max-width: none;
+}
+
+@media (min-width: 1024px) {
+  .page--pock-received .main,
+  .page--pock-sent .main {
+    padding: 0 4rem; /* 좌우 64 */
+  }
+
+  .pock-mailbox__stage {
+    flex: 1;
+    min-height: 0;
+    /* 탭이 보드 밖으로 살짝 나와도 잘리지 않게 */
+    overflow: visible;
+  }
+
+  /*
+   * 파란 보드: 위 20 · 좌우 42 패딩 (피그마 프레임 여백)
+   * 탭은 absolute라 42 계산에서 제외
+   * 하단은 네비 밑까지 이어짐 (여백은 카드 스크롤 패딩으로)
+   */
+  .pock-mailbox__board {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 1.25rem 2.625rem 0; /* 위 20 · 좌우 42 · 아래 0 */
+    /* 탭이 보드 밖으로 나와도 보이도록 · 높이 제약은 flex min-height:0 */
+    overflow: visible;
+  }
+
+  .pock-mailbox__meta {
+    box-sizing: border-box;
+    align-items: flex-end; /* 총 n개 · 새로고침 하단 정렬 */
+    height: 2.5rem; /* 40 */
+    margin: 0 0 0.625rem; /* 아래 영역과 10 */
+    padding: 0;
+  }
+
+  .pock-mailbox__category {
+    margin-bottom: 0;
+  }
+
+  .pock-mailbox__refresh {
+    width: 1.5rem; /* 24 */
+    height: 1.5rem;
+  }
+
+  .pock-mailbox__refresh-icon {
+    width: 1.5rem; /* 24 */
+    height: 1.5rem;
+  }
+
+  /* 하얀 박스 행 — 탭은 position으로 우측 부착 (폭 계산 제외) */
+  .pock-mailbox__panel {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .pock-mailbox__cards {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    /* 네비 아래로 박스는 이어지고, 스크롤 끝은 네비에 가리지 않게 */
+    padding-bottom: calc(
+      var(--navigation-bar-height, 4.125rem) + 2.25rem +
+        env(safe-area-inset-bottom)
+    );
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pock-mailbox__cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 하얀 박스 오른쪽 · 박스 상단에서 40 아래 (레이아웃 폭 미포함) */
+  .pock-mailbox__tabs {
+    position: absolute;
+    top: 2.5rem; /* 40 */
+    left: 100%;
+    z-index: 1;
+    width: max-content;
+    margin: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

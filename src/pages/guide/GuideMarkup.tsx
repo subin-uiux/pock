@@ -968,7 +968,7 @@ export function GuideMarkup() {
                               <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
-                                <p className="letter-card__line">개봉일: 20xx.00.00</p>
+                                <p className="letter-card__line">개봉일: 2026.07.22</p>
                                 <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
                             </div>
@@ -1052,7 +1052,7 @@ export function GuideMarkup() {
                               <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
-                                <p className="letter-card__line">개봉일: 20xx.00.00</p>
+                                <p className="letter-card__line">개봉일: 2026.07.22</p>
                                 <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
                             </div>
@@ -1134,7 +1134,7 @@ export function GuideMarkup() {
                               <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
-                                <p className="letter-card__line">받은일시: 20xx.00.00</p>
+                                <p className="letter-card__line">받은일시: 2026.08.12</p>
                                 <p className="letter-card__line">발신인: zl존킹킹</p>
                               </div>
                             </div>
@@ -1215,7 +1215,7 @@ export function GuideMarkup() {
                               <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
-                                <p className="letter-card__line">받은일시: 20xx.00.00</p>
+                                <p className="letter-card__line">받은일시: 2026.08.12</p>
                                 <p className="letter-card__line">발신인: zl존킹킹</p>
                               </div>
                             </div>
