@@ -206,6 +206,7 @@ pock/
 | `Popup` | `info` · `warning` · `share` (+ dimmed). 온보딩 가이드는 `GuideOnboardDemo` (점 8개, 마지막 버튼 **완료**) |
 | `SearchInput` | 기본 placeholder `검색어를 입력하세요.` · **포커스 시 숨김**, blur 시 복구 |
 | `DimmedOverlay` | 팝업·모달 뒤 딤 |
+| `SettingsPage` (`/settings`) | 배경 상하 그라데이션 `#E9F9E6`→`#EDF7FD` 48%→`#BCDAF9`. 반응형 **768~1920**. 메뉴: 계정·알림·공지·약관·개인정보·고객센터·로그아웃. 시안 미확정 · 미구현은 데모 안내. 로그아웃 `Popup` warning |
 
 ### 8. 하지 말 것
 
