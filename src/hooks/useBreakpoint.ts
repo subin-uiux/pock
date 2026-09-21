@@ -2,28 +2,27 @@ import { useEffect, useState } from "react";
 
 export type BreakpointSize = "mo" | "tb" | "pc";
 
+/**
+ * Mo: 360~768
+ * Tb: 769~ (태블릿 레이아웃. 데스크톱도 동일 — 양옆 여백만 늘어남)
+ * Pc: 컴포넌트 size 호환용 — breakpoint로는 tb와 동일하게 취급
+ */
 function readSize(): BreakpointSize {
   if (typeof window === "undefined") return "mo";
-  if (window.matchMedia("(min-width: 1920px)").matches) return "pc";
-  if (window.matchMedia("(min-width: 1024px)").matches) return "tb";
+  if (window.matchMedia("(min-width: 769px)").matches) return "tb";
   return "mo";
 }
 
-/** 390 / 1024 / 1920 캔버스에 맞춘 반응형 크기 */
+/** 모바일(~768) / 태블릿·데스크톱(769~) — 데스크톱은 태블릿과 동일 UI */
 export function useBreakpoint(): BreakpointSize {
   const [size, setSize] = useState<BreakpointSize>(() => readSize());
 
   useEffect(() => {
     const update = () => setSize(readSize());
-    const mqTb = window.matchMedia("(min-width: 1024px)");
-    const mqPc = window.matchMedia("(min-width: 1920px)");
+    const mqTb = window.matchMedia("(min-width: 769px)");
     update();
     mqTb.addEventListener("change", update);
-    mqPc.addEventListener("change", update);
-    return () => {
-      mqTb.removeEventListener("change", update);
-      mqPc.removeEventListener("change", update);
-    };
+    return () => mqTb.removeEventListener("change", update);
   }, []);
 
   return size;

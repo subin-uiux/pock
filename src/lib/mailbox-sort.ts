@@ -3,31 +3,35 @@ import {
   calendarDaysBetween,
   parseLetterDate,
 } from "@/lib/letter-progress";
-import type { LetterCardMailbox } from "@/types";
 
-export type ReceivedSortId = "soon" | "longest";
-export type SentSortId = "recent" | "oldest";
-export type MailboxSortId = ReceivedSortId | SentSortId;
+export type MailboxTabId = "locked" | "open";
+export type LockedSortId = "soon" | "longest";
+export type OpenSortId = "recent" | "date";
+export type MailboxSortId = LockedSortId | OpenSortId;
 
 export interface MailboxSortOption {
   id: MailboxSortId;
   label: string;
 }
 
-export const RECEIVED_SORT_OPTIONS: MailboxSortOption[] = [
-  { id: "soon", label: "곧 열리는 순" },
-  { id: "longest", label: "오래 남은 순" },
+/** 잠김 탭 */
+export const LOCKED_SORT_OPTIONS: MailboxSortOption[] = [
+  { id: "soon", label: "개봉 임박 순" },
+  { id: "longest", label: "개봉일 먼 순" },
 ];
 
-export const SENT_SORT_OPTIONS: MailboxSortOption[] = [
+/** 열림 탭 */
+export const OPEN_SORT_OPTIONS: MailboxSortOption[] = [
   { id: "recent", label: "최근 열린 순" },
-  { id: "oldest", label: "오래된 순" },
+  { id: "date", label: "날짜 순" },
 ];
 
-export function defaultMailboxSort(
-  mailbox: LetterCardMailbox,
-): MailboxSortId {
-  return mailbox === "received" ? "soon" : "recent";
+export function defaultMailboxSort(tab: MailboxTabId): MailboxSortId {
+  return tab === "locked" ? "soon" : "recent";
+}
+
+export function sortOptionsForTab(tab: MailboxTabId): MailboxSortOption[] {
+  return tab === "locked" ? LOCKED_SORT_OPTIONS : OPEN_SORT_OPTIONS;
 }
 
 function sortDateMs(sample: MailboxCardSample): number | null {
@@ -57,12 +61,12 @@ function compareNullable(
 
 export function sortMailboxCards(
   cards: MailboxCardSample[],
-  mailbox: LetterCardMailbox,
   sortId: MailboxSortId,
 ): MailboxCardSample[] {
   const next = [...cards];
+  const isLockedSort = sortId === "soon" || sortId === "longest";
 
-  if (mailbox === "received") {
+  if (isLockedSort) {
     next.sort((a, b) =>
       compareNullable(
         remainingDays(a),
@@ -73,8 +77,17 @@ export function sortMailboxCards(
     return next;
   }
 
-  next.sort((a, b) =>
-    compareNullable(sortDateMs(a), sortDateMs(b), sortId === "oldest"),
-  );
+  /* 열림 탭 — 선물 상자 맨 위, 나머지는 개봉일 */
+  next.sort((a, b) => {
+    const giftA = a.variant === "gift";
+    const giftB = b.variant === "gift";
+    if (giftA !== giftB) return giftA ? -1 : 1;
+
+    return compareNullable(
+      sortDateMs(a),
+      sortDateMs(b),
+      sortId === "date",
+    );
+  });
   return next;
 }
