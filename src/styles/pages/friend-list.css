@@ -1,7 +1,7 @@
 /**
  * friend-list.css
  * Page: .page--friend-list · `/Friend_list`
- * 반응형: Mo 360~768 (좌우 20 · 창 max 540 중앙) · Tb/Pc min-width 769px 670
+ * Mo 레이아웃을 Tb/Pc에도 동일 적용 (max 540 · 목록 삭제 숨김)
  */
 
 .page--friend-list {
@@ -18,12 +18,12 @@
   max-width: 100%;
 }
 
-/* Mo — main 좌우 20 */
+/* main 좌우 20 */
 .page--friend-list .main {
   padding-inline: 1.25rem; /* 20 */
 }
 
-/* Mo — 창 최대 540 중앙 고정 */
+/* 창 최대 540 중앙 — Mo/Tb/Pc 공통 */
 .friend-list-page {
   display: flex;
   flex-direction: column;
@@ -123,7 +123,7 @@
   flex: 0 0 auto;
 }
 
-/* Mo — 친구 목록 창 폭 100%(~540) · 상단바 40 · 흰 영역은 패딩만 */
+/* 친구 목록 창 폭 100%(~540) · 상단바 40 · 흰 영역은 패딩만 */
 .friend-list-page__window {
   display: flex;
   flex: 0 0 auto;
@@ -262,8 +262,7 @@
   white-space: nowrap;
 }
 
-/* Popup_btn · 배경 #fff · 패딩 상하 4 · 좌우 10 · 폰트 16 · base/900 */
-/* Mo: 숨김 — 삭제는 프로필 팝업에서 */
+/* 목록 「삭제하기」 숨김 — 삭제는 프로필 팝업에서 (Mo/Pc 공통) */
 .friend-list-page__delete.btn--popup {
   display: none;
   flex: 0 0 auto;
@@ -317,27 +316,8 @@
   line-height: var(--line-height-tight);
 }
 
-/* Tb / Pc — 창 670 */
+/* Pad/Pc 네비 아이콘 50 — 토스트 위치만 */
 @media (min-width: 769px) {
-  .page--friend-list .main {
-    padding-inline: 1.25rem; /* 20 */
-  }
-
-  .friend-list-page {
-    max-width: 41.875rem; /* 670 */
-  }
-
-  .friend-list-page__window {
-    width: 41.875rem; /* 670 */
-    max-width: 41.875rem;
-  }
-
-  /* Tb/Pc — 목록 행 「삭제하기」 표시 */
-  .friend-list-page__delete.btn--popup {
-    display: inline-flex;
-  }
-
-  /* Pad/Pc 네비 아이콘 50 */
   .friend-list-toast {
     bottom: calc(
       env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +

@@ -6,8 +6,7 @@
 **스타일:** 기존 BEM CSS (CSS Modules / Tailwind 사용 안 함)  
 **부가 라이브러리:** Swiper · GSAP (필요 시 `ref` / `useEffect`로만)  
 **경로 별칭:** `@/` → `src/` (`vite.config.ts`)  
-**디자인 레퍼런스:** React [`/guide`](http://localhost:5173/guide) (`src/pages/GuidePage.tsx`)  
-**정적 원본:** `legacy/pages/guide.html` (실행·서빙하지 않음)
+**디자인 레퍼런스:** React [`/guide`](http://localhost:5173/guide) (`src/pages/GuidePage.tsx`)
 
 ---
 
@@ -62,13 +61,10 @@ pock/
 │       ├── reset.css · fonts.css · common.css · variables.css
 │       ├── components/
 │       └── pages/
-├── _tools/
-│   └── convert-guide.mjs      # legacy guide.html → GuideMarkup 재생성
-└── legacy/                    # 전환 전 HTML/css/js/data (실행·배포 금지)
-    └── pages/guide.html
+└── _tools/                    # 이미지 변환 등 보조 도구
 ```
 
-루트 `assets/` · `css/` · `js/` · `data/` · `pages/` 와 `public/assets/css` · `js` 는 **빈 껍데기**다. 파일을 채우지 말고 두지 않는 것이 맞다(앱 소스는 `src/`, 정적은 `public/assets/`의 images·icons·fonts·videos만).
+루트에 `assets/` · `css/` · `js/` · `data/` · `pages/` · `legacy/` 를 다시 두지 않는다. 앱 소스는 `src/`, 정적은 `public/assets/`의 images·icons·fonts·videos만.
 
 ### 수정 위치 (두 곳만)
 
@@ -77,8 +73,6 @@ pock/
 | **CSS** | **`src/styles/`** 만 (`main.tsx` → `index.css`) |
 | **이미지·아이콘·폰트·영상** | **`public/assets/`** 만 (URL은 `/assets/...`) |
 | **svg / webp** | **`public/assets/images/`** 만 |
-
-`legacy/`는 참고용 스냅샷이다. 앱 CSS·에셋을 여기서 고치지 않는다.
 
 새 CSS 파일은 반드시 [`src/styles/index.css`](src/styles/index.css)에 `@import`를 추가한다.  
 가이드 페이지 깨짐 방지: `pages/guide.css` import가 빠져 있지 않은지 확인한다.
@@ -115,8 +109,8 @@ pock/
   상세: [`.cursor/rules/guide-section.mdc`](.cursor/rules/guide-section.mdc)
 - 인터랙티브·분리 가이드 샘플은 `src/pages/guide/`에 두고 `GuideMarkup`에서 import한다.  
   예: `GuideOnboardDemo`, `GuideNavigationDemo`, `GuideFriendListSample`, `GuideLetterWriteMoResize` / `TbResize`, `GuideSendCategorySection`, `GuideSendTabsSection`, `GuideSignUpStepGaugeSection`, `GuideSelectionBoxSection`, `GuideFriendCheckboxSection`
-- 가이드 마크업 대량 갱신: `_tools/convert-guide.mjs`로 `legacy/pages/guide.html` → `src/pages/guide/GuideMarkup.tsx` 재생성 후 검수한다.  
-  변환 후에도 위 섹션 레이아웃·export 이름 규칙을 맞춘다.
+- 가이드 마크업은 [`src/pages/guide/GuideMarkup.tsx`](src/pages/guide/GuideMarkup.tsx)를 직접 수정한다.  
+  섹션 레이아웃·export 이름 규칙을 맞춘다.
 
 ### 3. 스타일 (CSS)
 
@@ -212,8 +206,7 @@ pock/
 
 - 루트 또는 `public/`에 **`guide.html`을 다시 두지 않는다.**  
   Vite가 `/guide`로 HTML을 우선 서빙하면 리다이렉트 스텁과 겹쳐 **무한 새로고침**이 난다. 가이드는 React 라우트 `/guide`만 사용한다.
-- 루트 레거시 HTML을 다시 앱 진입점으로 쓰기
-- `legacy/`를 실행·배포 대상으로 삼기
+- 루트 레거시 HTML·`legacy/` 폴더를 다시 두지 않기
 - 루트 `assets/` · `css/` · `js/` · `data/` · `pages/` 또는 `public/assets/css`·`js`에 파일을 다시 두고 CSS·JS를 이중 관리하기
 - Kakao 실연동·백엔드 API를 시안 작업과 한꺼번에 넣기
 - ScrollSmoother 등 라이선스 플러그인을 임의 추가
@@ -223,5 +216,4 @@ pock/
 ## 참고
 
 - 컴포넌트·컬러·타이포 시안: 개발 서버 **[/guide](http://localhost:5173/guide)**
-- Cursor 규칙: [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc) · [guide-section](.cursor/rules/guide-section.mdc) · [css](.cursor/rules/css.mdc) · [html](.cursor/rules/html.mdc) · [js](.cursor/rules/js.mdc)
-- 전환 전 스냅샷: [`legacy/README.md`](legacy/README.md)
+- Cursor 규칙: [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc) · [guide-section](.cursor/rules/guide-section.mdc) · [css](.cursor/rules/css.mdc)
