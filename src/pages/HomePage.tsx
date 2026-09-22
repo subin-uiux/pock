@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { OnboardGuide } from "@/components/OnboardGuide";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
-import { homeFriendNames as HOME_FRIEND_NAMES } from "@/data/home-friends";
+import { PockWindowThumb } from "@/components/PockWindowThumb";
+import { homeFriends } from "@/data/home-friends";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -43,9 +44,6 @@ export function HomePage() {
 
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
-  const [friends, setFriends] = useState<string[]>(
-    () => [...HOME_FRIEND_NAMES]
-  );
   const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
 
   const [onboardOpen, setOnboardOpen] = useState(() => {
@@ -237,15 +235,15 @@ export function HomePage() {
               <div className="pock-window__pane">
                 <PockWindowScrollbar
                   listRef={listRef}
-                  syncKey={friends.length}
+                  syncKey={homeFriends.length}
                 />
 
                 <ul
                   className="pock-window__list"
                   ref={listRef}
                 >
-                  {friends.map((name, index) => (
-                    <li key={name}>
+                  {homeFriends.map((friend, index) => (
+                    <li key={friend.name}>
                       <button
                         type="button"
                         className="pock-window__item"
@@ -253,16 +251,17 @@ export function HomePage() {
                           index === 0 ? "friend" : undefined
                         }
                         onClick={() =>
-                          setSelectedFriend(name)
+                          setSelectedFriend(friend.name)
                         }
                       >
-                        <span
-                          className="pock-window__thumb"
-                          aria-hidden="true"
+                        <PockWindowThumb
+                          character={friend.character}
+                          outfit={friend.outfit}
+                          background={friend.background}
                         />
 
                         <p className="pock-window__name">
-                          {name}
+                          {friend.name}
                         </p>
                       </button>
                     </li>

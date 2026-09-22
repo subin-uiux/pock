@@ -353,8 +353,10 @@
 }
 
 .pock-window--tb .pock-window__list {
-  justify-content: flex-start;
-  padding: 30px 0 10px 10px; /* 안박스–프로필 상30 하10 · 좌 10 */
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  justify-content: center;
+  padding: 30px 10px 10px; /* 안박스–프로필 상30 하10 · 좌우 10 */
   gap: 20px; /* 프로필 간격 20 */
 }
 
@@ -383,8 +385,10 @@
 }
 
 .pock-window--pc .pock-window__list {
-  justify-content: flex-start;
-  padding: 30px 0 10px 10px; /* 좌 10 */
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  justify-content: center;
+  padding: 30px 10px 10px; /* 상30 하10 · 좌우 10 */
   gap: 20px;
 }
 
@@ -408,6 +412,7 @@
 }
 
 .pock-window__thumb {
+  position: relative;
   display: block;
   box-sizing: border-box;
   width: 7.375rem; /* 118 */
@@ -416,6 +421,52 @@
   border: 0;
   border-radius: 0.625rem; /* 10 */
   background: linear-gradient(180deg, var(--color-base-0) 0%, var(--color-base-500) 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.pock-window__thumb-figure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4.625rem; /* 74 — 카드 안 캐릭터 폭 임시값 */
+  height: 7.875rem; /* 126 */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.pock-window__thumb-base {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pock-window__thumb-wear {
+  position: absolute;
+  left: 50%;
+  top: 48.3%;
+  z-index: 1;
+  display: block;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pock-window__thumb-wear--full {
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .pock-window__name {
@@ -584,6 +635,14 @@ button.pock-window__control--close {
     var(--color-base-0) 0%,
     var(--color-base-500) 100%
   );
+}
+
+.pock-window--friend-pick .pock-window__thumb-figure {
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 120%;
+  transform: translate(-50%, -50%);
 }
 
 .pock-window--friend-pick .pock-window__name {

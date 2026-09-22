@@ -1,3 +1,9 @@
+import type {
+  BackgroundId,
+  CharacterId,
+  OutfitId,
+} from "@/lib/profile-setup";
+
 export type PockStatus = "locked" | "opening" | "opened";
 export type PockType = "received" | "sent";
 
@@ -7,6 +13,10 @@ export interface PockUser {
   profileImage: string;
   /** 친구목록 아바타 배경 — male/female */
   gender?: "male" | "female";
+  /** 카드 썸네일 캐릭터·옷·배경 — 있으면 PockWindowThumb 사용 */
+  character?: CharacterId;
+  outfit?: OutfitId;
+  background?: BackgroundId;
 }
 
 export interface PockItem {

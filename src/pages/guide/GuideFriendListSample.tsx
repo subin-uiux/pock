@@ -1,7 +1,33 @@
-import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { useRef } from "react";
+import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
+import { PockWindowThumb } from "@/components/PockWindowThumb";
+import type {
+  BackgroundId,
+  CharacterId,
+  OutfitId,
+} from "@/lib/profile-setup";
 
 const PROFILE_COUNT = 12;
+
+/** 가이드 Friend_list 샘플 — 캐릭터·옷·배경 임시 매칭 */
+const GUIDE_THUMBS: Array<{
+  character: CharacterId;
+  outfit: OutfitId;
+  background: BackgroundId;
+}> = [
+  { character: "boy", outfit: "boy-hood", background: "blue" },
+  { character: "girl", outfit: "girl-school", background: "pink" },
+  { character: "boy", outfit: "boy-jacket", background: "green" },
+  { character: "girl", outfit: "girl-coat", background: "orange" },
+  { character: "boy", outfit: "boy-knit", background: "yellow" },
+  { character: "girl", outfit: "girl-skirt", background: "red" },
+  { character: "boy", outfit: "boy-hood", background: "pink" },
+  { character: "girl", outfit: "girl-school", background: "blue" },
+  { character: "boy", outfit: "boy-jacket", background: "orange" },
+  { character: "girl", outfit: "girl-coat", background: "green" },
+  { character: "boy", outfit: "boy-knit", background: "red" },
+  { character: "girl", outfit: "girl-skirt", background: "yellow" },
+];
 
 interface GuideFriendListSampleProps {
   size: "mo" | "tb" | "pc";
@@ -33,12 +59,20 @@ export function GuideFriendListSample({ size }: GuideFriendListSampleProps) {
         <div className="pock-window__pane">
           <PockWindowScrollbar listRef={listRef} syncKey={PROFILE_COUNT} />
           <ul className="pock-window__list" ref={listRef}>
-            {Array.from({ length: PROFILE_COUNT }, (_, index) => (
-              <li key={index} className="pock-window__item">
-                <div className="pock-window__thumb" aria-hidden="true" />
-                <p className="pock-window__name">Text</p>
-              </li>
-            ))}
+            {Array.from({ length: PROFILE_COUNT }, (_, index) => {
+              const thumb = GUIDE_THUMBS[index % GUIDE_THUMBS.length];
+
+              return (
+                <li key={index} className="pock-window__item">
+                  <PockWindowThumb
+                    character={thumb.character}
+                    outfit={thumb.outfit}
+                    background={thumb.background}
+                  />
+                  <p className="pock-window__name">Text</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
