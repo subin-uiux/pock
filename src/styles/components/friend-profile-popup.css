@@ -1,6 +1,8 @@
 /**
  * friend-profile-popup.css
  * 홈 · 친구목록에서 친구 선택 시 프로필 팝업
+ * Mo: 새 시안 360×807 · 넓어지면 폭고정 883×807
+ * Tb/Pc: 기존 레이아웃 유지
  */
 
 .popup-layer .friend-profile-popup {
@@ -8,7 +10,8 @@
   z-index: 1;
 }
 
-.friend-profile-popup {
+/* —— Tb/Pc 기존 —— */
+.friend-profile-popup--tb {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +20,6 @@
   max-width: 24.875rem; /* 398 — 여백 고려 임시값 */
   padding: 2.5rem 1.3125rem 1.5rem; /* 40 21 24 — 시안 기준 임시값 */
   border-radius: var(--radius-md);
-  /* 아래→위 · base/300 → base/0(47%) */
   background: linear-gradient(
     to top,
     var(--color-base-300) 0%,
@@ -26,7 +28,7 @@
   font-family: var(--font-family-base);
 }
 
-.friend-profile-popup__close {
+.friend-profile-popup--tb .friend-profile-popup__close {
   position: absolute;
   top: 0.75rem; /* 12 — 임시값 */
   right: 0.75rem;
@@ -35,21 +37,140 @@
   justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
+  margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
 }
 
-.friend-profile-popup__close img {
+.friend-profile-popup--tb .friend-profile-popup__close img {
   display: block;
   width: 1rem;
   height: 1rem;
 }
 
+.friend-profile-popup--tb .friend-profile-popup__name {
+  margin: 1.25rem 0; /* 20 — 프로필↔닉네임 · 닉네임↔흰 영역 */
+}
+
+.friend-profile-popup--tb .friend-profile-popup__stats {
+  margin-top: 0;
+}
+
+@media (min-width: 769px) {
+  .friend-profile-popup--tb {
+    width: 25rem; /* 400 */
+    max-width: 25rem;
+    padding: 2.75rem 1.3125rem 1.75rem; /* 임시값 */
+  }
+}
+
+/* —— Mo 새 시안 —— */
+.friend-profile-popup--mo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  /* 기본 360 · 넓어지면 폭고정 883 · 높이는 콘텐츠+하단20 */
+  width: 55.1875rem; /* 883 */
+  max-width: min(22.5rem, calc(100vw - 1rem)); /* 360 이하 뷰포트 */
+  height: auto;
+  max-height: calc(100dvh - 1rem);
+  padding: 2.5rem 1rem 1.25rem; /* 40 16 20 — 하단 20 */
+  overflow: auto;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    to top,
+    var(--color-base-300) 0%,
+    var(--color-base-0) 47%
+  );
+  font-family: var(--font-family-base);
+}
+
+/* 뷰포트가 360을 넘으면 883 폭고정(화면보다 크면 100%−여백) */
+@media (min-width: 361px) and (max-width: 768px) {
+  .friend-profile-popup--mo {
+    width: 55.1875rem; /* 883 */
+    max-width: calc(100vw - 1rem);
+  }
+}
+
+.friend-profile-popup--mo .friend-profile-popup__close {
+  position: absolute;
+  top: 1.0625rem; /* 17 */
+  right: 1.0625rem; /* 17 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem; /* 18 — 에셋 */
+  height: 1.125rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.friend-profile-popup--mo .friend-profile-popup__close img {
+  display: block;
+  width: 1.125rem; /* 18 */
+  height: 1.125rem;
+}
+
+.friend-profile-popup--mo .friend-profile-popup__name {
+  margin: 0.875rem 0 0; /* 14 — 아바타↔닉네임 */
+}
+
+.friend-profile-popup--mo .friend-profile-popup__delete-row {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 22.375rem; /* 358 — stats·보내기 버튼과 맞춤 */
+  margin-top: 0.875rem; /* 14 — 닉네임↔삭제 */
+}
+
+.friend-profile-popup--mo .friend-profile-popup__delete.btn--popup {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  padding: 0.3125rem 0.4375rem; /* 5 7 — 상하/좌우 */
+  background-color: #ffffff;
+  color: var(--color-base-900);
+  font-size: 1rem; /* 16 */
+  white-space: nowrap;
+}
+
+.friend-profile-popup--mo .friend-profile-popup__stats {
+  margin-top: 0.625rem; /* 10 — 삭제↔stats */
+}
+
+.friend-profile-popup--mo .friend-profile-popup__send.btn--push-green {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 22.375rem; /* 358 */
+  max-width: 100%;
+  min-width: 0;
+  height: 2.5rem; /* 40 */
+  min-height: 2.5rem;
+  margin-top: 0.875rem; /* 14 — stats(내가 보낸 POCK)↔보내기 */
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* —— 공통: 아바타·stats (기존 유지) —— */
+.friend-profile-popup__close img {
+  display: block;
+  object-fit: contain;
+}
+
 /* 캐릭터 카드 140×165.38 · 모서리 8.19 · 캐릭터 중앙 */
 .friend-profile-popup__avatar {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -94,7 +215,6 @@
 }
 
 .friend-profile-popup__name {
-  margin: 1.25rem 0; /* 20 — 프로필↔닉네임 · 닉네임↔흰 영역 */
   color: var(--color-base-900);
   font-size: 1.125rem; /* 18 */
   font-weight: var(--font-weight-regular);
@@ -104,6 +224,7 @@
 
 .friend-profile-popup__stats {
   display: flex;
+  flex: 0 0 auto;
   flex-direction: column;
   justify-content: center;
   gap: 0;
@@ -111,7 +232,6 @@
   width: 100%;
   max-width: 22.375rem; /* 358 */
   height: 5.875rem; /* 94 */
-  margin-top: 0;
   padding: 0.5rem 1.25rem; /* 상하 8 · 좌우 20 */
   border: 1px solid var(--color-base-300);
   border-radius: var(--radius-md);
@@ -145,18 +265,4 @@
   color: var(--color-functional-orange); /* Functional / orange */
   font-size: 1.125rem; /* 18 */
   line-height: 1.3;
-}
-
-@media (min-width: 1024px) {
-  .friend-profile-popup {
-    width: 25rem; /* 400 */
-    max-width: 25rem;
-    padding: 2.75rem 1.3125rem 1.75rem; /* 임시값 */
-  }
-
-  .friend-profile-popup__avatar {
-    width: 8.75rem; /* 140 */
-    height: 10.33625rem; /* 165.38 */
-    border-radius: 0.511875rem; /* 8.19 */
-  }
 }

@@ -231,13 +231,22 @@ export function Friend_listPage() {
         onConfirm={closeInvitePopup}
       />
 
-      {/* 프로필·닉네임 — POCK 수 팝업 · 상세는 추후 시안 */}
+      {/* 프로필·닉네임 — Mo 새 시안 · Tb/Pc 기존 */}
       <FriendProfilePopup
         open={profileFriend !== null}
         name={profileFriend?.name ?? ""}
         profileImage={profileFriend?.profileImage}
         gender={profileFriend?.gender}
         onClose={() => setProfileFriend(null)}
+        onDelete={() => {
+          if (!profileFriend) return;
+          setDeleteTarget(profileFriend);
+          setProfileFriend(null);
+        }}
+        onSendLetter={() => {
+          setProfileFriend(null);
+          navigate("/pock-send");
+        }}
       />
 
       {toastOpen ? (

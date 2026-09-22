@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export interface FriendProfilePopupProps {
   open: boolean;
@@ -11,11 +14,16 @@ export interface FriendProfilePopupProps {
   receivedCount?: number;
   /** 내가 보낸 POCK 수 — 임시값 */
   sentCount?: number;
+  /** Mo — 친구 삭제 (없으면 버튼 숨김) */
+  onDelete?: () => void;
+  /** Mo — 편지 보내러 가기 (없으면 /pock-send) */
+  onSendLetter?: () => void;
   onClose: () => void;
 }
 
 /**
  * 친구 프로필·닉네임 선택 시 — POCK 수 팝업
+ * Mo: 새 시안(360~883×807) · Tb/Pc: 기존 레이아웃
  */
 export function FriendProfilePopup({
   open,
@@ -24,9 +32,29 @@ export function FriendProfilePopup({
   gender = "female",
   receivedCount = 3,
   sentCount = 2,
+  onDelete,
+  onSendLetter,
   onClose,
 }: FriendProfilePopupProps) {
+  const breakpoint = useBreakpoint();
+  const navigate = useNavigate();
+  const isMo = breakpoint === "mo";
+
   if (!open) return null;
+
+  const handleSendLetter = () => {
+    if (onSendLetter) {
+      onSendLetter();
+      return;
+    }
+    onClose();
+    navigate("/pock-send");
+  };
+
+  const rootClass = [
+    "friend-profile-popup",
+    isMo ? "friend-profile-popup--mo" : "friend-profile-popup--tb",
+  ].join(" ");
 
   return (
     <div
@@ -36,7 +64,7 @@ export function FriendProfilePopup({
       aria-label={`${name} 프로필`}
     >
       <DimmedOverlay open onClick={onClose} />
-      <article className="friend-profile-popup">
+      <article className={rootClass}>
         <button
           type="button"
           className="friend-profile-popup__close"
@@ -46,8 +74,8 @@ export function FriendProfilePopup({
           <img
             src="/assets/images/pixelarticons_close.svg"
             alt=""
-            width={16}
-            height={16}
+            width={18}
+            height={18}
           />
         </button>
 
@@ -72,6 +100,18 @@ export function FriendProfilePopup({
 
         <p className="friend-profile-popup__name">{name}</p>
 
+        {isMo && onDelete ? (
+          <div className="friend-profile-popup__delete-row">
+            <Button
+              variant="popup"
+              className="friend-profile-popup__delete"
+              onClick={onDelete}
+            >
+              친구 삭제
+            </Button>
+          </div>
+        ) : null}
+
         <div className="friend-profile-popup__stats">
           <div className="friend-profile-popup__stat">
             <span className="friend-profile-popup__stat-label">
@@ -90,6 +130,16 @@ export function FriendProfilePopup({
             </span>
           </div>
         </div>
+
+        {isMo ? (
+          <Button
+            variant="push-green"
+            className="friend-profile-popup__send"
+            onClick={handleSendLetter}
+          >
+            편지 보내러 가기
+          </Button>
+        ) : null}
       </article>
     </div>
   );

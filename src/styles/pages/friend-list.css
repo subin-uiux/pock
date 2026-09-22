@@ -104,7 +104,7 @@
   background-color: var(--color-rainbow-pink-light); /* rainbow/pink/light */
   color: var(--color-navigation-pink); /* stroke와 동일 — Navigation/sendpock */
   font: inherit;
-  font-size: 1.125rem; /* 18 */
+  font-size: 0.875rem; /* 14 */
   line-height: var(--line-height-tight);
   cursor: pointer;
   white-space: nowrap;
@@ -263,7 +263,9 @@
 }
 
 /* Popup_btn · 배경 #fff · 패딩 상하 4 · 좌우 10 · 폰트 16 · base/900 */
+/* Mo: 숨김 — 삭제는 프로필 팝업에서 */
 .friend-list-page__delete.btn--popup {
+  display: none;
   flex: 0 0 auto;
   width: auto;
   min-width: 0;
@@ -328,6 +330,11 @@
   .friend-list-page__window {
     width: 41.875rem; /* 670 */
     max-width: 41.875rem;
+  }
+
+  /* Tb/Pc — 목록 행 「삭제하기」 표시 */
+  .friend-list-page__delete.btn--popup {
+    display: inline-flex;
   }
 
   /* Pad/Pc 네비 아이콘 50 */
