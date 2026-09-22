@@ -66,7 +66,7 @@
   border: 2px solid #c1f4f8;
   border-radius: 0.3125rem; /* 5 */
   background: #f8fdfe;
-  box-shadow: 0 0 30px 20px rgba(207, 237, 240, 0.6);
+  box-shadow: 0 0 18px 10px rgba(193, 244, 248, 0.75);
   opacity: 0;
   pointer-events: none;
   transform: scale(1);
@@ -74,8 +74,8 @@
 
 .letter-card--gift:not(.letter-card--gift-opening) .letter-card__gift-veil {
   /* 개봉 전에도 상자 뒤 은은한 글로우 */
-  opacity: 0.55;
-  box-shadow: 0 0 24px 14px rgba(207, 237, 240, 0.45);
+  opacity: 0.75;
+  box-shadow: 0 0 16px 8px rgba(193, 244, 248, 0.65);
 }
 
 .letter-card--gift-opening .letter-card__gift-veil {
@@ -133,19 +133,19 @@
   0% {
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 30px 20px rgba(207, 237, 240, 0.6);
+    box-shadow: 0 0 18px 10px rgba(193, 244, 248, 0.85);
   }
 
   55% {
-    opacity: 0.55;
-    transform: scale(1.08);
-    box-shadow: 0 0 42px 28px rgba(207, 237, 240, 0.45);
+    opacity: 0.85;
+    transform: scale(1.04);
+    box-shadow: 0 0 26px 14px rgba(193, 244, 248, 0.7);
   }
 
   100% {
     opacity: 0;
-    transform: scale(1.18);
-    box-shadow: 0 0 56px 36px rgba(207, 237, 240, 0);
+    transform: scale(1.08);
+    box-shadow: 0 0 32px 16px rgba(193, 244, 248, 0);
   }
 }
 
@@ -453,22 +453,24 @@
 
 .letter-card__meta {
   display: flex;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 0.25rem;
-  min-width: max-content; /* 긴 텍스트가 옆으로 이어지도록 */
+  min-width: 0; /* 말줄임 가능하게 */
   color: var(--color-base-900);
   font-family: var(--font-family-base); /* Neo */
 }
 
-/* 제목: 내용 — 라벨/값 분리 없이 한 줄, 가로로 길게 */
+/* 제목·일시·발신인/수신자 — 한 줄, 넘치면 … */
 .letter-card__line {
   margin: 0;
+  overflow: hidden;
   color: var(--color-base-900);
   font-family: var(--font-family-base);
   font-size: 0.875rem; /* Mo 14 */
   line-height: var(--line-height-tight);
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .letter-card__more {

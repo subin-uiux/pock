@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { Popup } from "@/components/Popup";
 import type { PockUser } from "@/types";
@@ -16,11 +17,16 @@ export interface FriendProfilePopupProps {
   receivedCount?: number;
   /** 내가 보낸 POCK 수 — 임시값 */
   sentCount?: number;
+  /** Mo — 친구 삭제 (없으면 버튼 숨김) */
+  onDelete?: () => void;
+  /** Mo — 편지 보내러 가기 (없으면 /pock-send) */
+  onSendLetter?: () => void;
   onClose: () => void;
 }
 
 /**
  * 친구 프로필·닉네임 선택 시 — POCK 수 팝업
+ * Mo: 새 시안(360~883×807) · Tb/Pc: 기존 레이아웃
  */
 export function FriendProfilePopup({
   open,
@@ -30,6 +36,8 @@ export function FriendProfilePopup({
   gender = "female",
   receivedCount = 3,
   sentCount = 2,
+  onDelete,
+  onSendLetter,
   onClose,
 }: FriendProfilePopupProps) {
   const navigate = useNavigate();

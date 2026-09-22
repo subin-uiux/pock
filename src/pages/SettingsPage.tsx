@@ -12,6 +12,8 @@ const DEFAULT_NICKNAME = "zl존 킹왕짱";
 const DEMO_COIN = 1000;
 /** 데모 출석 완료 일수 — 시안: 1일차 완료 */
 const DEMO_ATTENDANCE_DONE = 1;
+/** 임시값 — 초대 링크 */
+const INVITE_LINK = "https://pock.app/invite";
 
 /** 출석 스탬프 시안 표기 (보상 문구는 시안 그대로) */
 const ATTENDANCE_DAYS: {
@@ -42,12 +44,29 @@ export function SettingsPage() {
       : DEFAULT_NICKNAME;
   const [logoutOpen, setLogoutOpen] = useState(false);
   const [withdrawOpen, setWithdrawOpen] = useState(false);
+  const [inviteOpen, setInviteOpen] = useState(false);
+  const [toastOpen, setToastOpen] = useState(false);
   const [noticeUnread, setNoticeUnread] = useState(hasUnreadNotice);
 
   useEffect(() => {
     document.title = "설정 ㅣ POCK";
     setNoticeUnread(hasUnreadNotice());
   }, []);
+
+  useEffect(() => {
+    if (!toastOpen) return;
+    const timer = window.setTimeout(() => setToastOpen(false), 1000);
+    return () => window.clearTimeout(timer);
+  }, [toastOpen]);
+
+  const confirmInviteCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(INVITE_LINK);
+    } catch {
+      /* 클립보드 실패 — 미확정 */
+    }
+    setToastOpen(true);
+  };
 
   const handleLogoutConfirm = () => {
     setLogoutOpen(false);
@@ -194,9 +213,7 @@ export function SettingsPage() {
                 <button
                   type="button"
                   className="settings-menu__btn"
-                  onClick={() => {
-                    /* 클릭만 — 초대 동작 미확정 */
-                  }}
+                  onClick={() => setInviteOpen(true)}
                 >
                   <span className="settings-menu__label">친구 초대하기</span>
                   <img
@@ -289,9 +306,7 @@ export function SettingsPage() {
                 <button
                   type="button"
                   className="settings-menu__btn"
-                  onClick={() => {
-                    /* 클릭만 — 문의하기 동작 미확정 */
-                  }}
+                  onClick={() => navigate("/inquiry")}
                 >
                   <span className="settings-menu__label">문의하기</span>
                   <img
@@ -354,6 +369,27 @@ export function SettingsPage() {
         onCancel={() => setWithdrawOpen(false)}
         onClose={() => setWithdrawOpen(false)}
       />
+
+      {/* 친구 초대 — Share 팝업 · 카피 임시값 */}
+      <Popup
+        open={inviteOpen}
+        variant="share"
+        iconSrc="/assets/images/Friend_list-icon.svg"
+        iconSize={40}
+        message="내 POCK에 놀러와!" /* 임시값 — 시안 카피 미확정 */
+        cancelLabel="링크 복사"
+        confirmLabel="닫기"
+        onCancel={confirmInviteCopy}
+        onClose={() => setInviteOpen(false)}
+        onConfirm={() => setInviteOpen(false)}
+      />
+
+      {toastOpen ? (
+        <div className="friend-list-toast" role="status" aria-live="polite">
+          <span className="friend-list-toast__icon" aria-hidden="true" />
+          <p className="friend-list-toast__text">링크 복사가 완료되었습니다.</p>
+        </div>
+      ) : null}
     </section>
   );
 }

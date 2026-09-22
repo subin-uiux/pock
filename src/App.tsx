@@ -1,5 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "@/components/RequireAuth";
+import { CursorPressTilt } from "@/components/CursorPressTilt";
+import { CursorSparkles } from "@/components/CursorSparkles";
 import { AppLayout } from "@/layouts/AppLayout";
 import { LandingPage } from "@/pages/LandingPage";
 import { LoginPage } from "@/pages/LoginPage";
@@ -12,6 +14,7 @@ import { GuidePage } from "@/pages/GuidePage";
 import { HomePage } from "@/pages/HomePage";
 import { AlertPage } from "@/pages/AlertPage";
 import { NoticePage } from "@/pages/NoticePage";
+import { InquiryPage } from "@/pages/InquiryPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { Friend_listPage } from "@/pages/Friend_listPage";
 import { MyPage } from "@/pages/MyPage";
@@ -29,6 +32,8 @@ import { TermsPage } from "@/pages/TermsPage";
 export default function App() {
   return (
     <BrowserRouter>
+      <CursorSparkles />
+      <CursorPressTilt />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/guide" element={<GuidePage />} />
@@ -169,6 +174,10 @@ export default function App() {
 
           <Route element={<AppLayout pageClassName="page--notice" />}>
             <Route path="/notice" element={<NoticePage />} />
+          </Route>
+
+          <Route element={<AppLayout pageClassName="page--inquiry" />}>
+            <Route path="/inquiry" element={<InquiryPage />} />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--settings" />}>

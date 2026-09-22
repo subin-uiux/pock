@@ -33,6 +33,8 @@
 @import "./components/mailbox-letter.css";
 @import "./components/mailbox-sort.css";
 @import "./components/mailbox-search.css";
+@import "./components/sparkle-cursor.css";
+@import "./components/click-splosion.css";
 
 @import "./pages/index.css";
 @import "./pages/login.css";
@@ -44,6 +46,7 @@
 @import "./pages/home.css";
 @import "./pages/alert.css";
 @import "./pages/notice.css";
+@import "./pages/inquiry.css";
 @import "./pages/settings.css";
 @import "./pages/friend-list.css";
 @import "./pages/mypage.css";

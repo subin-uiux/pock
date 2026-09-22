@@ -3,6 +3,22 @@
  * 공통 레이아웃과 접근성 유틸리티
  */
 
+/* 사이트 전역 커서 — 링크·버튼·입력 포함 동일 유지 */
+html,
+html *,
+html *::before,
+html *::after {
+  cursor: var(--cursor-pock) !important;
+}
+
+/* 누르는 동안 열쇠 각도 살짝 회전 */
+html.is-cursor-pressing,
+html.is-cursor-pressing *,
+html.is-cursor-pressing *::before,
+html.is-cursor-pressing *::after {
+  cursor: var(--cursor-pock-press) !important;
+}
+
 .page {
   display: flex;
   flex-direction: column;
