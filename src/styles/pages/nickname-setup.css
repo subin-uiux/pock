@@ -113,10 +113,12 @@
 }
 
 .nickname-setup__input-shell {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
   max-width: 20rem; /* 320 */
-  height: 3.375rem; /* 54 */
+  height: 3.125rem; /* 50 */
   margin-inline: auto;
   background-color: transparent;
   background-image: url("/assets/images/input-box-s.svg");
@@ -127,16 +129,17 @@
 
 .nickname-setup__input {
   box-sizing: border-box;
+  display: block;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0.75rem 1.5rem;
+  padding: 0 1.5rem; /* 좌우 24 — 셸 높이 안에 맞춤 */
   border: 0;
   background: transparent;
   color: var(--color-base-900);
   font-family: inherit;
   font-size: 0.875rem; /* 14 */
-  line-height: var(--line-height-tight);
+  line-height: 1;
   outline: none;
 }
 
@@ -145,7 +148,10 @@
 }
 
 .nickname-setup__hint {
-  margin: 0.3125rem 0 0; /* gap 5 */
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 20rem; /* 320 — input-shell과 동일 */
+  margin: 0.3125rem auto 0; /* gap 5, 인풋과 가운데 정렬 */
   color: var(--color-base-600);
   font-size: 0.875rem; /* 14 */
   line-height: var(--line-height-tight);
@@ -267,13 +273,13 @@
   }
 
   .nickname-setup__title {
-    margin-top: 3.75rem; /* gap 60 */
-    font-size: 2.625rem; /* 42 */
+    margin-top: 2.75rem; /* gap 60 */
+    font-size: 1.625rem; /* 26 */
   }
 
   .nickname-setup__desc {
     margin-top: 0.9375rem; /* gap 15 from title — pad/pc */
-    font-size: 1.375rem; /* 22 */
+    font-size: 1.125rem; /* 18 */
   }
 
   .nickname-setup__field {
@@ -283,39 +289,44 @@
   }
 
   .nickname-setup__input-shell {
-    max-width: none;
+    max-width: 35.5rem; /* 568 — input-box-l */
     width: 100%;
-    height: 5.3125rem; /* 85 — name-input */
-    background-image: url("/assets/images/name-input.svg");
+    height: 4.0625rem; /* 65 — input-box-l */
+    background-image: url("/assets/images/input-box-l.svg");
   }
 
   .nickname-setup__input {
-    padding: 1rem 2.5rem;
-    font-size: 1.5rem; /* 24 */
+    padding: 0 1.75rem; /* 좌우 28 — L 셸 베벨 안쪽 */
+    font-size: 1.125rem; /* 18 */
   }
 
   .nickname-setup__hint {
+    max-width: 37.5rem; /* 600 — input-box-l과 동일 */
     margin-top: 0.625rem; /* gap 10 */
-    font-size: 1.375rem; /* 22 */
+    font-size: 1rem; /* 16 */
   }
 
   .nickname-setup__recommend {
-    width: 100%;
-    max-width: 56rem;
-    margin-top: 1.875rem; /* gap 30 from input block */
-    padding-top: 0;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: auto; /* mo와 동일 — 하단 다음 버튼 쪽으로 붙임 */
+    margin-inline: auto;
+    padding-top: 1.5rem;
     padding-bottom: 0;
   }
 
   .nickname-setup__recommend-title {
-    font-size: 1.375rem; /* 22 */
+    font-size: 1.125rem; /* 18 */
   }
 
   .nickname-setup__recommend-list {
-    grid-template-columns: repeat(4, 12.875rem); /* 206 */
-    width: auto;
-    max-width: none;
-    gap: 1.5rem; /* 24 — pad/pc */
+    grid-template-columns: repeat(4, 8.375rem); /* chip 폭과 동일 */
+    justify-content: center;
+    justify-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    gap: 1rem; /* 16 — pad/pc */
   }
 
   .nickname-setup__recommend-item:nth-child(n + 7) {
@@ -323,23 +334,23 @@
   }
 
   .nickname-setup__recommend-item {
-    width: 12.875rem;
-    height: 3.375rem;
+    width: 8.375rem;
+    height: 2.2rem;
   }
 
   .nickname-setup__chip {
-    width: 12.875rem; /* 206 */
-    min-width: 12.875rem;
-    max-width: 12.875rem;
-    height: 3.375rem; /* 54 */
-    min-height: 3.375rem;
-    font-size: 1.375rem; /* 22 */
+    width: 8.375rem; /* 134 */
+    min-width: 8.375rem;
+    max-width: 8.375rem;
+    height: 2.2rem; /* 35 */
+    min-height: 2.2rem;
+    font-size: 1.125rem; /* 18 */
   }
 
   .nickname-setup__footer {
     width: 100%;
     max-width: 28.75rem; /* 460 */
-    padding: 3.125rem 0 0; /* top 50 — list↔footer */
+    padding: 1.25rem 0 0; /* top 20 — mo와 동일, recommend↔footer */
   }
 
   .nickname-setup__footer .btn {

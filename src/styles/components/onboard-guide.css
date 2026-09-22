@@ -1,0 +1,62 @@
+/**
+ * onboard-guide.css
+ * 홈 온보딩 — 딤 위 타깃 하이라이트 + 팝업 위치
+ */
+
+.onboard-guide {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-modal);
+  pointer-events: none;
+}
+
+/* 설명 대상만 선명 · 나머지는 더 어둡게 (시안 대비 강화 · 임시값) */
+.onboard-guide .dimmed-overlay {
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(1.25rem); /* 20 */
+  -webkit-backdrop-filter: blur(1.25rem);
+}
+
+.onboard-guide__popup {
+  position: fixed;
+  z-index: calc(var(--z-index-modal) + 2);
+  pointer-events: auto;
+}
+
+/* 타깃을 딤(모달) 위로 — 시안처럼 해당 영역만 선명 */
+body.is-onboard-active [data-onboard].is-onboard-target {
+  position: relative;
+  z-index: calc(var(--z-index-modal) + 1);
+  pointer-events: none;
+}
+
+/* 알림 — 어두운 아이콘이 딤 위에서 보이도록 밝은 배경 (임시값) */
+body.is-onboard-active[data-onboard-target="alert"]
+  .home__alert.is-onboard-target {
+  width: 2rem; /* 32 */
+  height: 2rem;
+  border-radius: 0.375rem; /* 6 */
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.35);
+}
+
+/* 네비는 stacking context(z 300)라 가이드 중 전체를 모달 위로 */
+body.is-onboard-active[data-onboard-target^="nav-"] .navigation--fixed {
+  z-index: calc(var(--z-index-modal) + 1);
+}
+
+/* 설명 중이 아닌 네비 아이콘은 더 투명 */
+body.is-onboard-active[data-onboard-target^="nav-"] .navigation__link {
+  opacity: 0.2;
+}
+
+body.is-onboard-active[data-onboard-target^="nav-"]
+  .navigation__link.is-onboard-target {
+  opacity: 1;
+}
+
+/* 네비 설명 중 — 홈 본문도 더 투명 */
+body.is-onboard-active[data-onboard-target^="nav-"] .page--home .main {
+  opacity: 0.4;
+}

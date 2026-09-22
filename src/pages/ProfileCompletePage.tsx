@@ -1,6 +1,7 @@
 import { useMemo, type CSSProperties } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
+import { requestHomeOnboard } from "@/lib/home-onboard";
 import {
   CHARACTER_BASE,
   getOutfitById,
@@ -78,7 +79,10 @@ export function ProfileCompletePage() {
             type="button"
             variant="push-green"
             block
-            onClick={() => navigate("/home")}
+            onClick={() => {
+              requestHomeOnboard();
+              navigate("/home", { state: { showOnboard: true } });
+            }}
           >
             시작하기
           </Button>
