@@ -138,6 +138,17 @@
   image-rendering: crisp-edges;
 }
 
+.background-setup__wear--full {
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
+}
+
 .background-setup__choices {
   display: grid;
   grid-template-columns: repeat(3, 6.25rem); /* 100 — mo 3×2 */
@@ -233,8 +244,8 @@
   }
 
   .background-setup__figure {
-    width: 9.9375rem; /* 159 */
-    height: 16.875rem; /* 270 — 180×1.5 */
+    width: 7.9375rem; /* 127 */
+    height: 12.875rem; /* 206 */
   }
 
   .background-setup__choices {

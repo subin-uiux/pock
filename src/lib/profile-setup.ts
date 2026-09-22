@@ -22,9 +22,16 @@ export interface OutfitOption {
   id: OutfitId;
   label: string;
   src: string;
+  /** SelectionBox 썸네일 — 없으면 src 사용 */
+  thumbSrc?: string;
+  /** 썸네일 원본 크기 */
+  thumbWidth?: number;
+  thumbHeight?: number;
   /** 옷 원본 폭 — 캐릭터(106) 대비 스케일 */
   width: number;
   height: number;
+  /** true면 캐릭터 캔버스와 동일 크기로 전체 덧씌움 */
+  fullFrame?: boolean;
 }
 
 export interface BackgroundOption {
@@ -60,28 +67,40 @@ export const CHARACTER_BASE = {
   height: 180,
 } as const;
 
-/** 옷 — public/assets/images/outfit */
+/** 옷 — public/assets/images/outfit (덧씌움) · selection-box__* (선택 썸네일) */
 export const BOY_OUTFITS: OutfitOption[] = [
   {
     id: "boy-hood",
     label: "후드",
-    src: "/assets/images/outfit/boy-hood.webp",
-    width: 88,
-    height: 70,
+    src: "/assets/images/outfit/boy-hood.svg",
+    thumbSrc: "/assets/images/selection-box__hood.svg",
+    thumbWidth: 130,
+    thumbHeight: 148,
+    width: 106,
+    height: 178,
+    fullFrame: true,
   },
   {
     id: "boy-jacket",
     label: "자켓",
-    src: "/assets/images/outfit/boy-jacket.webp",
-    width: 88,
-    height: 77,
+    src: "/assets/images/outfit/boy-jacket.svg",
+    thumbSrc: "/assets/images/selection-box__jacket.svg",
+    thumbWidth: 130,
+    thumbHeight: 148,
+    width: 106,
+    height: 178,
+    fullFrame: true,
   },
   {
     id: "boy-knit",
     label: "니트",
-    src: "/assets/images/outfit/boy-knit.webp",
-    width: 88,
-    height: 70,
+    src: "/assets/images/outfit/boy-knit.svg",
+    thumbSrc: "/assets/images/selection-box__knit.svg",
+    thumbWidth: 130,
+    thumbHeight: 148,
+    width: 106,
+    height: 178,
+    fullFrame: true,
   },
 ];
 
@@ -89,23 +108,35 @@ export const GIRL_OUTFITS: OutfitOption[] = [
   {
     id: "girl-school",
     label: "교복",
-    src: "/assets/images/outfit/girl-school.webp",
-    width: 86,
-    height: 66,
+    src: "/assets/images/outfit/girl-school.svg",
+    thumbSrc: "/assets/images/selection-box__school.svg",
+    thumbWidth: 130,
+    thumbHeight: 148,
+    width: 106,
+    height: 178,
+    fullFrame: true,
   },
   {
     id: "girl-skirt",
     label: "스커트",
-    src: "/assets/images/outfit/girl-skirt.webp",
-    width: 74,
-    height: 67,
+    src: "/assets/images/outfit/girl-skirt.svg",
+    thumbSrc: "/assets/images/selection-box__skirt.svg",
+    thumbWidth: 130,
+    thumbHeight: 148,
+    width: 106,
+    height: 178,
+    fullFrame: true,
   },
   {
     id: "girl-coat",
     label: "코트",
-    src: "/assets/images/outfit/girl-coat.webp",
-    width: 84,
-    height: 62,
+    src: "/assets/images/outfit/girl-coat.svg",
+    thumbSrc: "/assets/images/selection-box__coat.svg",
+    thumbWidth: 130,
+    thumbHeight: 148,
+    width: 106,
+    height: 178,
+    fullFrame: true,
   },
 ];
 

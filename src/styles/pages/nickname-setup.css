@@ -342,20 +342,20 @@
     width: 8.375rem; /* 134 */
     min-width: 8.375rem;
     max-width: 8.375rem;
-    height: 2.2rem; /* 35 */
-    min-height: 2.2rem;
+    height: 2.25rem; /* 36 */
+    min-height: 2.25rem;
     font-size: 1.125rem; /* 18 */
   }
 
   .nickname-setup__footer {
     width: 100%;
-    max-width: 28.75rem; /* 460 */
+    max-width: 36rem; /* 576 — input 등과 맞춤 */
     padding: 1.25rem 0 0; /* top 20 — mo와 동일, recommend↔footer */
   }
 
   .nickname-setup__footer .btn {
-    width: 100%;
+    width: 100% !important;
     min-width: 0 !important;
-    max-width: 28.75rem !important; /* 460 */
+    max-width: none !important; /* footer(576)에 맞춤 · Push 460 고정 해제 */
   }
 }

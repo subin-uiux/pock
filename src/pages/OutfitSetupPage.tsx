@@ -48,11 +48,12 @@ export function OutfitSetupPage() {
     navigate("/profile/background");
   };
 
-  const wearStyle: CSSProperties | undefined = selected
-    ? {
-        width: `${(selected.width / CHARACTER_BASE.width) * 100}%`,
-      }
-    : undefined;
+  const wearStyle: CSSProperties | undefined =
+    selected && !selected.fullFrame
+      ? {
+          width: `${(selected.width / CHARACTER_BASE.width) * 100}%`,
+        }
+      : undefined;
 
   return (
     <section className="outfit-setup" aria-label="옷 선택">
@@ -83,7 +84,11 @@ export function OutfitSetupPage() {
             />
             {selected ? (
               <img
-                className="outfit-setup__wear"
+                className={
+                  selected.fullFrame
+                    ? "outfit-setup__wear outfit-setup__wear--full"
+                    : "outfit-setup__wear"
+                }
                 src={selected.src}
                 alt=""
                 width={selected.width}
@@ -108,10 +113,10 @@ export function OutfitSetupPage() {
               >
                 <img
                   className="outfit-setup__thumb"
-                  src={item.src}
+                  src={item.thumbSrc ?? item.src}
                   alt=""
-                  width={item.width}
-                  height={item.height}
+                  width={item.thumbWidth ?? item.width}
+                  height={item.thumbHeight ?? item.height}
                 />
               </SelectionBox>
             ))}

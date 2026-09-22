@@ -26,7 +26,10 @@ type GenderId = "male" | "female";
 interface ClothesOption {
   id: OutfitId;
   label: string;
+  /** 캐릭터 위 덧씌움 */
   src: string;
+  /** SelectionBox 썸네일 — 없으면 src */
+  thumbSrc?: string;
 }
 
 const GENDER_OPTIONS: {
@@ -49,46 +52,48 @@ const GENDER_OPTIONS: {
   },
 ];
 
-/** 옷 선택 칸 안 이미지 크기 (순서대로) */
-const CLOTHES_IMG_SIZE = [
-  { width: 67.96, height: 51.81 },
-  { width: 57.87, height: 54.5 },
-  { width: 62.16, height: 59.94 },
-] as const;
+/** SelectionBox 썸네일 원본 (selection-box__* 130×148) */
+const CLOTHES_THUMB_SIZE = { width: 130, height: 148 } as const;
 
 const CLOTHES_BY_GENDER: Record<GenderId, ClothesOption[]> = {
   female: [
     {
       id: "girl-school",
       label: "교복",
-      src: "/assets/images/setting/Girls'-school-uniform.svg",
+      src: "/assets/images/outfit/girl-school.svg",
+      thumbSrc: "/assets/images/selection-box__school.svg",
     },
     {
       id: "girl-skirt",
-      label: "후드",
-      src: "/assets/images/setting/girl's-hoodie.svg",
+      label: "스커트",
+      src: "/assets/images/outfit/girl-skirt.svg",
+      thumbSrc: "/assets/images/selection-box__skirt.svg",
     },
     {
       id: "girl-coat",
       label: "코트",
-      src: "/assets/images/setting/girl's-coat.svg",
+      src: "/assets/images/outfit/girl-coat.svg",
+      thumbSrc: "/assets/images/selection-box__coat.svg",
     },
   ],
   male: [
     {
       id: "boy-hood",
       label: "후드",
-      src: "/assets/images/setting/boy's-hoodie.svg",
+      src: "/assets/images/outfit/boy-hood.svg",
+      thumbSrc: "/assets/images/selection-box__hood.svg",
     },
     {
       id: "boy-jacket",
       label: "자켓",
-      src: "/assets/images/setting/boy's-jacket.svg",
+      src: "/assets/images/outfit/boy-jacket.svg",
+      thumbSrc: "/assets/images/selection-box__jacket.svg",
     },
     {
       id: "boy-knit",
       label: "니트",
-      src: "/assets/images/setting/boy's-knitwear.svg",
+      src: "/assets/images/outfit/boy-knit.svg",
+      thumbSrc: "/assets/images/selection-box__knit.svg",
     },
   ],
 };
@@ -259,13 +264,7 @@ export function MyPage() {
               }}
               aria-hidden="true"
             >
-              <div
-                className={
-                  genderId === "male"
-                    ? "mypage-profile__figure mypage-profile__figure--male"
-                    : "mypage-profile__figure"
-                }
-              >
+              <div className="mypage-profile__figure">
                 <img
                   className="mypage-profile__body"
                   src={previewSrc}
@@ -275,15 +274,11 @@ export function MyPage() {
                 />
                 {selectedClothes ? (
                   <img
-                    className={
-                      genderId === "male"
-                        ? "mypage-profile__clothes mypage-profile__clothes--male"
-                        : "mypage-profile__clothes"
-                    }
+                    className="mypage-profile__clothes"
                     src={selectedClothes.src}
                     alt=""
-                    width={86}
-                    height={66}
+                    width={106}
+                    height={178}
                   />
                 ) : null}
               </div>
@@ -373,30 +368,23 @@ export function MyPage() {
               <section className="mypage-clothes" aria-label="옷 선택">
                 <h3 className="mypage-clothes__title">옷 선택</h3>
                 <div className="mypage-clothes__row">
-                  {clothesOptions.map((item, index) => {
-                    const size = CLOTHES_IMG_SIZE[index];
-                    return (
-                      <div className="mypage-clothes__item" key={item.id}>
-                        <SelectionBox
-                          selected={clothesId === item.id}
-                          aria-label={item.label}
-                          onClick={() => setClothesId(item.id)}
-                        >
-                          <img
-                            className={`mypage-clothes__img mypage-clothes__img--${index + 1}`}
-                            src={item.src}
-                            alt=""
-                            width={size.width}
-                            height={size.height}
-                            style={{
-                              width: size.width,
-                              height: size.height,
-                            }}
-                          />
-                        </SelectionBox>
-                      </div>
-                    );
-                  })}
+                  {clothesOptions.map((item) => (
+                    <div className="mypage-clothes__item" key={item.id}>
+                      <SelectionBox
+                        selected={clothesId === item.id}
+                        aria-label={item.label}
+                        onClick={() => setClothesId(item.id)}
+                      >
+                        <img
+                          className="mypage-clothes__img"
+                          src={item.thumbSrc ?? item.src}
+                          alt=""
+                          width={CLOTHES_THUMB_SIZE.width}
+                          height={CLOTHES_THUMB_SIZE.height}
+                        />
+                      </SelectionBox>
+                    </div>
+                  ))}
                 </div>
               </section>
 

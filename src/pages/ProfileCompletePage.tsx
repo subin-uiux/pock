@@ -25,9 +25,10 @@ export function ProfileCompletePage() {
     return <Navigate to="/profile/character" replace />;
   }
 
-  const wearStyle: CSSProperties | undefined = outfit
-    ? { width: `${(outfit.width / CHARACTER_BASE.width) * 100}%` }
-    : undefined;
+  const wearStyle: CSSProperties | undefined =
+    outfit && !outfit.fullFrame
+      ? { width: `${(outfit.width / CHARACTER_BASE.width) * 100}%` }
+      : undefined;
 
   return (
     <section className="profile-complete" aria-label="설정 완료">
@@ -54,7 +55,11 @@ export function ProfileCompletePage() {
             />
             {outfit ? (
               <img
-                className="profile-complete__wear"
+                className={
+                  outfit.fullFrame
+                    ? "profile-complete__wear profile-complete__wear--full"
+                    : "profile-complete__wear"
+                }
                 src={outfit.src}
                 alt=""
                 width={outfit.width}

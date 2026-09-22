@@ -210,13 +210,13 @@
 
   .character-setup__footer {
     width: 100%;
-    max-width: 28.75rem; /* 460 — nickname과 동일 */
+    max-width: 36rem; /* 576 — 다른 요소와 동일 */
     padding: 3.125rem 0 0; /* 50 */
   }
 
   .character-setup__footer .btn {
-    width: 100%;
+    width: 100% !important;
     min-width: 0 !important;
-    max-width: 28.75rem !important;
+    max-width: none !important; /* footer(576)에 맞춤 · Push 460 고정 해제 */
   }
 }

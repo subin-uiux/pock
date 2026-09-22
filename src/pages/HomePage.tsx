@@ -95,11 +95,12 @@ export function HomePage() {
     };
   }, []);
 
-  const wearStyle: CSSProperties | undefined = outfit
-    ? {
-        width: `${(outfit.width / CHARACTER_BASE.width) * 100}%`,
-      }
-    : undefined;
+  const wearStyle: CSSProperties | undefined =
+    outfit && !outfit.fullFrame
+      ? {
+          width: `${(outfit.width / CHARACTER_BASE.width) * 100}%`,
+        }
+      : undefined;
 
   const finishOnboard = () => {
     markHomeOnboardSeen();
@@ -119,7 +120,7 @@ export function HomePage() {
           hasAlert ? "알림, 새 알림 있음" : "알림"
         }
         data-onboard="alert"
-        onClick={() => navigate("/notice")}
+        onClick={() => navigate("/alerts")}
       >
         <img
           className="home__alert-icon"
@@ -159,7 +160,11 @@ export function HomePage() {
 
                 {outfit ? (
                   <img
-                    className="home__profile-wear"
+                    className={
+                      outfit.fullFrame
+                        ? "home__profile-wear home__profile-wear--full"
+                        : "home__profile-wear"
+                    }
                     src={outfit.src}
                     alt=""
                     width={outfit.width}
