@@ -21,7 +21,6 @@ export function Friend_listPage() {
   const [query, setQuery] = useState("");
   const [profileFriend, setProfileFriend] = useState<PockUser | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<PockUser | null>(null);
-  const [inviteOpen, setInviteOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
 
   useEffect(() => {
@@ -59,9 +58,7 @@ export function Friend_listPage() {
     );
   };
 
-  const closeInvitePopup = () => setInviteOpen(false);
-
-  const confirmInviteCopy = async () => {
+  const handleInviteCopy = async () => {
     try {
       await navigator.clipboard.writeText(INVITE_LINK);
     } catch {
@@ -94,7 +91,9 @@ export function Friend_listPage() {
         <button
           type="button"
           className="friend-list-page__invite"
-          onClick={() => setInviteOpen(true)}
+          onClick={() => {
+            void handleInviteCopy();
+          }}
         >
           <img
             className="friend-list-page__invite-icon"
@@ -224,19 +223,6 @@ export function Friend_listPage() {
         onCancel={closeDeletePopup}
         onClose={closeDeletePopup}
         onConfirm={confirmDelete}
-      />
-
-      <Popup
-        open={inviteOpen}
-        variant="share"
-        iconSrc="/assets/images/Friend_list-icon.svg"
-        iconSize={40}
-        message="내 POCK에 놀러와!" /* 임시값 — 시안 카피 미확정 */
-        cancelLabel="링크 복사"
-        confirmLabel="닫기"
-        onCancel={confirmInviteCopy}
-        onClose={closeInvitePopup}
-        onConfirm={closeInvitePopup}
       />
 
       {toastOpen ? (
