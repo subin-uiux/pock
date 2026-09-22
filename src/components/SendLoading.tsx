@@ -4,52 +4,61 @@ type SendLoadingPhase = "loading" | "complete";
 
 interface SendLoadingProps {
   open: boolean;
-  /** loading 바 채움 완료 + 전송완료 표시 후 호출 */
+  /** loading-bar 1→2→3 후 전송완료 표시가 끝나면 호출 */
   onFinished: () => void;
 }
 
-const FILL_MS = 2000;
+const LOADING_BARS = [
+  "/assets/images/loading-bar1.svg",
+  "/assets/images/loading-bar2.svg",
+  "/assets/images/loading-bar3.svg",
+] as const;
+
+const BAR_STEP_MS = 700; /* 각 바 노출 · 임시값 */
 const COMPLETE_HOLD_MS = 1000; /* 전송완료 노출 · 임시값 */
 
 /**
- * POCK 전송 로딩 — Loading … → 전송완료!
+ * POCK 전송 로딩 — loading-bar1→2→3 → 전송완료!
  */
 export function SendLoading({ open, onFinished }: SendLoadingProps) {
   const [phase, setPhase] = useState<SendLoadingPhase>("loading");
-  const [progress, setProgress] = useState(0);
+  const [barIndex, setBarIndex] = useState(0);
 
   useEffect(() => {
     if (!open) {
       setPhase("loading");
-      setProgress(0);
+      setBarIndex(0);
       return;
     }
 
     setPhase("loading");
-    setProgress(0);
+    setBarIndex(0);
 
-    const started = performance.now();
-    let frame = 0;
-    let completeTimer = 0;
+    const timers: number[] = [];
 
-    const tick = (now: number) => {
-      const ratio = Math.min(1, (now - started) / FILL_MS);
-      setProgress(ratio * 100);
-      if (ratio < 1) {
-        frame = requestAnimationFrame(tick);
-        return;
-      }
-      setPhase("complete");
-      completeTimer = window.setTimeout(() => {
+    LOADING_BARS.forEach((_, index) => {
+      if (index === 0) return;
+      timers.push(
+        window.setTimeout(() => {
+          setBarIndex(index);
+        }, BAR_STEP_MS * index),
+      );
+    });
+
+    timers.push(
+      window.setTimeout(() => {
+        setPhase("complete");
+      }, BAR_STEP_MS * LOADING_BARS.length),
+    );
+
+    timers.push(
+      window.setTimeout(() => {
         onFinished();
-      }, COMPLETE_HOLD_MS);
-    };
-
-    frame = requestAnimationFrame(tick);
+      }, BAR_STEP_MS * LOADING_BARS.length + COMPLETE_HOLD_MS),
+    );
 
     return () => {
-      cancelAnimationFrame(frame);
-      window.clearTimeout(completeTimer);
+      timers.forEach((id) => window.clearTimeout(id));
     };
   }, [open, onFinished]);
 
@@ -71,16 +80,16 @@ export function SendLoading({ open, onFinished }: SendLoadingProps) {
             className="send-loading__logo send-loading__logo--complete"
             src="/assets/images/loading-complete.svg"
             alt=""
-            width={90}
-            height={92}
+            width={250}
+            height={204}
           />
         ) : (
           <img
             className="send-loading__logo send-loading__logo--loading"
             src="/assets/images/loading.svg"
             alt=""
-            width={100}
-            height={114}
+            width={200}
+            height={230}
           />
         )}
 
@@ -89,18 +98,13 @@ export function SendLoading({ open, onFinished }: SendLoadingProps) {
         </p>
 
         {!isComplete ? (
-          <div
-            className="send-loading__bar"
-            role="progressbar"
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-valuenow={Math.round(progress)}
-          >
-            <div
-              className="send-loading__bar-fill"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          <img
+            className="send-loading__bar-image"
+            src={LOADING_BARS[barIndex]}
+            alt=""
+            width={154}
+            height={16}
+          />
         ) : null}
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { FriendCheckbox } from "@/components/FriendCheckbox";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
+import { PockWindowThumb } from "@/components/PockWindowThumb";
 import { SearchInput } from "@/components/SearchInput";
 import type { PockUser } from "@/types";
 
@@ -134,6 +135,10 @@ export function Friend_list({
           <ul className="pock-window__list" ref={listRef}>
             {filtered.map((friend) => {
               const selected = friend.id === activeId;
+              const hasAvatar =
+                Boolean(friend.character) &&
+                Boolean(friend.outfit) &&
+                Boolean(friend.background);
               const hasThumb = Boolean(friend.profileImage);
 
               return (
@@ -147,7 +152,13 @@ export function Friend_list({
                     }
                     onClick={() => handleItemClick(friend)}
                   >
-                    {hasThumb ? (
+                    {hasAvatar ? (
+                      <PockWindowThumb
+                        character={friend.character!}
+                        outfit={friend.outfit!}
+                        background={friend.background!}
+                      />
+                    ) : hasThumb ? (
                       <img
                         className="pock-window__thumb"
                         src={friend.profileImage}

@@ -260,7 +260,7 @@ export function MyPage() {
             <div
               className="mypage-profile__avatar"
               style={{
-                backgroundImage: backgroundGradient(selectedBg.color),
+                backgroundImage: backgroundGradient(selectedBg),
               }}
               aria-hidden="true"
             >
@@ -401,7 +401,7 @@ export function MyPage() {
                         <span
                           className="mypage-bg__swatch"
                           style={{
-                            backgroundImage: backgroundGradient(item.color),
+                            backgroundImage: backgroundGradient(item),
                           }}
                         />
                       </SelectionBox>

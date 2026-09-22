@@ -32,15 +32,17 @@
   object-fit: contain;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+  /* 포크가 오른쪽에 있어 주머니 기준 중앙 맞춤 · 자기 폭 % */
+  transform: translateX(15%); /* 임시값 */
 }
 
 .send-loading__logo--loading {
-  width: 6.25rem; /* 100 */
+  width: 6.25rem; /* 100 — Mo */
   height: 7.125rem; /* 114 */
 }
 
 .send-loading__logo--complete {
-  width: 5.625rem; /* 90 */
+  width: 5.625rem; /* 90 — Mo */
   height: 5.75rem; /* 92 */
 }
 
@@ -54,25 +56,16 @@
   text-align: center;
 }
 
-/* 로딩 바 — 시안 픽셀 프레임 · 채움 #A1E4AD · 2초 */
-.send-loading__bar {
-  position: relative;
+/* 로딩 바 — loading-bar1→2→3 순차 교체 · Mo 154×16 */
+.send-loading__bar-image {
+  display: block;
   box-sizing: border-box;
-  width: 100%;
-  max-width: 15.625rem; /* 250 — loading-bar.svg */
-  height: 1.625rem; /* 26 */
+  width: 9.625rem; /* 154 */
+  height: 1rem; /* 16 */
   margin-top: 1.25rem; /* 20 — 임시값 */
-  overflow: hidden;
-  border: 0.125rem solid #202020; /* 2 */
-  border-radius: 0.75rem; /* 12 — 임시값 · 시안 둥근 바 */
-  background-color: #ffffff;
-}
-
-.send-loading__bar-fill {
-  height: 100%;
-  width: 0;
-  background-color: #a1e4ad; /* functional-green */
-  transition: none;
+  object-fit: fill;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 @media (min-width: 769px) {
@@ -82,13 +75,13 @@
   }
 
   .send-loading__logo--loading {
-    width: 8.75rem; /* 140 — 임시값 · Pad 시안 미기재 */
-    height: 9.975rem; /* 159.6 ≈ 140*(114/100) */
+    width: 12.5rem; /* 200 — 원본 */
+    height: 14.375rem; /* 230 — 원본 */
   }
 
   .send-loading__logo--complete {
-    width: 7.875rem; /* 126 — 임시값 */
-    height: 8.05rem; /* ≈ 126*(92/90) */
+    width: 15.625rem; /* 250 — 원본 */
+    height: 12.75rem; /* 204 — 원본 */
   }
 
   .send-loading__text {
@@ -96,9 +89,9 @@
     font-size: 1.75rem; /* 28 — Pad */
   }
 
-  .send-loading__bar {
-    max-width: 18.75rem; /* 300 — 임시값 */
-    height: 1.875rem; /* 30 — 임시값 */
+  .send-loading__bar-image {
+    width: 15.625rem; /* 250 — 원본 비율 유지 · 임시값 */
+    height: 1.625rem; /* 26 */
     margin-top: 1.5rem;
   }
 }

@@ -53,7 +53,7 @@ export function BackgroundSetupPage() {
   };
 
   const previewStyle: CSSProperties = {
-    backgroundImage: backgroundGradient(selected.color),
+    backgroundImage: backgroundGradient(selected),
   };
 
   const wearStyle: CSSProperties | undefined =
@@ -124,7 +124,7 @@ export function BackgroundSetupPage() {
                 onClick={() => handleSelect(item)}
                 style={
                   {
-                    "--background-swatch": backgroundGradient(item.color),
+                    "--background-swatch": backgroundGradient(item),
                   } as CSSProperties
                 }
               >

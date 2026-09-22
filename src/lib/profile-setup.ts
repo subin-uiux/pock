@@ -37,8 +37,10 @@ export interface OutfitOption {
 export interface BackgroundOption {
   id: BackgroundId;
   label: string;
-  /** Rainbow base hex */
+  /** Rainbow base hex — 그라데이션 하단 */
   color: string;
+  /** Rainbow light hex — 그라데이션 상단 100% */
+  lightColor: string;
 }
 
 interface ProfileSetupState {
@@ -142,17 +144,17 @@ export const GIRL_OUTFITS: OutfitOption[] = [
 
 /** 배경 — Rainbow base 6색 (가이드, purple 제외) */
 export const BACKGROUND_OPTIONS: BackgroundOption[] = [
-  { id: "red", label: "빨강", color: "#ff3b30" },
-  { id: "orange", label: "주황", color: "#ff9d00" },
-  { id: "yellow", label: "노랑", color: "#fef60c" },
-  { id: "green", label: "초록", color: "#35e875" },
-  { id: "blue", label: "파랑", color: "#058aff" },
-  { id: "pink", label: "분홍", color: "#ffdde9" },
+  { id: "red", label: "빨강", color: "#ff3b30", lightColor: "#ffd0d0" },
+  { id: "orange", label: "주황", color: "#ff9d00", lightColor: "#ffe4d0" },
+  { id: "yellow", label: "노랑", color: "#fef60c", lightColor: "#fff8d0" },
+  { id: "green", label: "초록", color: "#35e875", lightColor: "#d0ffd6" },
+  { id: "blue", label: "파랑", color: "#058aff", lightColor: "#c7ddff" },
+  { id: "pink", label: "분홍", color: "#ffdde9", lightColor: "#ffe9f6" },
 ];
 
-/** base 50% → base 세로 그라데이션 (위: 50%, 아래: 100%) */
-export function backgroundGradient(color: string): string {
-  return `linear-gradient(180deg, ${color}80 0%, ${color} 100%)`;
+/** light 100% → base 100% 세로 그라데이션 */
+export function backgroundGradient(bg: BackgroundOption): string {
+  return `linear-gradient(180deg, ${bg.lightColor} 0%, ${bg.color} 100%)`;
 }
 
 export function getOutfitsForCharacter(character: CharacterId): OutfitOption[] {
