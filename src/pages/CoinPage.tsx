@@ -83,7 +83,7 @@ export function CoinPage() {
 
   useEffect(() => {
     if (!toastOpen) return;
-    const timer = window.setTimeout(() => setToastOpen(false), 2500);
+    const timer = window.setTimeout(() => setToastOpen(false), 700);
     return () => window.clearTimeout(timer);
   }, [toastOpen]);
 
@@ -239,7 +239,6 @@ export function CoinPage() {
       <Popup
         open={buyOpen}
         variant="info"
-        size="tb"
         message="코인을 구매하시겠습니까?"
         confirmLabel="확인"
         cancelLabel="취소"

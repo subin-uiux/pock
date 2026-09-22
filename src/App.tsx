@@ -69,6 +69,10 @@ export default function App() {
           <Route path="/mypage" element={<MyPage />} />
         </Route>
 
+        <Route element={<AppLayout pageClassName="page--friend-list" />}>
+          <Route path="/Friend_list" element={<Friend_listPage />} />
+        </Route>
+
         <Route
           element={
             <AppLayout
@@ -169,10 +173,6 @@ export default function App() {
 
           <Route element={<AppLayout pageClassName="page--settings" />}>
             <Route path="/settings" element={<SettingsPage />} />
-          </Route>
-
-          <Route element={<AppLayout pageClassName="page--friend-list" />}>
-            <Route path="/Friend_list" element={<Friend_listPage />} />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--letter-store" />}>

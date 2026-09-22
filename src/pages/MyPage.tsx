@@ -439,7 +439,6 @@ export function MyPage() {
       <Popup
         open={nicknamePopupOpen}
         variant="info"
-        size="tb"
         message={
           <>
             닉네임 변경 시

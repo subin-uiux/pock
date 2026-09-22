@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useAuth } from "@/hooks/useAuth";
+import { hasUnreadNotice } from "@/lib/notice";
 import { getProfileSetup } from "@/lib/profile-setup";
 
 /** 임시값 — 프로필 닉네임 시안 샘플 */
@@ -11,8 +12,6 @@ const DEFAULT_NICKNAME = "zl존 킹왕짱";
 const DEMO_COIN = 1000;
 /** 데모 출석 완료 일수 — 시안: 1일차 완료 */
 const DEMO_ATTENDANCE_DONE = 1;
-/** 데모 — 공지 미읽음 점 (false면 숨김) */
-const DEMO_NOTICE_UNREAD = true;
 
 /** 출석 스탬프 시안 표기 (보상 문구는 시안 그대로) */
 const ATTENDANCE_DAYS: {
@@ -43,9 +42,11 @@ export function SettingsPage() {
       : DEFAULT_NICKNAME;
   const [logoutOpen, setLogoutOpen] = useState(false);
   const [withdrawOpen, setWithdrawOpen] = useState(false);
+  const [noticeUnread, setNoticeUnread] = useState(hasUnreadNotice);
 
   useEffect(() => {
     document.title = "설정 ㅣ POCK";
+    setNoticeUnread(hasUnreadNotice());
   }, []);
 
   const handleLogoutConfirm = () => {
@@ -250,7 +251,7 @@ export function SettingsPage() {
                 >
                   <span className="settings-menu__label">
                     공지사항
-                    {DEMO_NOTICE_UNREAD ? (
+                    {noticeUnread ? (
                       <span
                         className="settings-menu__dot"
                         aria-label="새 공지"

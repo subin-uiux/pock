@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { noticeItems } from "@/data/notice-data";
+import { markNoticeRead } from "@/lib/notice";
 
 /**
  * 공지사항 `/notice`
@@ -15,6 +16,7 @@ export function NoticePage() {
 
   useEffect(() => {
     document.title = "공지사항 ㅣ POCK";
+    markNoticeRead();
   }, []);
 
   const goBack = () => {

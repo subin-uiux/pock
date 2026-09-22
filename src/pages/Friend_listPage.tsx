@@ -22,10 +22,17 @@ export function Friend_listPage() {
   const [deleteTarget, setDeleteTarget] = useState<PockUser | null>(null);
   const [profileFriend, setProfileFriend] = useState<PockUser | null>(null);
   const [inviteOpen, setInviteOpen] = useState(false);
+  const [toastOpen, setToastOpen] = useState(false);
 
   useEffect(() => {
     document.title = "친구 목록 ㅣ POCK";
   }, []);
+
+  useEffect(() => {
+    if (!toastOpen) return;
+    const timer = window.setTimeout(() => setToastOpen(false), 800);
+    return () => window.clearTimeout(timer);
+  }, [toastOpen]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -64,7 +71,7 @@ export function Friend_listPage() {
     } catch {
       /* 클립보드 실패 — 미확정 */
     }
-    setInviteOpen(false);
+    setToastOpen(true);
   };
 
   return (
@@ -189,7 +196,6 @@ export function Friend_listPage() {
       <Popup
         open={deleteTarget !== null}
         variant="warning"
-        size="tb"
         message={
           <>
             <span className="friend-list-page__delete-lead">
@@ -215,7 +221,6 @@ export function Friend_listPage() {
       <Popup
         open={inviteOpen}
         variant="share"
-        size="tb"
         iconSrc="/assets/images/Friend_list-icon.svg"
         iconSize={40}
         message="내 POCK에 놀러와!" /* 임시값 — 시안 카피 미확정 */
@@ -234,6 +239,13 @@ export function Friend_listPage() {
         gender={profileFriend?.gender}
         onClose={() => setProfileFriend(null)}
       />
+
+      {toastOpen ? (
+        <div className="friend-list-toast" role="status" aria-live="polite">
+          <span className="friend-list-toast__icon" aria-hidden="true" />
+          <p className="friend-list-toast__text">링크 복사가 완료되었습니다.</p>
+        </div>
+      ) : null}
     </section>
   );
 }
