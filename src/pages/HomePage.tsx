@@ -36,23 +36,29 @@ export function HomePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const listRef = useRef<HTMLUListElement>(null);
+
   const saved = getProfileSetup();
   const character = saved.character;
   const nickname = saved.nickname?.trim() || "닉네임";
 
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
-  const [friends, setFriends] = useState<string[]>(() => [...HOME_FRIEND_NAMES]);
+  const [friends, setFriends] = useState<string[]>(
+    () => [...HOME_FRIEND_NAMES]
+  );
   const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+
   const [onboardOpen, setOnboardOpen] = useState(() => {
     const fromComplete =
-      (location.state as { showOnboard?: boolean } | null)?.showOnboard === true;
+      (location.state as { showOnboard?: boolean } | null)?.showOnboard ===
+      true;
+
     return fromComplete || shouldOpenHomeOnboard();
   });
 
   const outfit = useMemo(
     () => (character ? getOutfitById(character, saved.outfit) : null),
-    [character, saved.outfit],
+    [character, saved.outfit]
   );
 
   useEffect(() => {
@@ -61,18 +67,28 @@ export function HomePage() {
 
   useEffect(() => {
     const state = location.state as { showOnboard?: boolean } | null;
+
     if (!state?.showOnboard) return;
+
     setOnboardOpen(true);
-    navigate(location.pathname, { replace: true, state: {} });
+
+    navigate(location.pathname, {
+      replace: true,
+      state: {},
+    });
   }, [location.pathname, location.state, navigate]);
 
   useEffect(() => {
     const mqTb = window.matchMedia(MQ_TB);
     const mqPc = window.matchMedia(MQ_PC);
+
     const sync = () => setSize(getFriendListSize());
+
     sync();
+
     mqTb.addEventListener("change", sync);
     mqPc.addEventListener("change", sync);
+
     return () => {
       mqTb.removeEventListener("change", sync);
       mqPc.removeEventListener("change", sync);
@@ -80,10 +96,10 @@ export function HomePage() {
   }, []);
 
   const wearStyle: CSSProperties | undefined = outfit
-    ? { width: `${(outfit.width / CHARACTER_BASE.width) * 100}%` }
+    ? {
+        width: `${(outfit.width / CHARACTER_BASE.width) * 100}%`,
+      }
     : undefined;
-
-  const popupSize = size === "mo" ? "mo" : "tb";
 
   const finishOnboard = () => {
     markHomeOnboardSeen();
@@ -95,9 +111,13 @@ export function HomePage() {
       <button
         type="button"
         className={
-          hasAlert ? "home__alert home__alert--unread" : "home__alert"
+          hasAlert
+            ? "home__alert home__alert--unread"
+            : "home__alert"
         }
-        aria-label={hasAlert ? "알림, 새 알림 있음" : "알림"}
+        aria-label={
+          hasAlert ? "알림, 새 알림 있음" : "알림"
+        }
         data-onboard="alert"
         onClick={() => navigate("/notice")}
       >
@@ -108,8 +128,12 @@ export function HomePage() {
           width={20}
           height={20}
         />
+
         {hasAlert ? (
-          <span className="home__alert-dot" aria-hidden="true" />
+          <span
+            className="home__alert-dot"
+            aria-hidden="true"
+          />
         ) : null}
       </button>
 
@@ -119,7 +143,10 @@ export function HomePage() {
           aria-label="내 프로필"
           data-onboard="profile"
         >
-          <div className="home__profile-figure" aria-hidden="true">
+          <div
+            className="home__profile-figure"
+            aria-hidden="true"
+          >
             {character ? (
               <>
                 <img
@@ -129,6 +156,7 @@ export function HomePage() {
                   width={CHARACTER_BASE.width}
                   height={CHARACTER_BASE.height}
                 />
+
                 {outfit ? (
                   <img
                     className="home__profile-wear"
@@ -144,7 +172,10 @@ export function HomePage() {
           </div>
 
           <div className="home__profile-meta">
-            <p className="home__profile-name">{nickname}</p>
+            <p className="home__profile-name">
+              {nickname}
+            </p>
+
             <div className="home__profile-coin">
               <img
                 className="home__profile-coin-icon"
@@ -153,7 +184,10 @@ export function HomePage() {
                 width={18}
                 height={18}
               />
-              <span className="home__profile-coin-text">10 coin</span>
+
+              <span className="home__profile-coin-text">
+                10 coin
+              </span>
             </div>
           </div>
         </aside>
@@ -164,12 +198,16 @@ export function HomePage() {
             aria-label="친구목록"
           >
             <header className="pock-window__bar">
-              <h4 className="pock-window__title">친구목록</h4>
+              <h4 className="pock-window__title">
+                친구목록
+              </h4>
+
               <div className="pock-window__actions">
                 <span
                   className="pock-window__control pock-window__control--min"
                   aria-hidden="true"
                 />
+
                 <span
                   className="pock-window__control pock-window__control--close"
                   aria-hidden="true"
@@ -184,38 +222,57 @@ export function HomePage() {
                 </span>
               </div>
             </header>
-            <div className="pock-window__rule" aria-hidden="true" />
+
+            <div
+              className="pock-window__rule"
+              aria-hidden="true"
+            />
+
             <div className="pock-window__body">
               <div className="pock-window__pane">
                 <PockWindowScrollbar
                   listRef={listRef}
                   syncKey={friends.length}
                 />
-                <ul className="pock-window__list" ref={listRef}>
+
+                <ul
+                  className="pock-window__list"
+                  ref={listRef}
+                >
                   {friends.map((name, index) => (
                     <li key={name}>
                       <button
                         type="button"
                         className="pock-window__item"
-                        data-onboard={index === 0 ? "friend" : undefined}
-                        onClick={() => setSelectedFriend(name)}
+                        data-onboard={
+                          index === 0 ? "friend" : undefined
+                        }
+                        onClick={() =>
+                          setSelectedFriend(name)
+                        }
                       >
                         <span
                           className="pock-window__thumb"
                           aria-hidden="true"
                         />
-                        <p className="pock-window__name">{name}</p>
+
+                        <p className="pock-window__name">
+                          {name}
+                        </p>
                       </button>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
+
             <footer className="pock-window__foot">
               <button
                 className="pock-window__manage"
                 type="button"
-                onClick={() => navigate("/Friend_list")}
+                onClick={() =>
+                  navigate("/Friend_list")
+                }
               >
                 <img
                   className="pock-window__manage-icon"
@@ -224,6 +281,7 @@ export function HomePage() {
                   width={18}
                   height={18}
                 />
+
                 <span>친구 관리</span>
               </button>
             </footer>
@@ -234,13 +292,12 @@ export function HomePage() {
       <FriendProfilePopup
         open={selectedFriend !== null}
         name={selectedFriend ?? ""}
-        friendId={selectedFriend ? `home-${selectedFriend}` : undefined}
-        popupSize={popupSize}
+        friendId={
+          selectedFriend
+            ? `home-${selectedFriend}`
+            : undefined
+        }
         onClose={() => setSelectedFriend(null)}
-        onDelete={() => {
-          if (!selectedFriend) return;
-          setFriends((prev) => prev.filter((n) => n !== selectedFriend));
-        }}
       />
 
       <OnboardGuide

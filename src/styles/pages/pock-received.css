@@ -225,6 +225,7 @@
     );
     overflow-x: hidden;
     overflow-y: auto;
+    border-radius: 0.625rem; /* 10 */
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -273,6 +274,7 @@
     margin: 0;
     padding: 0.625rem; /* 위·아래·좌우 10 동일 */
     overflow: visible;
+    border-radius: 0.625rem; /* 10 */
   }
 
   /* 흰 카드 오른쪽 끝 = 보드 우측 패딩(42) 안쪽 · 탭은 그 밖(페이지 여백)으로 */

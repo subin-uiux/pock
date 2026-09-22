@@ -1,13 +1,17 @@
 /**
  * privacy.css
- * Page: .page--privacy
- * 역할: 개인정보처리방침 페이지
+ * Page: .page--privacy — 개인정보처리방침
+ * 레이아웃·타이포는 terms-page (terms.css) 공유
+ * 반응형: Mo 360~768 (기본) · Tb/Pc min-width 769px
  */
 
 .page--privacy {
-  /* 추후 디자인 지시 후 구현 */
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #ffffff;
+  background-image: none;
 }
 
-.main--privacy {
-  /* 추후 디자인 지시 후 구현 */
+.page--privacy .page__wrapper {
+  max-width: 100%;
 }

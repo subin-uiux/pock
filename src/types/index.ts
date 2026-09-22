@@ -5,6 +5,8 @@ export interface PockUser {
   id: string;
   name: string;
   profileImage: string;
+  /** 친구목록 아바타 배경 — male/female */
+  gender?: "male" | "female";
 }
 
 export interface PockItem {

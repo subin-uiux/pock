@@ -67,7 +67,7 @@ const COIN_PACKS: {
 
 /**
  * 코인 상점 `/coin`
- * 반응형: Mo <768 · Pad/Pc 768~1920
+ * 반응형: Mo 좌우 20·유동 · Tb/Pc 670
  */
 export function CoinPage() {
   const navigate = useNavigate();
@@ -75,10 +75,17 @@ export function CoinPage() {
   const [selectedPack, setSelectedPack] = useState<(typeof COIN_PACKS)[number] | null>(
     null,
   );
+  const [toastOpen, setToastOpen] = useState(false);
 
   useEffect(() => {
     document.title = "코인 상점 ㅣ POCK";
   }, []);
+
+  useEffect(() => {
+    if (!toastOpen) return;
+    const timer = window.setTimeout(() => setToastOpen(false), 700);
+    return () => window.clearTimeout(timer);
+  }, [toastOpen]);
 
   const goBack = () => {
     if (window.history.length > 1) {
@@ -98,6 +105,11 @@ export function CoinPage() {
     setSelectedPack(null);
   };
 
+  const confirmBuy = () => {
+    closeBuyPopup();
+    setToastOpen(true);
+  };
+
   return (
     <section className="coin-page" aria-label="코인 상점">
       <div className="coin-page__top">
@@ -111,8 +123,8 @@ export function CoinPage() {
             className="coin-page__back-icon"
             src="/assets/icons/left-arrow.svg"
             alt=""
-            width={12}
-            height={20}
+            width={24}
+            height={24}
           />
         </button>
 
@@ -165,7 +177,7 @@ export function CoinPage() {
             width={23}
             height={23}
           />
-          <span>광고보고 코인받기</span>
+          <span>광고보고 1 코인받기</span>
         </Button>
       </div>
 
@@ -227,14 +239,20 @@ export function CoinPage() {
       <Popup
         open={buyOpen}
         variant="info"
-        size="tb"
         message="코인을 구매하시겠습니까?"
         confirmLabel="확인"
         cancelLabel="취소"
-        onConfirm={closeBuyPopup}
+        onConfirm={confirmBuy}
         onCancel={closeBuyPopup}
         onClose={closeBuyPopup}
       />
+
+      {toastOpen ? (
+        <div className="coin-toast" role="status" aria-live="polite">
+          <span className="coin-toast__icon" aria-hidden="true" />
+          <p className="coin-toast__text">코인 구매를 성공했습니다!</p>
+        </div>
+      ) : null}
     </section>
   );
 }

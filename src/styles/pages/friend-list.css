@@ -1,25 +1,388 @@
 /**
  * friend-list.css
  * Page: .page--friend-list · `/Friend_list`
+ * 반응형: Mo 360~768 (좌우 20 · 창 max 540 중앙) · Tb/Pc min-width 769px 670
  */
 
 .page--friend-list {
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: #edf7fd;
-  background-image: linear-gradient(
-    180deg,
-    #bcdaf9 0%,
-    #edf7fd 48%,
-    #e9f9e6 100%
-  );
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-pad.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .page--friend-list .page__wrapper {
   max-width: 100%;
 }
 
+/* Mo — main 좌우 20 */
+.page--friend-list .main {
+  padding-inline: 1.25rem; /* 20 */
+}
+
+/* Mo — 창 최대 540 중앙 고정 */
 .friend-list-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
   width: 100%;
-  min-height: 50vh;
+  max-width: 33.75rem; /* 540 */
+  margin-inline: auto;
+  padding-inline: 0;
+  padding-bottom: 6rem; /* 임시값 — 하단 네비 */
+}
+
+/* 헤더: 뒤로 24 · 위 40 · 제목 16 중앙 — mypage와 동일 */
+.friend-list-page__header {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 2.5rem; /* 40 — mypage와 동일 */
+  min-height: 1.5rem; /* 24 — 아이콘 높이 · mypage와 동일 */
+}
+
+.friend-list-page__back {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.friend-list-page__back-icon {
+  display: block;
+  width: 1.5rem; /* 24 */
+  height: 1.5rem; /* 24 */
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.friend-list-page__title {
+  margin: 0;
+  color: var(--color-base-900);
+  font-size: 1rem; /* 16 */
+  font-weight: inherit;
+  line-height: var(--line-height-tight);
+  text-align: center;
+}
+
+/* 헤더 ↔ 초대버튼 상하 20 */
+.friend-list-page__invite-row {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 1.25rem; /* 20 — 헤더↔초대 */
+}
+
+.friend-list-page__invite {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.25rem; /* 4 — 아이콘↔텍스트 · 임시값 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.25rem 0.5rem; /* 4 8 · 임시값 */
+  border: 2px solid var(--color-navigation-pink); /* Navigation/sendpock */
+  border-radius: 0.3125rem; /* 5 */
+  background-color: var(--color-rainbow-pink-light); /* rainbow/pink/light */
+  color: var(--color-navigation-pink); /* stroke와 동일 — Navigation/sendpock */
+  font: inherit;
+  font-size: 1.125rem; /* 18 */
+  line-height: var(--line-height-tight);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.friend-list-page__invite-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 1.25rem; /* 20 · 임시값 */
+  height: 1.25rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.friend-list-page__invite-label {
+  flex: 0 0 auto;
+}
+
+/* Mo — 친구 목록 창 폭 100%(~540) · 상단바 40 · 흰 영역은 패딩만 */
+.friend-list-page__window {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 33.75rem; /* 540 */
+  margin-top: 0.625rem; /* 10 — 초대↔창 */
+  overflow: hidden;
+  border: 0.5px solid var(--color-base-700);
+  border-radius: 0.625rem; /* 10 */
+  background-color: var(--color-base-0);
+}
+
+.friend-list-page__window .pock-window__bar {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 2.5rem; /* 40 */
+  border-color: var(--color-base-700);
+  border-bottom: 0.5px solid var(--color-base-700);
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+
+.friend-list-page__window .pock-window__title {
+  font-size: 1rem; /* 16 */
+}
+
+.friend-list-page__body {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 0.625rem 1.25rem 3.75rem; /* 상 10 · 좌우 20 · 하 60 */
+  background-color: var(--color-base-0);
+}
+
+.friend-list-page__search {
+  flex: 0 0 auto;
+  width: 100%;
+  margin-bottom: 1.25rem; /* 20 — 검색↔목록 */
+}
+
+.friend-list-page__search .search-input {
+  width: 100%;
+  gap: 0.75rem; /* 12 — 아이콘↔텍스트 */
+  padding: 0.375rem 0.75rem; /* 상하 6 · 좌우 12 */
+}
+
+.friend-list-page__search .search-input__icon {
+  width: 1.375rem; /* 22 */
+  height: 1.375rem; /* 22 */
+}
+
+.friend-list-page__search .search-input__field {
+  font-size: 0.875rem; /* 14 */
+}
+
+.friend-list-page__list {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 1.25rem; /* 20 — 목록 간격 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.friend-list-page__item {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.75rem; /* 12 — 프로필↔삭제 · 임시값 */
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.5rem; /* 40 · 임시값 */
+}
+
+.friend-list-page__profile {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 0.75rem; /* 12 — 아바타↔이름 · 임시값 */
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* 설정 프로필과 동일 스타일 · 50×50 */
+.friend-list-page__avatar {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 3.125rem; /* 50 */
+  height: 3.125rem; /* 50 */
+  overflow: hidden;
+  border-radius: var(--radius-full);
+}
+
+.friend-list-page__avatar--female {
+  background-color: #ffc8c8; /* #FC8C8 → 설정과 동일 #ffc8c8 */
+}
+
+.friend-list-page__avatar--male {
+  background-color: var(--color-rainbow-blue-light); /* rainbow/blue/light */
+}
+
+.friend-list-page__avatar-img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto; /* 비율 유지 — cover 잘림 방지 */
+  margin-top: 0.15625rem; /* ≈2.5 — 설정 4 × (50/80) */
+  object-fit: unset;
+  transform: translate(0.1171875rem, 0.390625rem) scale(0.72); /* 설정 3/10 × (50/80) */
+  transform-origin: top center;
+  image-rendering: pixelated;
+}
+
+.friend-list-page__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--color-base-900);
+  font-size: 1.125rem; /* 18 */
+  line-height: var(--line-height-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Popup_btn · 배경 #fff · 패딩 상하 4 · 좌우 10 · 폰트 16 · base/900 */
+.friend-list-page__delete.btn--popup {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  padding: 0.25rem 0.625rem; /* 4 10 */
+  background-color: #ffffff;
+  color: var(--color-base-900);
+  font-size: 1rem; /* 16 */
+  white-space: nowrap;
+}
+
+/* 친구삭제 Warning Popup — 페이지 전용 (Popup 컴포넌트 스타일 유지) */
+.friend-list-page .pock-popup--warning .pock-window__bar,
+.friend-list-page .pock-popup--warning .pock-popup__bar {
+  border-bottom-color: var(--color-base-700);
+}
+
+.friend-list-page .pock-popup--warning .pock-popup__body {
+  justify-content: center;
+  gap: 1.25rem; /* 20 — 아이콘↔텍스트 */
+  padding: 2.5rem 1.875rem; /* 상하 40 · 좌우 30 */
+  border-color: var(--color-base-700);
+}
+
+.friend-list-page .pock-popup--warning .pock-popup__icon {
+  width: 2.25rem; /* 36 */
+  height: 2.25rem;
+}
+
+.friend-list-page .pock-popup--warning .pock-popup__actions {
+  padding: 0.625rem 0; /* 상하 10 */
+  border-color: var(--color-base-700);
+  border-top-color: var(--color-base-700);
+}
+
+.friend-list-page__delete-lead {
+  display: block;
+  color: #353535;
+  font-size: 1.125rem; /* 18 */
+  line-height: var(--line-height-tight);
+}
+
+.friend-list-page__delete-note {
+  display: block;
+  margin-top: 0.625rem; /* 10 — 검정↔회색 */
+  color: var(--color-base-500);
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+}
+
+/* Tb / Pc — 창 670 */
+@media (min-width: 769px) {
+  .page--friend-list .main {
+    padding-inline: 1.25rem; /* 20 */
+  }
+
+  .friend-list-page {
+    max-width: 41.875rem; /* 670 */
+  }
+
+  .friend-list-page__window {
+    width: 41.875rem; /* 670 */
+    max-width: 41.875rem;
+  }
+
+  /* Pad/Pc 네비 아이콘 50 */
+  .friend-list-toast {
+    bottom: calc(
+      env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+        3.125rem + 1.0625rem
+    );
+  }
+}
+
+/* 링크 복사 토스트 — 코인과 동일 · 넓이만 330 */
+.friend-list-toast {
+  position: fixed;
+  left: 50%;
+  /* 네비: 하단패딩20 + 라벨(1rem×1.25) + gap2 + 아이콘 + 간격17 */
+  bottom: calc(
+    env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+      var(--navigation-icon-size, 3.375rem) + 1.0625rem
+  );
+  z-index: var(--z-index-toast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 — 아이콘↔텍스트 */
+  box-sizing: border-box;
+  width: 20.625rem; /* 330 */
+  max-width: calc(100% - 2.5rem);
+  height: 3.1875rem; /* 51 */
+  padding: 0 1.25rem; /* 좌우 임시값 */
+  border-radius: 0.625rem; /* 10 */
+  background-color: var(--color-rainbow-blue-base); /* #058aff */
+  box-shadow: inset 0 0.25rem 0.3125rem 0 rgba(255, 255, 255, 0.25); /* #fff 25% · Y4 blur5 */
+  color: var(--color-base-0);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.friend-list-toast__icon {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 1rem; /* 16 */
+  height: 1rem; /* 16 */
+  border: 1.5px solid var(--color-base-0);
+  border-radius: var(--radius-full);
+  background-color: var(--color-base-0);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%23058AFF' d='M4.5 8.5L2 6l.7-.7 1.8 1.8L9.3 2.3l.7.7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.625rem 0.625rem;
+}
+
+.friend-list-toast__text {
+  margin: 0;
+  font-size: 0.875rem; /* 14 — 임시값 */
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
 }

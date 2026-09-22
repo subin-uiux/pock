@@ -38,6 +38,23 @@ const NAV_ITEMS = [
 
 type NavTo = (typeof NAV_ITEMS)[number]["to"];
 
+/** 설정 하위 경로 — 코인샵·마이페이지도 설정 활성 */
+const SETTINGS_ACTIVE_PATHS = [
+  "/settings",
+  "/coin",
+  "/mypage",
+  "/Friend_list",
+  "/notice",
+  "/terms",
+  "/privacy",
+] as const;
+
+function isSettingsActivePath(pathname: string) {
+  return SETTINGS_ACTIVE_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+}
+
 interface NavigationProps {
   /** 가이드 미리보기용 — fixed 해제 */
   preview?: boolean;
@@ -60,51 +77,63 @@ export function Navigation({ preview = false, forceDevice }: NavigationProps) {
 
   const [previewActive, setPreviewActive] = useState<NavTo>("/home");
 
-  return (
-    <nav className={rootClass} aria-label="주요 메뉴">
-      <div className="navigation__shell">
-        <ul className="navigation__list">
-          {NAV_ITEMS.map((item) => (
-            <li className="navigation__item" key={item.to}>
-              {preview ? (
-                <button
-                  type="button"
-                  className={
-                    previewActive === item.to
-                      ? "navigation__link navigation__link--active"
-                      : "navigation__link"
-                  }
-                  aria-current={previewActive === item.to ? "page" : undefined}
-                  data-onboard={item.onboard}
-                  onClick={() => setPreviewActive(item.to)}
-                >
-                  <img
-                    className="navigation__icon"
-                    src={item.icon}
-                    alt=""
-                    width={56}
-                    height={56}
-                  />
-                  <span className="navigation__label">{item.label}</span>
-                </button>
-              ) : (
-                <NavLink
-                  to={item.to}
-                  data-onboard={item.onboard}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "navigation__link navigation__link--active"
-                      : "navigation__link"
-                  }
-                  end={item.to === "/home"}
-                  onClick={(event) => {
-                    if (item.to === location.pathname) return;
-                    if (!shouldBlockLeave()) return;
-                    event.preventDefault();
-                    askLeave(() => navigate(item.to));
-                  }}
-                >
-                  {({ isActive }) => (
+return (
+  <nav className={rootClass} aria-label="주요 메뉴">
+    <div className="navigation__shell">
+      <ul className="navigation__list">
+        {NAV_ITEMS.map((item) => (
+          <li className="navigation__item" key={item.to}>
+            {preview ? (
+              <button
+                type="button"
+                className={
+                  previewActive === item.to
+                    ? "navigation__link navigation__link--active"
+                    : "navigation__link"
+                }
+                aria-current={
+                  previewActive === item.to ? "page" : undefined
+                }
+                data-onboard={item.onboard}
+                onClick={() => setPreviewActive(item.to)}
+              >
+                <img
+                  className="navigation__icon"
+                  src={item.icon}
+                  alt=""
+                  width={56}
+                  height={56}
+                />
+
+                <span className="navigation__label">
+                  {item.label}
+                </span>
+              </button>
+            ) : (
+              <NavLink
+                to={item.to}
+                data-onboard={item.onboard}
+                className={({ isActive }) =>
+                  isActive
+                    ? "navigation__link navigation__link--active"
+                    : "navigation__link"
+                }
+                end={item.to === "/home"}
+                onClick={(event) => {
+                  if (item.to === location.pathname) return;
+                  if (!shouldBlockLeave()) return;
+
+                  event.preventDefault();
+                  askLeave(() => navigate(item.to));
+                }}
+              >
+                {({ isActive }) => {
+                  const active =
+                    isActive ||
+                    (item.to === "/settings" &&
+                      isSettingsActivePath(location.pathname));
+
+                  return (
                     <>
                       <img
                         className="navigation__icon"
@@ -113,18 +142,25 @@ export function Navigation({ preview = false, forceDevice }: NavigationProps) {
                         width={56}
                         height={56}
                       />
-                      <span className="navigation__label">{item.label}</span>
-                      {isActive ? (
-                        <span className="visually-hidden">(현재 페이지)</span>
+
+                      <span className="navigation__label">
+                        {item.label}
+                      </span>
+
+                      {active ? (
+                        <span className="visually-hidden">
+                          (현재 페이지)
+                        </span>
                       ) : null}
                     </>
-                  )}
-                </NavLink>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
-  );
+                  );
+                }}
+              </NavLink>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+);
 }

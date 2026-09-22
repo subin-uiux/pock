@@ -42,6 +42,7 @@
 @import "./pages/background-setup.css";
 @import "./pages/profile-complete.css";
 @import "./pages/home.css";
+@import "./pages/alert.css";
 @import "./pages/notice.css";
 @import "./pages/settings.css";
 @import "./pages/friend-list.css";
