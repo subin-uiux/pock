@@ -1,11 +1,16 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 import type { PopupVariant } from "@/types";
 
 interface PopupProps {
   open: boolean;
   variant?: PopupVariant;
+  /**
+   * 생략 시 뷰포트 자동: Mo(~768) 320 · Tb/Pc(769~) 400
+   * 가이드 등에서만 강제 지정
+   */
   size?: "mo" | "tb";
   message: ReactNode;
   confirmLabel?: string;
@@ -28,7 +33,7 @@ const ICONS: Record<PopupVariant, string> = {
 export function Popup({
   open,
   variant = "info",
-  size = "mo",
+  size,
   message,
   confirmLabel = "확인",
   cancelLabel,
@@ -38,21 +43,25 @@ export function Popup({
   onCancel,
   onClose,
 }: PopupProps) {
+  const breakpoint = useBreakpoint();
+  const resolvedLayout: "mo" | "tb" =
+    size ?? (breakpoint === "mo" ? "mo" : "tb");
+
   if (!open) return null;
 
   const barClass =
-    size === "mo"
+    resolvedLayout === "mo"
       ? "pock-window__bar pock-window__bar--normal pock-window__bar--w-mo-fit pock-popup__bar"
       : "pock-window__bar pock-window__bar--normal pock-window__bar--w-tb-pc pock-popup__bar";
 
   const resolvedIcon = iconSrc ?? ICONS[variant];
-  const resolvedSize = iconSize ?? (variant === "share" ? 40 : 36);
+  const resolvedIconSize = iconSize ?? (variant === "share" ? 40 : 36);
 
   return (
     <div className="popup-layer" role="dialog" aria-modal="true">
       <DimmedOverlay open onClick={onClose ?? onCancel} />
       <article
-        className={`pock-popup pock-popup--${variant} pock-popup--${size}`}
+        className={`pock-popup pock-popup--${variant} pock-popup--${resolvedLayout}`}
         aria-label={variant === "warning" ? "경고" : "정보"}
       >
         <header className={barClass}>
@@ -82,9 +91,9 @@ export function Popup({
             className="pock-popup__icon"
             src={resolvedIcon}
             alt=""
-            width={resolvedSize}
-            height={resolvedSize}
-            style={{ width: resolvedSize, height: resolvedSize }}
+            width={resolvedIconSize}
+            height={resolvedIconSize}
+            style={{ width: resolvedIconSize, height: resolvedIconSize }}
           />
           <p className="pock-popup__text">{message}</p>
         </div>
