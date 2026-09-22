@@ -11,6 +11,8 @@ import {
 } from "@/lib/home-onboard";
 import {
   CHARACTER_BASE,
+  backgroundGradient,
+  getBackgroundById,
   getOutfitById,
   getProfileSetup,
 } from "@/lib/profile-setup";
@@ -59,6 +61,11 @@ export function HomePage() {
     [character, saved.outfit]
   );
 
+  const profileBg = useMemo(
+    () => getBackgroundById(saved.background),
+    [saved.background],
+  );
+
   useEffect(() => {
     document.title = "홈 ㅣ POCK";
   }, []);
@@ -105,6 +112,16 @@ export function HomePage() {
     setOnboardOpen(false);
   };
 
+  const handleCopyProfileLink = async () => {
+    /* 임시값 — 프로필 공유 URL 미확정 */
+    const link = `${window.location.origin}/home?u=${encodeURIComponent(nickname)}`;
+    try {
+      await navigator.clipboard.writeText(link);
+    } catch {
+      /* ignore */
+    }
+  };
+
   return (
     <section className="home" aria-label="홈">
       <button
@@ -145,9 +162,10 @@ export function HomePage() {
           <div
             className="home__profile-figure"
             aria-hidden="true"
+            style={{ backgroundImage: backgroundGradient(profileBg) }}
           >
             {character ? (
-              <>
+              <div className="home__profile-char">
                 <img
                   className="home__profile-base"
                   src={CHARACTER_BASE.src[character]}
@@ -170,7 +188,7 @@ export function HomePage() {
                     style={wearStyle}
                   />
                 ) : null}
-              </>
+              </div>
             ) : null}
           </div>
 
@@ -193,6 +211,23 @@ export function HomePage() {
               </span>
             </div>
           </div>
+
+          <button
+            type="button"
+            className="btn btn--popup home__profile-copy"
+            onClick={handleCopyProfileLink}
+          >
+            프로필 링크 복사하기
+          </button>
+
+          <span
+            className="home__profile-bubble home__profile-bubble--lg"
+            aria-hidden="true"
+          />
+          <span
+            className="home__profile-bubble home__profile-bubble--sm"
+            aria-hidden="true"
+          />
         </aside>
 
         <div className="home__friends">
