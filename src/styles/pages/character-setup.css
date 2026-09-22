@@ -129,12 +129,15 @@
 
 .character-setup__choice .selection-box__media img,
 .character-setup__avatar {
-  /* 원본 106×178 1:1 — 비정수 스케일로 생기는 빈 픽셀 방지 */
+  /* 원본 106×180 정수 픽셀 — 스케일/안티앨리어싱으로 구멍·번짐 방지 */
   width: 6.625rem; /* 106 */
-  height: 11.125rem; /* 178 */
+  height: 11.25rem; /* 180 */
   object-fit: contain;
+  object-position: center bottom;
+  image-rendering: -moz-crisp-edges;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
 }
 
 .character-setup__footer {
@@ -202,7 +205,7 @@
   .character-setup__choice .selection-box__media img,
   .character-setup__avatar {
     width: 6.625rem; /* 106 — 원본 1:1 */
-    height: 11.125rem; /* 178 */
+    height: 11.25rem; /* 180 */
   }
 
   .character-setup__footer {

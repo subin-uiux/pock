@@ -113,7 +113,7 @@
 .background-setup__figure {
   position: relative;
   width: 6.625rem; /* 106 */
-  height: 11.125rem; /* 178 */
+  height: 11.25rem; /* 180 */
 }
 
 .background-setup__base {
@@ -234,7 +234,7 @@
 
   .background-setup__figure {
     width: 9.9375rem; /* 159 */
-    height: 16.6875rem; /* 267 */
+    height: 16.875rem; /* 270 — 180×1.5 */
   }
 
   .background-setup__choices {
