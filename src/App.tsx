@@ -1,5 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "@/components/RequireAuth";
+import { CursorPressTilt } from "@/components/CursorPressTilt";
+import { CursorSparkles } from "@/components/CursorSparkles";
 import { AppLayout } from "@/layouts/AppLayout";
 import { LandingPage } from "@/pages/LandingPage";
 import { LoginPage } from "@/pages/LoginPage";
@@ -29,6 +31,8 @@ import { TermsPage } from "@/pages/TermsPage";
 export default function App() {
   return (
     <BrowserRouter>
+      <CursorSparkles />
+      <CursorPressTilt />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/guide" element={<GuidePage />} />

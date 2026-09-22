@@ -1,0 +1,24 @@
+/**
+ * click-splosion.css
+ * mf2fm Clicksplosion — 모바일 탭 스파클
+ */
+
+.click-splosion {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.click-splosion__star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font: 13px monospace;
+  line-height: 1;
+  background-color: transparent;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
