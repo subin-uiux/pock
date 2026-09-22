@@ -1,0 +1,104 @@
+/**
+ * send-loading.css
+ * POCK 전송 로딩 · 전송완료 전체 화면
+ */
+
+.send-loading {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-index-modal) + 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-mo.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.send-loading__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem; /* 320 — 임시값 */
+}
+
+.send-loading__logo {
+  display: block;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.send-loading__logo--loading {
+  width: 6.25rem; /* 100 */
+  height: 7.125rem; /* 114 */
+}
+
+.send-loading__logo--complete {
+  width: 5.625rem; /* 90 */
+  height: 5.75rem; /* 92 */
+}
+
+.send-loading__text {
+  margin: 1.25rem 0 0; /* 20 — 임시값 */
+  color: var(--color-base-900);
+  font-family: var(--font-family-base);
+  font-size: 1.25rem; /* 20 — Mo */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* 로딩 바 — 시안 픽셀 프레임 · 채움 #A1E4AD · 2초 */
+.send-loading__bar {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 15.625rem; /* 250 — loading-bar.svg */
+  height: 1.625rem; /* 26 */
+  margin-top: 1.25rem; /* 20 — 임시값 */
+  overflow: hidden;
+  border: 0.125rem solid #202020; /* 2 */
+  border-radius: 0.75rem; /* 12 — 임시값 · 시안 둥근 바 */
+  background-color: #ffffff;
+}
+
+.send-loading__bar-fill {
+  height: 100%;
+  width: 0;
+  background-color: #a1e4ad; /* functional-green */
+  transition: none;
+}
+
+@media (min-width: 769px) {
+  .send-loading {
+    background-image: url("/assets/images/background/bg-pad.png");
+    padding: 2.5rem;
+  }
+
+  .send-loading__logo--loading {
+    width: 8.75rem; /* 140 — 임시값 · Pad 시안 미기재 */
+    height: 9.975rem; /* 159.6 ≈ 140*(114/100) */
+  }
+
+  .send-loading__logo--complete {
+    width: 7.875rem; /* 126 — 임시값 */
+    height: 8.05rem; /* ≈ 126*(92/90) */
+  }
+
+  .send-loading__text {
+    margin-top: 1.5rem; /* 24 — 임시값 */
+    font-size: 1.75rem; /* 28 — Pad */
+  }
+
+  .send-loading__bar {
+    max-width: 18.75rem; /* 300 — 임시값 */
+    height: 1.875rem; /* 30 — 임시값 */
+    margin-top: 1.5rem;
+  }
+}

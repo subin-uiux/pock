@@ -53,11 +53,11 @@ const DEFAULT_STATE: ProfileSetupState = {
 /** 캐릭터 기본 — public/assets/images/character */
 export const CHARACTER_BASE = {
   src: {
-    boy: "/assets/images/character/boy-default.webp",
+    boy: "/assets/images/character/boy-default.svg",
     girl: "/assets/images/character/girl-default.svg",
   },
   width: 106,
-  height: 178,
+  height: 180,
 } as const;
 
 /** 옷 — public/assets/images/outfit */

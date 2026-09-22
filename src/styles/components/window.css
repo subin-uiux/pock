@@ -498,6 +498,139 @@ button.pock-window__control--close {
   cursor: pointer;
 }
 
+/* Letter_write 친구 선택 — 행 목록 + 선택완료 */
+.pock-window--friend-pick {
+  width: 22.0625rem; /* 353 — Mo 기준 */
+  max-width: 100%;
+  height: auto;
+  max-height: min(36rem, calc(100dvh - 2rem));
+}
+
+.pock-window--friend-pick.pock-window--tb,
+.pock-window--friend-pick.pock-window--pc {
+  width: 28rem; /* 448 — 임시값 · 시안 미기재 */
+  height: auto;
+  max-height: min(40rem, calc(100dvh - 3rem));
+}
+
+.pock-window--friend-pick .pock-window__body,
+.pock-window--friend-pick.pock-window--mo .pock-window__body,
+.pock-window--friend-pick.pock-window--tb .pock-window__body,
+.pock-window--friend-pick.pock-window--pc .pock-window__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0;
+  background: var(--color-base-0);
+  border-bottom: 0;
+}
+
+.pock-window--friend-pick .pock-window__search {
+  padding: 0.75rem 0.75rem 0.5rem;
+}
+
+.pock-window--friend-pick .pock-window__pane,
+.pock-window--friend-pick.pock-window--mo .pock-window__pane,
+.pock-window--friend-pick.pock-window--tb .pock-window__pane,
+.pock-window--friend-pick.pock-window--pc .pock-window__pane {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  height: auto;
+  min-height: 12.5rem; /* 200 */
+  max-height: 22.5rem; /* 360 */
+  border-radius: 0;
+  background-color: var(--color-base-0);
+}
+
+.pock-window--friend-pick .pock-window__list,
+.pock-window--friend-pick.pock-window--mo .pock-window__list,
+.pock-window--friend-pick.pock-window--tb .pock-window__list,
+.pock-window--friend-pick.pock-window--pc .pock-window__list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  height: 100%;
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+
+.pock-window--friend-pick .pock-window__item,
+.pock-window--friend-pick.pock-window--mo .pock-window__item,
+.pock-window--friend-pick.pock-window--tb .pock-window__item,
+.pock-window--friend-pick.pock-window--pc .pock-window__item {
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.625rem; /* 10 */
+  width: 100%;
+  min-height: 2.75rem; /* 44 */
+  padding: 0.375rem 0;
+  text-align: left;
+}
+
+.pock-window--friend-pick .pock-window__thumb,
+.pock-window--friend-pick.pock-window--mo .pock-window__thumb,
+.pock-window--friend-pick.pock-window--tb .pock-window__thumb,
+.pock-window--friend-pick.pock-window--pc .pock-window__thumb {
+  flex: 0 0 auto;
+  width: 2.25rem; /* 36 */
+  height: 2.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(
+    180deg,
+    var(--color-base-0) 0%,
+    var(--color-base-500) 100%
+  );
+}
+
+.pock-window--friend-pick .pock-window__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pock-window--friend-pick .friend-checkbox {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.pock-window--friend-pick button.pock-window__item--selected .pock-window__thumb {
+  box-shadow: none;
+}
+
+.pock-window--friend-pick .pock-window__scroll {
+  top: 0.5rem;
+  right: 0.375rem;
+  bottom: 0.5rem;
+}
+
+.pock-window__foot--confirm {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pock-window__confirm.btn--push {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 2.5rem; /* 40 */
+  min-height: 2.5rem;
+  border-radius: 0 0 0.625rem 0.625rem; /* 아래만 10 */
+}
+
+.pock-window__confirm.btn--push:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .pock-window__thumb[src] {
   object-fit: cover;
 }

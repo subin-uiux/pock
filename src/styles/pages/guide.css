@@ -785,11 +785,12 @@
   line-height: var(--line-height-base);
 }
 
-/* Letter_write Mo 반응형: 점선 = 가상 뷰포트 · 오른쪽 핸들 드래그 360~768 */
+/* Letter_write Mo 반응형: 점선 = 가상 뷰포트 · 오른쪽 핸들 드래그 320~768 */
 .window-system__letter-resize {
   position: relative;
   box-sizing: border-box;
   max-width: 100%;
+  margin-inline: auto;
   padding: 0;
   overflow: hidden;
   border: 1px dashed var(--color-base-400);
@@ -797,7 +798,7 @@
   background-color: var(--color-base-0);
 }
 
-/* ~540: 점선 박스 ↔ 안쪽 좌우 20 (360 → 안쪽 320) */
+/* 좌우 inset — 안쪽 Letter_write 중앙 */
 .window-system__letter-resize--inset {
   display: flex;
   justify-content: center;
@@ -805,6 +806,7 @@
 
 .window-system__letter-resize-inner {
   max-width: 100%;
+  margin-inline: auto;
 }
 
 .window-system__letter-resize-handle {
@@ -834,61 +836,41 @@
   outline-offset: -2px;
 }
 
-/* Mo: 안쪽 컨테이너 폭에 맞춤 / Tb(541~): 아래 Tb 샘플과 동일 크기(500) */
+/* Mo: 컴포넌트 CSS(min 320 · top 세로) 그대로 · 폭만 채움 */
 .window-system__letter-resize .letter-write--mo {
   width: 100%;
   max-width: none;
 }
 
-.window-system__letter-resize .letter-write--mo .letter-write__paper {
+/* Mo 드래그 541~: Tb/Pc와 동일 레이아웃 · 폭만 채움 */
+.window-system__letter-resize .letter-write--tb,
+.window-system__letter-resize .letter-write--pc {
   width: 100%;
-  max-width: 100%;
-}
-
-.window-system__letter-resize .letter-write--mo .letter-write__top {
-  width: 100%; /* 편지지와 동일 폭 · 오른쪽 끝 맞춤 */
-  max-width: 100%;
-  align-self: stretch;
-}
-
-.window-system__letter-resize .letter-write--mo .letter-write__heading {
-  flex: 1 0 100%;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.window-system__letter-resize .letter-write--tb {
-  width: 31.25rem; /* 500 — Mo 구간 541~ 에서 Tb 샘플과 동일 */
+  min-width: 0;
   max-width: none;
   margin-inline: auto;
 }
 
-/* Tb 반응형 769~1024: 좌우 64 · 안쪽 폭에 Tb가 맞춰 늘어남 */
-.window-system__letter-resize--tb .letter-write--tb {
+/* Tb/Pc 반응형: 안쪽 폭에 맞춰 길이만 유동 */
+.window-system__letter-resize--tb .letter-write--tb,
+.window-system__letter-resize--tb .letter-write--pc {
   width: 100%;
+  min-width: 0;
   max-width: none;
   margin-inline: 0;
 }
 
-.window-system__letter-resize--tb .letter-write--tb .letter-write__main {
+.window-system__letter-resize--tb .letter-write--tb .letter-write__main,
+.window-system__letter-resize--tb .letter-write--pc .letter-write__main {
   width: 100%;
 }
 
 .window-system__letter-resize--tb .letter-write--tb .letter-write__top,
-.window-system__letter-resize--tb .letter-write--tb .letter-write__paper {
+.window-system__letter-resize--tb .letter-write--pc .letter-write__top,
+.window-system__letter-resize--tb .letter-write--tb .letter-write__paper,
+.window-system__letter-resize--tb .letter-write--pc .letter-write__paper {
   width: 100%;
   max-width: 100%;
-}
-
-.window-system__letter-resize--tb .letter-write--tb .letter-write__tabs {
-  flex-wrap: nowrap;
-}
-
-.window-system__letter-resize--tb .letter-write--tb .letter-write__tab {
-  flex: 1 1 0;
-  width: auto;
-  min-width: 0;
-  max-width: none;
 }
 
 .window-system__header-samples {

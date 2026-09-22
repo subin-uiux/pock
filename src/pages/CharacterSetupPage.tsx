@@ -16,7 +16,7 @@ const CHARACTERS: {
   {
     id: "boy",
     label: "남자 캐릭터",
-    src: "/assets/images/character/boy-default.webp",
+    src: "/assets/images/character/boy-default.svg",
   },
   {
     id: "girl",
@@ -83,7 +83,7 @@ export function CharacterSetupPage() {
                   src={item.src}
                   alt=""
                   width={106}
-                  height={178}
+                  height={180}
                 />
               </SelectionBox>
             ))}

@@ -93,7 +93,7 @@
 .profile-complete__figure {
   position: relative;
   width: 6.625rem; /* 106 */
-  height: 11.125rem; /* 178 */
+  height: 11.25rem; /* 180 */
 }
 
 .profile-complete__base {
@@ -176,7 +176,7 @@
 
   .profile-complete__figure {
     width: 9.9375rem; /* 159 — pad 스케일 임시값 */
-    height: 16.6875rem; /* 267 */
+    height: 16.875rem; /* 270 — 180×1.5 */
   }
 
   .profile-complete__copy {

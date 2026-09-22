@@ -136,8 +136,99 @@
   list-style: none;
 }
 
-/* Mo — 아코디언 행 폭 100% */
-.notice-page__item {
+/* 겹침 스택 — 접힘/펼침 슬라이드 */
+.notice-stack {
+  position: relative;
+  width: 100%;
+  max-width: 30.25rem; /* 484 */
+  margin-inline: auto;
+  transition: height 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.notice-stack__card.notice-card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  max-width: none;
+  transform: translateX(-50%);
+  transition:
+    top 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.7s cubic-bezier(0.33, 1, 0.68, 1),
+    max-width 0.7s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: top, width;
+}
+
+/* 접힘 — 1장 484 · 2장 462 · 3장 430 (중앙 정렬 계단) */
+.notice-stack--collapsed .notice-stack__card--0 {
+  top: 0;
+  width: 30.25rem; /* 484 */
+  max-width: 100%;
+  transition-delay: 0.14s;
+}
+
+.notice-stack--collapsed .notice-stack__card--1 {
+  top: 0.5rem; /* 8 */
+  width: 28.875rem; /* 462 */
+  max-width: calc(100% - 1.375rem); /* 484-462=22 → 양옆 11 */
+  transition-delay: 0.07s;
+}
+
+.notice-stack--collapsed .notice-stack__card--2 {
+  top: 1rem; /* 16 */
+  width: 26.875rem; /* 430 */
+  max-width: calc(100% - 3.375rem); /* 484-430=54 → 양옆 27 */
+  transition-delay: 0s;
+}
+
+/* 펼침 — 위에서 아래로 촥 펼침 */
+.notice-stack--expanded .notice-stack__card {
+  width: 100%;
+  max-width: 100%;
+  top: calc(var(--i, 0) * (7.25rem + 1rem)); /* 116 + 16 */
+  transform: translateX(-50%);
+  transition-delay: calc(var(--i, 0) * 0.1s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notice-stack,
+  .notice-stack__card.notice-card {
+    transition-duration: 0.01ms;
+    transition-delay: 0s;
+  }
+}
+
+.notice-card {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 30.25rem; /* 484 */
+  height: 7.25rem; /* 116 */
+  border: 0;
+  border-radius: 0.625rem; /* 10 */
+  background-color: #ffffff;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(85, 85, 85, 0.1); /* Y2 Blur4 #555 10% */
+  text-align: left;
+}
+
+.notice-card--button {
+  display: block;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.notice-card--button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.notice-card__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

@@ -197,12 +197,12 @@
   );
 }
 
-/* 캐릭터 81.87 — 원본 비율 유지(106×178) · 중앙 */
+/* 캐릭터 81.87 — 원본 비율 유지(106×180) · 중앙 */
 .friend-profile-popup__avatar-img {
   display: block;
   width: 5.116875rem; /* 81.87 */
   height: auto;
-  aspect-ratio: 106 / 178;
+  aspect-ratio: 106 / 180;
   max-height: 100%;
   object-fit: contain;
   object-position: center;

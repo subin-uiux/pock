@@ -100,7 +100,7 @@
 .outfit-setup__preview {
   position: relative;
   width: 6.625rem; /* 106 */
-  height: 11.125rem; /* 178 */
+  height: 11.25rem; /* 180 */
   margin-top: 2.5rem; /* 40 — title↔preview */
 }
 
@@ -201,13 +201,13 @@
   }
 
   .outfit-setup__title {
-    margin-top: 3.75rem; /* 60 */
-    font-size: 2.625rem; /* 42 */
+    margin-top: 2.75rem; /* nickname과 동일 */
+    font-size: 1.625rem; /* 26 — nickname과 동일 */
   }
 
   .outfit-setup__preview {
     width: 9.9375rem; /* 159 — pad 스케일 */
-    height: 16.6875rem; /* 267 */
+    height: 16.875rem; /* 270 — 180×1.5 */
     margin-top: 3.75rem; /* 60 */
   }
 
