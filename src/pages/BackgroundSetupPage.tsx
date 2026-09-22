@@ -56,9 +56,10 @@ export function BackgroundSetupPage() {
     backgroundImage: backgroundGradient(selected.color),
   };
 
-  const wearStyle: CSSProperties | undefined = outfit
-    ? { width: `${(outfit.width / CHARACTER_BASE.width) * 100}%` }
-    : undefined;
+  const wearStyle: CSSProperties | undefined =
+    outfit && !outfit.fullFrame
+      ? { width: `${(outfit.width / CHARACTER_BASE.width) * 100}%` }
+      : undefined;
 
   return (
     <section className="background-setup" aria-label="배경 선택">
@@ -94,7 +95,11 @@ export function BackgroundSetupPage() {
               />
               {outfit ? (
                 <img
-                  className="background-setup__wear"
+                  className={
+                    outfit.fullFrame
+                      ? "background-setup__wear background-setup__wear--full"
+                      : "background-setup__wear"
+                  }
                   src={outfit.src}
                   alt=""
                   width={outfit.width}

@@ -118,6 +118,17 @@
   image-rendering: crisp-edges;
 }
 
+.profile-complete__wear--full {
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
+}
+
 .profile-complete__copy {
   display: flex;
   flex-direction: column;
@@ -184,12 +195,12 @@
   }
 
   .profile-complete__title {
-    font-size: 2.625rem; /* 42 — pad, 다른 설정 페이지와 동일 */
+    font-size: 1.5rem; /* 24 — pad, 다른 설정 페이지와 동일 */
   }
 
   .profile-complete__desc {
     margin-top: 0.9375rem; /* 15 — title↔desc pad 임시값 */
-    font-size: 1.375rem; /* 22 */
+    font-size: 1.125rem; /* 18 */
   }
 
   .profile-complete__footer {

@@ -276,31 +276,17 @@
   overflow: hidden;
 }
 
-/* SelectionBox 기본 img 100% cover 해제 — 카드 85×108에 맞춤 */
+/* SelectionBox 기본 img 100% cover 해제 — selection-box__* 130×148 */
 .mypage-clothes .selection-box__media img,
 .mypage-clothes__img {
   display: block;
   width: auto;
+  max-width: 100%;
   height: auto;
-  max-width: none;
-  max-height: none;
+  max-height: 100%;
   object-fit: contain;
   image-rendering: pixelated;
-}
-
-.mypage-clothes__img--1 {
-  width: 4.2475rem; /* 67.96 */
-  height: 3.238125rem; /* 51.81 */
-}
-
-.mypage-clothes__img--2 {
-  width: 3.616875rem; /* 57.87 */
-  height: 3.40625rem; /* 54.5 */
-}
-
-.mypage-clothes__img--3 {
-  width: 3.885rem; /* 62.16 */
-  height: 3.74625rem; /* 59.94 */
+  image-rendering: crisp-edges;
 }
 
 /* 배경 선택 — 6칸 · 좌우 회색과 20 (패널 패딩) */
@@ -400,11 +386,6 @@
   flex: 0 0 auto;
   width: 3.323125rem; /* 53.17 */
   height: 5.0625rem; /* 81 */
-  transform: translateX(0.3125rem); /* 5 — 오른쪽 */
-}
-
-.mypage-profile__figure--male {
-  transform: translateX(0);
 }
 
 .mypage-profile__body {
@@ -417,19 +398,13 @@
 
 .mypage-profile__clothes {
   position: absolute;
-  left: 50%;
-  top: 2.40625rem; /* 38.5 — 임시값 · 상체 맞춤 */
-  width: 2.69375rem; /* 43.1 */
-  height: 2.06875rem; /* 33.1 */
-  object-fit: fill;
-  transform: translateX(calc(-50% - 0.25rem));
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
   image-rendering: pixelated;
   pointer-events: none;
-}
-
-.mypage-profile__clothes--male {
-  top: 2.5625rem; /* 41 */
-  transform: translateX(-50%);
 }
 
 .mypage-profile__nickname {

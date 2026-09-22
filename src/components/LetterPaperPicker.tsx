@@ -14,6 +14,8 @@ interface LetterPaperPickerProps {
   open: boolean;
   selectedId: LetterTheme;
   onClose: () => void;
+  /** 보유 편지지 탭 시 — letter-write__paper 즉시 반영 */
+  onSelect?: (id: LetterTheme) => void;
   onConfirm: (id: LetterTheme) => void;
 }
 
@@ -24,6 +26,7 @@ export function LetterPaperPicker({
   open,
   selectedId,
   onClose,
+  onSelect,
   onConfirm,
 }: LetterPaperPickerProps) {
   const { balance, spend } = useCoin();
@@ -56,6 +59,7 @@ export function LetterPaperPicker({
 
   const selectOwned = (id: LetterTheme) => {
     setPendingId(id);
+    onSelect?.(id);
   };
 
   const buyOption = buyTarget
@@ -91,6 +95,7 @@ export function LetterPaperPicker({
     setAdOpen(false);
     unlockLetterPaper("rainbow");
     setPendingId("rainbow");
+    onSelect?.("rainbow");
   };
 
   const handleBuyConfirm = () => {
@@ -114,6 +119,7 @@ export function LetterPaperPicker({
     }
     unlockLetterPaper(buyTarget);
     setPendingId(buyTarget);
+    onSelect?.(buyTarget);
     setBuyOpen(false);
     setBuyTarget(null);
   };
