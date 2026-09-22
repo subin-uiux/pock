@@ -139,6 +139,11 @@
   --z-index-navigation: 300;
   --z-index-modal: 400;
   --z-index-toast: 500;
+
+  /* 기본 커서 — 열쇠 (hotspot: SVG 왼쪽 아래) */
+  --cursor-pock: url("/assets/images/cursor-pock.svg") 0 59, auto;
+  /* press: -20° 회전 · 캔버스 확장 · hotspot (22, 74) = 원본 (0, 59) */
+  --cursor-pock-press: url("/assets/images/cursor-pock-press.svg") 22 74, auto;
 }
 
 @media (min-width: 769px) {

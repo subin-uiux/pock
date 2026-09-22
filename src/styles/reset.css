@@ -44,7 +44,7 @@ select {
 }
 
 button {
-  cursor: pointer;
+  cursor: var(--cursor-pock);
   background: none;
   border: 0;
   padding: 0;

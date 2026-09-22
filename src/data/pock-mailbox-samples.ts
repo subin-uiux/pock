@@ -100,6 +100,14 @@ const LETTERS = [
 남의 얘기가 제일 재밌긴 함
 다음 편 빨리 가져와.`,
   },
+  {
+    imageSrc: "/assets/images/letter/letter-img9.png",
+    title: "잘지내?",
+    body: `우리 원래라면 오늘 3주년인 거 알아?
+보고싶어.
+우리 처음 만났던 장소에서 기다릴게
+내가 잘할게.`,
+  },
 ] as const;
 
 export interface MailboxCardSample {
@@ -134,8 +142,8 @@ function sample(
 }
 
 /**
- * 잠김 탭 기본 정렬: 곧 열리는 순
- * D-2 → D-3 → D-12 → 타이머(날짜 없음, 맨 뒤)
+ * 잠김 탭 기본 정렬: 개봉 임박 순
+ * 타이머(하루 미만) → D-2 → D-3 → D-12 …
  */
 export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   sample(
@@ -180,6 +188,7 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
       variant: "timer",
       target: "교니",
       hintPaid: true,
+      timer: "22:05:13",
     },
     0,
     { theme: "red" },
@@ -190,6 +199,7 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
       variant: "timer",
       target: "지우",
       hintPaid: false,
+      timer: "14:37:48",
     },
     2,
     { theme: "yellow" },
@@ -200,6 +210,7 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
       variant: "timer",
       target: "하나",
       hintPaid: true,
+      timer: "06:12:05",
     },
     5,
     { theme: "purple" },
@@ -215,11 +226,11 @@ export const RECEIVED_OPEN_SAMPLES: MailboxCardSample[] = [
     {
       id: "received-gift-1",
       variant: "gift",
-      target: "교니",
-      openDate: "2026.09.20",
+      target: "전남친",
+      openDate: "2026.09.30",
     },
-    0,
-    { theme: "red" },
+    8,
+    { theme: "pink" },
   ),
   sample(
     {
@@ -253,7 +264,7 @@ export const RECEIVED_OPEN_SAMPLES: MailboxCardSample[] = [
   ),
 ];
 
-/** 잠김 · 개봉 임박 순: D-3 → D-4 → 미오픈·타이머 */
+/** 잠김 · 개봉 임박 순: 타이머 → D-3 → D-4 → 미오픈 */
 export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
   sample(
     {
@@ -300,6 +311,7 @@ export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
       id: "sent-locked-2",
       variant: "timer",
       target: "zl존킹킹",
+      timer: "19:44:21",
     },
     6,
     { theme: "pink" },
@@ -309,6 +321,7 @@ export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
       id: "sent-locked-6",
       variant: "timer",
       target: "지우",
+      timer: "11:08:56",
     },
     7,
     { theme: "orange" },
