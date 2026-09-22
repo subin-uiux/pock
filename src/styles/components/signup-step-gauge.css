@@ -39,11 +39,11 @@
 /* Tablet / PC — gap 30px */
 .signup-step-gauge--tb,
 .signup-step-gauge--pc {
-  gap: 1.875rem; /* 30px */
+  gap: 1rem; /* 16px */
 }
 
 .signup-step-gauge--tb .signup-step-gauge__image,
 .signup-step-gauge--pc .signup-step-gauge__image {
-  width: 11.25rem; /* 180 */
+  width: 8.25rem; /* 132 */
   height: 1.75rem; /* 28 */
 }
