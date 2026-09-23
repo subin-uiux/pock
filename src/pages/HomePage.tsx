@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { OnboardGuide } from "@/components/OnboardGuide";
-import { PixelCharacter } from "@/components/PixelCharacter";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
 import { homeFriends, type HomeFriend } from "@/data/home-friends";
@@ -11,8 +10,10 @@ import {
   shouldOpenHomeOnboard,
 } from "@/lib/home-onboard";
 import {
+  CHARACTER_BASE,
   backgroundGradient,
   getBackgroundById,
+  getOutfitById,
   getProfileSetup,
 } from "@/lib/profile-setup";
 
@@ -59,6 +60,10 @@ export function HomePage() {
   const profileBg = useMemo(
     () => getBackgroundById(saved.background),
     [saved.background],
+  );
+  const outfit = useMemo(
+    () => (character ? getOutfitById(character, saved.outfit) : null),
+    [character, saved.outfit],
   );
 
   useEffect(() => {
@@ -156,23 +161,41 @@ export function HomePage() {
         >
           <div
             className="home__profile-figure"
+            style={{ backgroundImage: backgroundGradient(profileBg) }}
             aria-hidden="true"
-            style={
-              {
-                ["--home-profile-figure-bg" as string]:
-                  backgroundGradient(profileBg),
-              }
-            }
           >
             {character ? (
-              <div className="home__profile-char">
-                <PixelCharacter
-                  character={character}
-                  outfit={saved.outfit}
-                  className="home__profile-canvas"
+              <span className="home__profile-figure-inner">
+                <img
+                  className="home__profile-figure-base"
+                  src={CHARACTER_BASE.src[character]}
+                  alt=""
+                  width={CHARACTER_BASE.width}
+                  height={CHARACTER_BASE.height}
                 />
-              </div>
-            ) : null}
+                {outfit ? (
+                  <img
+                    className={
+                      outfit.fullFrame
+                        ? "home__profile-figure-wear home__profile-figure-wear--full"
+                        : "home__profile-figure-wear"
+                    }
+                    src={outfit.src}
+                    alt=""
+                    width={outfit.width}
+                    height={outfit.height}
+                  />
+                ) : null}
+              </span>
+            ) : (
+              <img
+                className="home__profile-figure-img"
+                src="/assets/images/setting/girl.svg"
+                alt=""
+                width={80}
+                height={80}
+              />
+            )}
           </div>
 
           <div className="home__profile-side">
@@ -201,7 +224,7 @@ export function HomePage() {
               className="btn btn--popup home__profile-copy"
               onClick={handleCopyProfileLink}
             >
-              프로필 복사하기
+              초대링크 복사하기
             </button>
           </div>
 

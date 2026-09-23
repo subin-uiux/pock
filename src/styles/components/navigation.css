@@ -11,7 +11,7 @@
   --navigation-bar-height: 4.5rem; /* Mo 72 */
   --navigation-shell-width: 100%;
   --navigation-list-width: 22.5rem; /* Mo 아이콘 묶음 360 */
-  --navigation-list-padding-x: 1.25rem; /* 20 */
+  --navigation-list-padding-x: 0.875rem; /* 14 — 아이콘 사이 간격 확보 */
   /* 레이아웃 슬롯 = 기본 크기 → space-between 간격 확보. 확대는 scale만 */
   --navigation-icon-size: 3.375rem; /* Mo 54 */
   --navigation-icon-size-active: 3.5rem; /* 56 — 세로 여유 */
@@ -85,7 +85,7 @@
 
 .navigation--pad .navigation__list {
   justify-content: center;
-  gap: 1.625rem; /* 26 */
+  gap: 2rem; /* 32 — 기존 26에서 소폭 확대 */
   width: 100%;
 }
 

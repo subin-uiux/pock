@@ -454,16 +454,22 @@ export function Letter_write({
                 type="button"
                 aria-label="사진 추가"
                 onClick={() => fileRef.current?.click()}
-                style={
-                  imageUrl
-                    ? {
-                        backgroundImage: `url(${imageUrl})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }
-                    : undefined
-                }
-              />
+              >
+                {imageUrl ? (
+                  <img
+                    className="letter-write__media-image"
+                    src={imageUrl}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="letter-write__media-icon"
+                    src="/assets/images/image-icon.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                )}
+              </button>
               <div
                 className="letter-write__paper-body"
                 contentEditable

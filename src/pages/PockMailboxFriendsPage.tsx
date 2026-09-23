@@ -9,13 +9,76 @@ import {
   setMailboxFriendFilter,
 } from "@/lib/mailbox-friend-filter";
 import {
-  getMailboxFriendNames,
+  getMailboxFriends,
   MAILBOX_SELF_NAME,
+  type MailboxFriendEntry,
 } from "@/lib/mailbox-friends";
+import {
+  CHARACTER_BASE,
+  getOutfitById,
+  getProfileSetup,
+  type CharacterId,
+  type OutfitId,
+} from "@/lib/profile-setup";
 import type { LetterCardMailbox } from "@/types";
 
 function parseMailbox(raw: string | null): LetterCardMailbox {
   return raw === "sent" ? "sent" : "received";
+}
+
+function avatarClass(character: CharacterId | null | undefined): string {
+  const gender = character === "boy" ? "male" : "female";
+  return gender === "male"
+    ? "friend-list-page__avatar friend-list-page__avatar--male"
+    : "friend-list-page__avatar friend-list-page__avatar--female";
+}
+
+function FriendAvatar({
+  character,
+  outfitId,
+}: {
+  character: CharacterId | null | undefined;
+  outfitId: OutfitId | null | undefined;
+}) {
+  const wear =
+    character && outfitId ? getOutfitById(character, outfitId) : null;
+
+  return (
+    <span className={avatarClass(character)} aria-hidden="true">
+      {character ? (
+        <span className="friend-list-page__avatar-figure">
+          <img
+            className="friend-list-page__avatar-base"
+            src={CHARACTER_BASE.src[character]}
+            alt=""
+            width={CHARACTER_BASE.width}
+            height={CHARACTER_BASE.height}
+          />
+          {wear ? (
+            <img
+              className={
+                wear.fullFrame
+                  ? "friend-list-page__avatar-wear friend-list-page__avatar-wear--full"
+                  : "friend-list-page__avatar-wear"
+              }
+              src={wear.src}
+              alt=""
+              width={wear.width}
+              height={wear.height}
+            />
+          ) : null}
+        </span>
+      ) : (
+        <img
+          className="friend-list-page__avatar-img"
+          src="/assets/images/setting/girl.svg"
+          alt=""
+          width={50}
+          height={50}
+        />
+      )}
+    </span>
+  );
 }
 
 export function PockMailboxFriendsPage() {
@@ -25,7 +88,8 @@ export function PockMailboxFriendsPage() {
   const breakpoint = useBreakpoint();
   const isMo = breakpoint === "mo";
   const checkboxSize = isMo ? "mo" : "tb";
-  const allNames = useMemo(() => getMailboxFriendNames(), []);
+  const saved = useMemo(() => getProfileSetup(), []);
+  const allFriends = useMemo(() => getMailboxFriends(), []);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<string[]>(() =>
     getMailboxFriendFilter(mailbox),
@@ -41,9 +105,11 @@ export function PockMailboxFriendsPage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return allNames;
-    return allNames.filter((name) => name.toLowerCase().includes(q));
-  }, [allNames, query]);
+    if (!q) return allFriends;
+    return allFriends.filter((friend) =>
+      friend.name.toLowerCase().includes(q),
+    );
+  }, [allFriends, query]);
 
   const returnPath =
     mailbox === "sent" ? "/pock-sent" : "/pock-received";
@@ -63,6 +129,19 @@ export function PockMailboxFriendsPage() {
   const handleApply = () => {
     setMailboxFriendFilter(mailbox, selected);
     navigate(returnPath);
+  };
+
+  const resolveAvatar = (friend: MailboxFriendEntry) => {
+    if (friend.isSelf) {
+      return {
+        character: saved.character,
+        outfitId: saved.outfit,
+      };
+    }
+    return {
+      character: friend.character,
+      outfitId: friend.outfit,
+    };
   };
 
   return (
@@ -96,12 +175,13 @@ export function PockMailboxFriendsPage() {
         </div>
 
         <ul className="mailbox-friends__list">
-          {filtered.map((name, index) => {
-            const checked = selected.includes(name);
-            const isSelf = name === MAILBOX_SELF_NAME;
+          {filtered.map((friend, index) => {
+            const checked = selected.includes(friend.name);
+            const isSelf = friend.isSelf;
             const prev = index > 0 ? filtered[index - 1] : null;
             const friendSpaced =
-              !isSelf && prev !== null && prev !== MAILBOX_SELF_NAME;
+              !isSelf && prev !== null && !prev.isSelf;
+            const avatar = resolveAvatar(friend);
 
             return (
               <li
@@ -110,21 +190,21 @@ export function PockMailboxFriendsPage() {
                     ? "mailbox-friends__item mailbox-friends__item--spaced"
                     : "mailbox-friends__item"
                 }
-                key={name}
+                key={friend.name}
               >
                 <button
                   type="button"
                   className="mailbox-friends__row"
-                  onClick={() => toggleName(name)}
+                  onClick={() => toggleName(friend.name)}
                 >
-                  <span
-                    className="mailbox-friends__avatar"
-                    aria-hidden="true"
+                  <FriendAvatar
+                    character={avatar.character}
+                    outfitId={avatar.outfitId}
                   />
-                  <span className="mailbox-friends__name">{name}</span>
+                  <span className="mailbox-friends__name">{friend.name}</span>
                   <FriendCheckbox size={checkboxSize} checked={checked} />
                 </button>
-                {isSelf ? (
+                {isSelf || friend.name === MAILBOX_SELF_NAME ? (
                   <span
                     className="mailbox-friends__rule"
                     aria-hidden="true"

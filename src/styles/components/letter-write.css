@@ -11,30 +11,27 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow: hidden; /* 모서리 radius 클리핑 · 높이는 내용에 맞춤 */
+  overflow: hidden; /* 모서리 radius 클리핑 · 높이는 부모(보내기)에 맞춤 */
   max-width: 100%;
-  height: auto;
   margin-inline: auto; /* 보내기 탭 · 가이드 중앙 */
   border-radius: 0.625rem; /* 10 — 모서리 흰 네모 클리핑 */
   background-color: var(--color-base-0);
   color: var(--color-base-900);
 }
 
-/* Mo: 가로 min 320 · 컨테이너에 맞춰 축소 · 레이아웃은 top만 세로 */
+/* Mo: 가로 450 · 컨테이너에 맞춰 축소 */
 .letter-write--mo {
-  width: 100%;
-  min-width: 20rem; /* 320 */
+  width: 28.125rem; /* 450 */
+  min-width: 0;
   max-width: 100%;
-  height: auto;
 }
 
-/* Tb/Pc: 동일 레이아웃 · 폭만 500~623 */
+/* Tb/Pc: 가로 450 · Mo와 동일 폭 */
 .letter-write--tb,
 .letter-write--pc {
-  width: 100%;
-  min-width: 31.25rem; /* 500 */
-  max-width: 38.9375rem; /* 623 */
-  height: auto;
+  width: 28.125rem; /* 450 */
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* 상태바 — 높이 33 · #DDDDDD → #fff · stroke 0.5 · 위 radius 10 */
@@ -217,17 +214,17 @@
 .letter-write--mo .letter-write__paper {
   width: 100%;
   max-width: 100%;
-  height: auto;
   min-height: 19.75rem; /* 316 */
   margin-top: 0.625rem; /* 10 — 탭 ↔ 편지지 */
+  flex: 1 1 auto;
 }
 
-/* Tb/Pc — top 가로 1행 · 내부 폭 100%(길이만 유동) */
+/* Tb/Pc — top 세로(Mo와 동일) · 내부 폭 100% */
 .letter-write--tb .letter-write__main,
 .letter-write--pc .letter-write__main {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   width: 100%;
-  height: auto;
+  min-height: 0;
   padding: 2rem 1.5rem 1.875rem; /* 상 32 · 좌우 24 · 하 30 */
   gap: 0.625rem; /* 10 — 임시값 */
   align-items: stretch;
@@ -235,47 +232,53 @@
 
 .letter-write--tb .letter-write__top,
 .letter-write--pc .letter-write__top {
+  display: flex;
+  flex-direction: column;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: stretch;
+  align-self: stretch;
+  gap: 0.625rem; /* 10 — heading ↔ tabs */
   width: 100%;
   max-width: 100%;
-  column-gap: 0;
-  row-gap: 0;
 }
 
 .letter-write--tb .letter-write__heading,
 .letter-write--pc .letter-write__heading {
   flex: 0 0 auto;
-  width: auto;
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
+  justify-content: space-between;
+  column-gap: 1.25rem; /* 최소 20 */
 }
 
 .letter-write--tb .letter-write__title,
 .letter-write--pc .letter-write__title {
-  flex: 0 0 auto;
-  padding-right: 1.25rem; /* 20 — 제목 ↔ 친구 선택 */
+  flex: 0 1 auto;
+  min-width: 0;
+  padding-right: 0; /* 간격은 space-between이 담당 */
 }
 
 .letter-write--tb .letter-write__friend,
 .letter-write--pc .letter-write__friend {
   flex: 0 0 auto;
-  margin-left: 0;
+  margin-left: auto;
 }
 
 .letter-write--tb .letter-write__tabs,
 .letter-write--pc .letter-write__tabs {
   flex: 0 0 auto;
   flex-wrap: nowrap;
-  width: auto;
-  margin-left: auto; /* 탭 오른쪽 */
+  width: 100%;
+  margin-left: 0;
   gap: 0.4375rem; /* 7 — 임시값 */
 }
 
 .letter-write--tb .letter-write__tab,
 .letter-write--pc .letter-write__tab {
-  flex: 0 0 auto;
+  flex: 1 1 0;
   width: auto;
   min-width: 0;
+  max-width: none;
   height: 2.375rem; /* 38 */
   padding: 0.375rem 0.75rem; /* 6 12 */
   justify-content: center;
@@ -286,21 +289,19 @@
 .letter-write--pc .letter-write__paper {
   width: 100%;
   max-width: 100%;
-  height: auto;
   min-height: 19.75rem; /* 316 */
-  flex: 0 0 auto;
+  flex: 1 1 auto;
 }
 
-/* 편지지 — 기본 316 · To. 포함 시 높이 확장 · 내용 전체 노출 */
+/* 편지지 — 기본 316 · 남는 세로 공간을 채움 · 내용 전체 노출 */
 .letter-write__paper {
   --lw-paper-bg: #fff8d0;
   display: flex;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   flex-direction: column;
   align-items: stretch;
   box-sizing: border-box;
   width: 16.5625rem; /* 265 */
-  height: auto;
   min-height: 19.75rem; /* 316 */
   padding: 1.875rem 0.9375rem; /* 상하 30 · 좌우 15 */
   overflow: visible;
@@ -365,17 +366,29 @@
 
 .letter-write__media {
   float: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   width: var(--lw-media-w); /* 88 */
   height: var(--lw-media-h); /* 줄 5칸 */
   margin: 0 var(--lw-media-gap) 0 0; /* right 15 · bottom 0 — 5번째 줄에 맞춤 */
   padding: 0;
   overflow: hidden;
-  border: 1px solid var(--color-base-400);
-  background-color: var(--color-base-400);
+  border: 1px solid var(--color-base-700);
+  background-color: #fff;
   cursor: pointer;
   appearance: none;
   shape-outside: margin-box;
+}
+
+.letter-write__media-icon {
+  display: block;
+  width: 1.5rem; /* 24 — image-icon.svg */
+  height: 1.5rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
 }
 
 .letter-write__media-image {
@@ -391,6 +404,7 @@
  *  1) width:100%면 float 아래로 낙하
  *  2) overflow로 BFC를 만들면 오른쪽 칸에 갇힘
  * 이므로 float를 감싸 흐르는 줄 박스가 가능한 contenteditable 사용.
+ * 왼쪽 패딩을 두면 사진 아래 줄까지 들여쓰여지므로 두지 않음 — float wrap으로 옆·아래 채움.
  */
 .letter-write__paper-body {
   display: block;
@@ -399,8 +413,8 @@
   min-width: 0;
   min-height: var(--lw-lines-total-h); /* 가로선 전체(10줄) */
   margin: 0;
-  padding: 0 0 0 calc(var(--lw-media-w) + var(--lw-media-gap)); /* 커서·입력을 가로선 시작점에 */
-  overflow: visible;
+  padding: 0;
+  overflow: visible; /* visible 유지 — BFC 생기면 float 옆에 가둠 */
   border: 0;
   border-radius: 0;
   background-color: transparent;
