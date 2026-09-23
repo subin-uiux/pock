@@ -2,8 +2,8 @@ import { GuideMarkup } from "@/pages/guide/GuideMarkup";
 import { useEffect } from "react";
 
 /**
- * 디자인 시스템 가이드 — 기존 guide.html React 이식
- * 로그인 없이 /guide
+ * 디자인 시스템 가이드 — /guide
+ * 로그인 없이 접근
  */
 export function GuidePage() {
   useEffect(() => {

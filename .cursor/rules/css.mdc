@@ -1,6 +1,6 @@
 ---
 description: BEM, rem, 모바일 퍼스트 CSS 규칙
-globs: "**/*.{css,html}"
+globs: "**/*.css"
 alwaysApply: false
 ---
 

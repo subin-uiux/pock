@@ -4,7 +4,7 @@ import { Card } from "@/components/Card";
 import { LetterCardTimerText } from "@/components/LetterCardTimerText";
 import { letterDateFromToday } from "@/lib/letter-progress";
 
-/* Auto-generated from guide.html — do not hand-edit large chunks; re-run _tools/convert-guide.mjs */
+/* /guide 마크업 — 섹션 추가는 GuideMarkup.tsx를 직접 수정 */
 import { GuideSendCategorySection } from "@/pages/guide/GuideSendCategorySection";
 import { GuideSendTabsSection } from "@/pages/guide/GuideSendTabsSection";
 import { GuideSignUpStepGaugeSection } from "@/pages/guide/GuideSignUpStepGaugeSection";
