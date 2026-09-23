@@ -43,7 +43,7 @@
   margin-inline: auto;
   /* 위·아래 동일 여백 · 남은 높이는 섹션이 채움 */
   min-height: 100%;
-  padding: 6.25rem 1rem; /* 100 16 — mo 상하 동일 */
+  padding: 2.5rem 1rem; /* 40 16 — mo 상하 동일 */
   font-family: var(--font-family-base);
 }
 
