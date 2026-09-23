@@ -35,7 +35,7 @@
   color: #000000;
 }
 
-/* 이전 / 다음 — NeoDunggeunmo 20 · 화살표 24 */
+/* 이전 / 다음 / 종료 — NeoDunggeunmo 16 · 화살표 24 */
 .terms-page__nav {
   display: flex;
   flex: 0 0 auto;
@@ -75,7 +75,7 @@
 .terms-page__back-label,
 .terms-page__next-label {
   font-family: var(--font-family-base); /* NeoDunggeunmo */
-  font-size: 1.25rem; /* 20 */
+  font-size: 1rem; /* 16 — Mo */
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-tight);
 }
