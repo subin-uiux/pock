@@ -121,6 +121,7 @@ export function Letter_write({
   const [activeTab, setActiveTab] = useState<Letter_writeTab>(null);
   const [content, setContent] = useState("");
   const [sendConfirmOpen, setSendConfirmOpen] = useState(false);
+  const [emptyContentOpen, setEmptyContentOpen] = useState(false);
 
   const today = useMemo(() => startOfDay(new Date()), []);
   const selectedDate = useMemo(() => parseDotDate(date), [date]);
@@ -221,6 +222,10 @@ export function Letter_write({
   const handleSendClick = () => {
     if (!friend) {
       onSelectFriend?.();
+      return;
+    }
+    if (content.trim().length === 0) {
+      setEmptyContentOpen(true);
       return;
     }
     setSendConfirmOpen(true);
@@ -640,6 +645,20 @@ export function Letter_write({
           setPaperTheme(id);
           setPaperOpen(false);
         }}
+      />
+
+      <Popup
+        open={emptyContentOpen}
+        variant="info"
+        size={popupSize}
+        message={
+          <>
+            편지를 작성해주세요
+          </>
+        }
+        confirmLabel="확인"
+        onConfirm={() => setEmptyContentOpen(false)}
+        onClose={() => setEmptyContentOpen(false)}
       />
 
       <Popup

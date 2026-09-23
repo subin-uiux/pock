@@ -157,7 +157,12 @@ export function HomePage() {
           <div
             className="home__profile-figure"
             aria-hidden="true"
-            style={{ backgroundImage: backgroundGradient(profileBg) }}
+            style={
+              {
+                ["--home-profile-figure-bg" as string]:
+                  backgroundGradient(profileBg),
+              }
+            }
           >
             {character ? (
               <div className="home__profile-char">
@@ -170,33 +175,35 @@ export function HomePage() {
             ) : null}
           </div>
 
-          <div className="home__profile-meta">
-            <p className="home__profile-name">
-              {nickname}
-            </p>
+          <div className="home__profile-side">
+            <div className="home__profile-meta">
+              <p className="home__profile-name">
+                {nickname}
+              </p>
 
-            <div className="home__profile-coin">
-              <img
-                className="home__profile-coin-icon"
-                src="/assets/images/coin.svg"
-                alt=""
-                width={18}
-                height={18}
-              />
+              <div className="home__profile-coin">
+                <img
+                  className="home__profile-coin-icon"
+                  src="/assets/images/coin.svg"
+                  alt=""
+                  width={18}
+                  height={18}
+                />
 
-              <span className="home__profile-coin-text">
-                10 coin
-              </span>
+                <span className="home__profile-coin-text">
+                  10 coin
+                </span>
+              </div>
             </div>
-          </div>
 
-          <button
-            type="button"
-            className="btn btn--popup home__profile-copy"
-            onClick={handleCopyProfileLink}
-          >
-            프로필 링크 복사하기
-          </button>
+            <button
+              type="button"
+              className="btn btn--popup home__profile-copy"
+              onClick={handleCopyProfileLink}
+            >
+              프로필 복사하기
+            </button>
+          </div>
 
           <span
             className="home__profile-bubble home__profile-bubble--lg"

@@ -131,7 +131,9 @@ export function Friend_list({
           />
         </div>
         <div className="pock-window__pane">
-          <PockWindowScrollbar listRef={listRef} syncKey={filtered.length} />
+          {isPick ? null : (
+            <PockWindowScrollbar listRef={listRef} syncKey={filtered.length} />
+          )}
           <ul className="pock-window__list" ref={listRef}>
             {filtered.map((friend) => {
               const selected = friend.id === activeId;
