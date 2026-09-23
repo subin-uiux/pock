@@ -92,10 +92,13 @@
   margin-inline: auto;
   margin-bottom: 2.125rem; /* 34 — 말풍선 공간 · 임시값 */
   padding: 1.5rem 1.25rem 1.25rem; /* 24 20 20 — 임시값 */
-  border: 0.5px solid #cfcfcf; /* 임시값 · 시안 연회색 */
+  border: 1px solid var(--color-base-400); /* 임시값 · 시안 연회색 */
   border-radius: 0.875rem; /* 14 — 임시값 */
-  background-color: var(--color-base-0);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08); /* 임시값 */
+  background: linear-gradient(
+    180deg,
+    var(--color-base-0) 12%,
+    var(--color-base-200) 100%
+  );
   overflow: visible;
 }
 
@@ -112,49 +115,25 @@
   box-shadow: inset 0 0.125rem 0.5rem rgba(0, 0, 0, 0.12); /* 임시값 */
 }
 
-/* 캐릭터 박스 — pock-window__thumb-figure와 동일 (74×126) */
+/* 캐릭터 박스 — 74×126 (기존 크기) · PixelCharacter nearest-neighbor */
 .home__profile-char {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 4.625rem; /* 74 */
   height: 7.875rem; /* 126 */
-  transform: translate(-50%, -50%);
+  margin: auto;
   pointer-events: none;
 }
 
-.home__profile-base {
+.home__profile-canvas {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-}
-
-.home__profile-wear {
-  position: absolute;
-  left: 50%;
-  top: 48.3%;
-  z-index: 1;
-  display: block;
-  height: auto;
-  transform: translateX(-50%);
-  pointer-events: none;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-}
-
-.home__profile-wear--full {
-  inset: 0;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transform: none;
-  object-fit: contain;
-  object-position: center center;
 }
 
 .home__profile-meta {
@@ -224,20 +203,21 @@
     #e4e4e4 100%
   ); /* 임시값 · 시안 구체감 */
   pointer-events: none;
+  border: 1px solid var(--color-base-400);
 }
 
 .home__profile-bubble--lg {
   right: 1.25rem; /* 20 — 임시값 */
-  bottom: -3.8rem; /* -38 — 카드 아래 살짝 */
-  width: 2.75rem; /* 44 — 임시값 */
-  height: 2.75rem;
+  bottom: -3rem; /* -38 — 카드 아래 살짝 */
+  width: 2.2rem; /* 44 — 임시값 */
+  height: 2.2rem;
 }
 
 .home__profile-bubble--sm {
-  right: -0.875rem; /* -14 — 임시값 */
-  bottom: -5.125rem; /* -82 — 큰 원 우하 */
-  width: 1.5rem; /* 24 — 임시값 */
-  height: 1.5rem;
+  right: -0.7rem; /* -14 — 임시값 */
+  bottom: -4.2rem; /* -82 — 큰 원 우하 */
+  width: 1.3rem; /* 24 — 임시값 */
+  height: 1.3rem;
 }
 
 .home__friends {

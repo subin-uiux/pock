@@ -1,8 +1,7 @@
+import { PixelCharacter } from "@/components/PixelCharacter";
 import {
-  CHARACTER_BASE,
   backgroundGradient,
   getBackgroundById,
-  getOutfitById,
   type BackgroundId,
   type CharacterId,
   type OutfitId,
@@ -24,7 +23,6 @@ export function PockWindowThumb({
   background,
   className = "",
 }: PockWindowThumbProps) {
-  const wear = getOutfitById(character, outfit);
   const bg = getBackgroundById(background);
   const rootClass = ["pock-window__thumb", className].filter(Boolean).join(" ");
 
@@ -35,33 +33,11 @@ export function PockWindowThumb({
       aria-hidden="true"
     >
       <span className="pock-window__thumb-figure">
-        <img
-          className="pock-window__thumb-base"
-          src={CHARACTER_BASE.src[character]}
-          alt=""
-          width={CHARACTER_BASE.width}
-          height={CHARACTER_BASE.height}
+        <PixelCharacter
+          character={character}
+          outfit={outfit}
+          className="pock-window__thumb-canvas"
         />
-        {wear ? (
-          <img
-            className={
-              wear.fullFrame
-                ? "pock-window__thumb-wear pock-window__thumb-wear--full"
-                : "pock-window__thumb-wear"
-            }
-            src={wear.src}
-            alt=""
-            width={wear.width}
-            height={wear.height}
-            style={
-              wear.fullFrame
-                ? undefined
-                : {
-                    width: `${(wear.width / CHARACTER_BASE.width) * 100}%`,
-                  }
-            }
-          />
-        ) : null}
       </span>
     </span>
   );
