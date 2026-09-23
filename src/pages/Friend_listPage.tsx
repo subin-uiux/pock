@@ -222,6 +222,9 @@ export function Friend_listPage() {
         friendId={profileFriend?.id}
         profileImage={profileFriend?.profileImage}
         gender={profileFriend?.gender}
+        character={profileFriend?.character}
+        outfit={profileFriend?.outfit}
+        background={profileFriend?.background}
         onClose={() => setProfileFriend(null)}
         onDelete={() => {
           if (!profileFriend) return;

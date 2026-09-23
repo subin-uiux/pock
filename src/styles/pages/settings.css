@@ -141,18 +141,58 @@
   overflow: hidden;
   border-radius: var(--radius-full);
   background-color: #ffc8c8;
+  background-size: cover;
+  background-position: center;
 }
 
-.settings-profile__avatar-img {
+.settings-profile__avatar-img,
+.settings-profile__avatar-figure {
   display: block;
   box-sizing: border-box;
   width: 100%;
   height: auto; /* 비율 유지 — cover 잘림 방지 */
   margin-top: 0.25rem; /* 4 — 머리 끝 여유 */
   object-fit: unset;
-  transform: translate(0.1875rem, 0.625rem) scale(0.72); /* 오른쪽 3 · 아래 10 · 스케일 */
+  transform: translateY(0.625rem) scale(0.72); /* 아래 10 · 가로 중앙 */
   transform-origin: top center;
   image-rendering: pixelated;
+}
+
+.settings-profile__avatar-figure {
+  position: relative;
+}
+
+.settings-profile__avatar-base {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.settings-profile__avatar-wear {
+  position: absolute;
+  left: 50%;
+  top: 48.3%;
+  z-index: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.settings-profile__avatar-wear--full {
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
 }
 
 .settings-profile__meta {

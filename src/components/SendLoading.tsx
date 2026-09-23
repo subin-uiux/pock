@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { Button } from "@/components/Button";
 
 type SendLoadingPhase = "loading" | "complete";
 
 interface SendLoadingProps {
   open: boolean;
-  /** loading-bar 1→2→3 후 전송완료 표시가 끝나면 호출 */
-  onFinished: () => void;
+  /** loading-bar 1→2→3 후 전송완료로 전환될 때 (저장용) */
+  onComplete?: () => void;
+  /** 편지 더 쓰기 — 보내기 화면으로 */
+  onWriteMore: () => void;
+  /** 전송함 — 보낸 편지함으로 */
+  onOpenSent: () => void;
 }
 
 const LOADING_BARS = [
@@ -15,12 +20,16 @@ const LOADING_BARS = [
 ] as const;
 
 const BAR_STEP_MS = 700; /* 각 바 노출 · 임시값 */
-const COMPLETE_HOLD_MS = 1000; /* 전송완료 노출 · 임시값 */
 
 /**
- * POCK 전송 로딩 — loading-bar1→2→3 → 전송완료!
+ * POCK 전송 로딩 — loading-bar1→2→3 → 전송완료! + 액션 버튼
  */
-export function SendLoading({ open, onFinished }: SendLoadingProps) {
+export function SendLoading({
+  open,
+  onComplete,
+  onWriteMore,
+  onOpenSent,
+}: SendLoadingProps) {
   const [phase, setPhase] = useState<SendLoadingPhase>("loading");
   const [barIndex, setBarIndex] = useState(0);
 
@@ -48,19 +57,14 @@ export function SendLoading({ open, onFinished }: SendLoadingProps) {
     timers.push(
       window.setTimeout(() => {
         setPhase("complete");
+        onComplete?.();
       }, BAR_STEP_MS * LOADING_BARS.length),
-    );
-
-    timers.push(
-      window.setTimeout(() => {
-        onFinished();
-      }, BAR_STEP_MS * LOADING_BARS.length + COMPLETE_HOLD_MS),
     );
 
     return () => {
       timers.forEach((id) => window.clearTimeout(id));
     };
-  }, [open, onFinished]);
+  }, [open, onComplete]);
 
   if (!open) return null;
 
@@ -68,7 +72,9 @@ export function SendLoading({ open, onFinished }: SendLoadingProps) {
 
   return (
     <div
-      className="send-loading"
+      className={
+        isComplete ? "send-loading send-loading--complete" : "send-loading"
+      }
       role="status"
       aria-live="polite"
       aria-busy={!isComplete}
@@ -105,7 +111,24 @@ export function SendLoading({ open, onFinished }: SendLoadingProps) {
             width={154}
             height={16}
           />
-        ) : null}
+        ) : (
+          <div className="send-loading__actions">
+            <Button
+              variant="action-text"
+              className="send-loading__action"
+              onClick={onWriteMore}
+            >
+              편지 더 쓰기
+            </Button>
+            <Button
+              variant="action-text"
+              className="send-loading__action"
+              onClick={onOpenSent}
+            >
+              전송함
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

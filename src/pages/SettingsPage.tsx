@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useAuth } from "@/hooks/useAuth";
 import { hasUnreadNotice } from "@/lib/notice";
-import { getProfileSetup } from "@/lib/profile-setup";
+import {
+  CHARACTER_BASE,
+  backgroundGradient,
+  getBackgroundById,
+  getOutfitById,
+  getProfileSetup,
+} from "@/lib/profile-setup";
 
 /** 임시값 — 프로필 닉네임 시안 샘플 */
 const DEFAULT_NICKNAME = "zl존 킹왕짱";
@@ -37,11 +43,21 @@ const ATTENDANCE_DAYS: {
 export function SettingsPage() {
   const navigate = useNavigate();
   const { logout } = useAuth();
-  const savedNickname = getProfileSetup().nickname?.trim();
+  const saved = getProfileSetup();
+  const savedNickname = saved.nickname?.trim();
   const nickname =
     savedNickname && savedNickname.length > 0
       ? savedNickname
       : DEFAULT_NICKNAME;
+  const character = saved.character;
+  const outfit = useMemo(
+    () => (character ? getOutfitById(character, saved.outfit) : null),
+    [character, saved.outfit],
+  );
+  const profileBg = useMemo(
+    () => getBackgroundById(saved.background),
+    [saved.background],
+  );
   const [logoutOpen, setLogoutOpen] = useState(false);
   const [withdrawOpen, setWithdrawOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
@@ -137,14 +153,43 @@ export function SettingsPage() {
         </header>
 
         <div className="settings-profile__body">
-          <div className="settings-profile__avatar">
-            <img
-              className="settings-profile__avatar-img"
-              src="/assets/images/setting/girl.svg"
-              alt=""
-              width={80}
-              height={80}
-            />
+          <div
+            className="settings-profile__avatar"
+            style={{ backgroundImage: backgroundGradient(profileBg) }}
+            aria-hidden="true"
+          >
+            {character ? (
+              <span className="settings-profile__avatar-figure">
+                <img
+                  className="settings-profile__avatar-base"
+                  src={CHARACTER_BASE.src[character]}
+                  alt=""
+                  width={CHARACTER_BASE.width}
+                  height={CHARACTER_BASE.height}
+                />
+                {outfit ? (
+                  <img
+                    className={
+                      outfit.fullFrame
+                        ? "settings-profile__avatar-wear settings-profile__avatar-wear--full"
+                        : "settings-profile__avatar-wear"
+                    }
+                    src={outfit.src}
+                    alt=""
+                    width={outfit.width}
+                    height={outfit.height}
+                  />
+                ) : null}
+              </span>
+            ) : (
+              <img
+                className="settings-profile__avatar-img"
+                src="/assets/images/setting/girl.svg"
+                alt=""
+                width={80}
+                height={80}
+              />
+            )}
           </div>
           <div className="settings-profile__meta">
             <p className="settings-profile__name">{nickname}</p>

@@ -5,7 +5,7 @@ import { OnboardGuide } from "@/components/OnboardGuide";
 import { PixelCharacter } from "@/components/PixelCharacter";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
-import { homeFriends } from "@/data/home-friends";
+import { homeFriends, type HomeFriend } from "@/data/home-friends";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -45,7 +45,7 @@ export function HomePage() {
 
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
-  const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+  const [selectedFriend, setSelectedFriend] = useState<HomeFriend | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
 
   const [onboardOpen, setOnboardOpen] = useState(() => {
@@ -157,7 +157,12 @@ export function HomePage() {
           <div
             className="home__profile-figure"
             aria-hidden="true"
-            style={{ backgroundImage: backgroundGradient(profileBg) }}
+            style={
+              {
+                ["--home-profile-figure-bg" as string]:
+                  backgroundGradient(profileBg),
+              }
+            }
           >
             {character ? (
               <div className="home__profile-char">
@@ -170,33 +175,35 @@ export function HomePage() {
             ) : null}
           </div>
 
-          <div className="home__profile-meta">
-            <p className="home__profile-name">
-              {nickname}
-            </p>
+          <div className="home__profile-side">
+            <div className="home__profile-meta">
+              <p className="home__profile-name">
+                {nickname}
+              </p>
 
-            <div className="home__profile-coin">
-              <img
-                className="home__profile-coin-icon"
-                src="/assets/images/coin.svg"
-                alt=""
-                width={18}
-                height={18}
-              />
+              <div className="home__profile-coin">
+                <img
+                  className="home__profile-coin-icon"
+                  src="/assets/images/coin.svg"
+                  alt=""
+                  width={18}
+                  height={18}
+                />
 
-              <span className="home__profile-coin-text">
-                10 coin
-              </span>
+                <span className="home__profile-coin-text">
+                  10 coin
+                </span>
+              </div>
             </div>
-          </div>
 
-          <button
-            type="button"
-            className="btn btn--popup home__profile-copy"
-            onClick={handleCopyProfileLink}
-          >
-            프로필 링크 복사하기
-          </button>
+            <button
+              type="button"
+              className="btn btn--popup home__profile-copy"
+              onClick={handleCopyProfileLink}
+            >
+              프로필 복사하기
+            </button>
+          </div>
 
           <span
             className="home__profile-bubble home__profile-bubble--lg"
@@ -264,7 +271,7 @@ export function HomePage() {
                           index === 0 ? "friend" : undefined
                         }
                         onClick={() =>
-                          setSelectedFriend(friend.name)
+                          setSelectedFriend(friend)
                         }
                       >
                         <PockWindowThumb
@@ -308,11 +315,17 @@ export function HomePage() {
 
       <FriendProfilePopup
         open={selectedFriend !== null}
-        name={selectedFriend ?? ""}
+        name={selectedFriend?.name ?? ""}
         friendId={
           selectedFriend
-            ? `home-${selectedFriend}`
+            ? `home-${selectedFriend.name}`
             : undefined
+        }
+        character={selectedFriend?.character}
+        outfit={selectedFriend?.outfit}
+        background={selectedFriend?.background}
+        gender={
+          selectedFriend?.character === "boy" ? "male" : "female"
         }
         onClose={() => setSelectedFriend(null)}
       />

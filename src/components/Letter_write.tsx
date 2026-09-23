@@ -121,6 +121,7 @@ export function Letter_write({
   const [activeTab, setActiveTab] = useState<Letter_writeTab>(null);
   const [content, setContent] = useState("");
   const [sendConfirmOpen, setSendConfirmOpen] = useState(false);
+  const [emptyContentOpen, setEmptyContentOpen] = useState(false);
 
   const today = useMemo(() => startOfDay(new Date()), []);
   const selectedDate = useMemo(() => parseDotDate(date), [date]);
@@ -221,6 +222,10 @@ export function Letter_write({
   const handleSendClick = () => {
     if (!friend) {
       onSelectFriend?.();
+      return;
+    }
+    if (content.trim().length === 0) {
+      setEmptyContentOpen(true);
       return;
     }
     setSendConfirmOpen(true);
@@ -513,26 +518,34 @@ export function Letter_write({
           className="popup-layer"
           role="dialog"
           aria-modal="true"
-          aria-label="개봉일 설정"
+          aria-label="날짜설정"
         >
           <DimmedOverlay open onClick={closeDatePicker} />
           <article className="letter-write-cal-popup">
-            <header className="letter-write-cal-popup__bar">
-              <h2 className="letter-write-cal-popup__title">개봉일</h2>
-              <button
-                type="button"
-                className="letter-write-cal-popup__close"
-                aria-label="닫기"
-                onClick={closeDatePicker}
-              >
-                <img
-                  src="/assets/images/pixelarticons_close.svg"
-                  alt=""
-                  width={16}
-                  height={16}
+            <header className="pock-window__bar">
+              <h2 className="pock-window__title">개봉일</h2>
+              <div className="pock-window__actions">
+                <span
+                  className="pock-window__control pock-window__control--min"
+                  aria-hidden="true"
                 />
-              </button>
+                <button
+                  type="button"
+                  className="pock-window__control pock-window__control--close"
+                  aria-label="닫기"
+                  onClick={closeDatePicker}
+                >
+                  <img
+                    className="pock-window__control-icon"
+                    src="/assets/images/heart-icon.svg"
+                    alt=""
+                    width={9}
+                    height={7}
+                  />
+                </button>
+              </div>
             </header>
+            <div className="pock-window__rule" aria-hidden="true" />
 
             <div className="letter-write__cal">
               <div className="letter-write__cal-head">
@@ -632,6 +645,20 @@ export function Letter_write({
           setPaperTheme(id);
           setPaperOpen(false);
         }}
+      />
+
+      <Popup
+        open={emptyContentOpen}
+        variant="info"
+        size={popupSize}
+        message={
+          <>
+            편지를 작성해주세요
+          </>
+        }
+        confirmLabel="확인"
+        onConfirm={() => setEmptyContentOpen(false)}
+        onClose={() => setEmptyContentOpen(false)}
       />
 
       <Popup

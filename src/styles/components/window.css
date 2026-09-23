@@ -213,7 +213,7 @@
   flex: 0 0 auto;
   box-sizing: border-box;
   width: 100%;
-  height: 16.63px;
+  height: 1.039375rem; /* 16.63 */
   border: 0.5px solid #6e6e6e; /* base/700 */
   border-bottom: 0; /* 바깥 박스 top stroke와 겹침 제거 */
   background: linear-gradient(180deg, #d9d9d9 0%, #cddaeb 100%);
@@ -314,21 +314,21 @@
 
 /* Mo: 바깥 간격 · 프로필 2열 118 */
 .pock-window--mo .pock-window__body {
-  padding: 12px 11px 14px;
+  padding: 0.75rem 0.6875rem 0.875rem; /* 12 11 14 */
 }
 
 .pock-window--mo .pock-window__list {
   display: grid;
-  grid-template-columns: repeat(2, 118px);
+  grid-template-columns: repeat(2, 7.375rem); /* 118 */
   justify-content: center;
-  padding: 32px 0 33px;
-  gap: 18px 29px;
+  padding: 2rem 0 2.0625rem; /* 32 0 33 */
+  gap: 1.125rem 1.8125rem; /* 18 29 */
 }
 
 .pock-window--mo .pock-window__item {
-  flex: 0 0 118px;
-  width: 118px;
-  gap: 7px;
+  flex: 0 0 7.375rem; /* 118 */
+  width: 7.375rem;
+  gap: 0.4375rem; /* 7 */
 }
 
 .pock-window--mo .pock-window__pane {
@@ -341,7 +341,7 @@
 
 /* Tb = 2차: 바깥 좌우14 상하17 · 프로필 120×150 · 안박스 60% */
 .pock-window--tb .pock-window__body {
-  padding: 17px 14px;
+  padding: 1.0625rem 0.875rem; /* 17 14 */
 }
 
 .pock-window--tb .pock-window__pane {
@@ -354,26 +354,26 @@
 
 .pock-window--tb .pock-window__list {
   display: grid;
-  grid-template-columns: repeat(4, 120px);
+  grid-template-columns: repeat(4, 7.5rem); /* 120 */
   justify-content: center;
-  padding: 30px 10px 10px; /* 안박스–프로필 상30 하10 · 좌우 10 */
-  gap: 20px; /* 프로필 간격 20 */
+  padding: 1.875rem 0.625rem 0.625rem; /* 30 10 10 */
+  gap: 1.25rem; /* 20 */
 }
 
 .pock-window--tb .pock-window__item {
-  flex: 0 0 120px;
-  width: 120px;
-  gap: 12px; /* 이미지–텍스트 12 */
+  flex: 0 0 7.5rem; /* 120 */
+  width: 7.5rem;
+  gap: 0.75rem; /* 12 */
 }
 
 .pock-window--tb .pock-window__thumb {
-  width: 120px;
-  height: 150px;
+  width: 7.5rem; /* 120 */
+  height: 9.375rem; /* 150 */
 }
 
 /* Pc = 3차: 896×434.26 · 프로필/간격은 2차와 동일 · 안박스 60% */
 .pock-window--pc .pock-window__body {
-  padding: 17px 14px;
+  padding: 1.0625rem 0.875rem; /* 17 14 */
 }
 
 .pock-window--pc .pock-window__pane {
@@ -386,21 +386,21 @@
 
 .pock-window--pc .pock-window__list {
   display: grid;
-  grid-template-columns: repeat(4, 120px);
+  grid-template-columns: repeat(4, 7.5rem); /* 120 */
   justify-content: center;
-  padding: 30px 10px 10px; /* 상30 하10 · 좌우 10 */
-  gap: 20px;
+  padding: 1.875rem 0.625rem 0.625rem; /* 30 10 10 */
+  gap: 1.25rem; /* 20 */
 }
 
 .pock-window--pc .pock-window__item {
-  flex: 0 0 120px;
-  width: 120px;
-  gap: 12px;
+  flex: 0 0 7.5rem; /* 120 */
+  width: 7.5rem;
+  gap: 0.75rem; /* 12 */
 }
 
 .pock-window--pc .pock-window__thumb {
-  width: 120px;
-  height: 150px;
+  width: 7.5rem; /* 120 */
+  height: 9.375rem; /* 150 */
 }
 
 .pock-window__item {
@@ -517,7 +517,7 @@ button.pock-window__item:active .friend-checkbox {
 }
 
 button.pock-window__item--selected .pock-window__thumb {
-  box-shadow: 0 0 0 2px #2753f7;
+  box-shadow: 0 0 0 0.125rem #2753f7; /* 2 */
 }
 
 button.pock-window__control--close {
@@ -560,11 +560,14 @@ button.pock-window__control--close {
 .pock-window--friend-pick.pock-window--tb .pock-window__pane,
 .pock-window--friend-pick.pock-window--pc .pock-window__pane {
   position: relative;
+  display: flex;
   flex: 1 1 auto;
+  flex-direction: column;
   width: 100%;
   height: auto;
   min-height: 12.5rem; /* 200 */
   max-height: 22.5rem; /* 360 */
+  overflow: hidden;
   border-radius: 0;
   background-color: var(--color-base-0);
 }
@@ -574,13 +577,20 @@ button.pock-window__control--close {
 .pock-window--friend-pick.pock-window--tb .pock-window__list,
 .pock-window--friend-pick.pock-window--pc .pock-window__list {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: stretch;
   justify-content: flex-start;
   gap: 0;
-  height: 100%;
+  height: auto; /* 100%면 콘텐츠만큼 늘어나 스크롤 불가 */
+  min-height: 0;
+  max-height: 100%;
   padding: 0.5rem 0.75rem 0.75rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .pock-window--friend-pick .pock-window__item,
@@ -593,7 +603,7 @@ button.pock-window__control--close {
   gap: 0.625rem; /* 10 */
   width: 100%;
   min-height: 2.75rem; /* 44 */
-  padding: 0.375rem 0;
+  padding-bottom: 1.25rem;
   text-align: left;
 }
 
@@ -614,14 +624,15 @@ button.pock-window__control--close {
 }
 
 .pock-window--friend-pick .pock-window__thumb-figure {
-  top: 58%;
+  top: 0.1875rem; /* 3 — 머리 여유 */
   left: 50%;
   right: auto;
   bottom: auto;
-  width: 4.625rem; /* 74 */
-  height: 7.875rem; /* 126 */
+  /* 36 원형 안에 상체까지 · 이전 74×126은 얼굴만 확대됨 */
+  width: 2rem; /* 32 */
+  height: 3.375rem; /* 54 ≈ 32×(126/74) */
   margin: 0;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .pock-window--friend-pick .pock-window__name {
@@ -643,9 +654,7 @@ button.pock-window__control--close {
 }
 
 .pock-window--friend-pick .pock-window__scroll {
-  top: 0.5rem;
-  right: 0.375rem;
-  bottom: 0.5rem;
+  display: none;
 }
 
 .pock-window__foot--confirm {

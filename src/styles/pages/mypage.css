@@ -203,7 +203,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem; /* 8 — 카드↔라벨 · 임시값 */
+  gap: 1rem; /* 16 — 카드↔라벨 · 임시값 */
 }
 
 .mypage-gender .selection-box {
