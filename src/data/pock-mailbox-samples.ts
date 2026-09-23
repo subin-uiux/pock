@@ -144,14 +144,16 @@ function sample(
 /**
  * 잠김 탭 기본 정렬: 개봉 임박 순
  * 타이머(하루 미만) → D-2 → D-3 → D-12 …
+ * 초성 보기: hintPaid false = 코인 아이콘 (미구매)
+ * id 변경 시 localStorage 결제 기록과 분리되어 코인이 다시 보임
  */
 export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   sample(
     {
-      id: "received-locked-4",
+      id: "received-locked-d2",
       variant: "progress",
       target: "민수",
-      hintPaid: true,
+      hintPaid: false,
       sendDate: letterDateFromToday(-8),
       openDate: letterDateFromToday(2),
     },
@@ -160,7 +162,7 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   ),
   sample(
     {
-      id: "received-locked-2",
+      id: "received-locked-d3",
       variant: "progress",
       target: "교니",
       hintPaid: false,
@@ -172,10 +174,10 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   ),
   sample(
     {
-      id: "received-locked-5",
+      id: "received-locked-d12",
       variant: "progress",
       target: "교니",
-      hintPaid: false,
+      hintPaid: true,
       sendDate: letterDateFromToday(-8),
       openDate: letterDateFromToday(12),
     },
@@ -184,10 +186,10 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   ),
   sample(
     {
-      id: "received-locked-1",
+      id: "received-locked-t1",
       variant: "timer",
       target: "교니",
-      hintPaid: true,
+      hintPaid: false,
       timer: "22:05:13",
     },
     0,
@@ -195,7 +197,7 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   ),
   sample(
     {
-      id: "received-locked-3",
+      id: "received-locked-t2",
       variant: "timer",
       target: "지우",
       hintPaid: false,
@@ -206,7 +208,7 @@ export const RECEIVED_LOCKED_SAMPLES: MailboxCardSample[] = [
   ),
   sample(
     {
-      id: "received-locked-6",
+      id: "received-locked-t3",
       variant: "timer",
       target: "하나",
       hintPaid: true,
@@ -264,7 +266,7 @@ export const RECEIVED_OPEN_SAMPLES: MailboxCardSample[] = [
   ),
 ];
 
-/** 잠김 · 개봉 임박 순: 타이머 → D-3 → D-4 → 미오픈 */
+/** 잠김 · 개봉 임박 순: 미오픈 → 타이머 → D-3 → D-4 */
 export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
   sample(
     {
@@ -319,9 +321,8 @@ export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
   sample(
     {
       id: "sent-locked-6",
-      variant: "timer",
+      variant: "unopened",
       target: "지우",
-      timer: "11:08:56",
     },
     7,
     { theme: "orange" },

@@ -1,22 +1,30 @@
-import { storage } from "@/lib/storage";
 import type { LetterCardMailbox } from "@/types";
 
-const KEY = "pock.mailbox.friendFilters";
-
 type FriendFilterMap = Partial<Record<LetterCardMailbox, string[]>>;
+
+/** 이번 방문에서만 유지 — 새로고침 시 초기화 */
+const sessionFilters: FriendFilterMap = {};
+
+/** 예전 localStorage 키 제거 */
+if (typeof window !== "undefined") {
+  try {
+    window.localStorage.removeItem("pock.mailbox.friendFilters");
+  } catch {
+    /* ignore */
+  }
+}
 
 export function getMailboxFriendFilter(
   mailbox: LetterCardMailbox,
 ): string[] {
-  return storage.get<FriendFilterMap>(KEY)?.[mailbox] ?? [];
+  return sessionFilters[mailbox] ?? [];
 }
 
 export function setMailboxFriendFilter(
   mailbox: LetterCardMailbox,
   names: string[],
 ): void {
-  const prev = storage.get<FriendFilterMap>(KEY) ?? {};
-  storage.set(KEY, { ...prev, [mailbox]: names });
+  sessionFilters[mailbox] = names;
 }
 
 export function clearMailboxFriendFilter(mailbox: LetterCardMailbox): void {

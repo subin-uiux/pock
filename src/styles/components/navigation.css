@@ -1,7 +1,7 @@
 ﻿/**
  * navigation.css
  * 하단 내비게이션.
- * Mo: 아이콘 묶음 360(패딩 20 포함) · 그라데이션 풀폭 · 높이 72
+ * Mo: 아이콘 묶음 최소 360 · 화면 커지면 양옆 여백 60까지 늘어나며 간격 확장
  * Pad/Pc: 아이콘 gap 26 · 그라데이션 485 고정 · 높이 66
  * 아이콘: Mo 54→56, Pad/Pc 50→56 (활성·hover)
  */
@@ -10,7 +10,8 @@
 .navigation {
   --navigation-bar-height: 4.5rem; /* Mo 72 */
   --navigation-shell-width: 100%;
-  --navigation-list-width: 22.5rem; /* Mo 아이콘 묶음 360 */
+  /* 최소 360 · 양옆 60(합 120) 확보되면 그만큼 넓혀 아이콘 간격 확장 */
+  --navigation-list-width: max(22.5rem, calc(100% - 7.5rem)); /* 360 · 100%-120 */
   --navigation-list-padding-x: 1.25rem; /* 20 */
   /* 레이아웃 슬롯 = 기본 크기 → space-between 간격 확보. 확대는 scale만 */
   --navigation-icon-size: 3.375rem; /* Mo 54 */

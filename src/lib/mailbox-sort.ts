@@ -42,12 +42,18 @@ function sortDateMs(sample: MailboxCardSample): number | null {
 }
 
 function remainingDays(sample: MailboxCardSample): number | null {
-  /* 타이머 = 하루 미만 남음 → 개봉 임박 순에서 맨 앞 */
-  if (sample.variant === "timer") return 0;
   if (!sample.openDate) return null;
   const open = parseLetterDate(sample.openDate);
   if (!open) return null;
   return calendarDaysBetween(new Date(), open);
+}
+
+/** 개봉 임박 순 tier — 낮을수록 위 · 미오픈 → 타이머 → 게이지 */
+function lockedSoonTier(sample: MailboxCardSample): number {
+  if (sample.variant === "unopened") return 0;
+  if (sample.variant === "timer") return 1;
+  if (sample.openDate) return 2;
+  return 3;
 }
 
 function compareNullable(
@@ -82,17 +88,24 @@ export function sortMailboxCards(
 
   if (isLockedSort) {
     next.sort((a, b) => {
-      const byDays = compareNullable(
+      if (sortId === "soon") {
+        const tierDiff = lockedSoonTier(a) - lockedSoonTier(b);
+        if (tierDiff !== 0) return tierDiff;
+        if (a.variant === "timer" && b.variant === "timer") {
+          return compareTimerSeconds(a, b);
+        }
+        return compareNullable(remainingDays(a), remainingDays(b), true);
+      }
+
+      /* 개봉일 먼 순 — 남은 일 많은 게이지 먼저 · 미오픈·타이머는 뒤 */
+      const daysDiff = compareNullable(
         remainingDays(a),
         remainingDays(b),
-        sortId === "soon",
+        false,
       );
-      if (byDays !== 0) return byDays;
-      /* 같은 임박도(타이머끼리) → 남은 시간 짧은 순 */
-      if (a.variant === "timer" && b.variant === "timer") {
-        return compareTimerSeconds(a, b);
-      }
-      return 0;
+      if (daysDiff !== 0) return daysDiff;
+      /* 둘 다 날짜 없음(미오픈·타이머 등) — 미오픈을 타이머보다 앞 */
+      return lockedSoonTier(a) - lockedSoonTier(b);
     });
     return next;
   }
