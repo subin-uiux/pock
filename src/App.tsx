@@ -14,6 +14,7 @@ import { GuidePage } from "@/pages/GuidePage";
 import { HomePage } from "@/pages/HomePage";
 import { AlertPage } from "@/pages/AlertPage";
 import { NoticePage } from "@/pages/NoticePage";
+import { InquiryPage } from "@/pages/InquiryPage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { Friend_listPage } from "@/pages/Friend_listPage";
 import { MyPage } from "@/pages/MyPage";
@@ -173,6 +174,10 @@ export default function App() {
 
           <Route element={<AppLayout pageClassName="page--notice" />}>
             <Route path="/notice" element={<NoticePage />} />
+          </Route>
+
+          <Route element={<AppLayout pageClassName="page--inquiry" />}>
+            <Route path="/inquiry" element={<InquiryPage />} />
           </Route>
 
           <Route element={<AppLayout pageClassName="page--settings" />}>

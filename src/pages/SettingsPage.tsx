@@ -305,9 +305,7 @@ export function SettingsPage() {
                 <button
                   type="button"
                   className="settings-menu__btn"
-                  onClick={() => {
-                    /* 문의하기 페이지 미연결 — 임시값 */
-                  }}
+                  onClick={() => navigate("/inquiry")}
                 >
                   <span className="settings-menu__label">문의하기</span>
                   <img
