@@ -309,8 +309,8 @@
 }
 
 .letter-card__status--unopened {
-  background-color: var(--color-rainbow-blue-light);
-  color: var(--color-rainbow-blue-base);
+  background-color: var(--color-rainbow-blue-light); /* Rainbow / blue/light */
+  color: var(--color-brand-window-base); /* brand/window/base */
   font-size: 0.875rem;
   line-height: var(--line-height-tight);
 }
