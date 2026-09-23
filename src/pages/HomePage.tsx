@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { OnboardGuide } from "@/components/OnboardGuide";
+import { PixelCharacter } from "@/components/PixelCharacter";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
 import { homeFriends } from "@/data/home-friends";
@@ -10,8 +11,8 @@ import {
   shouldOpenHomeOnboard,
 } from "@/lib/home-onboard";
 import {
-  CHARACTER_BASE,
-  getOutfitById,
+  backgroundGradient,
+  getBackgroundById,
   getProfileSetup,
 } from "@/lib/profile-setup";
 
@@ -45,6 +46,7 @@ export function HomePage() {
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
   const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+  const [toastOpen, setToastOpen] = useState(false);
 
   const [onboardOpen, setOnboardOpen] = useState(() => {
     const fromComplete =
@@ -54,9 +56,9 @@ export function HomePage() {
     return fromComplete || shouldOpenHomeOnboard();
   });
 
-  const outfit = useMemo(
-    () => (character ? getOutfitById(character, saved.outfit) : null),
-    [character, saved.outfit]
+  const profileBg = useMemo(
+    () => getBackgroundById(saved.background),
+    [saved.background],
   );
 
   useEffect(() => {
@@ -93,16 +95,26 @@ export function HomePage() {
     };
   }, []);
 
-  const wearStyle: CSSProperties | undefined =
-    outfit && !outfit.fullFrame
-      ? {
-          width: `${(outfit.width / CHARACTER_BASE.width) * 100}%`,
-        }
-      : undefined;
+  useEffect(() => {
+    if (!toastOpen) return;
+    const timer = window.setTimeout(() => setToastOpen(false), 1000);
+    return () => window.clearTimeout(timer);
+  }, [toastOpen]);
 
   const finishOnboard = () => {
     markHomeOnboardSeen();
     setOnboardOpen(false);
+  };
+
+  const handleCopyProfileLink = async () => {
+    /* 임시값 — 프로필 공유 URL 미확정 */
+    const link = `${window.location.origin}/home?u=${encodeURIComponent(nickname)}`;
+    try {
+      await navigator.clipboard.writeText(link);
+    } catch {
+      /* ignore */
+    }
+    setToastOpen(true);
   };
 
   return (
@@ -145,32 +157,16 @@ export function HomePage() {
           <div
             className="home__profile-figure"
             aria-hidden="true"
+            style={{ backgroundImage: backgroundGradient(profileBg) }}
           >
             {character ? (
-              <>
-                <img
-                  className="home__profile-base"
-                  src={CHARACTER_BASE.src[character]}
-                  alt=""
-                  width={CHARACTER_BASE.width}
-                  height={CHARACTER_BASE.height}
+              <div className="home__profile-char">
+                <PixelCharacter
+                  character={character}
+                  outfit={saved.outfit}
+                  className="home__profile-canvas"
                 />
-
-                {outfit ? (
-                  <img
-                    className={
-                      outfit.fullFrame
-                        ? "home__profile-wear home__profile-wear--full"
-                        : "home__profile-wear"
-                    }
-                    src={outfit.src}
-                    alt=""
-                    width={outfit.width}
-                    height={outfit.height}
-                    style={wearStyle}
-                  />
-                ) : null}
-              </>
+              </div>
             ) : null}
           </div>
 
@@ -193,6 +189,23 @@ export function HomePage() {
               </span>
             </div>
           </div>
+
+          <button
+            type="button"
+            className="btn btn--popup home__profile-copy"
+            onClick={handleCopyProfileLink}
+          >
+            프로필 링크 복사하기
+          </button>
+
+          <span
+            className="home__profile-bubble home__profile-bubble--lg"
+            aria-hidden="true"
+          />
+          <span
+            className="home__profile-bubble home__profile-bubble--sm"
+            aria-hidden="true"
+          />
         </aside>
 
         <div className="home__friends">
@@ -309,6 +322,13 @@ export function HomePage() {
         onSkip={finishOnboard}
         onComplete={finishOnboard}
       />
+
+      {toastOpen ? (
+        <div className="friend-list-toast" role="status" aria-live="polite">
+          <span className="friend-list-toast__icon" aria-hidden="true" />
+          <p className="friend-list-toast__text">링크 복사가 완료되었습니다.</p>
+        </div>
+      ) : null}
     </section>
   );
 }
