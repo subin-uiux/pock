@@ -72,7 +72,7 @@ const COIN_PACKS: {
 export function CoinPage() {
   const navigate = useNavigate();
   const [buyOpen, setBuyOpen] = useState(false);
-  const [selectedPack, setSelectedPack] = useState<(typeof COIN_PACKS)[number] | null>(
+  const [, setSelectedPack] = useState<(typeof COIN_PACKS)[number] | null>(
     null,
   );
   const [toastOpen, setToastOpen] = useState(false);
