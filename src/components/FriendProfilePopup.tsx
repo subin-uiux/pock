@@ -171,7 +171,7 @@ export function FriendProfilePopup({
           className="friend-profile-popup__send"
           onClick={handleSendLetter}
         >
-          편지 보내러 가기
+          친구에게 POCK 보내기
         </Button>
       </article>
     </div>

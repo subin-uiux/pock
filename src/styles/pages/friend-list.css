@@ -354,17 +354,7 @@
   line-height: var(--line-height-tight);
 }
 
-/* Pad/Pc 네비 아이콘 50 — 토스트 위치만 */
-@media (min-width: 769px) {
-  .friend-list-toast {
-    bottom: calc(
-      env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
-        3.125rem + 1.0625rem
-    );
-  }
-}
-
-/* 링크 복사 토스트 — 코인과 동일 · 넓이만 330 */
+/* 링크 복사 토스트 — Mo는 콘텐츠 폭에 맞춤 */
 .friend-list-toast {
   position: fixed;
   left: 50%;
@@ -379,8 +369,8 @@
   justify-content: center;
   gap: 0.625rem; /* 10 — 아이콘↔텍스트 */
   box-sizing: border-box;
-  width: 20.625rem; /* 330 */
-  max-width: calc(100% - 2.5rem);
+  width: calc(100% - 2.5rem); /* Mo: 좌우 20 · 다른 요소와 동일 */
+  max-width: 33.75rem; /* 540 — friend-list 창과 동일 */
   height: 3.1875rem; /* 51 */
   padding: 0 1.25rem; /* 좌우 임시값 */
   border-radius: 0.625rem; /* 10 */
@@ -389,6 +379,18 @@
   color: var(--color-base-0);
   transform: translateX(-50%);
   pointer-events: none;
+}
+
+/* Pad/Pc — 폭 330 · 네비 아이콘 50 기준 위치 */
+@media (min-width: 769px) {
+  .friend-list-toast {
+    bottom: calc(
+      env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+        3.125rem + 1.0625rem
+    );
+    width: 20.625rem; /* 330 */
+    max-width: calc(100% - 2.5rem);
+  }
 }
 
 .friend-list-toast__icon {
