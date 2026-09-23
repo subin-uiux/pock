@@ -9,7 +9,7 @@ const INTRO_LINES = [
   "POCK이 확인하고 답변해드릴게요",
 ] as const;
 
-/** 기본 placeholder */
+/** 기본 placeholder — 입력칸 안 */
 const PLACEHOLDERS = {
   title: "궁금한 내용을 한 줄로 입력해주세요.",
   content:
@@ -17,7 +17,7 @@ const PLACEHOLDERS = {
   email: "답변받을 이메일을 입력해주세요.",
 } as const;
 
-/** 미작성 시 입력칸 안 빨간 안내 — 시안 */
+/** 미작성 시 입력칸 아래 빨간 안내 — 시안 */
 const EMPTY_HINTS = {
   title: "궁금한 내용을 한 줄로 입력해주세요.",
   content: "문의제목을 작성해주세요.",
@@ -162,12 +162,22 @@ export function InquiryPage() {
                   setTitle(event.target.value);
                   clearError("title");
                 }}
-                placeholder={
-                  errors.title ? EMPTY_HINTS.title : PLACEHOLDERS.title
-                }
+                placeholder={PLACEHOLDERS.title}
                 autoComplete="off"
                 aria-invalid={Boolean(errors.title)}
+                aria-describedby={
+                  errors.title ? "inquiry-title-error" : undefined
+                }
               />
+              {errors.title ? (
+                <p
+                  id="inquiry-title-error"
+                  className="inquiry-page__hint"
+                  role="alert"
+                >
+                  {EMPTY_HINTS.title}
+                </p>
+              ) : null}
             </div>
 
             <div className="inquiry-page__field">
@@ -186,12 +196,22 @@ export function InquiryPage() {
                   setContent(event.target.value);
                   clearError("content");
                 }}
-                placeholder={
-                  errors.content ? EMPTY_HINTS.content : PLACEHOLDERS.content
-                }
+                placeholder={PLACEHOLDERS.content}
                 rows={6}
                 aria-invalid={Boolean(errors.content)}
+                aria-describedby={
+                  errors.content ? "inquiry-content-error" : undefined
+                }
               />
+              {errors.content ? (
+                <p
+                  id="inquiry-content-error"
+                  className="inquiry-page__hint"
+                  role="alert"
+                >
+                  {EMPTY_HINTS.content}
+                </p>
+              ) : null}
             </div>
 
             <div className="inquiry-page__field">
@@ -211,12 +231,22 @@ export function InquiryPage() {
                   setEmail(event.target.value);
                   clearError("email");
                 }}
-                placeholder={
-                  errors.email ? EMPTY_HINTS.email : PLACEHOLDERS.email
-                }
+                placeholder={PLACEHOLDERS.email}
                 autoComplete="email"
                 aria-invalid={Boolean(errors.email)}
+                aria-describedby={
+                  errors.email ? "inquiry-email-error" : undefined
+                }
               />
+              {errors.email ? (
+                <p
+                  id="inquiry-email-error"
+                  className="inquiry-page__hint"
+                  role="alert"
+                >
+                  {EMPTY_HINTS.email}
+                </p>
+              ) : null}
             </div>
 
             <div className="inquiry-page__actions">
