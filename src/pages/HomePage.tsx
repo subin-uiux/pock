@@ -5,7 +5,7 @@ import { OnboardGuide } from "@/components/OnboardGuide";
 import { PixelCharacter } from "@/components/PixelCharacter";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
-import { homeFriends } from "@/data/home-friends";
+import { homeFriends, type HomeFriend } from "@/data/home-friends";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -45,7 +45,7 @@ export function HomePage() {
 
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
-  const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+  const [selectedFriend, setSelectedFriend] = useState<HomeFriend | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
 
   const [onboardOpen, setOnboardOpen] = useState(() => {
@@ -264,7 +264,7 @@ export function HomePage() {
                           index === 0 ? "friend" : undefined
                         }
                         onClick={() =>
-                          setSelectedFriend(friend.name)
+                          setSelectedFriend(friend)
                         }
                       >
                         <PockWindowThumb
@@ -308,11 +308,17 @@ export function HomePage() {
 
       <FriendProfilePopup
         open={selectedFriend !== null}
-        name={selectedFriend ?? ""}
+        name={selectedFriend?.name ?? ""}
         friendId={
           selectedFriend
-            ? `home-${selectedFriend}`
+            ? `home-${selectedFriend.name}`
             : undefined
+        }
+        character={selectedFriend?.character}
+        outfit={selectedFriend?.outfit}
+        background={selectedFriend?.background}
+        gender={
+          selectedFriend?.character === "boy" ? "male" : "female"
         }
         onClose={() => setSelectedFriend(null)}
       />

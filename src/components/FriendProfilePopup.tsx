@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
+import { PockWindowThumb } from "@/components/PockWindowThumb";
+import type {
+  BackgroundId,
+  CharacterId,
+  OutfitId,
+} from "@/lib/profile-setup";
 import type { PockUser } from "@/types";
 
 export interface FriendProfilePopupProps {
@@ -8,10 +14,14 @@ export interface FriendProfilePopupProps {
   name: string;
   /** 있으면 보내기 화면 To.에 그대로 전달 */
   friendId?: string;
-  /** 프로필 이미지 — 비우면 placeholder */
+  /** 프로필 이미지 — 비우면 placeholder · thumb 없을 때 fallback */
   profileImage?: string;
   /** 캐릭터 배경 — male: 배경선택 파랑 · female: 배경선택 분홍 */
   gender?: "male" | "female";
+  /** pock-window__thumb와 동일 — 있으면 우선 */
+  character?: CharacterId;
+  outfit?: OutfitId;
+  background?: BackgroundId;
   /** 친구가 보낸 POCK 수 — 임시값 */
   receivedCount?: number;
   /** 내가 보낸 POCK 수 — 임시값 */
@@ -33,6 +43,9 @@ export function FriendProfilePopup({
   friendId,
   profileImage = "",
   gender = "female",
+  character,
+  outfit,
+  background,
   receivedCount = 3,
   sentCount = 2,
   onDelete,
@@ -42,6 +55,9 @@ export function FriendProfilePopup({
   const navigate = useNavigate();
 
   if (!open) return null;
+
+  const hasThumb =
+    Boolean(character) && Boolean(outfit) && Boolean(background);
 
   const handleSendLetter = () => {
     if (onSendLetter) {
@@ -53,6 +69,10 @@ export function FriendProfilePopup({
       id: friendId || `friend-${name}`,
       name,
       profileImage,
+      gender,
+      character,
+      outfit,
+      background,
     };
 
     onClose();
@@ -85,24 +105,33 @@ export function FriendProfilePopup({
           />
         </button>
 
-        <div
-          className={
-            gender === "male"
-              ? "friend-profile-popup__avatar friend-profile-popup__avatar--male"
-              : "friend-profile-popup__avatar friend-profile-popup__avatar--female"
-          }
-          aria-hidden="true"
-        >
-          {profileImage ? (
-            <img
-              className="friend-profile-popup__avatar-img"
-              src={profileImage}
-              alt=""
-              width={82}
-              height={137}
-            />
-          ) : null}
-        </div>
+        {hasThumb ? (
+          <PockWindowThumb
+            character={character!}
+            outfit={outfit!}
+            background={background!}
+            className="friend-profile-popup__avatar"
+          />
+        ) : (
+          <div
+            className={
+              gender === "male"
+                ? "friend-profile-popup__avatar friend-profile-popup__avatar--male"
+                : "friend-profile-popup__avatar friend-profile-popup__avatar--female"
+            }
+            aria-hidden="true"
+          >
+            {profileImage ? (
+              <img
+                className="friend-profile-popup__avatar-img"
+                src={profileImage}
+                alt=""
+                width={82}
+                height={137}
+              />
+            ) : null}
+          </div>
+        )}
 
         <p className="friend-profile-popup__name">{name}</p>
 

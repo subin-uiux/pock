@@ -101,20 +101,24 @@
   object-fit: contain;
 }
 
-/* 캐릭터 카드 140×165.38 · 모서리 8.19 · 캐릭터 중앙 */
+/* 캐릭터 카드 — pock-window__thumb와 동일 (118×146 · radius 10) */
 .friend-profile-popup__avatar {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 8.75rem; /* 140 */
-  height: 10.33625rem; /* 165.38 */
+  width: 7.375rem; /* 118 */
+  height: 9.125rem; /* 146 */
   overflow: hidden;
-  border-radius: 0.511875rem; /* 8.19 */
+  border-radius: 0.625rem; /* 10 */
 }
 
-/* 시안 — 남 #058AFF / 여 #FFB9F3 · 0% 50% → 100% 100% */
+.pock-window__thumb.friend-profile-popup__avatar {
+  display: block;
+}
+
+/* fallback — thumb 데이터 없을 때 · rainbow male/female */
 .friend-profile-popup__avatar--male {
   background-image: linear-gradient(
     180deg,
@@ -131,10 +135,10 @@
   );
 }
 
-/* 캐릭터 81.87 — 원본 비율 유지(106×180) · 중앙 */
+/* fallback 캐릭터 이미지 */
 .friend-profile-popup__avatar-img {
   display: block;
-  width: 5.116875rem; /* 81.87 */
+  width: 4.625rem; /* 74 — thumb-figure와 동일 */
   height: auto;
   aspect-ratio: 106 / 180;
   max-height: 100%;
