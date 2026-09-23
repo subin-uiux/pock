@@ -556,10 +556,20 @@
   color: var(--color-rainbow-red-base); /* 시안 빨강 */
 }
 
+/* Mo — 토스트 가로를 settings 카드(max 500)와 동일 */
+.page--settings .friend-list-toast {
+  max-width: 31.25rem; /* 500 */
+}
+
 /* Tb / Pc — 630 · 출석+메뉴 가로 2열 */
 @media (min-width: 769px) {
   .page--settings .main {
     padding-inline: 1.25rem; /* 20 — 임시값 */
+  }
+
+  .page--settings .friend-list-toast {
+    width: 20.625rem; /* 330 */
+    max-width: calc(100% - 2.5rem);
   }
 
   .settings {

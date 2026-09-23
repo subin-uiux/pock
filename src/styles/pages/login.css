@@ -135,6 +135,13 @@
   font-size: 1rem;
 }
 
+.login__actions .btn--push-muted,
+.login__actions .btn--push {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
 .login__footer {
   display: flex;
   align-items: center;
@@ -198,7 +205,8 @@
   }
 
   .login__actions {
-    width: 100%;
-    max-width: 28.75rem; /* 460 */
+    width: 22.0625rem; /* 353 — 인풋과 동일 */
+    max-width: 100%;
+    align-self: center;
   }
 }

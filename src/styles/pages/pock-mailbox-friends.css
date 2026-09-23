@@ -143,12 +143,9 @@
   background-color: var(--color-base-200);
 }
 
-.mailbox-friends__avatar {
+/* 아바타는 friend-list-page__avatar 재사용 */
+.mailbox-friends__row .friend-list-page__avatar {
   flex: 0 0 auto;
-  width: 2.25rem; /* 36 */
-  height: 2.25rem;
-  border-radius: 50%;
-  background-color: var(--color-base-200); /* 캐릭터 임시 — 시안 미기재 */
 }
 
 .mailbox-friends__name {
@@ -187,11 +184,6 @@
     width: 100%;
     max-width: 100%;
     height: 2.5rem; /* 40 — Search Input Wide/Tb */
-  }
-
-  .mailbox-friends__avatar {
-    width: 3.125rem; /* 50 */
-    height: 3.125rem;
   }
 
   /* 위 영역(600)과 동일 폭 · 기본 Push Tb 460 고정 해제 */

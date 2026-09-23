@@ -1,6 +1,6 @@
 import { type RefObject, useEffect } from "react";
 
-/** 디자인 스크롤바 thumb ↔ 목록 scrollTop 동기화 · 드래그 */
+/** 디자인 스크롤바 thumb ↔ 목록 scrollTop 동기화 · 드래그 · 오버플로 시에만 표시 */
 export function useDesignScrollbar(
   listRef: RefObject<HTMLElement | null>,
   trackRef: RefObject<HTMLElement | null>,
@@ -19,8 +19,14 @@ export function useDesignScrollbar(
 
     const sync = () => {
       const maxScroll = list.scrollHeight - list.clientHeight;
+      const overflow = list.clientHeight > 0 && maxScroll > 0;
+      track.hidden = !overflow;
+      if (!overflow) {
+        thumb.style.top = "0px";
+        return;
+      }
       const travel = Math.max(0, track.clientHeight - thumb.offsetHeight);
-      if (maxScroll <= 0 || travel <= 0) {
+      if (travel <= 0) {
         thumb.style.top = "0px";
         return;
       }

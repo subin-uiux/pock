@@ -39,15 +39,6 @@ function placeCaretAtEnd(el: HTMLElement) {
   selection.addRange(range);
 }
 
-function formatWriteDate() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-
-  return `${year}.${month}.${day}`;
-}
-
 function formatDotDate(date: Date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -112,8 +103,8 @@ export function Letter_write({
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [from, setFrom] = useState(getFromNickname);
-  const [writtenDate, setWrittenDate] = useState(() => formatWriteDate());
-  const [date, setDate] = useState(""); // 개봉일
+  const [writtenDate, setWrittenDate] = useState("");
+  const [date, setDate] = useState(""); // 개봉일 — 미설정 시 빈 문자열
   const [paperTheme, setPaperTheme] = useState<LetterTheme>(DEFAULT_LETTER_PAPER);
   const [paperOpen, setPaperOpen] = useState(false);
   const [dateOpen, setDateOpen] = useState(false);
@@ -122,8 +113,15 @@ export function Letter_write({
   const [content, setContent] = useState("");
   const [sendConfirmOpen, setSendConfirmOpen] = useState(false);
   const [emptyContentOpen, setEmptyContentOpen] = useState(false);
+  const [emptyDateOpen, setEmptyDateOpen] = useState(false);
 
   const today = useMemo(() => startOfDay(new Date()), []);
+  /** 개봉일 선택 가능 시작 — 오늘 다음 날 */
+  const minOpenDate = useMemo(() => {
+    const next = new Date(today);
+    next.setDate(next.getDate() + 1);
+    return next;
+  }, [today]);
   const selectedDate = useMemo(() => parseDotDate(date), [date]);
   const [viewYear, setViewYear] = useState(() => today.getFullYear());
   const [viewMonth, setViewMonth] = useState(() => today.getMonth());
@@ -145,10 +143,10 @@ export function Letter_write({
 
   useEffect(() => {
     if (!dateOpen) return;
-    const base = selectedDate ?? today;
+    const base = selectedDate ?? minOpenDate;
     setViewYear(base.getFullYear());
     setViewMonth(base.getMonth());
-  }, [dateOpen, selectedDate, today]);
+  }, [dateOpen, selectedDate, minOpenDate]);
 
   const calendarDays = useMemo(() => {
     const first = new Date(viewYear, viewMonth, 1);
@@ -201,7 +199,8 @@ export function Letter_write({
 
   const handlePickDay = (value: Date) => {
     const picked = startOfDay(value);
-    if (picked.getTime() < today.getTime()) return; // 임시값: 오늘 이전 비활성
+    // 오늘 포함 이전은 비활성 — 다음날부터 선택 가능
+    if (picked.getTime() < minOpenDate.getTime()) return;
     const next = formatDotDate(picked);
     setDate(next);
     setWrittenDate(next);
@@ -226,6 +225,10 @@ export function Letter_write({
     }
     if (content.trim().length === 0) {
       setEmptyContentOpen(true);
+      return;
+    }
+    if (date.trim().length === 0) {
+      setEmptyDateOpen(true);
       return;
     }
     setSendConfirmOpen(true);
@@ -454,16 +457,22 @@ export function Letter_write({
                 type="button"
                 aria-label="사진 추가"
                 onClick={() => fileRef.current?.click()}
-                style={
-                  imageUrl
-                    ? {
-                        backgroundImage: `url(${imageUrl})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }
-                    : undefined
-                }
-              />
+              >
+                {imageUrl ? (
+                  <img
+                    className="letter-write__media-image"
+                    src={imageUrl}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="letter-write__media-icon"
+                    src="/assets/images/image-icon.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                )}
+              </button>
               <div
                 className="letter-write__paper-body"
                 contentEditable
@@ -494,10 +503,10 @@ export function Letter_write({
               </label>
               <time
                 className="letter-write__date"
-                dateTime={writtenDate.replace(/\./g, "-")}
+                dateTime={writtenDate ? writtenDate.replace(/\./g, "-") : undefined}
                 aria-label="개봉일"
               >
-                {writtenDate}
+                {writtenDate || "개봉일 선택"}
               </time>
             </div>
           </div>
@@ -600,7 +609,9 @@ export function Letter_write({
                 aria-label={`${viewYear}년 ${viewMonth + 1}월`}
               >
                 {calendarDays.map((cell) => {
-                  const isPast = cell.date.getTime() < today.getTime();
+                  const cellDay = startOfDay(cell.date);
+                  const isDisabled =
+                    cellDay.getTime() < minOpenDate.getTime();
                   const isToday = sameDay(cell.date, today);
                   const isSelected =
                     selectedDate !== null && sameDay(cell.date, selectedDate);
@@ -609,7 +620,7 @@ export function Letter_write({
                     cell.outside ? "letter-write__cal-day--outside" : "",
                     isToday ? "letter-write__cal-day--today" : "",
                     isSelected ? "letter-write__cal-day--selected" : "",
-                    isPast ? "letter-write__cal-day--disabled" : "",
+                    isDisabled ? "letter-write__cal-day--disabled" : "",
                   ]
                     .filter(Boolean)
                     .join(" ");
@@ -620,7 +631,7 @@ export function Letter_write({
                       type="button"
                       className={className}
                       role="gridcell"
-                      disabled={isPast}
+                      disabled={isDisabled}
                       aria-label={formatDotDate(cell.date)}
                       aria-current={isToday ? "date" : undefined}
                       aria-pressed={isSelected}
@@ -659,6 +670,23 @@ export function Letter_write({
         confirmLabel="확인"
         onConfirm={() => setEmptyContentOpen(false)}
         onClose={() => setEmptyContentOpen(false)}
+      />
+
+      <Popup
+        open={emptyDateOpen}
+        variant="info"
+        size={popupSize}
+        message={
+          <>
+            날짜를 지정해주세요
+          </>
+        }
+        confirmLabel="확인"
+        onConfirm={() => {
+          setEmptyDateOpen(false);
+          openDatePicker();
+        }}
+        onClose={() => setEmptyDateOpen(false)}
       />
 
       <Popup
