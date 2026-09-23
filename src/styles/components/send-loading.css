@@ -68,6 +68,20 @@
   image-rendering: crisp-edges;
 }
 
+.send-loading__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 */
+  margin-top: 1.25rem; /* 20 — 임시값 */
+}
+
+.send-loading__action.btn--action-text {
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+}
+
 @media (min-width: 769px) {
   .send-loading {
     background-image: url("/assets/images/background/bg-pad.png");
@@ -80,18 +94,22 @@
   }
 
   .send-loading__logo--complete {
-    width: 15.625rem; /* 250 — 원본 */
-    height: 12.75rem; /* 204 — 원본 */
+    width: 11.625rem; /* 186 — 원본 */
+    height: 9.75rem; /* 156 — 원본 */
   }
 
   .send-loading__text {
     margin-top: 1.5rem; /* 24 — 임시값 */
-    font-size: 1.75rem; /* 28 — Pad */
+    font-size: 1.5rem; /* 24 — Pad */
   }
 
   .send-loading__bar-image {
     width: 15.625rem; /* 250 — 원본 비율 유지 · 임시값 */
     height: 1.625rem; /* 26 */
     margin-top: 1.5rem;
+  }
+
+  .send-loading__actions {
+    margin-top: 1.5rem; /* 24 — 임시값 */
   }
 }

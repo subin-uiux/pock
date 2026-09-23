@@ -35,6 +35,7 @@ export function PockSendPage() {
   const [dirty, setDirty] = useState(false);
   const [leaveOpen, setLeaveOpen] = useState(false);
   const [sending, setSending] = useState(false);
+  const [writeKey, setWriteKey] = useState(0);
   const pendingPayloadRef = useRef<LetterWritePayload | null>(null);
   const pendingLeaveRef = useRef<(() => void) | null>(null);
 
@@ -67,19 +68,23 @@ export function PockSendPage() {
     setSending(true);
   };
 
-  const handleSendFinished = useCallback(() => {
+  const handleSendComplete = useCallback(() => {
     const payload = pendingPayloadRef.current;
     pendingPayloadRef.current = null;
-    if (!payload) {
-      setSending(false);
-      return;
-    }
-    const saved = addSentPockFromPayload(payload);
-    if (saved) {
-      navigate("/pock-sent", { replace: true });
-      return;
-    }
+    if (!payload) return;
+    addSentPockFromPayload(payload);
+  }, []);
+
+  const handleWriteMore = useCallback(() => {
     setSending(false);
+    setFriend(null);
+    setDirty(false);
+    setWriteKey((key) => key + 1);
+  }, []);
+
+  const handleOpenSent = useCallback(() => {
+    setSending(false);
+    navigate("/pock-sent", { replace: true });
   }, [navigate]);
 
   const handleLeaveConfirm = () => {
@@ -100,6 +105,7 @@ export function PockSendPage() {
     <section className="pock-send" aria-label="POCK 작성">
       <div className="pock-send__stage">
         <Letter_write
+          key={writeKey}
           size={size}
           friend={friend}
           onSend={handleSend}
@@ -145,7 +151,12 @@ export function PockSendPage() {
         onClose={handleLeaveCancel}
       />
 
-      <SendLoading open={sending} onFinished={handleSendFinished} />
+      <SendLoading
+        open={sending}
+        onComplete={handleSendComplete}
+        onWriteMore={handleWriteMore}
+        onOpenSent={handleOpenSent}
+      />
     </section>
   );
 }
