@@ -77,6 +77,10 @@ export function InquiryPage() {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
+    setTitle("");
+    setContent("");
+    setEmail("");
+    setErrors({});
     setToastOpen(true);
   };
 

@@ -36,7 +36,7 @@
   padding-bottom: 6rem; /* 임시값 — 하단 네비 */
 }
 
-/* 헤더: 뒤로 24 · 위 40 · 제목 16 중앙 — mypage와 동일 */
+/* 헤더: 뒤로 24 · 위 Mo20 / Tb26 / Pc40 · 제목 16 중앙 — mypage와 동일 */
 .notice-page__header {
   position: relative;
   display: flex;
@@ -45,7 +45,7 @@
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  margin-top: 2.5rem; /* 40 */
+  margin-top: 1.25rem; /* 20 — Mo */
   min-height: 1.5rem; /* 24 */
 }
 
@@ -81,7 +81,7 @@
   text-align: center;
 }
 
-/* Mo — 흰 패널 폭 100%(~540) · 높이 591 · stroke base/700 · 헤더↔창 16 */
+/* Mo — 흰 패널 폭 100%(~540) · 높이 591 · stroke base/700 · 헤더↔창 20 */
 .page--notice .notice-page__window {
   display: flex;
   flex: 0 0 auto;
@@ -90,7 +90,7 @@
   width: 100%;
   max-width: 33.75rem; /* 540 */
   height: 36.9375rem; /* 591 */
-  margin-top: 1rem; /* 16 — mypage와 동일 */
+  margin-top: 1.25rem; /* 20 — 헤더↔창 */
   overflow: hidden;
   border: 0.5px solid var(--color-base-700); /* #6e6e6e */
   border-radius: 0.625rem; /* 10 */
@@ -311,7 +311,7 @@
   line-height: var(--line-height-tight);
 }
 
-/* Tb / Pc — 창 666 · 아코디언 625 */
+/* Tb / Pc — 창 666 · 아코디언 625 · 헤더 상단 간격 */
 @media (min-width: 769px) {
   .page--notice .main {
     padding-inline: 1.25rem; /* 20 */
@@ -319,6 +319,10 @@
 
   .notice-page {
     max-width: 41.625rem; /* 666 */
+  }
+
+  .notice-page__header {
+    margin-top: 1.625rem; /* 26 — Tb */
   }
 
   .page--notice .notice-page__window {
@@ -333,5 +337,11 @@
 
   .notice-page__item {
     width: 39.0625rem; /* 625 */
+  }
+}
+
+@media (min-width: 1025px) {
+  .notice-page__header {
+    margin-top: 2.5rem; /* 40 — Pc */
   }
 }

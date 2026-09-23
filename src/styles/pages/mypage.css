@@ -36,7 +36,7 @@
   padding-bottom: 0;
 }
 
-/* 헤더: 뒤로 24 · 위 40 · 제목 16 중앙 */
+/* 헤더: 뒤로 24 · 위 Mo20 / Tb26 / Pc40 · 제목 16 중앙 */
 .mypage__header {
   position: relative;
   display: flex;
@@ -45,7 +45,7 @@
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  margin-top: 2.5rem; /* 40 */
+  margin-top: 1.25rem; /* 20 — Mo */
   min-height: 1.5rem; /* 24 — 아이콘 높이 */
 }
 
@@ -89,7 +89,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 33.75rem; /* 540 */
-  margin-top: 1rem; /* 16 — 헤더↔창 · 임시값 */
+  margin-top: 1.25rem; /* 20 — 헤더↔창 */
   overflow: hidden;
   border: 0.5px solid var(--color-base-700); /* 시안 stroke */
   border-radius: 0.625rem; /* 10 */
@@ -508,7 +508,7 @@
   white-space: nowrap;
 }
 
-/* Tb / Pc — 창 641 */
+/* Tb / Pc — 창 641 · 헤더 상단 간격 */
 @media (min-width: 769px) {
   .page--mypage .main {
     padding-inline: 1.25rem; /* 20 — 임시값 */
@@ -518,8 +518,18 @@
     max-width: 40.0625rem; /* 641 */
   }
 
+  .mypage__header {
+    margin-top: 1.625rem; /* 26 — Tb */
+  }
+
   .mypage-window {
     width: 40.0625rem; /* 641 */
     max-width: 40.0625rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .mypage__header {
+    margin-top: 2.5rem; /* 40 — Pc */
   }
 }

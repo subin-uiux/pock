@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
+import { useCoin } from "@/hooks/useCoin";
 
-/** 데모 보유 코인 — 설정과 동일 */
-const DEMO_COIN = 1000;
-
-/** COIN SHOP 상품 — 시안 */
+/** COIN SHOP 상품 — 시안 · amount = 지급 코인 */
 const COIN_PACKS: {
   id: string;
   label: string;
   price: string;
+  amount: number;
   icon: string;
   iconW: number;
   iconH: number;
@@ -19,6 +18,7 @@ const COIN_PACKS: {
     id: "1",
     label: "1 COIN",
     price: "₩100",
+    amount: 1,
     icon: "/assets/images/coin-store/1coin.svg",
     iconW: 35,
     iconH: 35,
@@ -27,6 +27,7 @@ const COIN_PACKS: {
     id: "10",
     label: "10 COIN",
     price: "₩1,000",
+    amount: 10,
     icon: "/assets/images/coin-store/10coin.svg",
     iconW: 61,
     iconH: 41,
@@ -35,6 +36,7 @@ const COIN_PACKS: {
     id: "20",
     label: "20 COIN",
     price: "₩2,000",
+    amount: 20,
     icon: "/assets/images/coin-store/20coin.svg",
     iconW: 60,
     iconH: 73,
@@ -43,6 +45,7 @@ const COIN_PACKS: {
     id: "30",
     label: "30 COIN",
     price: "₩3,000",
+    amount: 30,
     icon: "/assets/images/coin-store/30coin.svg",
     iconW: 70,
     iconH: 82,
@@ -51,6 +54,7 @@ const COIN_PACKS: {
     id: "50",
     label: "50 COIN+5",
     price: "₩5,000",
+    amount: 55,
     icon: "/assets/images/coin-store/50%20coin.svg",
     iconW: 81,
     iconH: 49,
@@ -59,6 +63,7 @@ const COIN_PACKS: {
     id: "100",
     label: "100 COIN+10",
     price: "₩10,000",
+    amount: 110,
     icon: "/assets/images/coin-store/100%20coin.svg",
     iconW: 81,
     iconH: 51,
@@ -71,10 +76,11 @@ const COIN_PACKS: {
  */
 export function CoinPage() {
   const navigate = useNavigate();
+  const { balance, earn } = useCoin();
   const [buyOpen, setBuyOpen] = useState(false);
-  const [, setSelectedPack] = useState<(typeof COIN_PACKS)[number] | null>(
-    null,
-  );
+  const [selectedPack, setSelectedPack] = useState<
+    (typeof COIN_PACKS)[number] | null
+  >(null);
   const [toastOpen, setToastOpen] = useState(false);
 
   useEffect(() => {
@@ -106,6 +112,9 @@ export function CoinPage() {
   };
 
   const confirmBuy = () => {
+    if (selectedPack) {
+      earn(selectedPack.amount, `${selectedPack.label} 구매`);
+    }
     closeBuyPopup();
     setToastOpen(true);
   };
@@ -132,7 +141,7 @@ export function CoinPage() {
           <Button
             variant="action-icon"
             className="coin-page__coin-btn"
-            aria-label={`보유 코인 ${DEMO_COIN}`}
+            aria-label={`보유 코인 ${balance}`}
           >
             <img
               className="coin-page__coin-icon"
@@ -141,7 +150,7 @@ export function CoinPage() {
               width={18}
               height={18}
             />
-            <span className="coin-page__coin-value">{DEMO_COIN}</span>
+            <span className="coin-page__coin-value">{balance}</span>
           </Button>
           <button
             type="button"

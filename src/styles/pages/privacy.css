@@ -2,6 +2,7 @@
  * privacy.css
  * Page: .page--privacy — 개인정보처리방침
  * 레이아웃·타이포는 terms-page (terms.css) 공유
+ * 상단 여백: Mo20 / Tb26 / Pc40 (terms.css .terms-page)
  * 반응형: Mo 360~768 (기본) · Tb/Pc min-width 769px
  */
 
@@ -14,4 +15,9 @@
 
 .page--privacy .page__wrapper {
   max-width: 100%;
+}
+
+/* main 상단은 terms-page에서 Mo20 / Tb26 / Pc40 제어 */
+.page--privacy .main {
+  padding-top: 0;
 }
