@@ -105,21 +105,24 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
         ? SENT_LOCKED_SAMPLES
         : SENT_OPEN_SAMPLES;
 
-    const withPaid = list.map((item) => {
+    const withPaid: MailboxCardSample[] = list.map((item) => {
       const openedGift = item.variant === "gift" && openedSet.has(item.id);
       return {
         ...item,
-        variant: openedGift ? ("open" as const) : item.variant,
+        variant: openedGift ? "open" : item.variant,
         hintPaid: isHintPaid(item.id, item.hintPaid),
       };
     });
 
-    const byId = new Map(withPaid.map((item) => [item.id, item]));
-    const sorted = orderSnapshot
+    const byId = new Map(
+      withPaid.map((item) => [item.id, item] as [string, MailboxCardSample]),
+    );
+    const sorted: MailboxCardSample[] = orderSnapshot
       ? [
-          ...orderSnapshot
-            .map((id) => byId.get(id))
-            .filter((item): item is MailboxCardSample => Boolean(item)),
+          ...orderSnapshot.flatMap((id) => {
+            const card = byId.get(id);
+            return card ? [card] : [];
+          }),
           ...withPaid.filter((item) => !orderSnapshot.includes(item.id)),
         ]
       : sortMailboxCards(withPaid, sortId);
