@@ -219,7 +219,7 @@
   flex: 1 1 auto;
 }
 
-/* Tb/Pc — top 세로(Mo와 동일) · 내부 폭 100% */
+/* Tb/Pc — top 가로 1행 · 내부 폭 100% */
 .letter-write--tb .letter-write__main,
 .letter-write--pc .letter-write__main {
   flex: 1 1 auto;
@@ -233,49 +233,50 @@
 .letter-write--tb .letter-write__top,
 .letter-write--pc .letter-write__top {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
-  align-items: stretch;
+  align-items: center;
   align-self: stretch;
-  gap: 0.625rem; /* 10 — heading ↔ tabs */
   width: 100%;
   max-width: 100%;
+  column-gap: 0;
+  row-gap: 0;
 }
 
 .letter-write--tb .letter-write__heading,
 .letter-write--pc .letter-write__heading {
   flex: 0 0 auto;
-  width: 100%;
-  max-width: 100%;
-  justify-content: space-between;
-  column-gap: 1.25rem; /* 최소 20 */
+  width: auto;
+  max-width: none;
+  justify-content: flex-start;
+  column-gap: 0;
 }
 
 .letter-write--tb .letter-write__title,
 .letter-write--pc .letter-write__title {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   min-width: 0;
-  padding-right: 0; /* 간격은 space-between이 담당 */
+  padding-right: 1.25rem; /* 20 — 제목 ↔ 친구 선택 */
 }
 
 .letter-write--tb .letter-write__friend,
 .letter-write--pc .letter-write__friend {
   flex: 0 0 auto;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .letter-write--tb .letter-write__tabs,
 .letter-write--pc .letter-write__tabs {
   flex: 0 0 auto;
   flex-wrap: nowrap;
-  width: 100%;
-  margin-left: 0;
+  width: auto;
+  margin-left: auto; /* 탭 오른쪽 */
   gap: 0.4375rem; /* 7 — 임시값 */
 }
 
 .letter-write--tb .letter-write__tab,
 .letter-write--pc .letter-write__tab {
-  flex: 1 1 0;
+  flex: 0 0 auto;
   width: auto;
   min-width: 0;
   max-width: none;

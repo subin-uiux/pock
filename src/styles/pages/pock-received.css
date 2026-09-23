@@ -10,7 +10,8 @@
   height: 100dvh;
   max-height: 100vh;
   max-height: 100dvh;
-  overflow: hidden;
+  overflow-x: visible; /* 우측 잠김/열림 탭이 main 밖으로 나와도 보이도록 */
+  overflow-y: hidden;
   background-color: var(--color-base-0);
   background-image:
     linear-gradient(rgb(255 255 255 / 30%), rgb(255 255 255 / 30%)),
@@ -26,7 +27,8 @@
 .page--pock-sent.page--has-navigation .page__wrapper {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow-x: visible;
+  overflow-y: hidden;
   padding-bottom: 0;
 }
 
@@ -37,7 +39,8 @@
   flex: 1;
   box-sizing: border-box;
   width: 100%;
-  max-width: 33.75rem; /* 540 — mypage/friend-list/notice 등과 동일 */
+  /* 724 — home__profile(250) + column-gap(24) + home__friends(450) */
+  max-width: 45.25rem;
   min-height: 0;
   margin-inline: auto;
   overflow: hidden;
@@ -193,13 +196,12 @@
 @media (min-width: 769px) {
   .page--pock-received .main,
   .page--pock-sent .main {
-    width: min(100%, var(--layout-content-width)); /* 1024 — 공통 콘텐츠 폭 */
-    max-width: var(--layout-content-width);
+    width: min(100%, 45.25rem); /* 724 — 홈 프로필+갭+친구목록 */
+    max-width: 45.25rem;
     margin-inline: auto;
-    padding: 2.5rem 4rem 0; /* 상단 40 · 좌우 64 */
-    /* 탭이 보드(카드+42) 밖으로 나와 main 우측 여백에 그려지도록 */
-    overflow-x: visible;
-    overflow-y: hidden;
+    padding: 2.5rem 0 0; /* 상단 40 · 좌우 0 — 724가 보드 폭 */
+    /* 탭이 보드 오른쪽 밖으로 나오도록 */
+    overflow: visible;
   }
 
   .page--pock-received .page__wrapper,
@@ -207,6 +209,11 @@
   .page--pock-received.page--has-navigation .page__wrapper,
   .page--pock-sent.page--has-navigation .page__wrapper {
     overflow-x: visible;
+    overflow-y: hidden;
+  }
+
+  .pock-mailbox {
+    overflow: visible;
   }
 
   .pock-mailbox__stage {
@@ -284,11 +291,11 @@
     border-radius: 0.625rem; /* 10 */
   }
 
-  /* 흰 카드 오른쪽 끝 = 보드 우측 패딩(42) 안쪽 · 탭은 그 밖(페이지 여백)으로 */
+  /* 흰 카드(보드 우측 패딩 42 안쪽) 오른쪽에 탭 밀착 */
   .pock-mailbox__tabs {
     position: absolute;
     top: calc(1.25rem + 2.5rem + 0.625rem + 2.5rem); /* 보드20+메타40+간격10+40 */
-    left: calc(100% - 2.625rem); /* 흰 카드 오른쪽 = 보드 우측 42 안쪽 */
+    left: calc(100% - 2.625rem); /* 42 — cards 오른쪽 끝 */
     z-index: 5;
     width: max-content;
     margin: 0;

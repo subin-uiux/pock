@@ -46,7 +46,7 @@
   justify-content: stretch;
   box-sizing: border-box;
   width: 100%;
-  max-width: 28.125rem; /* 450 — Letter_write */
+  max-width: 28.125rem; /* 450 — Letter_write Mo */
   min-width: 0;
   min-height: 0;
   margin-inline: auto;
@@ -89,5 +89,15 @@
   .page--pock-send .main,
   .page--pock-send.page--has-navigation .main {
     padding: 2.5rem 2rem; /* 상하 40 · 좌우 32 */
+  }
+
+  /* 724 — home__profile(250) + column-gap(24) + home__friends(450) */
+  .pock-send {
+    max-width: 45.25rem;
+  }
+
+  .pock-send__stage {
+    width: 45.25rem;
+    max-width: 100%;
   }
 }
