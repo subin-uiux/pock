@@ -32,6 +32,8 @@ npm run dev
 | `npm run build` | 타입체크 + 프로덕션 빌드 |
 | `npm run preview` | 빌드 결과 미리보기 |
 
+배포(Netlify): SPA 리다이렉트는 `public/_redirects` · `netlify.toml` (`/* → /index.html` 200).
+
 ---
 
 ## 폴더 구조
@@ -53,8 +55,8 @@ pock/
 │   │   ├── GuidePage.tsx
 │   │   └── guide/             # GuideMarkup + 가이드 전용 인터랙티브 샘플
 │   ├── hooks/
-│   ├── data/                  # 목 데이터 (letter / friend / pock / coin / notice)
-│   ├── lib/                   # storage · coin · store · pock
+│   ├── data/                  # 목 데이터 (letter / friend / pock / coin / notice / terms …)
+│   ├── lib/                   # storage · coin · store · pock · profile-setup · notice …
 │   ├── types/
 │   └── styles/                # ✅ CSS 수정 위치
 │       ├── index.css          # 모든 CSS import (guide.css 포함)
@@ -82,7 +84,8 @@ pock/
 | 구분 | 경로 |
 |------|------|
 | 비로그인 가능 | `/`, `/guide`, `/login`, `/privacy`, `/terms` |
-| 로그인 필요 (`RequireAuth`) | `/home`, `/notice`, `/settings`, `/mypage`, `/coin`, `/letter-store`, `/pock-received`, `/pock-sent`, `/pock-send`, `/pock-detail/:id`, `/pock-hint/:id` |
+| 검수용 (로그인 없이 확인) | `/pock-received`, `/pock-sent`, `/coin`, `/mypage`, `/Friend_list`, `/pock-mailbox-friends` |
+| 로그인 필요 (`RequireAuth`) | `/home`, `/alerts`, `/notice`, `/inquiry`, `/settings`, `/letter-store`, `/pock-send`, `/pock-detail/:id`, `/pock-hint/:id`, `/profile/nickname` · `character` · `outfit` · `background` · `complete` |
 
 비로그인으로 보호 라우트 접근 시 `/login`으로 이동한다. (카카오는 **목업만**, 실연동 금지)
 
@@ -120,10 +123,12 @@ pock/
 - 길이는 **rem** (`1rem = 16px`). `html` font-size는 `100%` 유지. `62.5%` 트릭 금지.
 - px 예외: `1px` 헤어라인, 미디어쿼리 경계값만.
 - 색·간격·타이포는 [`src/styles/variables.css`](src/styles/variables.css) 토큰을 우선한다.
-- **모바일 퍼스트.** 기본 = 390 캔버스. 확장은 `min-width`만 사용한다.
-  - 태블릿: `1024px`
-  - 데스크톱: `1920px`
-- 390 / 1024 / 1920은 **디자인 캔버스**다. 뷰포트를 그 너비로 고정하지 않고, 구간 안에서는 유동 폭으로 맞춘다.
+- **모바일 퍼스트.** 기본 = 모바일(360~768). 확장은 `min-width`만 사용한다.
+  - 모바일: `~768`
+  - 태블릿·데스크톱: `min-width: 769px` (콘텐츠 max 1024 가운데 정렬)
+  - 데스크톱(1025~)은 태블릿과 **동일 레이아웃** — 양옆 배경·여백만 늘어난다. 데스크톱 전용 UI를 만들지 않는다.
+- 뷰포트를 캔버스 너비로 고정하지 않고, 구간 안에서는 유동 폭으로 맞춘다.
+- 일부 페이지 헤더 상단 여백만 Mo20 / Tb26 / Pc40처럼 시안 값으로 분기할 수 있다 (`min-width: 1025px`).
 - `:focus-visible` 윤곽을 지우지 않는다.
 - `prefers-reduced-motion: reduce`에서는 애니메이션·전환을 거의 끈다.
 
@@ -134,7 +139,7 @@ pock/
 
 /* ✅ GOOD */
 .card { width: 100%; }
-@media (min-width: 1024px) { .card { width: 20rem; } }
+@media (min-width: 769px) { .card { width: 20rem; } }
 ```
 
 ### 4. 파일 배치
@@ -167,40 +172,45 @@ pock/
 ### 6. 데이터·상태
 
 - 서버 API 없이 **localStorage + 목 데이터**로 동작한다 (`src/lib/storage.ts`).
-- 목 데이터: `src/data/` (`letter-data`, `friend-data`, `pock-data`, `coin-data`, `notice-data`)
-- 코인: `src/lib/coin.ts` / `useCoin`
-- 편지지 스토어: `src/lib/store.ts` / `useLetterStore`
+- 목 데이터: `src/data/` (`letter-data`, `friend-data`, `pock-data`, `coin-data`, `notice-data`, `terms-data`, `privacy-data`, `alert-data`, `letter-paper`, `home-onboard` 등)
+- 코인: `src/lib/coin.ts` / `useCoin` — 초기 데모 잔액 **1000** (`coin-data`). 상점 구매 시 `earn`으로 잔액 증가
+- 편지지 스토어: `src/lib/store.ts` / `useLetterStore` · 보유·언락 `letter-owned`
 - POCK 목록·전송: `src/lib/pock.ts` (샘플 + 사용자가 보낸 항목)
+- 프로필 설정: `src/lib/profile-setup.ts` (닉네임·캐릭터·옷·배경)
+- 공지 읽음: `src/lib/notice.ts` · 초성 힌트: `src/lib/hint.ts`
 - 로그인: `useAuth` (카카오 **목업만**)
 - 기타 훅: `useBreakpoint`, `useDesignScrollbar`, `useCountdownHms` (카드 타이머 `HH:MM:SS`)
 - 공유 타입: `src/types` (`PockItem`, `LetterItem`, `LetterCardVariant`, `PopupVariant`, `LetterWritePayload` 등)
 
-주요 키 예: `pock.auth`, `pock.coin`, `pock.ownedLetters`, `pock.userSent`, `pock.unlockedHints`
+주요 키 예: `pock.auth`, `pock.coin`, `pock.ownedLetters`, `pock.userSent`, `pock.unlockedHints`, `pock.profileSetup`
 
-### 7. 반응형 · 주요 컴포넌트
+### 7. 반응형 · 주요 컴포넌트 · 페이지
 
-- `useBreakpoint()` → `"mo" | "tb" | "pc"` (1024 / 1920 기준).
+- `useBreakpoint()` → `"mo" | "tb" | "pc"` — 실제 분기는 **769px** (`mo` / `tb`). `pc`는 호환용이며 UI는 태블릿과 동일.
 - Letter_write·Friend_list·Navigation 등은 브레이크포인트에 맞는 modifier 클래스를 붙인다 (`letter-write--mo`, `navigation--pad` 등).
 - `/guide` Letter_write 구간은 점선 박스를 가상 뷰포트로 두고 너비를 드래그해 미리본다.
   - **Mo** (`GuideLetterWriteMoResize`): 360~768 · ~540까지 좌우 inset **20** · **541~** 부터 Tb 레이아웃·크기
   - **Tb** (`GuideLetterWriteTbResize`): 769~1024 · 좌우 inset **64** (안쪽 폭에 Tb가 맞춤)
 
-| 컴포넌트 | 메모 |
-|----------|------|
+| 컴포넌트 / 페이지 | 메모 |
+|------|------|
 | `Letter` | Mo `320×500` · Tb/Pc `400×575`. normal 7색 · special(Rainbow/Heart/Star/Stripe/Clover). 하단 오른쪽 날짜 = **받은 날짜** |
 | `Letter_write` | 하단 날짜 = **작성일**. 기본 보낸이 `아빵이` · 기본 편지지 cream · paper stroke `#E65322`. Mo/Tb 유동 폭은 위 가이드 리사이즈 데모 기준 |
 | `Card` | variant `progress` / `timer` / `unopened` / `open`. timer는 `LetterCardTimerText` + `useCountdownHms` |
-| `Friend_list` | 헤더·「친구 관리」고정. 연한 파란 pane 안 목록만 세로 스크롤. 디자인 스크롤바 + thumb 연동 (`PockWindowScrollbar` / `useDesignScrollbar`) |
+| `Friend_list` | 컴포넌트(홈 등) · 관리 페이지 `/Friend_list`. 헤더·초대·목록. 팝업 폭 Mo 360 유지 |
 | `FriendCheckbox` | Mo `20×20` · Tb/Pc `30×30` |
 | `SelectionBox` | 선택 시 `#C7DDFF` + Navigation blue 3px stroke + `check-blue` |
 | `PockSendCategory` | 배열 / 검색 / 친구 (`array` · `search` · `friends`) |
 | `PockSendTabs` | 잠김 / 열림 (`locked` · `open`) |
 | `SignUpStepGauge` | 기본 4단계. Mo용·Tb/Pc용 에셋 분리 (`public/assets/images/signup/`) |
 | `Navigation` | 홈·보관함·보내기·전송함·설정. 디바이스 `mo` / `pad` (`GuideNavigationDemo`) |
-| `Popup` | `info` · `warning` · `share` (+ dimmed). 온보딩 가이드는 `GuideOnboardDemo` (점 8개, 마지막 버튼 **완료**) |
+| `Popup` | `info` · `warning` · `share` (+ dimmed). 온보딩 가이드는 `GuideOnboardDemo` |
 | `SearchInput` | 기본 placeholder `검색어를 입력하세요.` · **포커스 시 숨김**, blur 시 복구 |
 | `DimmedOverlay` | 팝업·모달 뒤 딤 |
-| `SettingsPage` (`/settings`) | 배경 상하 그라데이션 `#E9F9E6`→`#EDF7FD` 48%→`#BCDAF9`. 반응형 **768~1920**. 메뉴: 계정·알림·공지·약관·개인정보·고객센터·로그아웃. 시안 미확정 · 미구현은 데모 안내. 로그아웃 `Popup` warning |
+| `SettingsPage` (`/settings`) | 코인·출석·프로필·친구목록·공지·약관·문의하기·로그아웃 등. 코인 잔액은 `useCoin` 연동 |
+| `CoinPage` (`/coin`) | COIN SHOP 구매 시 팩 수량만큼 잔액 추가 (`50+5`→55, `100+10`→110) |
+| `InquiryPage` (`/inquiry`) | 문의 폼 · 미작성 시 Rainbow/red/base 안내·stroke · 전송 후 입력 초기화 |
+| `NoticePage` · `TermsPage` · `PrivacyPage` | 설정 하위. 헤더/문서 상단 여백 Mo20 / Tb26 / Pc40 |
 
 ### 8. 하지 말 것
 
