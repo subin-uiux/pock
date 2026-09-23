@@ -162,7 +162,7 @@
 
 .inquiry-page__label {
   color: var(--color-base-900);
-  font-size: 0.875rem; /* 14 */
+  font-size: 0.875rem; /* 14 — 문의제목·문의내용·이메일 · Mo */
   line-height: var(--line-height-tight);
 }
 
@@ -177,7 +177,7 @@
   background-color: var(--color-base-0);
   color: var(--color-base-900);
   font: inherit;
-  font-size: 0.875rem; /* 14 */
+  font-size: 0.875rem; /* 14 — 입력 · Mo */
   line-height: var(--line-height-base);
 }
 
@@ -193,6 +193,7 @@
 .inquiry-page__input::placeholder,
 .inquiry-page__textarea::placeholder {
   color: var(--color-base-500);
+  font-size: 0.875rem; /* 14 */
 }
 
 .inquiry-page__input:focus::placeholder,
@@ -206,7 +207,7 @@
   border-color: var(--color-base-900);
 }
 
-/* 미작성 안내 — stroke·placeholder · Rainbow / red / base */
+/* 미작성 — stroke · 칸 아래 안내 · Rainbow / red / base */
 .inquiry-page__input--error,
 .inquiry-page__textarea--error {
   border-color: var(--color-rainbow-red-base);
@@ -219,16 +220,17 @@
 
 .inquiry-page__input--error::placeholder,
 .inquiry-page__textarea--error::placeholder {
-  color: var(--color-rainbow-red-base); /* Rainbow / red / base */
-  -webkit-text-fill-color: var(--color-rainbow-red-base);
-  opacity: 1;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
 }
 
-.inquiry-page__input--error:focus::placeholder,
-.inquiry-page__textarea--error:focus::placeholder {
+/* 미작성 안내 — 입력칸 아래 · 시안 */
+.inquiry-page__hint {
+  margin: -0.25rem 0 0; /* 입력↔안내 · 임시값 */
   color: var(--color-rainbow-red-base); /* Rainbow / red / base */
-  -webkit-text-fill-color: var(--color-rainbow-red-base);
-  opacity: 1;
+  font-size: 0.75rem; /* 12 */
+  line-height: var(--line-height-tight);
 }
 
 .inquiry-page__actions {
@@ -244,6 +246,7 @@
   height: auto;
   min-width: 0;
   padding: 0.1875rem 0.625rem; /* 상하 3 · 좌우 10 */
+  font-size: 0.875rem; /* 14 — 문의보내기 · Mo */
 }
 
 @media (min-width: 769px) {
