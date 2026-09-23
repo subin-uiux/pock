@@ -11,7 +11,7 @@ export const friendItems: PockUser[] = [
     profileImage: "/assets/images/setting/girl.svg",
     gender: "female",
     character: "girl",
-    outfit: "girl-school",
+    outfit: "girl-skirt",
     background: "pink",
   },
   {
@@ -20,7 +20,7 @@ export const friendItems: PockUser[] = [
     profileImage: "/assets/images/setting/boy.svg",
     gender: "male",
     character: "boy",
-    outfit: "boy-hood",
+    outfit: "boy-knit",
     background: "blue",
   },
   {
@@ -38,7 +38,7 @@ export const friendItems: PockUser[] = [
     profileImage: "/assets/images/setting/girl.svg",
     gender: "female",
     character: "girl",
-    outfit: "girl-skirt",
+    outfit: "girl-school",
     background: "red",
   },
   {
@@ -56,7 +56,7 @@ export const friendItems: PockUser[] = [
     profileImage: "/assets/images/setting/girl.svg",
     gender: "female",
     character: "girl",
-    outfit: "girl-school",
+    outfit: "girl-skirt",
     background: "yellow",
   },
   {

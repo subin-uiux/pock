@@ -239,7 +239,8 @@
   background-color: var(--color-rainbow-blue-light); /* rainbow/blue/light */
 }
 
-.friend-list-page__avatar-img {
+.friend-list-page__avatar-img,
+.friend-list-page__avatar-figure {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -249,6 +250,43 @@
   transform: translate(0.1171875rem, 0.390625rem) scale(0.72); /* 설정 3/10 × (50/80) */
   transform-origin: top center;
   image-rendering: pixelated;
+}
+
+.friend-list-page__avatar-figure {
+  position: relative;
+}
+
+.friend-list-page__avatar-base {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.friend-list-page__avatar-wear {
+  position: absolute;
+  left: 50%;
+  top: 48.3%;
+  z-index: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.friend-list-page__avatar-wear--full {
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
 }
 
 .friend-list-page__name {

@@ -5,6 +5,10 @@ import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { Popup } from "@/components/Popup";
 import { SearchInput } from "@/components/SearchInput";
 import { friendItems } from "@/data/friend-data";
+import {
+  CHARACTER_BASE,
+  getOutfitById,
+} from "@/lib/profile-setup";
 import type { PockUser } from "@/types";
 
 /** 임시값 — 초대 링크 */
@@ -21,7 +25,6 @@ export function Friend_listPage() {
   const [query, setQuery] = useState("");
   const [profileFriend, setProfileFriend] = useState<PockUser | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<PockUser | null>(null);
-  const [inviteOpen, setInviteOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
 
   useEffect(() => {
@@ -59,9 +62,7 @@ export function Friend_listPage() {
     );
   };
 
-  const closeInvitePopup = () => setInviteOpen(false);
-
-  const confirmInviteCopy = async () => {
+  const copyInviteLink = async () => {
     try {
       await navigator.clipboard.writeText(INVITE_LINK);
     } catch {
@@ -94,7 +95,7 @@ export function Friend_listPage() {
         <button
           type="button"
           className="friend-list-page__invite"
-          onClick={() => setInviteOpen(true)}
+          onClick={copyInviteLink}
         >
           <img
             className="friend-list-page__invite-icon"
@@ -151,6 +152,10 @@ export function Friend_listPage() {
                 gender === "male"
                   ? "friend-list-page__avatar friend-list-page__avatar--male"
                   : "friend-list-page__avatar friend-list-page__avatar--female";
+              const wear =
+                friend.character && friend.outfit
+                  ? getOutfitById(friend.character, friend.outfit)
+                  : null;
 
               return (
                 <li key={friend.id} className="friend-list-page__item">
@@ -160,7 +165,30 @@ export function Friend_listPage() {
                     onClick={() => setProfileFriend(friend)}
                   >
                     <span className={avatarClass} aria-hidden="true">
-                      {friend.profileImage ? (
+                      {friend.character ? (
+                        <span className="friend-list-page__avatar-figure">
+                          <img
+                            className="friend-list-page__avatar-base"
+                            src={CHARACTER_BASE.src[friend.character]}
+                            alt=""
+                            width={CHARACTER_BASE.width}
+                            height={CHARACTER_BASE.height}
+                          />
+                          {wear ? (
+                            <img
+                              className={
+                                wear.fullFrame
+                                  ? "friend-list-page__avatar-wear friend-list-page__avatar-wear--full"
+                                  : "friend-list-page__avatar-wear"
+                              }
+                              src={wear.src}
+                              alt=""
+                              width={wear.width}
+                              height={wear.height}
+                            />
+                          ) : null}
+                        </span>
+                      ) : friend.profileImage ? (
                         <img
                           className="friend-list-page__avatar-img"
                           src={friend.profileImage}
@@ -224,19 +252,6 @@ export function Friend_listPage() {
         onCancel={closeDeletePopup}
         onClose={closeDeletePopup}
         onConfirm={confirmDelete}
-      />
-
-      <Popup
-        open={inviteOpen}
-        variant="share"
-        iconSrc="/assets/images/Friend_list-icon.svg"
-        iconSize={40}
-        message="내 POCK에 놀러와!" /* 임시값 — 시안 카피 미확정 */
-        cancelLabel="링크 복사"
-        confirmLabel="닫기"
-        onCancel={confirmInviteCopy}
-        onClose={closeInvitePopup}
-        onConfirm={closeInvitePopup}
       />
 
       {toastOpen ? (
