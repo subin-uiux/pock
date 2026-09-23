@@ -302,23 +302,6 @@ export function SettingsPage() {
                   />
                 </button>
               </li>
-              <li className="settings-menu__item">
-                <button
-                  type="button"
-                  className="settings-menu__btn"
-                  onClick={() => navigate("/inquiry")}
-                >
-                  <span className="settings-menu__label">문의하기</span>
-                  <img
-                    className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
-                    alt=""
-                    width={16}
-                    height={16}
-                    aria-hidden="true"
-                  />
-                </button>
-              </li>
             </ul>
           </article>
         </div>
