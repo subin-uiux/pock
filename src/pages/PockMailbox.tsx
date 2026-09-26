@@ -71,7 +71,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
   const [pendingHint, setPendingHint] = useState<MailboxCardSample | null>(
     null,
   );
-  /** localStorage 결제 반영용 — markHintPaid 후 리렌더 */
+  /** 세션 결제 반영용 — markHintPaid 후 리렌더 (새로고침 시 초기화) */
   const [hintPaidTick, setHintPaidTick] = useState(0);
   /** 이번 방문에서만 연 선물 — 새로고침·페이지 이탈 시 상자 복구 */
   const [openedGiftIds, setOpenedGiftIds] = useState<string[]>([]);

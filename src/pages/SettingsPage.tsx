@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useAuth } from "@/hooks/useAuth";
+import { useCoin } from "@/hooks/useCoin";
 import { hasUnreadNotice } from "@/lib/notice";
 import {
   CHARACTER_BASE,
@@ -14,8 +15,6 @@ import {
 
 /** 임시값 — 프로필 닉네임 시안 샘플 */
 const DEFAULT_NICKNAME = "zl존 킹왕짱";
-/** 데모 보유 코인 */
-const DEMO_COIN = 1000;
 /** 데모 출석 완료 일수 — 시안: 1일차 완료 */
 const DEMO_ATTENDANCE_DONE = 1;
 /** 임시값 — 초대 링크 */
@@ -43,6 +42,7 @@ const ATTENDANCE_DAYS: {
 export function SettingsPage() {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { balance } = useCoin();
   const saved = getProfileSetup();
   const savedNickname = saved.nickname?.trim();
   const nickname =
@@ -101,7 +101,7 @@ export function SettingsPage() {
         <Button
           variant="action-icon"
           className="settings__coin-btn"
-          aria-label={`보유 코인 ${DEMO_COIN}`}
+          aria-label={`보유 코인 ${balance}`}
           onClick={() => navigate("/coin")}
         >
           <img
@@ -111,7 +111,7 @@ export function SettingsPage() {
             width={18}
             height={18}
           />
-          <span className="settings__coin-value">{DEMO_COIN}</span>
+          <span className="settings__coin-value">{balance}</span>
         </Button>
         <button
           type="button"

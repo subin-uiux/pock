@@ -1,21 +1,28 @@
-import { storage } from "@/lib/storage";
-
-const STORAGE_KEY = "pock.hintPaid";
-
 /** 초성 보기 구매 비용 */
 export const HINT_COST = 5;
 
+/** 이번 방문(탭)에서만 유지 — 새로고침 시 초기화 */
+const sessionPaidIds = new Set<string>();
+
+/** 예전 localStorage 키 제거 (한 번만) */
+if (typeof window !== "undefined") {
+  try {
+    window.localStorage.removeItem("pock.hintPaid");
+  } catch {
+    /* ignore */
+  }
+}
+
 export function getHintPaidIds(): string[] {
-  return storage.get<string[]>(STORAGE_KEY) ?? [];
+  return [...sessionPaidIds];
 }
 
 export function isHintPaid(id: string, samplePaid = false): boolean {
   if (samplePaid) return true;
-  return getHintPaidIds().includes(id);
+  return sessionPaidIds.has(id);
 }
 
 export function markHintPaid(id: string): boolean {
-  const ids = getHintPaidIds();
-  if (ids.includes(id)) return true;
-  return storage.set(STORAGE_KEY, [...ids, id]);
+  sessionPaidIds.add(id);
+  return true;
 }

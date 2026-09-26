@@ -36,7 +36,7 @@
   padding-bottom: 6rem; /* 임시값 — 하단 네비 */
 }
 
-/* 헤더: 뒤로 24 · 위 40 · 제목 16 중앙 — mypage와 동일 */
+/* 헤더: 뒤로 24 · 위 Mo20 / Tb26 / Pc40 · 제목 16 중앙 — mypage와 동일 */
 .friend-list-page__header {
   position: relative;
   display: flex;
@@ -45,7 +45,7 @@
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  margin-top: 2.5rem; /* 40 — mypage와 동일 */
+  margin-top: 1.25rem; /* 20 — Mo */
   min-height: 1.5rem; /* 24 — 아이콘 높이 · mypage와 동일 */
 }
 

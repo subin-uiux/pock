@@ -16,7 +16,12 @@
   max-width: 100%;
 }
 
-/* Mo 360~768 — 유동 폭 · 안쪽 패딩 없음 */
+/* main 상단은 terms-page에서 Mo20 / Tb26 / Pc40 제어 */
+.page--terms .main {
+  padding-top: 0;
+}
+
+/* Mo 360~768 — 유동 폭 · 상단 Mo20 / Tb26 / Pc40 */
 .terms-page {
   display: flex;
   flex-direction: column;
@@ -25,12 +30,12 @@
   width: 100%;
   max-width: 100%;
   margin-inline: auto;
-  padding: 0;
+  padding: 1.25rem 0 0; /* 상 20 — Mo */
   font-family: var(--font-family-document);
   color: #000000;
 }
 
-/* 이전 / 다음 — NeoDunggeunmo 20 · 화살표 24 */
+/* 이전 / 다음 / 종료 — NeoDunggeunmo 16 · 화살표 24 */
 .terms-page__nav {
   display: flex;
   flex: 0 0 auto;
@@ -50,7 +55,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #000000;
+  color: var(--color-base-900);
   cursor: pointer;
 }
 
@@ -70,7 +75,7 @@
 .terms-page__back-label,
 .terms-page__next-label {
   font-family: var(--font-family-base); /* NeoDunggeunmo */
-  font-size: 1.25rem; /* 20 */
+  font-size: 1rem; /* 16 — Mo */
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-tight);
 }
@@ -233,10 +238,22 @@
   overflow-wrap: anywhere;
 }
 
-/* Tb / Pc — 콘텐츠 폭 666 가운데 */
+/* Tb / Pc — 콘텐츠 폭 666 가운데 · 상단 여백 */
 @media (min-width: 769px) {
+  .page--terms .main,
+  .page--privacy .main {
+    padding-top: 0;
+  }
+
   .terms-page {
     width: 41.625rem; /* 666 */
     max-width: 41.625rem;
+    padding-top: 1.625rem; /* 26 — Tb */
+  }
+}
+
+@media (min-width: 1025px) {
+  .terms-page {
+    padding-top: 2.5rem; /* 40 — Pc */
   }
 }

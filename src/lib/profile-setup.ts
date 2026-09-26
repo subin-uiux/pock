@@ -191,16 +191,18 @@ export function setProfileNickname(nickname: string): void {
 }
 
 export function setProfileCharacter(character: CharacterId): void {
-  const outfits = getOutfitsForCharacter(character);
   const prev = getProfileSetup();
+  const outfits = getOutfitsForCharacter(character);
+  const outfitStillValid =
+    prev.outfit !== null && outfits.some((item) => item.id === prev.outfit);
   storage.set(KEY, {
     ...prev,
     character,
-    outfit: outfits[0]?.id ?? null,
+    outfit: outfitStillValid ? prev.outfit : null,
   });
 }
 
-export function setProfileOutfit(outfit: OutfitId): void {
+export function setProfileOutfit(outfit: OutfitId | null): void {
   const prev = getProfileSetup();
   storage.set(KEY, {
     ...prev,

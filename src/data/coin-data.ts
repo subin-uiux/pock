@@ -1,7 +1,7 @@
 import type { CoinState } from "@/types";
 
 export const initialCoinState: CoinState = {
-  balance: 120,
+  balance: 1000, /* 데모 초기 보유 */
   attendance: false,
   attendanceDays: 3,
   reward: 10,

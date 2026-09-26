@@ -22,6 +22,7 @@ const NICKNAME_COST = 5;
 const DEFAULT_NICKNAME = "zl존 킹왕짱";
 
 type GenderId = "male" | "female";
+type ProfileTabId = "gender" | "clothes" | "background";
 
 interface ClothesOption {
   id: OutfitId;
@@ -31,6 +32,28 @@ interface ClothesOption {
   /** SelectionBox 썸네일 — 없으면 src */
   thumbSrc?: string;
 }
+
+const PROFILE_TABS: {
+  id: ProfileTabId;
+  label: string;
+  icon: string;
+}[] = [
+  {
+    id: "gender",
+    label: "성별",
+    icon: "/assets/icons/edit-profile-gender.svg",
+  },
+  {
+    id: "clothes",
+    label: "옷",
+    icon: "/assets/icons/edit-profile-clothes.svg",
+  },
+  {
+    id: "background",
+    label: "배경",
+    icon: "/assets/icons/edit-profile-background.svg",
+  },
+];
 
 const GENDER_OPTIONS: {
   id: GenderId;
@@ -51,9 +74,6 @@ const GENDER_OPTIONS: {
     src: "/assets/images/setting/girl.svg",
   },
 ];
-
-/** SelectionBox 썸네일 원본 (selection-box__* 130×148) */
-const CLOTHES_THUMB_SIZE = { width: 130, height: 148 } as const;
 
 const CLOTHES_BY_GENDER: Record<GenderId, ClothesOption[]> = {
   female: [
@@ -130,8 +150,9 @@ export function MyPage() {
   const [nickname, setNickname] = useState(initialNickname);
   const [nicknamePopupOpen, setNicknamePopupOpen] = useState(false);
   const [genderId, setGenderId] = useState<GenderId>(initialGender);
-  const [clothesId, setClothesId] = useState<OutfitId>(initialClothes);
+  const [clothesId, setClothesId] = useState<OutfitId | null>(initialClothes);
   const [bgId, setBgId] = useState<BackgroundId>(initialBg);
+  const [activeTab, setActiveTab] = useState<ProfileTabId>("gender");
 
   const clothesOptions = CLOTHES_BY_GENDER[genderId];
   const selectedClothes =
@@ -162,12 +183,7 @@ export function MyPage() {
 
   const handleGenderSelect = (id: GenderId) => {
     setGenderId(id);
-    const nextClothes = CLOTHES_BY_GENDER[id][0]?.id;
-    if (nextClothes) setClothesId(nextClothes);
-  };
-
-  const handleNicknameFocus = () => {
-    setNickname("");
+    setClothesId(null);
   };
 
   const handleNicknameBlur = () => {
@@ -176,14 +192,23 @@ export function MyPage() {
     }
   };
 
-  const handleNicknameSubmit = () => {
-    const next = nickname.trim();
-    if (!next) {
-      setNickname(savedNickname);
+  const persistProfile = (nextNickname: string) => {
+    const gender = GENDER_OPTIONS.find((item) => item.id === genderId);
+    if (gender) setProfileCharacter(gender.character);
+    setProfileOutfit(clothesId);
+    setProfileBackground(bgId);
+    setProfileNickname(nextNickname);
+    navigate("/settings", { replace: true });
+  };
+
+  const handleProfileSave = () => {
+    const next = nickname.trim() || savedNickname;
+    if (next !== savedNickname) {
+      setNickname(next);
+      setNicknamePopupOpen(true);
       return;
     }
-    setNickname(next);
-    setNicknamePopupOpen(true);
+    persistProfile(savedNickname);
   };
 
   const closeNicknamePopup = () => {
@@ -191,22 +216,12 @@ export function MyPage() {
   };
 
   const confirmNicknameChange = () => {
-    const next = nickname.trim();
-    if (next) {
-      setSavedNickname(next);
-      setNickname(next);
-    }
+    const next = nickname.trim() || savedNickname;
+    setSavedNickname(next);
+    setNickname(next);
     setNicknamePopupOpen(false);
     /* 닉네임 수정 결제 — 미확정 */
-  };
-
-  const handleProfileSave = () => {
-    const gender = GENDER_OPTIONS.find((item) => item.id === genderId);
-    if (gender) setProfileCharacter(gender.character);
-    setProfileOutfit(clothesId);
-    setProfileBackground(bgId);
-    setProfileNickname(savedNickname);
-    navigate("/settings", { replace: true });
+    persistProfile(next);
   };
 
   return (
@@ -269,76 +284,93 @@ export function MyPage() {
                   className="mypage-profile__body"
                   src={previewSrc}
                   alt=""
-                  width={53}
-                  height={81}
+                  width={105}
+                  height={160}
                 />
                 {selectedClothes ? (
                   <img
                     className="mypage-profile__clothes"
                     src={selectedClothes.src}
                     alt=""
-                    width={106}
-                    height={178}
+                    width={105}
+                    height={160}
                   />
                 ) : null}
               </div>
             </div>
 
             <div className="mypage-profile__nickname">
-              <label
-                className="mypage-profile__nickname-label"
-                htmlFor="mypage-nickname"
-              >
-                닉네임 수정
-              </label>
               <input
                 id="mypage-nickname"
                 className="mypage-profile__nickname-input"
                 type="text"
                 value={nickname}
                 onChange={(event) => setNickname(event.target.value)}
-                onFocus={handleNicknameFocus}
                 onBlur={handleNicknameBlur}
                 autoComplete="nickname"
+                aria-label="닉네임"
               />
-              <div className="mypage-profile__nickname-row">
-                <Button
-                  variant="popup"
-                  className="mypage-profile__edit"
-                  onClick={handleNicknameSubmit}
-                >
-                  <span className="mypage-profile__edit-label">수정</span>
-                  <img
-                    className="mypage-profile__edit-icon"
-                    src="/assets/images/setting/crystal-icon.svg"
-                    alt=""
-                    width={12}
-                    height={12}
-                  />
-                </Button>
-                <span
-                  className="mypage-profile__cost"
-                  aria-label={`닉네임 변경 ${NICKNAME_COST}코인`}
-                >
-                  <img
-                    className="mypage-profile__cost-icon"
-                    src="/assets/images/setting/crystal-coin.svg"
-                    alt=""
-                    width={14}
-                    height={14}
-                  />
-                  <span className="mypage-profile__cost-value">
-                    {NICKNAME_COST}
-                  </span>
+              <span
+                className="mypage-profile__cost"
+                aria-label={`닉네임 변경 ${NICKNAME_COST}코인`}
+              >
+                <img
+                  className="mypage-profile__cost-icon"
+                  src="/assets/images/setting/crystal-coin.svg"
+                  alt=""
+                  width={14}
+                  height={14}
+                />
+                <span className="mypage-profile__cost-value">
+                  {NICKNAME_COST}
                 </span>
-              </div>
+              </span>
+            </div>
+
+            <div
+              className="mypage-tabs"
+              role="tablist"
+              aria-label="프로필 항목"
+            >
+              {PROFILE_TABS.map((tab) => {
+                const selected = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    id={`mypage-tab-${tab.id}`}
+                    aria-selected={selected}
+                    aria-controls={`mypage-panel-${tab.id}`}
+                    className={
+                      selected
+                        ? "mypage-tabs__button mypage-tabs__button--active"
+                        : "mypage-tabs__button"
+                    }
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    <img
+                      className="mypage-tabs__icon"
+                      src={tab.icon}
+                      alt=""
+                      width={38}
+                      height={38}
+                    />
+                    <span className="visually-hidden">{tab.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          <div className="mypage-window__panel">
-            <div className="mypage-window__choices">
+          <div
+            className="mypage-window__panel"
+            role="tabpanel"
+            id={`mypage-panel-${activeTab}`}
+            aria-labelledby={`mypage-tab-${activeTab}`}
+          >
+            {activeTab === "gender" ? (
               <section className="mypage-gender" aria-label="성별 선택">
-                <h3 className="mypage-gender__title">성별 선택</h3>
                 <div className="mypage-gender__row">
                   {GENDER_OPTIONS.map((item) => (
                     <div className="mypage-gender__item" key={item.id}>
@@ -359,14 +391,14 @@ export function MyPage() {
                           height={110}
                         />
                       </SelectionBox>
-                      <span className="mypage-gender__label">{item.label}</span>
                     </div>
                   ))}
                 </div>
               </section>
+            ) : null}
 
+            {activeTab === "clothes" ? (
               <section className="mypage-clothes" aria-label="옷 선택">
-                <h3 className="mypage-clothes__title">옷 선택</h3>
                 <div className="mypage-clothes__row">
                   {clothesOptions.map((item) => (
                     <div className="mypage-clothes__item" key={item.id}>
@@ -379,17 +411,18 @@ export function MyPage() {
                           className="mypage-clothes__img"
                           src={item.thumbSrc ?? item.src}
                           alt=""
-                          width={CLOTHES_THUMB_SIZE.width}
-                          height={CLOTHES_THUMB_SIZE.height}
+                          width={60}
+                          height={90}
                         />
                       </SelectionBox>
                     </div>
                   ))}
                 </div>
               </section>
+            ) : null}
 
+            {activeTab === "background" ? (
               <section className="mypage-bg" aria-label="배경 선택">
-                <h3 className="mypage-bg__title">배경 선택</h3>
                 <div className="mypage-bg__row">
                   {BACKGROUND_OPTIONS.map((item) => (
                     <div className="mypage-bg__item" key={item.id}>
@@ -409,7 +442,7 @@ export function MyPage() {
                   ))}
                 </div>
               </section>
-            </div>
+            ) : null}
           </div>
 
           <div className="mypage-save">
