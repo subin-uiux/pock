@@ -46,6 +46,7 @@
   min-height: 100%;
   padding-top: 6.25rem; /* 100 — mo */
   padding-bottom: 6.25rem; /* 100 — mo */
+  padding-inline: 1.25rem; /* 20 — mo 양옆 */
   box-sizing: border-box;
 }
 
@@ -55,7 +56,7 @@
   flex: 1;
   align-items: center;
   width: 100%;
-  max-width: 20.25rem; /* 324 — 100×3 + 12×2 */
+  max-width: none;
   margin-inline: auto;
   padding: 0;
   box-sizing: border-box;
@@ -164,9 +165,9 @@
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  width: 20.25rem; /* 324 */
-  max-width: 100%;
-  margin-inline: auto;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
   padding: 1.25rem 0 0; /* 20 */
   box-sizing: border-box;
 }
@@ -185,6 +186,7 @@
   .outfit-setup__form {
     padding-top: 2.5rem; /* 40 */
     padding-bottom: 2.5rem; /* 40 */
+    padding-inline: 0;
   }
 
   .outfit-setup__body {
@@ -231,6 +233,7 @@
   .outfit-setup__footer {
     width: 100%;
     max-width: 36rem; /* 576 */
+    margin-inline: auto;
     padding: 3.125rem 0 0; /* 50 */
   }
 

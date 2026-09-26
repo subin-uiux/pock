@@ -46,6 +46,7 @@
   min-height: 100%;
   padding-top: 6.25rem; /* 100 — mo */
   padding-bottom: 6.25rem; /* 100 — mo */
+  padding-inline: 1.25rem; /* 20 — mo 양옆 */
   box-sizing: border-box;
 }
 
@@ -55,7 +56,7 @@
   flex: 1;
   align-items: center;
   width: 100%;
-  max-width: 20.75rem; /* 332 — 100×3 + 16×2 */
+  max-width: none;
   margin-inline: auto;
   padding: 0;
   box-sizing: border-box;
@@ -92,7 +93,7 @@
   box-sizing: border-box;
   width: 10.625rem; /* 170 — mo */
   height: 13.625rem; /* 218 — mo */
-  margin-top: 2.5rem; /* 40 */
+  margin-top: 2.25rem; /* 36 */
   border-radius: var(--radius-md);
   overflow: hidden;
   background-size: cover;
@@ -139,44 +140,66 @@
 }
 
 .background-setup__choices {
+  /* mypage-bg__row와 동일 — 3×2 · gap 10/16 · 패널 안쪽(158) 높이 */
   display: grid;
-  grid-template-columns: repeat(3, 6.25rem); /* 100 — mo 3×2 */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   column-gap: 0.625rem; /* 10 */
-  row-gap: 1rem;
-  justify-content: center;
-  width: 100%;
-  margin-top: 2.5rem; /* 40 */
+  row-gap: 1rem; /* 16 */
+  box-sizing: border-box;
+  width: 100%; /* form padding-inline 20과 맞춤 */
+  height: 9.875rem; /* 158 — mypage-window__panel 안쪽 */
+  min-height: 0;
+  margin-top: 2.25rem; /* 36 */
+  margin-inline: 0;
   padding: 0;
 }
 
 .background-setup__swatch.selection-box {
-  width: 6.25rem; /* 100 */
-  height: 6.25rem; /* 100 */
+  --selection-box-stroke: 2px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   aspect-ratio: auto;
   flex-shrink: 0;
   padding: 0;
+  border: 0;
+  border-radius: 0.625rem; /* 10 — mypage-bg와 동일 */
+  overflow: visible;
   background-color: transparent;
   background-image: var(--background-swatch);
 }
 
 .background-setup__swatch.selection-box--selected {
   /* 그라데이션 유지 + 바깥 파란 스트로크·체크 (SelectionBox) */
+  border: 0;
   background-color: transparent;
   background-image: var(--background-swatch);
+  box-shadow: 0 0 0 2px var(--color-navigation-blue);
 }
 
 .background-setup__swatch .selection-box__media {
+  flex: 1 1 auto;
   width: 100%;
   height: 100%;
+  min-height: 0;
   overflow: hidden;
-  border-radius: inherit;
+  border-radius: 0.625rem;
+}
+
+.background-setup__swatch.selection-box--selected .selection-box__media,
+.background-setup__swatch.selection-box--selected .background-setup__swatch-fill {
+  border-radius: 0.625rem;
 }
 
 .background-setup__swatch-fill {
   display: block;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  border-radius: inherit;
+  border-radius: 0.625rem;
+  background-size: cover;
+  background-position: center;
   background-image: var(--background-swatch);
 }
 
@@ -184,9 +207,9 @@
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  width: 20.75rem; /* 332 */
-  max-width: 100%;
-  margin-inline: auto;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
   padding: 1.25rem 0 0; /* 20 */
   box-sizing: border-box;
 }
@@ -205,6 +228,7 @@
   .background-setup__form {
     padding-top: 2.5rem; /* 40 */
     padding-bottom: 2.5rem; /* 40 */
+    padding-inline: 0;
   }
 
   .background-setup__body {
@@ -241,12 +265,18 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    grid-template-columns: none;
+    grid-template-rows: none;
     justify-content: center;
     gap: 1.5rem; /* 24 — pad 일렬 */
+    width: auto;
+    height: auto;
+    min-height: 0;
     margin-top: 3.75rem; /* 60 */
   }
 
   .background-setup__swatch.selection-box {
+    --selection-box-stroke: 3px;
     width: 7.5rem; /* 120 */
     height: 7.5rem; /* 120 */
   }
@@ -254,6 +284,7 @@
   .background-setup__footer {
     width: 100%;
     max-width: 36rem; /* 576 */
+    margin-inline: auto;
     padding: 3.125rem 0 0; /* 50 */
   }
 
