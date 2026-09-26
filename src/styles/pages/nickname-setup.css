@@ -74,17 +74,6 @@
 .nickname-setup__gauge--mo {
   display: flex;
   width: 100%;
-  gap: 0.5rem; /* 화면 폭에 맞춤 */
-}
-
-.nickname-setup__gauge--mo .signup-step-gauge__item {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
-.nickname-setup__gauge--mo .signup-step-gauge__image {
-  width: 100%;
-  height: auto;
 }
 
 .nickname-setup__title {

@@ -74,17 +74,6 @@
 .character-setup__gauge--mo {
   display: flex;
   width: 100%;
-  gap: 0.5rem;
-}
-
-.character-setup__gauge--mo .signup-step-gauge__item {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
-.character-setup__gauge--mo .signup-step-gauge__image {
-  width: 100%;
-  height: auto;
 }
 
 .character-setup__title {
@@ -117,8 +106,8 @@
 }
 
 .character-setup__choice.selection-box {
-  width: 9.625rem; /* 154 */
-  height: 12.5rem; /* 200 */
+  width: 8.625rem; /* 138 */
+  height: 11.5rem; /* 184 */
   aspect-ratio: auto;
   flex-shrink: 0;
 }
@@ -129,9 +118,8 @@
 
 .character-setup__choice .selection-box__media img,
 .character-setup__avatar {
-  /* 원본 106×180 정수 픽셀 — 스케일/안티앨리어싱으로 구멍·번짐 방지 */
-  width: 6.625rem; /* 106 */
-  height: 11.25rem; /* 180 */
+  width: 5.625rem; /* 90 */
+  height: 9.25rem; /* 148 */
   object-fit: contain;
   object-position: center bottom;
   image-rendering: -moz-crisp-edges;

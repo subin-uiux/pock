@@ -26,14 +26,17 @@
   max-width: 100%;
 }
 
-/* Mobile — gap 22px, mo 이미지 */
+/* Mobile — gap 8px, 이미지 72×20 고정 */
 .signup-step-gauge--mo {
-  gap: 1.375rem; /* 22px */
+  gap: 0.5rem; /* 8px */
 }
 
-.signup-step-gauge--mo .signup-step-gauge__image {
-  width: 8.4375rem; /* 135 */
+.signup-step-gauge--mo .signup-step-gauge__image,
+.signup-step-gauge--mo .signup-step-gauge__image--active {
+  width: 4.5rem; /* 72 */
   height: 1.25rem; /* 20 */
+  max-width: none;
+  flex-shrink: 0;
 }
 
 /* Tablet / PC — gap 30px */

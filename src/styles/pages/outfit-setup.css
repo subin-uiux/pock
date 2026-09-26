@@ -74,17 +74,6 @@
 .outfit-setup__gauge--mo {
   display: flex;
   width: 100%;
-  gap: 0.5rem;
-}
-
-.outfit-setup__gauge--mo .signup-step-gauge__item {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
-.outfit-setup__gauge--mo .signup-step-gauge__image {
-  width: 100%;
-  height: auto;
 }
 
 .outfit-setup__title {
