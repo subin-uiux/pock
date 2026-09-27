@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useCoin } from "@/hooks/useCoin";
+import { addCoinPurchaseAlert } from "@/lib/alerts";
 
 /** COIN SHOP 상품 — 시안 · amount = 지급 코인 */
 const COIN_PACKS: {
@@ -112,8 +113,8 @@ export function CoinPage() {
   };
 
   const confirmBuy = () => {
-    if (selectedPack) {
-      earn(selectedPack.amount, `${selectedPack.label} 구매`);
+    if (selectedPack && earn(selectedPack.amount, `${selectedPack.label} 구매`)) {
+      addCoinPurchaseAlert(selectedPack.label);
     }
     closeBuyPopup();
     setToastOpen(true);

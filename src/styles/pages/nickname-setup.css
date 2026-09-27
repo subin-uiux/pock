@@ -107,9 +107,9 @@
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  max-width: none;
+  max-width: 20rem; /* 320 — input-box-s.svg 비율 유지 폭, 넘으면 테두리가 가운데로 줄어듦 */
   height: 3.125rem; /* 50 */
-  margin-inline: 0;
+  margin-inline: auto;
   background-color: transparent;
   background-image: url("/assets/images/input-box-s.svg");
   background-position: center;
@@ -140,8 +140,8 @@
 .nickname-setup__hint {
   box-sizing: border-box;
   width: 100%;
-  max-width: none;
-  margin: 0.3125rem 0 0; /* gap 5 */
+  max-width: 20rem; /* 320 — input-shell과 동일 */
+  margin: 0.3125rem auto 0; /* gap 5 */
   color: var(--color-base-600);
   font-size: 0.875rem; /* 14 */
   line-height: var(--line-height-tight);

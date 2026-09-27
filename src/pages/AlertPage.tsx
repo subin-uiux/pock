@@ -1,6 +1,7 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { useNavigate } from "react-router-dom";
 import { alertGroups, type AlertItem } from "@/data/alert-data";
+import { getStoredAlertGroups } from "@/lib/alerts";
 
 /** 카드 높이 116 · 펼침 간격 16 */
 const CARD_H = 116;
@@ -60,6 +61,10 @@ function AlertCard({
 export function AlertPage() {
   const navigate = useNavigate();
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+  const groups = useMemo(
+    () => [...getStoredAlertGroups(), ...alertGroups],
+    [],
+  );
 
   useEffect(() => {
     document.title = "알림 ㅣ POCK";
@@ -102,7 +107,7 @@ export function AlertPage() {
       </header>
 
       <ul className="alert-page__list">
-        {alertGroups.map((group) => {
+        {groups.map((group) => {
           const stacked = Boolean(group.stacked && group.items.length > 1);
           const expanded = expandedIds.includes(group.id);
           const front = group.items[0];

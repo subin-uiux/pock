@@ -5,6 +5,7 @@ import { OnboardGuide } from "@/components/OnboardGuide";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
 import { homeFriends, type HomeFriend } from "@/data/home-friends";
+import { useCoin } from "@/hooks/useCoin";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -39,6 +40,7 @@ export function HomePage() {
   const navigate = useNavigate();
   const location = useLocation();
   const listRef = useRef<HTMLUListElement>(null);
+  const { balance } = useCoin();
 
   const saved = getProfileSetup();
   const character = saved.character;
@@ -214,7 +216,7 @@ export function HomePage() {
                 />
 
                 <span className="home__profile-coin-text">
-                  10 coin
+                  {balance} coin
                 </span>
               </div>
             </div>

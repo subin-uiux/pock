@@ -11,6 +11,7 @@ import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { LetterPaperPicker } from "@/components/LetterPaperPicker";
 import { Popup } from "@/components/Popup";
 import { DEFAULT_LETTER_PAPER } from "@/data/letter-paper";
+import { useCoin } from "@/hooks/useCoin";
 import { getProfileSetup } from "@/lib/profile-setup";
 import type { LetterTheme, LetterWritePayload, PockUser } from "@/types";
 
@@ -83,7 +84,6 @@ export type Letter_writeTab = "paper" | "photo" | "date" | null;
 export type { LetterWritePayload };
 
 interface Letter_writeProps {
-  coinCost?: number;
   size?: "mo" | "tb" | "pc";
   friend?: PockUser | null;
   onSend?: (payload: LetterWritePayload) => void;
@@ -93,7 +93,6 @@ interface Letter_writeProps {
 }
 
 export function Letter_write({
-  coinCost = 10,
   size = "mo",
   friend = null,
   onSend,
@@ -101,6 +100,7 @@ export function Letter_write({
   onDirtyChange,
 }: Letter_writeProps) {
   const fileRef = useRef<HTMLInputElement>(null);
+  const { balance } = useCoin();
 
   const [from, setFrom] = useState(getFromNickname);
   const [writtenDate, setWrittenDate] = useState("");
@@ -349,7 +349,7 @@ export function Letter_write({
               width={14}
               height={14}
             />
-            <span>{coinCost} coin</span>
+            <span>{balance} coin</span>
           </div>
         </div>
 

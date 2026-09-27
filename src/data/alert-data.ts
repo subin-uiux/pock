@@ -1,4 +1,4 @@
-export type AlertKind = "unlock" | "arrive" | "friend" | "notice";
+export type AlertKind = "unlock" | "arrive" | "friend" | "notice" | "coin";
 
 export interface AlertItem {
   id: string;

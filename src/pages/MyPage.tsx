@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { SelectionBox } from "@/components/SelectionBox";
+import { useCoin } from "@/hooks/useCoin";
 import {
   BACKGROUND_OPTIONS,
   backgroundGradient,
@@ -149,6 +150,8 @@ export function MyPage() {
   const [savedNickname, setSavedNickname] = useState(initialNickname);
   const [nickname, setNickname] = useState(initialNickname);
   const [nicknamePopupOpen, setNicknamePopupOpen] = useState(false);
+  const [coinWarnOpen, setCoinWarnOpen] = useState(false);
+  const { spend } = useCoin();
   const [genderId, setGenderId] = useState<GenderId>(initialGender);
   const [clothesId, setClothesId] = useState<OutfitId | null>(initialClothes);
   const [bgId, setBgId] = useState<BackgroundId>(initialBg);
@@ -217,10 +220,13 @@ export function MyPage() {
 
   const confirmNicknameChange = () => {
     const next = nickname.trim() || savedNickname;
+    setNicknamePopupOpen(false);
+    if (!spend(NICKNAME_COST, "닉네임 변경")) {
+      setCoinWarnOpen(true);
+      return;
+    }
     setSavedNickname(next);
     setNickname(next);
-    setNicknamePopupOpen(false);
-    /* 닉네임 수정 결제 — 미확정 */
     persistProfile(next);
   };
 
@@ -474,6 +480,15 @@ export function MyPage() {
         onConfirm={confirmNicknameChange}
         onCancel={closeNicknamePopup}
         onClose={closeNicknamePopup}
+      />
+
+      <Popup
+        open={coinWarnOpen}
+        variant="warning"
+        message="코인이 부족합니다."
+        confirmLabel="확인"
+        onConfirm={() => setCoinWarnOpen(false)}
+        onClose={() => setCoinWarnOpen(false)}
       />
     </section>
   );
