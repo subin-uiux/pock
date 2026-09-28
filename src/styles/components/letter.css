@@ -158,10 +158,6 @@
   filter: invert(1);
 }
 
-.letter-card--open.letter-card--star .letter-card__more {
-  color: var(--color-base-200);
-}
-
 .letter--stripe,
 .letter-card--open.letter-card--stripe {
   background-color: var(--color-base-0);

@@ -1041,7 +1041,7 @@ export function GuideMarkup() {
                         </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-sent (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 12</p>
+                        <p className="card-system__caption">letter-card-sent (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 10</p>
                         <p className="card-system__hint">
                           점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
                           고정됩니다.
@@ -1204,7 +1204,7 @@ export function GuideMarkup() {
                         </div>
                       </li>
                       <li className="card-system__item">
-                        <p className="card-system__caption">letter-card-received (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 12</p>
+                        <p className="card-system__caption">letter-card-received (Open) · Tb/Pc 120×150 · 텍스트 16 · gap 10</p>
                         <p className="card-system__hint">
                           점선 박스를 드래그해 폭을 늘려 보세요. 이미지·텍스트는 왼쪽, 전체보기는 오른쪽에
                           고정됩니다.
