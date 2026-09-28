@@ -7,7 +7,6 @@ import {
   type CSSProperties,
 } from "react";
 import { createPortal } from "react-dom";
-import { DimmedOverlay } from "@/components/DimmedOverlay";
 import {
   HOME_ONBOARD_STEPS,
   type HomeOnboardPlacement,
@@ -24,6 +23,14 @@ interface OnboardGuideProps {
 interface PopupPos {
   top: number;
   left: number;
+}
+
+interface SpotRect {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+  radius: number;
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -70,33 +77,31 @@ export function OnboardGuide({
 }: OnboardGuideProps) {
   const [step, setStep] = useState(0);
   const [pos, setPos] = useState<PopupPos>({ top: 24, left: 16 });
+  const [spot, setSpot] = useState<SpotRect | null>(null);
   const popupRef = useRef<HTMLElement>(null);
   const current = steps[step];
   const isLast = step >= steps.length - 1;
 
   const syncTarget = useCallback(() => {
     if (!open || !current) {
-      document.body.removeAttribute("data-onboard-target");
-      document.body.classList.remove("is-onboard-active");
-      document
-        .querySelectorAll(".is-onboard-target")
-        .forEach((node) => node.classList.remove("is-onboard-target"));
+      setSpot(null);
       return;
     }
-
-    document.body.classList.add("is-onboard-active");
-    document.body.setAttribute("data-onboard-target", current.id);
-
-    document
-      .querySelectorAll(".is-onboard-target")
-      .forEach((node) => node.classList.remove("is-onboard-target"));
 
     const el = document.querySelector(current.selector);
     if (!(el instanceof HTMLElement)) return;
 
-    el.classList.add("is-onboard-target");
-
     const rect = el.getBoundingClientRect();
+    const pad = 6;
+    const radius = Number.parseFloat(getComputedStyle(el).borderRadius) || 8;
+    setSpot({
+      top: rect.top - pad,
+      left: rect.left - pad,
+      width: rect.width + pad * 2,
+      height: rect.height + pad * 2,
+      radius,
+    });
+
     const popupBox = popupRef.current?.getBoundingClientRect();
     const popupW = popupBox?.width || 240;
     const popupH = popupBox?.height || 180;
@@ -117,17 +122,6 @@ export function OnboardGuide({
       window.removeEventListener("scroll", onResize, true);
     };
   }, [open, syncTarget]);
-
-  useEffect(() => {
-    if (!open) return;
-    return () => {
-      document.body.removeAttribute("data-onboard-target");
-      document.body.classList.remove("is-onboard-active");
-      document
-        .querySelectorAll(".is-onboard-target")
-        .forEach((node) => node.classList.remove("is-onboard-target"));
-    };
-  }, [open]);
 
   useEffect(() => {
     if (!open) setStep(0);
@@ -152,7 +146,19 @@ export function OnboardGuide({
 
   return createPortal(
     <div className="onboard-guide" role="dialog" aria-modal="true" aria-label="온보딩 가이드">
-      <DimmedOverlay open />
+      <div className="onboard-guide__catch" />
+      {spot ? (
+        <div
+          className="onboard-guide__spot"
+          style={{
+            top: spot.top,
+            left: spot.left,
+            width: spot.width,
+            height: spot.height,
+            borderRadius: spot.radius,
+          }}
+        />
+      ) : null}
       <article
         ref={popupRef}
         className="onboard-popup onboard-guide__popup"
@@ -180,7 +186,11 @@ export function OnboardGuide({
             건너뛰기
           </button>
           <button
-            className="btn btn--push onboard-popup__next"
+            className={
+              isLast
+                ? "btn btn--push onboard-popup__next onboard-popup__next--done"
+                : "btn btn--push onboard-popup__next"
+            }
             type="button"
             onClick={handleNext}
           >
