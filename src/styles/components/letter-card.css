@@ -513,16 +513,16 @@
 
 .letter-card__thumb--character {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: transparent;
+  background-color: var(--color-base-0); /* 캐릭터 배경 흰색 */
 }
 
 .letter-card__thumb--character canvas {
   display: block;
-  width: 4.375rem; /* 70 */
-  height: 7.4375rem; /* 119 */
+  width: 4rem; /* 64 */
+  height: 6.8125rem; /* 109 — 64×180/106 */
 }
 
 .letter-card__meta {
@@ -556,7 +556,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--color-base-300);
+  color: var(--color-base-600); /* #898989 */
   font-family: var(--font-family-base); /* Neo */
   font-size: 0.75rem; /* 12px */
   line-height: var(--line-height-tight);
@@ -580,7 +580,7 @@
 
 /* Open Tb/Pc (가이드 letter-card--tb · 앱 1024+) */
 .letter-card--tb.letter-card--open .letter-card__open {
-  gap: 0.75rem; /* 12 */
+  gap: 0.625rem; /* 10 */
 }
 
 .letter-card--tb.letter-card--open .letter-card__thumb {
@@ -623,8 +623,8 @@
   }
 
   .letter-card--preview .letter-card__thumb--character canvas {
-    width: 5.5rem; /* 88 */
-    height: 9.375rem; /* 150 */
+    width: 4rem; /* 64 */
+    height: 6.8125rem; /* 109 */
   }
 
   .letter-card--preview:not(.letter-card--preview-locked) .letter-card__thumb {
@@ -654,7 +654,7 @@
   }
 
   .letter-card--open:not(.letter-card--mo) .letter-card__open {
-    gap: 0.75rem; /* 12 */
+    gap: 0.625rem; /* 10 */
   }
 
   .letter-card--open:not(.letter-card--mo) .letter-card__thumb {
@@ -683,8 +683,8 @@
   }
 
   .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb--character canvas {
-    width: 4.375rem; /* 70 */
-    height: 7.4375rem; /* 119 */
+    width: 4rem; /* 64 */
+    height: 6.8125rem; /* 109 */
   }
 
   /* Tb — 전송함 미리보기 텍스트 전체 노출 */

@@ -168,8 +168,7 @@ export function Card({
   const recipient = homeFriends.find(
     (friend) => friend.name === (receiver ?? target),
   );
-  const characterSize =
-    size === "tb" ? { width: 88, height: 150 } : { width: 70, height: 119 };
+  const characterSize = { width: 64, height: 109 };
   const [giftOpening, setGiftOpening] = useState(false);
   const openClass = [
     "letter-card",

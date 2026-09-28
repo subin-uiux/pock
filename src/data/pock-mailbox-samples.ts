@@ -310,7 +310,7 @@ export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
       target: "하나",
     },
     5,
-    { theme: "purple" },
+    { theme: "purple", attachment: true },
   ),
   sample(
     {
@@ -344,7 +344,7 @@ export const SENT_OPEN_SAMPLES: MailboxCardSample[] = [
       openDate: "2026.07.22",
     },
     0,
-    { theme: "heart" },
+    { theme: "heart", attachment: true },
   ),
   sample(
     {
@@ -354,6 +354,6 @@ export const SENT_OPEN_SAMPLES: MailboxCardSample[] = [
       openDate: "2026.03.01",
     },
     1,
-    { theme: "star" },
+    { theme: "star", attachment: true },
   ),
 ];
