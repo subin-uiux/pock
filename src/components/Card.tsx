@@ -329,7 +329,9 @@ export function Card({
       className={
         [
           usePreview || isOpen
-            ? `${openClass}${usePreview ? " letter-card--preview" : ""}`
+            ? `${openClass}${usePreview ? " letter-card--preview" : ""}${
+                usePreview && !isOpen ? " letter-card--preview-locked" : ""
+              }`
             : `letter-card letter-card--locked letter-card--${size}`,
           isClickable ? "letter-card--clickable" : "",
         ]
@@ -358,35 +360,68 @@ export function Card({
       ) : null}
 
       {usePreview || isOpen ? (
-        <div className="letter-card__open">
-          {usePreview && !previewSrc ? (
-            <div className="letter-card__thumb letter-card__thumb--character">
-              <PixelCharacter
-                character={recipient?.character ?? "girl"}
-                outfit={recipient?.outfit ?? null}
-                width={70}
-                height={119}
-              />
+        usePreview && !isOpen ? (
+          <div className="letter-card__stack">
+            <div className="letter-card__open">
+              {previewSrc ? (
+                <img
+                  className="letter-card__thumb"
+                  src={previewSrc}
+                  alt=""
+                  width={90}
+                  height={120}
+                />
+              ) : (
+                <div className="letter-card__thumb letter-card__thumb--character">
+                  <PixelCharacter
+                    character={recipient?.character ?? "girl"}
+                    outfit={recipient?.outfit ?? null}
+                    width={70}
+                    height={119}
+                  />
+                </div>
+              )}
+              <div className="letter-card__meta">
+                {openLines.map((line) => (
+                  <p className="letter-card__line" key={line}>
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
-          ) : previewSrc ? (
-            <img
-              className="letter-card__thumb"
-              src={previewSrc}
-              alt=""
-              width={usePreview ? 90 : size === "tb" ? 120 : 90}
-              height={usePreview ? 120 : size === "tb" ? 150 : 120}
-            />
-          ) : (
-            <div className="letter-card__thumb" aria-hidden="true" />
-          )}
-          <div className="letter-card__meta">
-            {openLines.map((line) => (
-              <p className="letter-card__line" key={line}>
-                {line}
-              </p>
-            ))}
+            {status}
           </div>
-        </div>
+        ) : (
+          <div className="letter-card__open">
+            {usePreview && !previewSrc ? (
+              <div className="letter-card__thumb letter-card__thumb--character">
+                <PixelCharacter
+                  character={recipient?.character ?? "girl"}
+                  outfit={recipient?.outfit ?? null}
+                  width={70}
+                  height={119}
+                />
+              </div>
+            ) : previewSrc ? (
+              <img
+                className="letter-card__thumb"
+                src={previewSrc}
+                alt=""
+                width={usePreview ? 90 : size === "tb" ? 120 : 90}
+                height={usePreview ? 120 : size === "tb" ? 150 : 120}
+              />
+            ) : (
+              <div className="letter-card__thumb" aria-hidden="true" />
+            )}
+            <div className="letter-card__meta">
+              {openLines.map((line) => (
+                <p className="letter-card__line" key={line}>
+                  {line}
+                </p>
+              ))}
+            </div>
+          </div>
+        )
       ) : (
         <div className="letter-card__body">
           <span className="letter-card__lock" aria-hidden="true">

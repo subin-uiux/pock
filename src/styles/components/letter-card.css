@@ -467,6 +467,23 @@
   padding-right: 0; /* 전체보기는 절대 위치 유지 */
 }
 
+/* 잠김 — 이미지·텍스트 아래 미오픈 / 타이머 / 카운트다운 · 간격 10 */
+.letter-card__stack {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 */
+  width: 100%;
+  min-height: 0;
+}
+
+.letter-card--preview-locked .letter-card__open {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
 .letter-card--preview .letter-card__meta {
   flex: 0 1 auto;
   gap: 0.5rem; /* 8 — 텍스트 간 */
