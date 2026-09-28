@@ -181,7 +181,21 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
   min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.friend-profile-popup__stat:focus-visible {
+  outline: 2px solid var(--color-functional-orange);
+  outline-offset: 2px;
 }
 
 .friend-profile-popup__stat:first-child {

@@ -41,9 +41,9 @@
   width: 100%;
   max-width: 30.125rem; /* 450 + 좌우 패딩 여유 */
   margin-inline: auto;
-  /* 위·아래 동일 여백 · 남은 높이는 섹션이 채움 */
+  /* 남은 높이는 섹션이 채움 */
   min-height: 100%;
-  padding: 2.5rem 1rem; /* 40 16 — mo 상하 동일 */
+  padding: 2.5rem 1rem 0; /* 상 40 · 좌우 16 · 하 0 — mo */
   font-family: var(--font-family-base);
 }
 
@@ -427,6 +427,39 @@
     height: var(--home-friend-thumb-h);
     max-height: none;
     aspect-ratio: auto;
+  }
+}
+
+/*
+ * Mo 낮은 화면(아이폰 사파리 등) — 한 화면 유지 · 여백을 줄여 친구목록(썸네일)을 최대한 크게 · 임시값
+ * 줄 높이 = (pane − 상하 padding 20 − 세로 gap 8) / 2
+ */
+@media (max-width: 768px) and (max-height: 740px) {
+  .home {
+    padding-top: 1rem; /* 40 → 16 */
+  }
+
+  .home__alert {
+    margin-bottom: 0.375rem; /* 10 → 6 */
+  }
+
+  .home__friends .pock-window__list,
+  .home__friends .pock-window--mo .pock-window__list,
+  .home__friends .pock-window--tb .pock-window__list,
+  .home__friends .pock-window--pc .pock-window__list {
+    grid-auto-rows: calc((100% - 0.5rem) / 2);
+    padding-block: 0.625rem; /* 16 → 10 */
+    row-gap: 0.5rem; /* 12 → 8 */
+  }
+
+  @supports (height: 1cqh) {
+    .home__friends .pock-window__list,
+    .home__friends .pock-window--mo .pock-window__list,
+    .home__friends .pock-window--tb .pock-window__list,
+    .home__friends .pock-window--pc .pock-window__list {
+      --home-friend-row-h: calc((100cqh - 1.75rem) / 2);
+      grid-auto-rows: var(--home-friend-row-h);
+    }
   }
 }
 
