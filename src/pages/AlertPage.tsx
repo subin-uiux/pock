@@ -1,6 +1,10 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { useNavigate } from "react-router-dom";
-import { alertGroups, type AlertItem } from "@/data/alert-data";
+import {
+  alertGroups,
+  type AlertItem,
+  type AlertKind,
+} from "@/data/alert-data";
 import { getStoredAlertGroups } from "@/lib/alerts";
 
 /** 카드 높이 116 · 펼침 간격 16 */
@@ -8,6 +12,15 @@ const CARD_H = 116;
 const CARD_GAP = 16;
 /** 접힘 시 뒤 카드 peek (세 장 기준) */
 const STACK_PEEK = 8;
+
+/** 알림 종류별 이동 경로 */
+const ALERT_ROUTES: Record<AlertKind, string> = {
+  unlock: "/pock-received",
+  arrive: "/pock-received",
+  friend: "/Friend_list",
+  notice: "/notice",
+  coin: "/coin",
+};
 
 function AlertCard({
   item,
@@ -78,12 +91,14 @@ export function AlertPage() {
     navigate("/home", { replace: true });
   };
 
-  const toggleStack = (groupId: string) => {
+  const expandStack = (groupId: string) => {
     setExpandedIds((prev) =>
-      prev.includes(groupId)
-        ? prev.filter((id) => id !== groupId)
-        : [...prev, groupId],
+      prev.includes(groupId) ? prev : [...prev, groupId],
     );
+  };
+
+  const openAlert = (item: AlertItem) => {
+    navigate(ALERT_ROUTES[item.kind]);
   };
 
   return (
@@ -118,7 +133,7 @@ export function AlertPage() {
           if (!stacked) {
             return (
               <li key={group.id} className="alert-page__item">
-                <AlertCard item={front} />
+                <AlertCard item={front} onClick={() => openAlert(front)} />
               </li>
             );
           }
@@ -147,10 +162,12 @@ export function AlertPage() {
                     style={
                       {
                         "--i": index,
-                        zIndex: expanded ? 1 : count - index,
+                        zIndex: count - index,
                       } as CSSProperties
                     }
-                    onClick={() => toggleStack(group.id)}
+                    onClick={() =>
+                      expanded ? openAlert(item) : expandStack(group.id)
+                    }
                   />
                 ))}
               </div>

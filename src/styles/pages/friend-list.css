@@ -75,7 +75,7 @@
 .friend-list-page__title {
   margin: 0;
   color: var(--color-base-900);
-  font-size: 1rem; /* 16 */
+  font-size: 1.125rem; /* 18 */
   font-weight: inherit;
   line-height: var(--line-height-tight);
   text-align: center;

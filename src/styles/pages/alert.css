@@ -102,44 +102,45 @@
   transition: height 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* 앞 카드가 항상 위(z) — 뒤 카드는 밑에서 아래로 빠져나옴 */
 .alert-stack__card.alert-card {
+  --stack-y: 0rem;
   position: absolute;
   left: 50%;
   top: 0;
   max-width: none;
-  transform: translateX(-50%);
+  transform: translate(-50%, var(--stack-y));
   transition:
-    top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    max-width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 /* 접힘 — 1장 484 · 2장 462 · 3장 430 (중앙 정렬 계단) */
 .alert-stack--collapsed .alert-stack__card--0 {
-  top: 0;
   width: 30.25rem; /* 484 */
   max-width: 100%;
 }
 
 .alert-stack--collapsed .alert-stack__card--1 {
-  top: 0.5rem; /* 8 */
+  --stack-y: 0.5rem; /* 8 */
   width: 28.875rem; /* 462 */
   max-width: calc(100% - 1.375rem);
 }
 
 .alert-stack--collapsed .alert-stack__card--2 {
-  top: 1rem; /* 16 */
+  --stack-y: 1rem; /* 16 */
   width: 26.875rem; /* 430 */
   max-width: calc(100% - 3.375rem);
 }
 
-/* 펼침 — 아래로 촤라락 */
+/* 펼침 — 아래로 촤라락 (뒤 카드일수록 조금 늦게) */
 .alert-stack--expanded .alert-stack__card {
+  --stack-y: calc(var(--i, 0) * (7.25rem + 1rem)); /* 116 + 16 */
   width: 100%;
   max-width: 100%;
-  top: calc(var(--i, 0) * (7.25rem + 1rem)); /* 116 + 16 */
-  transform: translateX(-50%);
-  transition-delay: calc(var(--i, 0) * 0.04s);
+  transition-delay: calc(var(--i, 0) * 0.05s);
 }
 
 .alert-card {
