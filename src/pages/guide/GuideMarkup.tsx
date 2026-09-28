@@ -33,7 +33,7 @@ export function GuideMarkup() {
     <>
       <div className="guide">
               <section className="logo-system" aria-labelledby="logo-system-title">
-                <h1 className="logo-system__title" id="logo-system-title">LOGO</h1>
+                  <h1 className="logo-system__title" id="logo-system-title">LOGO</h1>
                 <div className="logo-system__board">
                   <p className="logo-system__card-title">Logo</p>
                   <div className="logo-system__frame">
@@ -43,7 +43,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="grid-system" id="grid-system" aria-labelledby="grid-system-title">
-                <h2 className="grid-system__title" id="grid-system-title">GRID</h2>
+                  <h2 className="grid-system__title" id="grid-system-title">GRID</h2>
                 <div className="grid-system__board grid-system__board--mobile">
                   <p className="grid-system__caption">Mobile – (360~768)</p>
                   <div className="grid-system__viewport grid-system__viewport--mobile">
@@ -125,7 +125,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="color-system" aria-labelledby="color-system-title">
-                <h2 className="color-system__title" id="color-system-title">COLOR</h2>
+                  <h2 className="color-system__title" id="color-system-title">COLOR</h2>
                 <div className="color-system__board">
                   <section className="color-system__group" aria-labelledby="color-brand">
                     <h3 className="color-system__group-title" id="color-brand">BRAND CORE</h3>
@@ -341,7 +341,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="type-system" aria-labelledby="type-system-title">
-                <h2 className="type-system__title" id="type-system-title">TYPOGRAPHY — MOBILE</h2>
+                  <h2 className="type-system__title" id="type-system-title">TYPOGRAPHY — MOBILE</h2>
                 <div className="type-system__board">
                   <h3 className="type-system__card-title" id="type-neo">01 / NeoDunggeunmo · 기본 14개</h3>
                   <p className="type-system__scroll-hint">표를 옆으로 밀면 전체 항목을 볼 수 있습니다.</p>
@@ -564,7 +564,7 @@ export function GuideMarkup() {
                     </table>
                   </div>
                 </div>
-                <h2 className="type-system__title" id="type-system-pad-title">TYPOGRAPHY — PAD / PC</h2>
+                  <h2 className="type-system__title" id="type-system-pad-title">TYPOGRAPHY — PAD / PC</h2>
                 <div className="type-system__board">
                   <h3 className="type-system__card-title" id="type-neo-pad">01 / NeoDunggeunmo · 기본 17개</h3>
                   <p className="type-system__scroll-hint">표를 옆으로 밀면 전체 항목을 볼 수 있습니다.</p>
@@ -817,20 +817,20 @@ export function GuideMarkup() {
               </section>
 
               <section className="nav-system" id="nav-system" aria-labelledby="nav-system-title">
-                <h2 className="nav-system__title" id="nav-system-title">NAVIGATION</h2>
+                  <h2 className="nav-system__title" id="nav-system-title">NAVIGATION</h2>
                 <div className="nav-system__board">
                   <h3 className="nav-system__card-title">Navigation</h3>
                   <GuideNavigationDemo />
-                </div>
+                  </div>
 
               </section>
 
               <section className="btn-system" id="btn-system" aria-labelledby="btn-system-title">
-                <h2 className="btn-system__title" id="btn-system-title">BUTTON</h2>
+                  <h2 className="btn-system__title" id="btn-system-title">BUTTON</h2>
 
                 <div className="btn-system__board btn-system__board--push">
-                  <h3 className="btn-system__card-title">01 / Push btn</h3>
-                  <div className="btn-system__sample">
+                      <h3 className="btn-system__card-title">01 / Push btn</h3>
+                      <div className="btn-system__sample">
                     <p className="btn-system__state">Default · Mo 320~460 (드래그) · Pad/Pc 앱은 460 고정</p>
                     <p className="btn-system__hint" id="btn-push-resize-hint">
                       오른쪽 아래 모서리를 드래그해 너비를 조절하세요 (320~460). 버튼 폭이 점선 박스에
@@ -841,7 +841,7 @@ export function GuideMarkup() {
                       role="group"
                       aria-labelledby="btn-push-resize-hint"
                     >
-                      <div className="btn-system__stack">
+                        <div className="btn-system__stack">
                         <button type="button" className="btn btn--push-muted btn--block">
                           Text
                         </button>
@@ -852,13 +852,13 @@ export function GuideMarkup() {
                           Text
                         </button>
                       </div>
-                    </div>
-                    <p className="btn-system__state">Guide Button</p>
+                        </div>
+                        <p className="btn-system__state">Guide Button</p>
                     <button type="button" className="btn btn--guide">
                       Text
                     </button>
+                    </div>
                   </div>
-                </div>
 
                 <div className="btn-system__rows">
                   <div className="btn-system__row">
@@ -893,7 +893,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="card-system" id="card-system" aria-labelledby="card-system-title">
-                <h2 className="card-system__title" id="card-system-title">Card</h2>
+                  <h2 className="card-system__title" id="card-system-title">Card</h2>
                 <div className="card-system__columns">
                   <div className="card-system__board">
                     <h3 className="card-system__card-title">01 / 전송함 (Mo)</h3>
@@ -914,7 +914,7 @@ export function GuideMarkup() {
                             sendDate={GUIDE_COUNTDOWN_SEND}
                             openDate={GUIDE_COUNTDOWN_OPEN}
                           />
-                        </div>
+                              </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Timer)</p>
@@ -923,18 +923,18 @@ export function GuideMarkup() {
                           늘어납니다.
                         </p>
                         <div className="card-system__resize" role="group">
-                          <article className="letter-card letter-card--locked letter-card--mo">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__body">
-                              <span className="letter-card__lock" aria-hidden="true">
-                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                              </span>
-                              <p className="letter-card__target">To.Text</p>
+                        <article className="letter-card letter-card--locked letter-card--mo">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__body">
+                            <span className="letter-card__lock" aria-hidden="true">
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                            </span>
+                            <p className="letter-card__target">To.Text</p>
                               <div className="letter-card__status letter-card__status--timer">
                                 <LetterCardTimerText />
                               </div>
-                            </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -944,16 +944,16 @@ export function GuideMarkup() {
                           늘어납니다.
                         </p>
                         <div className="card-system__resize" role="group">
-                          <article className="letter-card letter-card--locked letter-card--mo">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__body">
-                              <span className="letter-card__lock" aria-hidden="true">
-                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                              </span>
-                              <p className="letter-card__target">To.Text</p>
-                              <div className="letter-card__status letter-card__status--unopened">미오픈</div>
-                            </div>
-                          </article>
+                        <article className="letter-card letter-card--locked letter-card--mo">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__body">
+                            <span className="letter-card__lock" aria-hidden="true">
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                            </span>
+                            <p className="letter-card__target">To.Text</p>
+                            <div className="letter-card__status letter-card__status--unopened">미오픈</div>
+                          </div>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -963,17 +963,17 @@ export function GuideMarkup() {
                           고정됩니다.
                         </p>
                         <div className="card-system__resize" role="group">
-                          <article className="letter-card letter-card--open letter-card--mo">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__open">
-                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                        <article className="letter-card letter-card--open letter-card--mo">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__open">
+                            <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
                                 <p className="letter-card__line">개봉일: 2026.07.22</p>
                                 <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
-                            </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                     </ul>
@@ -998,7 +998,7 @@ export function GuideMarkup() {
                             sendDate={GUIDE_COUNTDOWN_SEND}
                             openDate={GUIDE_COUNTDOWN_OPEN}
                           />
-                        </div>
+                              </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-sent (Timer)</p>
@@ -1007,18 +1007,18 @@ export function GuideMarkup() {
                           늘어납니다.
                         </p>
                         <div className="card-system__resize card-system__resize--tb" role="group">
-                          <article className="letter-card letter-card--locked letter-card--tb">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__body">
-                              <span className="letter-card__lock" aria-hidden="true">
-                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                              </span>
-                              <p className="letter-card__target">To.Text</p>
+                        <article className="letter-card letter-card--locked letter-card--tb">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__body">
+                            <span className="letter-card__lock" aria-hidden="true">
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                            </span>
+                            <p className="letter-card__target">To.Text</p>
                               <div className="letter-card__status letter-card__status--timer">
                                 <LetterCardTimerText />
                               </div>
-                            </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -1028,16 +1028,16 @@ export function GuideMarkup() {
                           늘어납니다.
                         </p>
                         <div className="card-system__resize card-system__resize--tb" role="group">
-                          <article className="letter-card letter-card--locked letter-card--tb">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__body">
-                              <span className="letter-card__lock" aria-hidden="true">
-                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                              </span>
-                              <p className="letter-card__target">To.Text</p>
-                              <div className="letter-card__status letter-card__status--unopened">미오픈</div>
-                            </div>
-                          </article>
+                        <article className="letter-card letter-card--locked letter-card--tb">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__body">
+                            <span className="letter-card__lock" aria-hidden="true">
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                            </span>
+                            <p className="letter-card__target">To.Text</p>
+                            <div className="letter-card__status letter-card__status--unopened">미오픈</div>
+                          </div>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -1047,17 +1047,17 @@ export function GuideMarkup() {
                           고정됩니다.
                         </p>
                         <div className="card-system__resize card-system__resize--tb" role="group">
-                          <article className="letter-card letter-card--open letter-card--tb">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__open">
-                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                        <article className="letter-card letter-card--open letter-card--tb">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__open">
+                            <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
                                 <p className="letter-card__line">개봉일: 2026.07.22</p>
                                 <p className="letter-card__line">수신자: zl존킹킹</p>
                               </div>
-                            </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                     </ul>
@@ -1076,7 +1076,7 @@ export function GuideMarkup() {
                         <div className="card-system__resize" role="group">
                           <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 보관함 카드">
                             <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
-                          </article>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -1095,7 +1095,7 @@ export function GuideMarkup() {
                             sendDate={GUIDE_COUNTDOWN_SEND}
                             openDate={GUIDE_COUNTDOWN_OPEN}
                           />
-                        </div>
+                                </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Timer) · 초성보기 결제완료</p>
@@ -1104,22 +1104,22 @@ export function GuideMarkup() {
                           늘어납니다.
                         </p>
                         <div className="card-system__resize" role="group">
-                          <article className="letter-card letter-card--locked letter-card--mo">
-                            <div className="letter-card__body">
-                              <span className="letter-card__lock" aria-hidden="true">
-                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                              </span>
-                              <p className="letter-card__target">From.Text</p>
-                              <div className="letter-card__status-group">
+                        <article className="letter-card letter-card--locked letter-card--mo">
+                          <div className="letter-card__body">
+                            <span className="letter-card__lock" aria-hidden="true">
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                            </span>
+                            <p className="letter-card__target">From.Text</p>
+                            <div className="letter-card__status-group">
                                 <div className="letter-card__status letter-card__status--timer">
                                   <LetterCardTimerText />
                                 </div>
-                                <button type="button" className="letter-card__reward">
-                                  <span>초성 보기</span>
-                                </button>
-                              </div>
+                              <button type="button" className="letter-card__reward">
+                                <span>초성 보기</span>
+                              </button>
                             </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -1129,17 +1129,17 @@ export function GuideMarkup() {
                           고정됩니다.
                         </p>
                         <div className="card-system__resize" role="group">
-                          <article className="letter-card letter-card--open letter-card--mo">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__open">
-                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                        <article className="letter-card letter-card--open letter-card--mo">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__open">
+                            <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
                                 <p className="letter-card__line">받은일시: 2026.08.12</p>
                                 <p className="letter-card__line">발신인: zl존킹킹</p>
                               </div>
-                            </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                     </ul>
@@ -1157,7 +1157,7 @@ export function GuideMarkup() {
                         <div className="card-system__resize card-system__resize--tb" role="group">
                           <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 보관함 카드">
                             <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
-                          </article>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -1176,7 +1176,7 @@ export function GuideMarkup() {
                             sendDate={GUIDE_COUNTDOWN_SEND}
                             openDate={GUIDE_COUNTDOWN_OPEN}
                           />
-                        </div>
+                                </div>
                       </li>
                       <li className="card-system__item">
                         <p className="card-system__caption">letter-card-received (Timer) · 초성보기 결제완료</p>
@@ -1185,22 +1185,22 @@ export function GuideMarkup() {
                           늘어납니다.
                         </p>
                         <div className="card-system__resize card-system__resize--tb" role="group">
-                          <article className="letter-card letter-card--locked letter-card--tb">
-                            <div className="letter-card__body">
-                              <span className="letter-card__lock" aria-hidden="true">
-                                <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
-                              </span>
-                              <p className="letter-card__target">From.Text</p>
-                              <div className="letter-card__status-group">
+                        <article className="letter-card letter-card--locked letter-card--tb">
+                          <div className="letter-card__body">
+                            <span className="letter-card__lock" aria-hidden="true">
+                              <img className="letter-card__lock-image" src="/assets/images/letter/letter-lock-icon.png" alt="" width={40} height={40} />
+                            </span>
+                            <p className="letter-card__target">From.Text</p>
+                            <div className="letter-card__status-group">
                                 <div className="letter-card__status letter-card__status--timer">
                                   <LetterCardTimerText />
                                 </div>
-                                <button type="button" className="letter-card__reward">
-                                  <span>초성 보기</span>
-                                </button>
-                              </div>
+                              <button type="button" className="letter-card__reward">
+                                <span>초성 보기</span>
+                              </button>
                             </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                       <li className="card-system__item">
@@ -1210,17 +1210,17 @@ export function GuideMarkup() {
                           고정됩니다.
                         </p>
                         <div className="card-system__resize card-system__resize--tb" role="group">
-                          <article className="letter-card letter-card--open letter-card--tb">
-                            <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
-                            <div className="letter-card__open">
-                              <div className="letter-card__thumb" aria-hidden="true"></div>
+                        <article className="letter-card letter-card--open letter-card--tb">
+                          <a className="letter-card__more" href="#card-system">전체보기 &gt;</a>
+                          <div className="letter-card__open">
+                            <div className="letter-card__thumb" aria-hidden="true"></div>
                               <div className="letter-card__meta">
                                 <p className="letter-card__line">제목: 안녕하신교</p>
                                 <p className="letter-card__line">받은일시: 2026.08.12</p>
                                 <p className="letter-card__line">발신인: zl존킹킹</p>
                               </div>
-                            </div>
-                          </article>
+                          </div>
+                        </article>
                         </div>
                       </li>
                     </ul>
@@ -1228,7 +1228,7 @@ export function GuideMarkup() {
                 </div>
               </section>
               <section className="letter-system" id="letter-system" aria-labelledby="letter-system-title">
-                <h2 className="letter-system__title" id="letter-system-title">LETTER</h2>
+                  <h2 className="letter-system__title" id="letter-system-title">LETTER</h2>
                 <div className="letter-system__board">
                   <h3 className="letter-system__card-title">01 / Letter card - normal (Mo)</h3>
                   <ul className="letter-system__list">
@@ -1828,7 +1828,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="window-system" id="window-system" aria-labelledby="window-system-title">
-                <h2 className="window-system__title" id="window-system-title">WINDOW GRAPHGIC</h2>
+                  <h2 className="window-system__title" id="window-system-title">WINDOW GRAPHGIC</h2>
                 <div className="window-system__board">
                   <h3 className="window-system__card-title">01 / Friend_list</h3>
                   <div className="window-system__samples">
@@ -1842,9 +1842,9 @@ export function GuideMarkup() {
 
                     <div className="window-system__sample">
                       <GuideFriendListSample size="pc" />
-                    </div>
-                  </div>
-                </div>
+                          </div>
+                            </div>
+                          </div>
                 <div className="window-system__board window-system__board--header">
                   <h3 className="window-system__card-title">01-1 / Window Header</h3>
                   <div className="window-system__header-samples">
@@ -1894,8 +1894,8 @@ export function GuideMarkup() {
                   <div className="window-system__samples">
                     <GuideLetterWriteMoResize />
                     <GuideLetterWriteTbResize />
-                  </div>
-                </div>
+                          </div>
+                        </div>
               </section>
 
               <GuideSendCategorySection />
@@ -1909,7 +1909,7 @@ export function GuideMarkup() {
               <GuideFriendCheckboxSection />
 
               <section className="overlay-system" id="overlay-system" aria-labelledby="overlay-system-title">
-                <h2 className="overlay-system__title" id="overlay-system-title">DIMMED OVERLAY</h2>
+                  <h2 className="overlay-system__title" id="overlay-system-title">DIMMED OVERLAY</h2>
                 <div className="overlay-system__board">
                   <h3 className="overlay-system__card-title">Dimmed Overlay</h3>
                   <div className="overlay-system__stage">
@@ -1924,7 +1924,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="popup-system" id="popup-system" aria-labelledby="popup-system-title">
-                <h2 className="popup-system__title" id="popup-system-title">POPUP</h2>
+                  <h2 className="popup-system__title" id="popup-system-title">POPUP</h2>
                 <div className="popup-system__board">
                   <h3 className="popup-system__card-title">Window - popup</h3>
                   <div className="popup-system__samples">
@@ -2031,7 +2031,7 @@ export function GuideMarkup() {
               </section>
 
               <section className="search-system" id="search-system" aria-labelledby="search-system-title">
-                <h2 className="search-system__title" id="search-system-title">SEARCH INPUT</h2>
+                  <h2 className="search-system__title" id="search-system-title">SEARCH INPUT</h2>
                 <div className="search-system__board">
                   <h3 className="search-system__card-title">Search Input</h3>
                   <div className="search-system__stage">

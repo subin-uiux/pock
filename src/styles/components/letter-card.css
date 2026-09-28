@@ -1,4 +1,4 @@
-﻿/**
+/**
  * letter-card.css
  * 전송함·보관함 카드. 모바일 기본.
  */
@@ -471,7 +471,7 @@
 .letter-card__stack {
   display: grid;
   flex: 1 1 auto;
-  grid-template-columns: 5.625rem minmax(0, 15.625rem); /* 썸네일 90 · 상태 250 */
+  grid-template-columns: 5.625rem minmax(0, 16.125rem); /* 썸네일 90 · 상태 258 */
   column-gap: 0.625rem; /* 10 */
   row-gap: 0.625rem; /* 10 */
   align-items: center;
@@ -486,8 +486,11 @@
 
 .letter-card__stack .letter-card__status {
   align-self: flex-start;
-  width: 15.625rem; /* 250 — 고정 폭 */
+  box-sizing: border-box;
+  width: 16.125rem; /* 258 */
+  height: 1.5rem; /* 24 */
   max-width: 100%;
+  padding: 0.125rem 0.3125rem; /* 상하 2 · 좌우 5 */
 }
 
 .letter-card--preview .letter-card__stack .letter-card__meta {
@@ -594,7 +597,8 @@
   .letter-card--preview.letter-card--open.letter-card--mo {
     height: 12.5rem;
     min-height: 0;
-    padding: 0.75rem;
+    padding-block: 0.75rem;
+    padding-inline: 1.25rem; /* 20 */
   }
 
   .letter-card--preview-locked.letter-card--open {
@@ -623,8 +627,12 @@
   }
 
   .letter-card__stack {
-    grid-template-columns: 7.5rem minmax(0, 15.625rem); /* 썸네일 120 */
+    grid-template-columns: 7.5rem minmax(0, 14.625rem); /* 썸네일 120 · 상태 234 */
     row-gap: 0.75rem; /* 12 — 이미지·텍스트 ↔ 상태 */
+  }
+
+  .letter-card__stack .letter-card__status {
+    width: 14.625rem; /* 234 */
   }
 
   .letter-card--preview .letter-card__stack .letter-card__meta {
@@ -656,12 +664,29 @@
   }
 
   .letter-card__stack:has(.letter-card__status--progress) {
-    grid-template-columns: 5.625rem minmax(0, 15.625rem);
+    grid-template-columns: 5.625rem minmax(0, 14.625rem); /* 썸네일 90 · 상태 234 */
   }
 
   .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb--character canvas {
     width: 4.375rem; /* 70 */
     height: 7.4375rem; /* 119 */
+  }
+
+  /* Tb — 전송함 미리보기 텍스트 전체 노출 */
+  .letter-card--preview .letter-card__line {
+    overflow: visible;
+    white-space: normal;
+    text-overflow: unset;
+    overflow-wrap: break-word;
+  }
+
+  .letter-card--preview.letter-card--open.letter-card--tb {
+    height: auto;
+    min-height: 12.5rem; /* 200 */
+  }
+
+  .letter-card--preview-locked.letter-card--open.letter-card--tb {
+    min-height: 13.125rem; /* 210 — 썸네일 150 + 상태 */
   }
 }
 
