@@ -4,6 +4,8 @@ import {
   LetterCardTimerText,
   LETTER_CARD_DEFAULT_TIMER,
 } from "@/components/LetterCardTimerText";
+import { PixelCharacter } from "@/components/PixelCharacter";
+import { homeFriends } from "@/data/home-friends";
 import { getLetterProgress } from "@/lib/letter-progress";
 import type {
   LetterCardMailbox,
@@ -32,6 +34,8 @@ interface CardProps {
   /** open 카드 메타 라인 — 없으면 제목/개봉일·받은일시/수신자·발신인 조합 */
   lines?: string[];
   thumbSrc?: string;
+  /** 전송함 — 잠김·열림 공통 미리보기 레이아웃 */
+  preview?: boolean;
   /** @deprecated sendDate+openDate로 계산 — 날짜 없을 때만 사용 */
   filledBlocks?: number;
   totalBlocks?: number;
@@ -145,6 +149,7 @@ export function Card({
   sender,
   lines,
   thumbSrc,
+  preview = false,
   filledBlocks: filledBlocksProp,
   totalBlocks = 10,
   hintPaid = false,
@@ -158,7 +163,11 @@ export function Card({
   const isReceived = mailbox === "received";
   const isOpen = variant === "open";
   const isGift = variant === "gift";
-  const previewSrc = thumbSrc ?? imageSrc;
+  const usePreview = preview && !isGift;
+  const previewSrc = usePreview ? thumbSrc : (thumbSrc ?? imageSrc);
+  const recipient = homeFriends.find(
+    (friend) => friend.name === (receiver ?? target),
+  );
   const [giftOpening, setGiftOpening] = useState(false);
   const openClass = [
     "letter-card",
@@ -319,8 +328,8 @@ export function Card({
     <article
       className={
         [
-          isOpen
-            ? openClass
+          usePreview || isOpen
+            ? `${openClass}${usePreview ? " letter-card--preview" : ""}`
             : `letter-card letter-card--locked letter-card--${size}`,
           isClickable ? "letter-card--clickable" : "",
         ]
@@ -348,15 +357,24 @@ export function Card({
         )
       ) : null}
 
-      {isOpen ? (
+      {usePreview || isOpen ? (
         <div className="letter-card__open">
-          {previewSrc ? (
+          {usePreview && !previewSrc ? (
+            <div className="letter-card__thumb letter-card__thumb--character">
+              <PixelCharacter
+                character={recipient?.character ?? "girl"}
+                outfit={recipient?.outfit ?? null}
+                width={70}
+                height={119}
+              />
+            </div>
+          ) : previewSrc ? (
             <img
               className="letter-card__thumb"
               src={previewSrc}
               alt=""
-              width={size === "tb" ? 120 : 90}
-              height={size === "tb" ? 150 : 120}
+              width={usePreview ? 90 : size === "tb" ? 120 : 90}
+              height={usePreview ? 120 : size === "tb" ? 150 : 120}
             />
           ) : (
             <div className="letter-card__thumb" aria-hidden="true" />

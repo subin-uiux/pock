@@ -124,20 +124,24 @@ export interface MailboxCardSample {
   hintPaid?: boolean;
   theme?: LetterTheme;
   imageSrc?: string;
+  /** 수신자가 첨부한 이미지 — 없으면 카드에 캐릭터 */
+  attachmentSrc?: string;
 }
 
 function sample(
   base: MailboxCardSample,
   letterIndex: number,
-  extras?: Pick<MailboxCardSample, "theme">,
+  extras?: Pick<MailboxCardSample, "theme"> & { attachment?: boolean },
 ): MailboxCardSample {
   const letter = LETTERS[letterIndex % LETTERS.length];
+  const { attachment, ...rest } = extras ?? {};
   return {
     ...base,
     title: letter.title,
     body: letter.body,
     imageSrc: letter.imageSrc,
-    ...extras,
+    ...(attachment ? { attachmentSrc: letter.imageSrc } : {}),
+    ...rest,
   };
 }
 
@@ -297,7 +301,7 @@ export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
       target: "zl존킹킹",
     },
     4,
-    { theme: "blue" },
+    { theme: "rainbow", attachment: true },
   ),
   sample(
     {
@@ -339,7 +343,7 @@ export const SENT_OPEN_SAMPLES: MailboxCardSample[] = [
       openDate: "2026.09.14",
     },
     2,
-    { theme: "stripe" },
+    { theme: "rainbow", attachment: true },
   ),
   sample(
     {

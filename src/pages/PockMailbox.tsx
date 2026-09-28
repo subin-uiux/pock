@@ -353,6 +353,8 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
                     hintPaid={item.hintPaid}
                     theme={item.theme}
                     imageSrc={item.imageSrc}
+                    thumbSrc={item.attachmentSrc}
+                    preview={mailbox === "sent"}
                     sender={isReceived ? item.target : undefined}
                     receiver={isReceived ? undefined : item.target}
                     onMoreClick={
