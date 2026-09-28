@@ -318,7 +318,7 @@
   /* 네비 아이콘 50 기준 토스트 위치 */
   .coin-toast {
     bottom: calc(
-      env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+      env(safe-area-inset-bottom, 0px) + var(--navigation-list-padding-bottom, 1.25rem) + var(--navigation-label-size, 1rem) * 1.25 + 0.125rem +
         3.125rem + 1.0625rem
     );
   }
@@ -328,9 +328,9 @@
 .coin-toast {
   position: fixed;
   left: 50%;
-  /* 네비: 하단패딩20 + 라벨(1rem×1.25) + gap2 + 아이콘 + 간격17 */
+  /* 네비: 하단패딩 + 라벨(글자크기×1.25) + gap2 + 아이콘 + 간격17 */
   bottom: calc(
-    env(safe-area-inset-bottom, 0px) + 1.25rem + 1.25rem + 0.125rem +
+    env(safe-area-inset-bottom, 0px) + var(--navigation-list-padding-bottom, 1.25rem) + var(--navigation-label-size, 1rem) * 1.25 + 0.125rem +
       var(--navigation-icon-size, 3.375rem) + 1.0625rem
   );
   z-index: var(--z-index-toast);

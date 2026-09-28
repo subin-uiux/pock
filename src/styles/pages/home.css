@@ -316,33 +316,55 @@
   min-height: 0;
 }
 
-/* 홈 친구목록 — 폭에 맞춰 3→2→1열로 아래로 재배치 */
+/*
+ * Mo — 한 화면 고정: 페이지 = 뷰포트 높이 · 친구목록 창이 남은 높이를 채움
+ * 2×2(최대 4명) · 썸네일은 남은 높이에 맞춰 118×146 비율로 축소 · 친구 관리 버튼 항상 노출
+ */
+.page--home {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+}
+
+.page--home .home {
+  min-height: 0;
+}
+
 .home__friends .pock-window__list,
 .home__friends .pock-window--mo .pock-window__list,
 .home__friends .pock-window--tb .pock-window__list,
 .home__friends .pock-window--pc .pock-window__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 7.375rem); /* 118 · 가로에 맞게 열 수 조절 */
+  grid-template-columns: repeat(2, minmax(0, 7.375rem)); /* 118 */
+  /* 한 화면 2줄(4명) — 줄 높이 = (목록 높이 − 세로 gap) / 2 · 5명부터 목록 안 스크롤 */
+  grid-auto-rows: calc((100% - 0.75rem) / 2);
   justify-content: center;
   justify-items: center;
   box-sizing: border-box;
   width: 100%;
-  padding: 1.875rem 0.625rem 0.625rem; /* 30 10 10 */
-  gap: 1.125rem 1.25rem; /* 18 20 — 임시값 */
+  height: 100%;
+  padding: 1rem 0.625rem; /* 16 10 — 임시값 */
+  gap: 0.75rem 1.25rem; /* 12 20 — 임시값 */
 }
 
 .home__friends .pock-window__list > li {
-  width: 7.375rem; /* 118 */
+  display: flex;
+  justify-content: center;
+  width: 100%;
   min-width: 0;
+  min-height: 0;
 }
 
 .home__friends .pock-window__item,
 .home__friends .pock-window--mo .pock-window__item,
 .home__friends .pock-window--tb .pock-window__item,
 .home__friends .pock-window--pc .pock-window__item {
-  flex: 0 0 7.375rem; /* 118 */
+  flex: 0 1 7.375rem; /* 118 */
+  justify-content: center;
   width: 7.375rem;
   max-width: 100%;
+  height: 100%;
+  min-height: 0;
   gap: 0.4375rem; /* 7 */
 }
 
@@ -350,9 +372,77 @@
 .home__friends .pock-window--mo .pock-window__thumb,
 .home__friends .pock-window--tb .pock-window__thumb,
 .home__friends .pock-window--pc .pock-window__thumb {
-  width: 7.375rem; /* 118 */
+  flex: 1 1 0;
+  width: auto;
   max-width: 100%;
-  height: 9.125rem; /* 146 */
+  height: auto;
+  min-height: 0;
+  max-height: 9.125rem; /* 146 */
+  aspect-ratio: 118 / 146;
+}
+
+/* 썸네일 축소 시 캐릭터도 같은 비율로 (74×126 / 118×146) */
+.home__friends .pock-window__thumb-figure {
+  width: 62.7%;
+  height: 86.3%;
+}
+
+.home__friends .pock-window__name {
+  flex: 0 0 auto;
+}
+
+/* Tb+ — 페이지 높이 자유 · 폭에 맞춰 3→2→1열로 아래로 재배치 */
+@media (min-width: 769px) {
+  .page--home {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .page--home .home {
+    min-height: 100%;
+  }
+
+  .home__friends .pock-window__list,
+  .home__friends .pock-window--mo .pock-window__list,
+  .home__friends .pock-window--tb .pock-window__list,
+  .home__friends .pock-window--pc .pock-window__list {
+    grid-template-columns: repeat(auto-fit, 7.375rem); /* 118 · 가로에 맞게 열 수 조절 */
+    grid-auto-rows: auto;
+    padding: 1.875rem 0.625rem 0.625rem; /* 30 10 10 */
+    gap: 1.125rem 1.25rem; /* 18 20 — 임시값 */
+  }
+
+  .home__friends .pock-window__list > li {
+    display: list-item;
+    width: 7.375rem; /* 118 */
+    min-height: auto;
+  }
+
+  .home__friends .pock-window__item,
+  .home__friends .pock-window--mo .pock-window__item,
+  .home__friends .pock-window--tb .pock-window__item,
+  .home__friends .pock-window--pc .pock-window__item {
+    flex: 0 0 7.375rem; /* 118 */
+    justify-content: flex-start;
+    height: auto;
+  }
+
+  .home__friends .pock-window__thumb,
+  .home__friends .pock-window--mo .pock-window__thumb,
+  .home__friends .pock-window--tb .pock-window__thumb,
+  .home__friends .pock-window--pc .pock-window__thumb {
+    flex: 0 0 auto;
+    width: 7.375rem; /* 118 */
+    height: 9.125rem; /* 146 */
+    max-height: none;
+    aspect-ratio: auto;
+  }
+
+  .home__friends .pock-window__thumb-figure {
+    width: 4.625rem; /* 74 */
+    height: 7.875rem; /* 126 */
+  }
 }
 
 /* 769~1023 — Mo와 동일: 가로 프로필 상단 + 친구목록 하단 · 폭 450 */

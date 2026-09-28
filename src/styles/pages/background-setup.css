@@ -44,7 +44,7 @@
   flex: 1;
   width: 100%;
   min-height: 100%;
-  padding-top: 6.25rem; /* 100 — mo */
+  padding-top: 2.5rem; /* 40 — mo */
   padding-bottom: 6.25rem; /* 100 — mo */
   padding-inline: 1.25rem; /* 20 — mo 양옆 */
   box-sizing: border-box;

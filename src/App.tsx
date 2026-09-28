@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "@/components/RequireAuth";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { CursorPressTilt } from "@/components/CursorPressTilt";
 import { CursorSparkles } from "@/components/CursorSparkles";
 import { AppLayout } from "@/layouts/AppLayout";
@@ -32,6 +33,7 @@ import { TermsPage } from "@/pages/TermsPage";
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <CursorSparkles />
       <CursorPressTilt />
       <Routes>

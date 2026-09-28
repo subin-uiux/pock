@@ -3,9 +3,11 @@
  * Page: .page--pock-send — Navigation 보내기 탭
  */
 
+/* Mo — 한 화면 고정: 페이지 = 뷰포트 높이 (Tb+는 아래에서 해제) */
 .page--pock-send {
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   background-color: var(--color-base-100);
   background-image: url("/assets/images/background/bg-mo.png");
   background-position: center;
@@ -19,8 +21,7 @@
   flex: 1 1 auto;
   width: 100%;
   max-width: none;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 0;
 }
 
 /* 네비 위 영역 · 상하 여백 100 · Letter_write가 남는 높이를 채움 */
@@ -82,7 +83,15 @@
 
 @media (min-width: 769px) {
   .page--pock-send {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     background-image: url("/assets/images/background/bg-pad.png");
+  }
+
+  .page--pock-send .page__wrapper {
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   /* 상하 여백 40 */

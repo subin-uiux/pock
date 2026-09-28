@@ -27,6 +27,29 @@ html.is-cursor-pressing *::after {
   background-color: var(--color-background);
 }
 
+/*
+ * 스크롤 시 배경 고정 — 페이지별 배경(.page--*)을 뷰포트 크기 fixed 레이어가 그대로 물려받음.
+ * background-attachment: fixed는 iOS Safari 미지원이라 사용하지 않음.
+ * z-index를 주지 않아(쌓임 맥락 없음) 온보딩 하이라이트·네비 z-index에 영향 없음.
+ */
+.page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* 모바일 주소창이 접혀도 높이 불변(lvh) — 배경이 늘었다 줄었다 하지 않도록 */
+  height: 100vh;
+  height: 100lvh;
+  background: inherit;
+  pointer-events: none;
+}
+
+/* 고정 배경 레이어 위에 그려지도록 — 기존 position 지정(fixed·absolute 등)이 항상 우선 */
+:where(.page > *) {
+  position: relative;
+}
+
 .page__wrapper {
   display: flex;
   flex-direction: column;
@@ -114,6 +137,52 @@ html.is-cursor-pressing *::after {
 .popup-layer .pock-window {
   position: relative;
   z-index: 1;
+}
+
+/* 토스트 — 아래→위 등장 · 위→아래 퇴장 (translateX(-50%) 가운데 정렬 유지) */
+.friend-list-toast,
+.coin-toast,
+.inquiry-toast {
+  animation: toast-slide-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.friend-list-toast--leaving,
+.coin-toast--leaving,
+.inquiry-toast--leaving {
+  animation: toast-slide-out 0.3s cubic-bezier(0.64, 0, 0.78, 0) both;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 1.5rem); /* 24 — 임시값 */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes toast-slide-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, 1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .friend-list-toast,
+  .coin-toast,
+  .inquiry-toast,
+  .friend-list-toast--leaving,
+  .coin-toast--leaving,
+  .inquiry-toast--leaving {
+    animation-duration: 0.01ms;
+  }
 }
 
 .page-section {

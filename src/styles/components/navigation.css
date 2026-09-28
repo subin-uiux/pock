@@ -1,21 +1,23 @@
 ﻿/**
  * navigation.css
  * 하단 내비게이션.
- * Mo: 아이콘 묶음 최소 360 · 화면 커지면 양옆 여백 60까지 늘어나며 간격 확장
- * Pad/Pc: 아이콘 gap 26 · 그라데이션 485 고정 · 높이 66
- * 아이콘: Mo 54→56, Pad/Pc 50→56 (활성·hover)
+ * Mo: 아이콘 묶음 320 · 하단 여백 28
+ * Pad/Pc: 아이콘 gap 32 · 그라데이션 485 고정 · 높이 66 · 하단 여백 20
+ * 아이콘: Mo 40→44, Pad/Pc 50→56 (활성·hover)
  */
 
 .page--has-navigation,
 .navigation {
   --navigation-bar-height: 4.5rem; /* Mo 72 */
   --navigation-shell-width: 100%;
-  --navigation-list-width: 22.5rem; /* Mo 아이콘 묶음 360 */
+  --navigation-list-width: 20rem; /* Mo 아이콘 묶음 320 — 360에서 간격 축소 · 임시값 */
   --navigation-list-padding-x: 0.875rem; /* 14 — 아이콘 사이 간격 확보 */
+  --navigation-list-padding-bottom: 1.75rem; /* Mo 28 — 20에서 8 올림 · 임시값 */
+  --navigation-label-size: 0.875rem; /* Mo 14 */
   /* 레이아웃 슬롯 = 기본 크기 → space-between 간격 확보. 확대는 scale만 */
-  --navigation-icon-size: 3.375rem; /* Mo 54 */
-  --navigation-icon-size-active: 3.5rem; /* 56 — 세로 여유 */
-  --navigation-icon-scale-active: calc(56 / 54);
+  --navigation-icon-size: 2.5rem; /* Mo 40 */
+  --navigation-icon-size-active: 2.75rem; /* Mo 44 — 세로 여유 · 임시값 */
+  --navigation-icon-scale-active: calc(44 / 40); /* 임시값 */
 }
 
 .navigation--pad {
@@ -23,13 +25,20 @@
   --navigation-shell-width: 30.3125rem; /* 485 */
   --navigation-list-width: 100%;
   --navigation-list-padding-x: 0;
+  --navigation-list-padding-bottom: 1.25rem; /* 20 */
+  --navigation-label-size: 1rem; /* Pad/Pc 16 */
   --navigation-icon-size: 3.125rem; /* Pad/Pc 50 */
+  --navigation-icon-size-active: 3.5rem; /* 56 — 세로 여유 */
   --navigation-icon-scale-active: calc(56 / 50);
 }
 
+/* 네비 밖(토스트 위치 계산 등)에서도 Pad/Pc 값 사용 */
 @media (min-width: 769px) {
   .page--has-navigation {
     --navigation-bar-height: 4.125rem; /* Pad/Pc 하단 여백 */
+    --navigation-list-padding-bottom: 1.25rem; /* 20 */
+    --navigation-label-size: 1rem; /* Pad/Pc 16 */
+    --navigation-icon-size: 3.125rem; /* Pad/Pc 50 */
   }
 }
 
@@ -59,7 +68,7 @@
   bottom: 0;
   left: 0;
   box-sizing: border-box;
-  height: var(--navigation-bar-height);
+  height: 4.25rem;
   border: 1px solid var(--color-base-700);
   border-radius: 0.625rem 0.625rem 0 0;
   background: linear-gradient(
@@ -79,7 +88,8 @@
   width: min(100%, var(--navigation-list-width));
   min-height: calc(var(--navigation-bar-height) + 1.75rem);
   margin: 0 auto;
-  padding: 1.75rem var(--navigation-list-padding-x) 1.25rem;
+  padding: 1.75rem var(--navigation-list-padding-x)
+    var(--navigation-list-padding-bottom);
   list-style: none;
 }
 
@@ -110,14 +120,14 @@
   background: transparent;
   color: var(--color-base-900);
   font: inherit;
-  font-size: 1rem;
+  font-size: var(--navigation-label-size);
   line-height: var(--line-height-tight);
   text-align: center;
   cursor: pointer;
 }
 
 .navigation__icon {
-  /* 슬롯 = 기본 크기(54/50). hover·활성만 scale → 옆 아이템 안 밀림 */
+  /* 슬롯 = 기본 크기(40). hover·활성만 scale → 옆 아이템 안 밀림 */
   display: block;
   width: var(--navigation-icon-size);
   height: var(--navigation-icon-size);

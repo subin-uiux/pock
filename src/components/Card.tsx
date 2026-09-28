@@ -250,9 +250,6 @@ export function Card({
             ))}
           </div>
         </div>
-        <span className="letter-card__more" aria-hidden="true">
-          전체보기 &gt;
-        </span>
 
         <button
           type="button"
@@ -328,24 +325,24 @@ export function Card({
           .join(" ")
       }
       onClick={isClickable ? onMoreClick : undefined}
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onKeyDown={
+        isClickable
+          ? (event) => {
+              if (event.target !== event.currentTarget) return;
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onMoreClick?.();
+              }
+            }
+          : undefined
+      }
     >
-      {showMore ? (
-        onMoreClick ? (
-          <button
-            className="letter-card__more"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              onMoreClick();
-            }}
-          >
-            전체보기 &gt;
-          </button>
-        ) : (
-          <Link className="letter-card__more" to={moreHref}>
-            전체보기 &gt;
-          </Link>
-        )
+      {showMore && !onMoreClick ? (
+        <Link className="letter-card__more" to={moreHref}>
+          전체보기 &gt;
+        </Link>
       ) : null}
 
       {isOpen ? (

@@ -340,6 +340,7 @@
   --lw-lines-total-h: calc(
     (var(--lw-side-line-count) + var(--lw-below-line-count)) * var(--lw-line-height)
   ); /* 옆 5 + 아래 5 */
+  position: relative; /* letter-write__caret 기준 */
   flex: 1 1 auto;
   min-height: var(--lw-lines-total-h);
   overflow: hidden;
@@ -425,7 +426,31 @@
   overflow-wrap: anywhere;
   word-break: break-word;
   outline: none;
-  caret-color: var(--color-base-900);
+  caret-color: transparent; /* 네이티브 caret 대신 letter-write__caret */
+}
+
+/* 커서 — 두 가로선 사이 가운데 · 높이·위치는 useLetterCaret */
+.letter-write__caret {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 1px;
+  height: 1rem; /* 16 — 줄 24의 2/3 */
+  background-color: currentColor; /* 편지지 글자색 (별 편지지는 흰색) */
+  pointer-events: none;
+  animation: letter-write-caret-blink 1s steps(1) infinite;
+}
+
+@keyframes letter-write-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 빈 상태 — 커서가 사진(float) 자리가 아닌 옆 가로선 시작점에서 깜빡이게 (입력 시 해제) */
+.letter-write__paper-body--empty {
+  padding-left: calc(var(--lw-media-w) + var(--lw-media-gap));
 }
 
 .letter-write__paper-body > * {
@@ -681,6 +706,11 @@
   font-size: 1.25rem; /* 20 — 임시값 */
   line-height: 1;
   cursor: pointer;
+}
+
+.letter-write__cal-nav-btn:disabled {
+  color: var(--color-base-400);
+  cursor: not-allowed;
 }
 
 .letter-write__cal-weekdays,

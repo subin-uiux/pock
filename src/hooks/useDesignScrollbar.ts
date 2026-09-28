@@ -16,6 +16,46 @@ export function useDesignScrollbar(
     let dragging = false;
     let startY = 0;
     let startTop = 0;
+    /** 휠 부드러운 스크롤 — 목표 위치로 매 프레임 감속 이동 */
+    let target = list.scrollTop;
+    let raf = 0;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    const stopSmooth = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+    };
+
+    const step = () => {
+      const current = list.scrollTop;
+      const diff = target - current;
+      if (Math.abs(diff) < 1) {
+        list.scrollTop = target;
+        raf = 0;
+        return;
+      }
+      let next = current + diff * 0.18;
+      if (Math.abs(next - current) < 1) next = current + Math.sign(diff);
+      list.scrollTop = next;
+      raf = requestAnimationFrame(step);
+    };
+
+    const onWheel = (event: WheelEvent) => {
+      const maxScroll = list.scrollHeight - list.clientHeight;
+      if (maxScroll <= 0 || reduceMotion || event.ctrlKey) return;
+      event.preventDefault();
+      const unit =
+        event.deltaMode === 1
+          ? 16
+          : event.deltaMode === 2
+            ? list.clientHeight
+            : 1;
+      const base = raf ? target : list.scrollTop;
+      target = Math.min(maxScroll, Math.max(0, base + event.deltaY * unit));
+      if (!raf) raf = requestAnimationFrame(step);
+    };
 
     const sync = () => {
       const maxScroll = list.scrollHeight - list.clientHeight;
@@ -35,6 +75,7 @@ export function useDesignScrollbar(
 
     const onPointerDown = (event: PointerEvent) => {
       event.preventDefault();
+      stopSmooth();
       dragging = true;
       startY = event.clientY;
       startTop = thumb.offsetTop;
@@ -49,6 +90,7 @@ export function useDesignScrollbar(
       const nextTop = Math.min(travel, Math.max(0, startTop + (event.clientY - startY)));
       thumb.style.top = `${nextTop}px`;
       list.scrollTop = (nextTop / travel) * maxScroll;
+      target = list.scrollTop;
     };
 
     const onPointerUp = () => {
@@ -56,6 +98,7 @@ export function useDesignScrollbar(
     };
 
     list.addEventListener("scroll", sync, { passive: true });
+    list.addEventListener("wheel", onWheel, { passive: false });
     thumb.addEventListener("pointerdown", onPointerDown);
     thumb.addEventListener("pointermove", onPointerMove);
     thumb.addEventListener("pointerup", onPointerUp);
@@ -67,7 +110,9 @@ export function useDesignScrollbar(
     sync();
 
     return () => {
+      stopSmooth();
       list.removeEventListener("scroll", sync);
+      list.removeEventListener("wheel", onWheel);
       thumb.removeEventListener("pointerdown", onPointerDown);
       thumb.removeEventListener("pointermove", onPointerMove);
       thumb.removeEventListener("pointerup", onPointerUp);

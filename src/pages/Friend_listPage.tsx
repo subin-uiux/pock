@@ -5,6 +5,7 @@ import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { Popup } from "@/components/Popup";
 import { SearchInput } from "@/components/SearchInput";
 import { friendItems } from "@/data/friend-data";
+import { useToastPresence } from "@/hooks/useToastPresence";
 import {
   CHARACTER_BASE,
   getOutfitById,
@@ -26,6 +27,7 @@ export function Friend_listPage() {
   const [profileFriend, setProfileFriend] = useState<PockUser | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<PockUser | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
+  const toast = useToastPresence(toastOpen);
 
   useEffect(() => {
     document.title = "친구 목록 관리 ㅣ POCK";
@@ -257,8 +259,16 @@ export function Friend_listPage() {
         onConfirm={confirmDelete}
       />
 
-      {toastOpen ? (
-        <div className="friend-list-toast" role="status" aria-live="polite">
+      {toast.mounted ? (
+        <div
+          className={
+            toast.leaving
+              ? "friend-list-toast friend-list-toast--leaving"
+              : "friend-list-toast"
+          }
+          role="status"
+          aria-live="polite"
+        >
           <span className="friend-list-toast__icon" aria-hidden="true" />
           <p className="friend-list-toast__text">링크 복사가 완료되었습니다.</p>
         </div>

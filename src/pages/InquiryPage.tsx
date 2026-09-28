@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
+import { useToastPresence } from "@/hooks/useToastPresence";
 
 /** 시안 안내 카피 */
 const INTRO_LINES = [
@@ -37,6 +38,7 @@ export function InquiryPage() {
   const [content, setContent] = useState("");
   const [email, setEmail] = useState("");
   const [toastOpen, setToastOpen] = useState(false);
+  const toast = useToastPresence(toastOpen);
   const [errors, setErrors] = useState<Partial<Record<FieldKey, boolean>>>({});
 
   useEffect(() => {
@@ -262,8 +264,14 @@ export function InquiryPage() {
         </div>
       </article>
 
-      {toastOpen ? (
-        <div className="inquiry-toast" role="status" aria-live="polite">
+      {toast.mounted ? (
+        <div
+          className={
+            toast.leaving ? "inquiry-toast inquiry-toast--leaving" : "inquiry-toast"
+          }
+          role="status"
+          aria-live="polite"
+        >
           <span className="inquiry-toast__icon" aria-hidden="true" />
           <p className="inquiry-toast__text">문의 보내기 완료되었습니다!</p>
         </div>
