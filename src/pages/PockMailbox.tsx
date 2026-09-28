@@ -270,7 +270,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
   };
 
   return (
-    <div className="pock-mailbox">
+    <div className={`pock-mailbox pock-mailbox--${tab}`}>
       <h1 className="visually-hidden">{title}</h1>
       {isMo ? (
         <div className="pock-mailbox__toolbar">
