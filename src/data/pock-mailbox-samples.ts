@@ -322,15 +322,6 @@ export const SENT_LOCKED_SAMPLES: MailboxCardSample[] = [
     6,
     { theme: "pink" },
   ),
-  sample(
-    {
-      id: "sent-locked-6",
-      variant: "unopened",
-      target: "지우",
-    },
-    7,
-    { theme: "orange" },
-  ),
 ];
 
 /** 열림 · 최근 열린 순: 09.14 → 07.22 → 03.01 */

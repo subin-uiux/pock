@@ -467,21 +467,32 @@
   padding-right: 0; /* 전체보기는 절대 위치 유지 */
 }
 
-/* 잠김 — 이미지·텍스트 아래 미오픈 / 타이머 / 카운트다운 · 간격 10 */
+/* 잠김 — 상태 바는 텍스트 열에 맞춤 · 아래 간격 10 */
 .letter-card__stack {
-  display: flex;
+  display: grid;
   flex: 1 1 auto;
-  flex-direction: column;
+  grid-template-columns: 5.625rem minmax(0, 15.625rem); /* 썸네일 90 · 상태 250 */
+  column-gap: 0.625rem; /* 10 */
+  row-gap: 0.625rem; /* 10 */
   align-items: center;
-  justify-content: center;
-  gap: 0.625rem; /* 10 */
+  justify-content: start;
   width: 100%;
   min-height: 0;
 }
 
 .letter-card--preview-locked .letter-card__open {
-  flex: 0 0 auto;
+  display: contents;
+}
+
+.letter-card__stack .letter-card__status {
+  align-self: flex-start;
+  width: 15.625rem; /* 250 — 고정 폭 */
+  max-width: 100%;
+}
+
+.letter-card--preview .letter-card__stack .letter-card__meta {
   width: 100%;
+  max-width: 100%;
 }
 
 .letter-card--preview .letter-card__meta {
@@ -586,14 +597,38 @@
     padding: 0.75rem;
   }
 
-  .letter-card--preview .letter-card__open {
-    justify-content: flex-start;
-    padding-right: 3.5rem;
+  .letter-card--preview-locked.letter-card--open {
+    height: auto;
+    min-height: 13.125rem; /* 210 — 썸네일 150 + 간격 12 + 상태 */
   }
 
   .letter-card--preview .letter-card__meta {
-    flex: 1 1 auto;
-    max-width: none;
+    max-width: calc(100% - 7.5rem - 0.625rem); /* 썸네일 120 · 간격 10 */
+  }
+
+  .letter-card--preview .letter-card__thumb,
+  .letter-card--tb.letter-card--open.letter-card--preview .letter-card__thumb,
+  .letter-card--preview.letter-card--open:not(.letter-card--mo) .letter-card__thumb {
+    width: 7.5rem; /* 120 */
+    height: 9.375rem; /* 150 */
+  }
+
+  .letter-card--preview .letter-card__thumb--character canvas {
+    width: 5.5rem; /* 88 */
+    height: 9.375rem; /* 150 */
+  }
+
+  .letter-card--preview .letter-card__more {
+    font-size: 1.125rem; /* 18 */
+  }
+
+  .letter-card__stack {
+    grid-template-columns: 7.5rem minmax(0, 15.625rem); /* 썸네일 120 */
+    row-gap: 0.75rem; /* 12 — 이미지·텍스트 ↔ 상태 */
+  }
+
+  .letter-card--preview .letter-card__stack .letter-card__meta {
+    max-width: 100%;
   }
 
   .letter-card--open:not(.letter-card--mo) {
@@ -609,13 +644,24 @@
     height: 9.375rem; /* 150 */
   }
 
-  .letter-card--preview.letter-card--open:not(.letter-card--mo) .letter-card__thumb {
+  .letter-card--open:not(.letter-card--mo) .letter-card__line {
+    font-size: 1rem; /* 16 */
+  }
+
+  /* 카운트다운 카드 썸네일 90×120 */
+  .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb,
+  .letter-card--tb.letter-card--open.letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb {
     width: 5.625rem; /* 90 */
     height: 7.5rem; /* 120 */
   }
 
-  .letter-card--open:not(.letter-card--mo) .letter-card__line {
-    font-size: 1rem; /* 16 */
+  .letter-card__stack:has(.letter-card__status--progress) {
+    grid-template-columns: 5.625rem minmax(0, 15.625rem);
+  }
+
+  .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb--character canvas {
+    width: 4.375rem; /* 70 */
+    height: 7.4375rem; /* 119 */
   }
 }
 

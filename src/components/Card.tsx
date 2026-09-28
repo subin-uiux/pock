@@ -168,6 +168,8 @@ export function Card({
   const recipient = homeFriends.find(
     (friend) => friend.name === (receiver ?? target),
   );
+  const characterSize =
+    size === "tb" ? { width: 88, height: 150 } : { width: 70, height: 119 };
   const [giftOpening, setGiftOpening] = useState(false);
   const openClass = [
     "letter-card",
@@ -376,8 +378,8 @@ export function Card({
                   <PixelCharacter
                     character={recipient?.character ?? "girl"}
                     outfit={recipient?.outfit ?? null}
-                    width={70}
-                    height={119}
+                    width={characterSize.width}
+                    height={characterSize.height}
                   />
                 </div>
               )}
@@ -387,9 +389,9 @@ export function Card({
                     {line}
                   </p>
                 ))}
+                {status}
               </div>
             </div>
-            {status}
           </div>
         ) : (
           <div className="letter-card__open">
@@ -398,8 +400,8 @@ export function Card({
                 <PixelCharacter
                   character={recipient?.character ?? "girl"}
                   outfit={recipient?.outfit ?? null}
-                  width={70}
-                  height={119}
+                  width={characterSize.width}
+                  height={characterSize.height}
                 />
               </div>
             ) : previewSrc ? (
