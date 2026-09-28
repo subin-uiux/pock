@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useCoin } from "@/hooks/useCoin";
+import { useToastPresence } from "@/hooks/useToastPresence";
 import { addCoinPurchaseAlert } from "@/lib/alerts";
 
 /** COIN SHOP 상품 — 시안 · amount = 지급 코인 */
@@ -83,6 +84,7 @@ export function CoinPage() {
     (typeof COIN_PACKS)[number] | null
   >(null);
   const [toastOpen, setToastOpen] = useState(false);
+  const toast = useToastPresence(toastOpen);
 
   useEffect(() => {
     document.title = "코인 상점 ㅣ POCK";
@@ -257,8 +259,12 @@ export function CoinPage() {
         onClose={closeBuyPopup}
       />
 
-      {toastOpen ? (
-        <div className="coin-toast" role="status" aria-live="polite">
+      {toast.mounted ? (
+        <div
+          className={toast.leaving ? "coin-toast coin-toast--leaving" : "coin-toast"}
+          role="status"
+          aria-live="polite"
+        >
           <span className="coin-toast__icon" aria-hidden="true" />
           <p className="coin-toast__text">코인 구매를 성공했습니다!</p>
         </div>

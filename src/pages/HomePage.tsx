@@ -6,6 +6,7 @@ import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
 import { homeFriends, type HomeFriend } from "@/data/home-friends";
 import { useCoin } from "@/hooks/useCoin";
+import { useToastPresence } from "@/hooks/useToastPresence";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -50,6 +51,7 @@ export function HomePage() {
   const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
   const [selectedFriend, setSelectedFriend] = useState<HomeFriend | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
+  const toast = useToastPresence(toastOpen);
 
   const [onboardOpen, setOnboardOpen] = useState(() => {
     const fromComplete =
@@ -361,8 +363,16 @@ export function HomePage() {
         onComplete={finishOnboard}
       />
 
-      {toastOpen ? (
-        <div className="friend-list-toast" role="status" aria-live="polite">
+      {toast.mounted ? (
+        <div
+          className={
+            toast.leaving
+              ? "friend-list-toast friend-list-toast--leaving"
+              : "friend-list-toast"
+          }
+          role="status"
+          aria-live="polite"
+        >
           <span className="friend-list-toast__icon" aria-hidden="true" />
           <p className="friend-list-toast__text">링크 복사가 완료되었습니다.</p>
         </div>

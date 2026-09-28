@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useAuth } from "@/hooks/useAuth";
 import { useCoin } from "@/hooks/useCoin";
+import { useToastPresence } from "@/hooks/useToastPresence";
 import { hasUnreadNotice } from "@/lib/notice";
 import {
   CHARACTER_BASE,
@@ -61,6 +62,7 @@ export function SettingsPage() {
   const [logoutOpen, setLogoutOpen] = useState(false);
   const [withdrawOpen, setWithdrawOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
+  const toast = useToastPresence(toastOpen);
   const [noticeUnread, setNoticeUnread] = useState(hasUnreadNotice);
 
   useEffect(() => {
@@ -414,8 +416,16 @@ export function SettingsPage() {
         onClose={() => setWithdrawOpen(false)}
       />
 
-      {toastOpen ? (
-        <div className="friend-list-toast" role="status" aria-live="polite">
+      {toast.mounted ? (
+        <div
+          className={
+            toast.leaving
+              ? "friend-list-toast friend-list-toast--leaving"
+              : "friend-list-toast"
+          }
+          role="status"
+          aria-live="polite"
+        >
           <span className="friend-list-toast__icon" aria-hidden="true" />
           <p className="friend-list-toast__text">링크 복사가 완료되었습니다.</p>
         </div>

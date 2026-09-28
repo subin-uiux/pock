@@ -12,12 +12,13 @@ import { LetterPaperPicker } from "@/components/LetterPaperPicker";
 import { Popup } from "@/components/Popup";
 import { DEFAULT_LETTER_PAPER } from "@/data/letter-paper";
 import { useCoin } from "@/hooks/useCoin";
+import { useLetterCaret } from "@/hooks/useLetterCaret";
 import { getProfileSetup } from "@/lib/profile-setup";
 import type { LetterTheme, LetterWritePayload, PockUser } from "@/types";
 
 const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"] as const;
 /** 편지 본문 최대 글자 수 */
-const LETTER_CONTENT_MAX = 400;
+const LETTER_CONTENT_MAX = 300;
 
 /** 친구 선택 버튼 — 5글자 이상이면 앞 4글자 + 줄임표 */
 function formatFriendLabel(name: string) {
@@ -100,7 +101,10 @@ export function Letter_write({
   onDirtyChange,
 }: Letter_writeProps) {
   const fileRef = useRef<HTMLInputElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const caretRef = useRef<HTMLSpanElement>(null);
   const { balance } = useCoin();
+  useLetterCaret(bodyRef, caretRef);
 
   const [from, setFrom] = useState(getFromNickname);
   const [writtenDate, setWrittenDate] = useState("");
@@ -122,9 +126,17 @@ export function Letter_write({
     next.setDate(next.getDate() + 1);
     return next;
   }, [today]);
+  /** 개봉일 선택 가능 끝 — 오늘부터 1년 뒤 같은 날 */
+  const maxOpenDate = useMemo(() => {
+    const next = new Date(today);
+    next.setFullYear(next.getFullYear() + 1);
+    return next;
+  }, [today]);
   const selectedDate = useMemo(() => parseDotDate(date), [date]);
   const [viewYear, setViewYear] = useState(() => today.getFullYear());
   const [viewMonth, setViewMonth] = useState(() => today.getMonth());
+  const canGoNextMonth =
+    new Date(viewYear, viewMonth + 1, 1).getTime() <= maxOpenDate.getTime();
 
   const fromPlaceholder = from || "닉네임";
   const popupSize = size === "mo" ? "mo" : "tb";
@@ -199,8 +211,9 @@ export function Letter_write({
 
   const handlePickDay = (value: Date) => {
     const picked = startOfDay(value);
-    // 오늘 포함 이전은 비활성 — 다음날부터 선택 가능
+    // 오늘 포함 이전 · 1년 초과는 비활성
     if (picked.getTime() < minOpenDate.getTime()) return;
+    if (picked.getTime() > maxOpenDate.getTime()) return;
     const next = formatDotDate(picked);
     setDate(next);
     setWrittenDate(next);
@@ -474,7 +487,12 @@ export function Letter_write({
                 )}
               </button>
               <div
-                className="letter-write__paper-body"
+                className={
+                  content === "" || content === "\n"
+                    ? "letter-write__paper-body letter-write__paper-body--empty"
+                    : "letter-write__paper-body"
+                }
+                ref={bodyRef}
                 contentEditable
                 role="textbox"
                 aria-multiline="true"
@@ -484,6 +502,12 @@ export function Letter_write({
                 onInput={handleContentInput}
                 onPaste={handleContentPaste}
                 suppressContentEditableWarning
+              />
+              <span
+                ref={caretRef}
+                className="letter-write__caret"
+                aria-hidden="true"
+                hidden
               />
               <span id="letter-write-content-limit" className="visually-hidden">
                 최대 {LETTER_CONTENT_MAX}자
@@ -579,6 +603,7 @@ export function Letter_write({
                     type="button"
                     className="letter-write__cal-nav-btn"
                     aria-label="다음 달"
+                    disabled={!canGoNextMonth}
                     onClick={() => shiftMonth(1)}
                   >
                     ›
@@ -611,7 +636,8 @@ export function Letter_write({
                 {calendarDays.map((cell) => {
                   const cellDay = startOfDay(cell.date);
                   const isDisabled =
-                    cellDay.getTime() < minOpenDate.getTime();
+                    cellDay.getTime() < minOpenDate.getTime() ||
+                    cellDay.getTime() > maxOpenDate.getTime();
                   const isToday = sameDay(cell.date, today);
                   const isSelected =
                     selectedDate !== null && sameDay(cell.date, selectedDate);
