@@ -395,6 +395,41 @@
   flex: 0 0 auto;
 }
 
+/*
+ * iOS Safari는 button(pock-window__item) 안의 %·flex 높이를 풀지 못해 썸네일이 작아짐
+ * → pane 높이(cqh)로 줄·썸네일 크기를 직접 계산
+ * 줄 높이 = (pane − 상하 padding 32 − 세로 gap 12) / 2
+ * 썸네일 높이 = 줄 높이 − 이름(16×1.25) − gap 7 · 최대 146 · 폭은 118:146
+ */
+@supports (height: 1cqh) {
+  .home__friends .pock-window__pane {
+    container-type: size;
+  }
+
+  .home__friends .pock-window__list,
+  .home__friends .pock-window--mo .pock-window__list,
+  .home__friends .pock-window--tb .pock-window__list,
+  .home__friends .pock-window--pc .pock-window__list {
+    --home-friend-row-h: calc((100cqh - 2.75rem) / 2);
+    --home-friend-thumb-h: min(
+      9.125rem,
+      calc(var(--home-friend-row-h) - 1.6875rem)
+    );
+    grid-auto-rows: var(--home-friend-row-h);
+  }
+
+  .home__friends .pock-window__thumb,
+  .home__friends .pock-window--mo .pock-window__thumb,
+  .home__friends .pock-window--tb .pock-window__thumb,
+  .home__friends .pock-window--pc .pock-window__thumb {
+    flex: 0 0 auto;
+    width: calc(var(--home-friend-thumb-h) * 118 / 146);
+    height: var(--home-friend-thumb-h);
+    max-height: none;
+    aspect-ratio: auto;
+  }
+}
+
 /* Tb+ — 페이지 높이 자유 · 폭에 맞춰 3→2→1열로 아래로 재배치 */
 @media (min-width: 769px) {
   .page--home {
@@ -405,6 +440,10 @@
 
   .page--home .home {
     min-height: 100%;
+  }
+
+  .home__friends .pock-window__pane {
+    container-type: normal;
   }
 
   .home__friends .pock-window__list,
