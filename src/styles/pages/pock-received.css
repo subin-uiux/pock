@@ -92,9 +92,9 @@
   flex-direction: column;
   min-height: 0;
   box-sizing: border-box;
-  padding: 0.625rem 1.25rem 0.1875rem; /* 위 10 · 좌우 20 · 아래 3 */
+  padding: 0.625rem; /* 10 — Mo */
   padding-bottom: calc(
-    0.1875rem + var(--navigation-bar-height, 4.5rem) + 2.25rem +
+    0.625rem + var(--navigation-bar-height, 4.5rem) + 2.25rem +
       env(safe-area-inset-bottom)
   );
   overflow-x: hidden;
@@ -204,6 +204,13 @@
     overflow: visible;
   }
 
+  .page--pock-sent .main {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0; /* 회색 배경 마진 없음 · 좌우 패딩 64만 */
+    padding-inline: 4rem; /* 64 */
+  }
+
   .page--pock-received .page__wrapper,
   .page--pock-sent .page__wrapper,
   .page--pock-received.page--has-navigation .page__wrapper,
@@ -289,6 +296,19 @@
     padding: 0.625rem; /* 위·아래·좌우 10 동일 */
     overflow: visible;
     border-radius: 0.625rem; /* 10 */
+  }
+
+  /* 전송함 Tb — 잠김 흰 박스 2겹 · 열림 1겹 · 각 패딩 16 */
+  .page--pock-sent .pock-mailbox__cards {
+    padding: 1rem; /* 16 */
+  }
+
+  .page--pock-sent .pock-mailbox--locked .pock-mailbox__panel {
+    box-sizing: border-box;
+    padding: 1rem; /* 16 */
+    border: 1px solid var(--color-base-700);
+    border-radius: 0.625rem; /* 10 */
+    background-color: var(--color-base-0);
   }
 
   /* 흰 카드(보드 우측 패딩 42 안쪽) 오른쪽에 탭 밀착 */

@@ -270,7 +270,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
   };
 
   return (
-    <div className="pock-mailbox">
+    <div className={`pock-mailbox pock-mailbox--${tab}`}>
       <h1 className="visually-hidden">{title}</h1>
       {isMo ? (
         <div className="pock-mailbox__toolbar">
@@ -353,6 +353,8 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
                     hintPaid={item.hintPaid}
                     theme={item.theme}
                     imageSrc={item.imageSrc}
+                    thumbSrc={item.attachmentSrc}
+                    preview={mailbox === "sent"}
                     sender={isReceived ? item.target : undefined}
                     receiver={isReceived ? undefined : item.target}
                     onMoreClick={

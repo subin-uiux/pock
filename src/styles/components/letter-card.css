@@ -451,6 +451,80 @@
   image-rendering: crisp-edges;
 }
 
+/* 전송함 미리보기 — Mo 썸네일 90×120 · 좌우 패딩 8 · 이미지↔텍스트 10 */
+.letter-card--preview.letter-card--open,
+.letter-card--preview.letter-card--open.letter-card--mo {
+  height: 12.5rem; /* 200 */
+  padding-inline: 0.5rem; /* 8 */
+}
+
+.letter-card--preview .letter-card__open {
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 */
+  height: auto;
+  padding-right: 0; /* 전체보기는 절대 위치 유지 */
+}
+
+/* 잠김 — 상태 바는 텍스트 열에 맞춤 · 아래 간격 10 */
+.letter-card__stack {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: 5.625rem minmax(0, 16.125rem); /* 썸네일 90 · 상태 258 */
+  column-gap: 0.625rem; /* 10 */
+  row-gap: 0.625rem; /* 10 */
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  min-height: 0;
+}
+
+.letter-card--preview-locked .letter-card__open {
+  display: contents;
+}
+
+.letter-card__stack .letter-card__status {
+  align-self: flex-start;
+  box-sizing: border-box;
+  width: 16.125rem; /* 258 */
+  height: 1.5rem; /* 24 */
+  max-width: 100%;
+  padding: 0.125rem 0.3125rem; /* 상하 2 · 좌우 5 */
+}
+
+.letter-card--preview .letter-card__stack .letter-card__meta {
+  width: 100%;
+  max-width: 100%;
+}
+
+.letter-card--preview .letter-card__meta {
+  flex: 0 1 auto;
+  gap: 0.5rem; /* 8 — 텍스트 간 */
+  min-width: 0;
+  max-width: calc(100% - 5.625rem - 0.625rem); /* 썸네일 90 · 간격 10 */
+}
+
+.letter-card--preview .letter-card__thumb,
+.letter-card--tb.letter-card--open.letter-card--preview .letter-card__thumb {
+  width: 5.625rem; /* 90 */
+  height: 7.5rem; /* 120 */
+}
+
+.letter-card__thumb--character {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.letter-card__thumb--character canvas {
+  display: block;
+  width: 4.375rem; /* 70 */
+  height: 7.4375rem; /* 119 */
+}
+
 .letter-card__meta {
   display: flex;
   flex: 1 1 auto;
@@ -519,6 +593,62 @@
 }
 
 @media (min-width: 769px) {
+  .letter-card--preview.letter-card--open,
+  .letter-card--preview.letter-card--open.letter-card--mo {
+    height: 12.5rem;
+    min-height: 0;
+    padding-block: 0.75rem;
+    padding-inline: 1.25rem; /* 20 */
+  }
+
+  .letter-card--preview-locked.letter-card--open {
+    height: 12.5rem; /* 200 */
+    min-height: 0;
+  }
+
+  .letter-card--preview .letter-card__meta {
+    max-width: calc(100% - 7.5rem - 0.625rem); /* 썸네일 120 · 간격 10 */
+  }
+
+  /* 열림 — 이미지·텍스트를 잠김과 같이 왼쪽 정렬 */
+  .letter-card--preview .letter-card__open {
+    justify-content: flex-start;
+  }
+
+  .letter-card--preview .letter-card__thumb,
+  .letter-card--tb.letter-card--open.letter-card--preview .letter-card__thumb,
+  .letter-card--preview.letter-card--open:not(.letter-card--mo) .letter-card__thumb {
+    width: 7.5rem; /* 120 */
+    height: 9.375rem; /* 150 */
+  }
+
+  .letter-card--preview .letter-card__thumb--character canvas {
+    width: 5.5rem; /* 88 */
+    height: 9.375rem; /* 150 */
+  }
+
+  .letter-card--preview:not(.letter-card--preview-locked) .letter-card__thumb {
+    width: 7.5rem; /* 120 — 열림 썸네일 */
+    height: 9.375rem; /* 150 */
+  }
+
+  .letter-card--preview .letter-card__more {
+    font-size: 1rem; /* 16 */
+  }
+
+  .letter-card__stack {
+    grid-template-columns: 7.5rem minmax(0, 14.625rem); /* 썸네일 120 · 상태 234 */
+    row-gap: 0.75rem; /* 12 — 이미지·텍스트 ↔ 상태 */
+  }
+
+  .letter-card__stack .letter-card__status {
+    width: 14.625rem; /* 234 */
+  }
+
+  .letter-card--preview .letter-card__stack .letter-card__meta {
+    max-width: 100%;
+  }
+
   .letter-card--open:not(.letter-card--mo) {
     height: 12.5rem; /* 200 — 다른 카드와 동일 */
   }
@@ -534,6 +664,41 @@
 
   .letter-card--open:not(.letter-card--mo) .letter-card__line {
     font-size: 1rem; /* 16 */
+  }
+
+  /* 카운트다운 카드 썸네일 90×120 */
+  .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb,
+  .letter-card--tb.letter-card--open.letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb {
+    width: 5.625rem; /* 90 */
+    height: 7.5rem; /* 120 */
+  }
+
+  .letter-card__stack:has(.letter-card__status--progress) {
+    grid-template-columns: 5.625rem minmax(0, 16.5rem); /* 썸네일 90 · 상태 264 */
+  }
+
+  .letter-card__stack .letter-card__status--progress {
+    width: 16.5rem; /* 264 */
+    height: 1.5rem; /* 24 */
+  }
+
+  .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb--character canvas {
+    width: 4.375rem; /* 70 */
+    height: 7.4375rem; /* 119 */
+  }
+
+  /* Tb — 전송함 미리보기 텍스트 전체 노출 */
+  .letter-card--preview .letter-card__line {
+    overflow: visible;
+    white-space: normal;
+    text-overflow: unset;
+    overflow-wrap: break-word;
+  }
+
+  .letter-card--preview.letter-card--open.letter-card--tb,
+  .letter-card--preview-locked.letter-card--open.letter-card--tb {
+    height: 12.5rem; /* 200 */
+    min-height: 0;
   }
 }
 
