@@ -92,9 +92,9 @@
   flex-direction: column;
   min-height: 0;
   box-sizing: border-box;
-  padding: 0.625rem 1.25rem 0.1875rem; /* 위 10 · 좌우 20 · 아래 3 */
+  padding: 0.625rem; /* 10 — Mo */
   padding-bottom: calc(
-    0.1875rem + var(--navigation-bar-height, 4.5rem) + 2.25rem +
+    0.625rem + var(--navigation-bar-height, 4.5rem) + 2.25rem +
       env(safe-area-inset-bottom)
   );
   overflow-x: hidden;
