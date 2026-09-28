@@ -3,10 +3,8 @@
  * 홈 온보딩 — 딤 위 타깃 하이라이트 + 팝업 위치
  */
 
+/* 래퍼는 쌓임 맥락을 만들지 않음(fixed·z-index 금지) — 팝업(모달+2)이 하이라이트 타깃(모달+1) 위로 */
 .onboard-guide {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-index-modal);
   pointer-events: none;
 }
 
