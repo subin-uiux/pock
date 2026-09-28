@@ -2,12 +2,14 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
+import { setMailboxFriendFilter } from "@/lib/mailbox-friend-filter";
+import { countMailboxLetters } from "@/lib/mailbox-friends";
 import type {
   BackgroundId,
   CharacterId,
   OutfitId,
 } from "@/lib/profile-setup";
-import type { PockUser } from "@/types";
+import type { LetterCardMailbox, PockUser } from "@/types";
 
 export interface FriendProfilePopupProps {
   open: boolean;
@@ -22,9 +24,9 @@ export interface FriendProfilePopupProps {
   character?: CharacterId;
   outfit?: OutfitId;
   background?: BackgroundId;
-  /** 친구가 보낸 POCK 수 — 임시값 */
+  /** 친구가 보낸 POCK 수 — 없으면 보관함 편지 수 */
   receivedCount?: number;
-  /** 내가 보낸 POCK 수 — 임시값 */
+  /** 내가 보낸 POCK 수 — 없으면 전송함 편지 수 */
   sentCount?: number;
   /** 친구 삭제 (없으면 버튼 숨김) */
   onDelete?: () => void;
@@ -46,8 +48,8 @@ export function FriendProfilePopup({
   character,
   outfit,
   background,
-  receivedCount = 3,
-  sentCount = 2,
+  receivedCount: receivedCountProp,
+  sentCount: sentCountProp,
   onDelete,
   onSendLetter,
   onClose,
@@ -55,6 +57,10 @@ export function FriendProfilePopup({
   const navigate = useNavigate();
 
   if (!open) return null;
+
+  const receivedCount =
+    receivedCountProp ?? countMailboxLetters("received", name);
+  const sentCount = sentCountProp ?? countMailboxLetters("sent", name);
 
   const hasThumb =
     Boolean(character) && Boolean(outfit) && Boolean(background);
@@ -79,6 +85,12 @@ export function FriendProfilePopup({
     navigate("/pock-send", {
       state: { friend },
     });
+  };
+
+  const openMailbox = (mailbox: LetterCardMailbox) => {
+    setMailboxFriendFilter(mailbox, [name]);
+    onClose();
+    navigate(mailbox === "received" ? "/pock-received" : "/pock-sent");
   };
 
   return (
@@ -148,22 +160,30 @@ export function FriendProfilePopup({
         ) : null}
 
         <div className="friend-profile-popup__stats">
-          <div className="friend-profile-popup__stat">
+          <button
+            type="button"
+            className="friend-profile-popup__stat"
+            onClick={() => openMailbox("received")}
+          >
             <span className="friend-profile-popup__stat-label">
               친구가 보낸 POCK
             </span>
             <span className="friend-profile-popup__stat-value">
               {receivedCount}
             </span>
-          </div>
-          <div className="friend-profile-popup__stat">
+          </button>
+          <button
+            type="button"
+            className="friend-profile-popup__stat"
+            onClick={() => openMailbox("sent")}
+          >
             <span className="friend-profile-popup__stat-label">
               내가 보낸 POCK
             </span>
             <span className="friend-profile-popup__stat-value">
               {sentCount}
             </span>
-          </div>
+          </button>
         </div>
 
         <Button
