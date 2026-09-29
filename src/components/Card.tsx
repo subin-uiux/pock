@@ -349,32 +349,58 @@ export function Card({
           : undefined
       }
     >
-      {showMore && !onMoreClick ? (
-        <Link className="letter-card__more" to={moreHref}>
-          전체보기 &gt;
-        </Link>
+      {showMore ? (
+        onMoreClick ? (
+          <button
+            className="letter-card__more"
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onMoreClick();
+            }}
+          >
+            전체보기 &gt;
+          </button>
+        ) : (
+          <Link className="letter-card__more" to={moreHref}>
+            전체보기 &gt;
+          </Link>
+        )
       ) : null}
 
-      {isOpen ? (
-        <div className="letter-card__open">
-          {previewSrc ? (
-            <img
-              className="letter-card__thumb"
-              src={previewSrc}
-              alt=""
-              width={size === "tb" ? 120 : 90}
-              height={size === "tb" ? 150 : 120}
-            />
-          ) : null}
-          <div className="letter-card__meta">
-            {openLines.map((line) => (
-              <p className="letter-card__line" key={line}>
-                {line}
-              </p>
-            ))}
+      {usePreview || isOpen ? (
+        usePreview && !isOpen ? (
+          <div className="letter-card__stack">
+            <div className="letter-card__open">
+              {previewSrc ? (
+                <img
+                  className="letter-card__thumb"
+                  src={previewSrc}
+                  alt=""
+                  width={90}
+                  height={120}
+                />
+              ) : (
+                <div className="letter-card__thumb letter-card__thumb--character">
+                  <PixelCharacter
+                    character={recipient?.character ?? "girl"}
+                    outfit={recipient?.outfit ?? null}
+                    width={characterSize.width}
+                    height={characterSize.height}
+                  />
+                </div>
+              )}
+              <div className="letter-card__meta">
+                {openLines.map((line) => (
+                  <p className="letter-card__line" key={line}>
+                    {line}
+                  </p>
+                ))}
+                {status}
+              </div>
+            </div>
           </div>
-        </div>
-      ) : usePreview ? (
+        ) : (
           <div className="letter-card__open">
             {usePreview && !previewSrc ? (
               <div className="letter-card__thumb letter-card__thumb--character">
@@ -404,6 +430,7 @@ export function Card({
               ))}
             </div>
           </div>
+        )
       ) : (
         <div className="letter-card__body">
           <span className="letter-card__lock" aria-hidden="true">
