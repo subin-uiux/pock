@@ -47,6 +47,13 @@ export function ProfileCompletePage() {
 
           <div className="profile-complete__figure" aria-hidden="true">
             <img
+              className="profile-complete__sparkle"
+              src={`/assets/images/${character === "girl" ? "pink" : "blue"}-sparkle.gif`}
+              alt=""
+              width={320}
+              height={320}
+            />
+            <img
               className="profile-complete__base"
               src={CHARACTER_BASE.src[character]}
               alt=""

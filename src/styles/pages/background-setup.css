@@ -147,11 +147,12 @@
   column-gap: 0.625rem; /* 10 */
   row-gap: 1rem; /* 16 */
   box-sizing: border-box;
-  width: 100%; /* form padding-inline 20과 맞춤 */
+  width: 100%;
+  max-width: 20rem; /* 320 — 다음 버튼과 동일 컨테이너 */
   height: 9.875rem; /* 158 — mypage-window__panel 안쪽 */
   min-height: 0;
   margin-top: 2.25rem; /* 36 */
-  margin-inline: 0;
+  margin-inline: auto;
   padding: 0;
 }
 
@@ -208,8 +209,8 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-  max-width: none;
-  margin-inline: 0;
+  max-width: 20rem; /* 320 — 닉네임 입력창과 동일 컨테이너 */
+  margin-inline: auto;
   padding: 1.25rem 0 0; /* 20 */
   box-sizing: border-box;
 }
@@ -270,6 +271,7 @@
     justify-content: center;
     gap: 1.5rem; /* 24 — pad 일렬 */
     width: auto;
+    max-width: none;
     height: auto;
     min-height: 0;
     margin-top: 3.75rem; /* 60 */

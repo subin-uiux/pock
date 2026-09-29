@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AdVideoLayer } from "@/components/AdVideoLayer";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { useCoin } from "@/hooks/useCoin";
@@ -85,10 +86,19 @@ export function CoinPage() {
   >(null);
   const [toastOpen, setToastOpen] = useState(false);
   const toast = useToastPresence(toastOpen);
+  const [toastMessage, setToastMessage] = useState("");
+  const [adOpen, setAdOpen] = useState(false);
 
   useEffect(() => {
     document.title = "코인 상점 ㅣ POCK";
   }, []);
+
+  const closeAd = useCallback(() => {
+    setAdOpen(false);
+    earn(1, "광고 시청");
+    setToastMessage("1코인을 받았습니다");
+    setToastOpen(true);
+  }, [earn]);
 
   useEffect(() => {
     if (!toastOpen) return;
@@ -119,6 +129,7 @@ export function CoinPage() {
       addCoinPurchaseAlert(selectedPack.label);
     }
     closeBuyPopup();
+    setToastMessage("코인 구매를 성공했습니다!");
     setToastOpen(true);
   };
 
@@ -178,9 +189,7 @@ export function CoinPage() {
         <Button
           variant="push"
           className="coin-page__ad-btn"
-          onClick={() => {
-            /* 클릭만 — 광고 보상 미확정 */
-          }}
+          onClick={() => setAdOpen(true)}
         >
           <img
             className="coin-page__ad-icon"
@@ -259,6 +268,8 @@ export function CoinPage() {
         onClose={closeBuyPopup}
       />
 
+      <AdVideoLayer open={adOpen} onClose={closeAd} />
+
       {toast.mounted ? (
         <div
           className={toast.leaving ? "coin-toast coin-toast--leaving" : "coin-toast"}
@@ -266,7 +277,7 @@ export function CoinPage() {
           aria-live="polite"
         >
           <span className="coin-toast__icon" aria-hidden="true" />
-          <p className="coin-toast__text">코인 구매를 성공했습니다!</p>
+          <p className="coin-toast__text">{toastMessage}</p>
         </div>
       ) : null}
     </section>

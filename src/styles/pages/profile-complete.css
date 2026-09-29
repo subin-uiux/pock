@@ -92,8 +92,25 @@
 
 .profile-complete__figure {
   position: relative;
+  isolation: isolate; /* 반짝이(z -1)가 고정 배경 레이어 아래로 내려가지 않도록 */
   width: 6.625rem; /* 106 */
   height: 11.25rem; /* 180 */
+}
+
+/* 캐릭터 뒤 반짝이 — 캐릭터 중심 정사각 · 크기 임시값 */
+.profile-complete__sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  display: block;
+  width: 16.5rem; /* 264 */
+  height: 16.5rem;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .profile-complete__base {
@@ -188,6 +205,11 @@
   .profile-complete__figure {
     width: 9.9375rem; /* 159 — pad 스케일 임시값 */
     height: 16.875rem; /* 270 — 180×1.5 */
+  }
+
+  .profile-complete__sparkle {
+    width: 22.75rem; /* 364 — pad 스케일(×1.5) 임시값 */
+    height: 22.75rem;
   }
 
   .profile-complete__copy {

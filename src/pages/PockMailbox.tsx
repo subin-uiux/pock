@@ -422,7 +422,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
       />
       <Popup
         open={hintDialog === "insufficient"}
-        variant="warning"
+        variant="info"
         message={
           <>
             코인이 부족합니다.

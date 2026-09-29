@@ -1,7 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { resetDemoState } from "./lib/storage";
 import "./styles/index.css";
+
+resetDemoState();
 
 document.documentElement.classList.add("js-ready");
 

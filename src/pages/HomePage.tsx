@@ -7,6 +7,7 @@ import { PockWindowThumb } from "@/components/PockWindowThumb";
 import { homeFriends, type HomeFriend } from "@/data/home-friends";
 import { useCoin } from "@/hooks/useCoin";
 import { useToastPresence } from "@/hooks/useToastPresence";
+import { hasUnreadAlerts } from "@/lib/alerts";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -31,9 +32,6 @@ function getFriendListSize(): FriendListSize {
   return "mo";
 }
 
-/** 새 알림 여부 — 임시값, 알림 API 연동 시 교체 */
-const DEMO_HOME_ALERT_UNREAD = true;
-
 /**
  * 홈 메인
  */
@@ -48,7 +46,7 @@ export function HomePage() {
   const nickname = saved.nickname?.trim() || "닉네임";
 
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
-  const [hasAlert] = useState(DEMO_HOME_ALERT_UNREAD);
+  const [hasAlert] = useState(hasUnreadAlerts);
   const [selectedFriend, setSelectedFriend] = useState<HomeFriend | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
   const toast = useToastPresence(toastOpen);
