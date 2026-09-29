@@ -249,9 +249,7 @@ export function Card({
               width={size === "tb" ? 120 : 90}
               height={size === "tb" ? 150 : 120}
             />
-          ) : (
-            <div className="letter-card__thumb" aria-hidden="true" />
-          )}
+          ) : null}
           <div className="letter-card__meta">
             {openLines.map((line) => (
               <p className="letter-card__line" key={line}>
@@ -357,37 +355,23 @@ export function Card({
         </Link>
       ) : null}
 
-      {usePreview || isOpen ? (
-        usePreview && !isOpen ? (
-          <div className="letter-card__stack">
-            <div className="letter-card__open">
-              {previewSrc ? (
-                <img
-                  className="letter-card__thumb"
-                  src={previewSrc}
-                  alt=""
-                  width={90}
-                  height={120}
-                />
-              ) : (
-                <div className="letter-card__thumb letter-card__thumb--character">
-                  <PixelCharacter
-                    character={recipient?.character ?? "girl"}
-                    outfit={recipient?.outfit ?? null}
-                    width={characterSize.width}
-                    height={characterSize.height}
-                  />
-                </div>
-              )}
-              <div className="letter-card__meta">
-                {openLines.map((line) => (
-                  <p className="letter-card__line" key={line}>
-                    {line}
-                  </p>
-                ))}
-                {status}
-              </div>
-            </div>
+      {isOpen ? (
+        <div className="letter-card__open">
+          {previewSrc ? (
+            <img
+              className="letter-card__thumb"
+              src={previewSrc}
+              alt=""
+              width={size === "tb" ? 120 : 90}
+              height={size === "tb" ? 150 : 120}
+            />
+          ) : null}
+          <div className="letter-card__meta">
+            {openLines.map((line) => (
+              <p className="letter-card__line" key={line}>
+                {line}
+              </p>
+            ))}
           </div>
         ) : (
           <div className="letter-card__open">

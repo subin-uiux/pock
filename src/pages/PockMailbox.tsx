@@ -26,6 +26,7 @@ import {
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useCoin } from "@/hooks/useCoin";
 import { HINT_COST, isHintPaid, markHintPaid } from "@/lib/hint";
+import { getUserSentMailboxCards } from "@/lib/pock";
 import {
   clearMailboxFriendFilter,
   getMailboxFriendFilter,
@@ -101,9 +102,10 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
       ? tab === "locked"
         ? RECEIVED_LOCKED_SAMPLES
         : RECEIVED_OPEN_SAMPLES
-      : tab === "locked"
-        ? SENT_LOCKED_SAMPLES
-        : SENT_OPEN_SAMPLES;
+      : [
+          ...getUserSentMailboxCards(tab),
+          ...(tab === "locked" ? SENT_LOCKED_SAMPLES : SENT_OPEN_SAMPLES),
+        ];
 
     const withPaid: MailboxCardSample[] = list.map((item) => {
       const openedGift = item.variant === "gift" && openedSet.has(item.id);

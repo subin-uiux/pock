@@ -1,6 +1,18 @@
 import { pockItems } from "@/data/pock-data";
+import type { MailboxCardSample } from "@/data/pock-mailbox-samples";
+import {
+  calendarDaysBetween,
+  formatLetterDate,
+  parseLetterDate,
+} from "@/lib/letter-progress";
 import { storage } from "@/lib/storage";
-import type { LetterWritePayload, PockItem, PockStatus, PockUser } from "@/types";
+import type {
+  LetterTheme,
+  LetterWritePayload,
+  PockItem,
+  PockStatus,
+  PockUser,
+} from "@/types";
 
 export const POCK_STATUS = {
   LOCKED: "locked",
@@ -40,7 +52,7 @@ export function addSentPockFromPayload(payload: LetterWritePayload): PockItem | 
     sender: ME,
     receiver: payload.friend,
     message: payload.body,
-    image: payload.imageUrl ?? "/assets/images/pock/pock-photo-001.svg",
+    image: payload.imageUrl ?? "",
     letter: payload.letterId,
     status: "locked",
     createdAt: new Date().toISOString(),
@@ -55,6 +67,33 @@ export function addSentPockFromPayload(payload: LetterWritePayload): PockItem | 
   existing.unshift(item);
   saveUserSentPocks(existing);
   return item;
+}
+
+/**
+ * 보내기에서 쓴 편지 → 전송함 카드
+ * 개봉일 전 = 잠김(progress) · 개봉일 당일/지난 날 = 열림
+ */
+export function getUserSentMailboxCards(tab: "locked" | "open"): MailboxCardSample[] {
+  const today = new Date();
+  return getUserSentPocks().flatMap((item) => {
+    const open = parseLetterDate(item.openDate);
+    const locked = open ? calendarDaysBetween(today, open) > 0 : true;
+    if ((tab === "locked") !== locked) return [];
+    const openDate = open ? formatLetterDate(open) : item.openDate;
+    return [
+      {
+        id: item.id,
+        variant: locked ? "progress" : "open",
+        target: item.receiver.name,
+        title: item.title,
+        body: item.message,
+        sendDate: formatLetterDate(new Date(item.createdAt)),
+        openDate,
+        theme: item.letter as LetterTheme,
+        imageSrc: item.image || undefined,
+      },
+    ];
+  });
 }
 
 export function getAllPocks(): PockItem[] {

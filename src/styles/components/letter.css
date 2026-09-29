@@ -4,8 +4,8 @@
  */
 
 .letter {
-  --letter-line-gap: 0.3125rem; /* 5 — 줄과 텍스트 간격 */
-  --letter-line-height: calc(0.875rem + var(--letter-line-gap)); /* Mo 14 + 5 */
+  --letter-line-gap: 0.5rem; /* 8 — 줄과 텍스트 간격 (5→8 넓힘 · 임시값) */
+  --letter-line-height: calc(0.875rem + var(--letter-line-gap)); /* Mo 14 + 8 */
   --letter-line-count: 9;
   --letter-line-color: var(--color-base-500);
   position: relative;
@@ -25,7 +25,7 @@
 }
 
 .letter--tb {
-  --letter-line-height: calc(1rem + var(--letter-line-gap)); /* Tb 제목 16 + 5 */
+  --letter-line-height: calc(1rem + var(--letter-line-gap)); /* Tb 제목 16 + 8 */
   width: 25rem; /* 400 */
   height: 35.9375rem; /* 575 */
   max-width: 100%;
@@ -225,6 +225,15 @@
 .letter--tb .letter__media {
   width: 18.75rem; /* 300 */
   height: 14.0625rem; /* 225 */
+}
+
+/* 사진 없음 — 사진 영역(Mo 170 · Tb 245)만큼 가로줄을 늘려 하단 빈 여백 제거 */
+.letter--no-media {
+  --letter-line-count: 16; /* Mo 줄 22 — 9 + 사진 170 ≒ 7줄 */
+}
+
+.letter--tb.letter--no-media {
+  --letter-line-count: 19; /* Tb 줄 24 — 9 + 사진 245 ≒ 10줄 */
 }
 
 .letter__image {

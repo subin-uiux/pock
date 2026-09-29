@@ -36,7 +36,9 @@ export function Letter({
   }
 
   return (
-    <article className={`letter letter--${size} letter--${theme}`}>
+    <article
+      className={`letter letter--${size} letter--${theme}${imageSrc ? "" : " letter--no-media"}`}
+    >
       <button
         className="letter__expand"
         type="button"
@@ -51,11 +53,11 @@ export function Letter({
           height={18}
         />
       </button>
-      <div className="letter__media">
-        {imageSrc ? (
+      {imageSrc ? (
+        <div className="letter__media">
           <img className="letter__image" src={imageSrc} alt="" />
-        ) : null}
-      </div>
+        </div>
+      ) : null}
       <div className="letter__content">
         <div className="letter__text">
           <h4 className="letter__title">{title}</h4>
