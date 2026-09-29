@@ -373,7 +373,8 @@ export function Card({
               </p>
             ))}
           </div>
-        ) : (
+        </div>
+      ) : usePreview ? (
           <div className="letter-card__open">
             {usePreview && !previewSrc ? (
               <div className="letter-card__thumb letter-card__thumb--character">
@@ -403,7 +404,6 @@ export function Card({
               ))}
             </div>
           </div>
-        )
       ) : (
         <div className="letter-card__body">
           <span className="letter-card__lock" aria-hidden="true">
