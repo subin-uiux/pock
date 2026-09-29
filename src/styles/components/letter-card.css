@@ -438,6 +438,11 @@
   padding-right: 3.5rem; /* 전체보기 자리 */
 }
 
+/* 카드 클릭으로 보기 — 전체보기 버튼 없음 */
+.letter-card--clickable .letter-card__open {
+  padding-right: 0;
+}
+
 .letter-card__thumb {
   flex: 0 0 auto;
   box-sizing: border-box;

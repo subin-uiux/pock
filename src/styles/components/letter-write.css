@@ -463,6 +463,49 @@
   padding-left: calc(var(--lw-media-w) + var(--lw-media-gap));
 }
 
+/* 입력 시작 후 첫 줄 앞 고정 표기 — 편집·글자수·저장 제목에 포함되지 않음 */
+.letter-write__paper-body:not(.letter-write__paper-body--empty)::before {
+  content: "제목 : ";
+  white-space: pre;
+}
+
+/* 빈 상태 플레이스홀더 — 사진 옆 1줄 제목 · 2줄 글자수 */
+.letter-write__placeholder {
+  position: absolute;
+  top: 0;
+  left: calc(var(--lw-media-w) + var(--lw-media-gap));
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem; /* 14 — 본문과 동일 */
+  line-height: var(--lw-line-height);
+  pointer-events: none;
+}
+
+.letter-write__placeholder-title,
+.letter-write__placeholder-limit {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.letter-write__placeholder-title {
+  color: #333333;
+}
+
+.letter-write__placeholder-limit {
+  color: var(--color-base-600);
+}
+
+/* 별(어두운) 편지지 — 대비 확보 · 임시값 */
+.letter-write__paper--star .letter-write__placeholder-title {
+  color: var(--color-base-200);
+}
+
+.letter-write__paper--star .letter-write__placeholder-limit {
+  color: var(--color-base-400);
+}
+
 .letter-write__paper-body > * {
   margin: 0;
   font: inherit;

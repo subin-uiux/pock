@@ -349,23 +349,10 @@ export function Card({
           : undefined
       }
     >
-      {showMore ? (
-        onMoreClick ? (
-          <button
-            className="letter-card__more"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              onMoreClick();
-            }}
-          >
-            전체보기 &gt;
-          </button>
-        ) : (
-          <Link className="letter-card__more" to={moreHref}>
-            전체보기 &gt;
-          </Link>
-        )
+      {showMore && !onMoreClick ? (
+        <Link className="letter-card__more" to={moreHref}>
+          전체보기 &gt;
+        </Link>
       ) : null}
 
       {usePreview || isOpen ? (

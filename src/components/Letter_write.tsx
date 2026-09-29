@@ -5,6 +5,7 @@ import {
   useState,
   type ClipboardEvent,
   type FormEvent,
+  type MouseEvent,
 } from "react";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
@@ -302,6 +303,46 @@ export function Letter_write({
     setContent(text);
   };
 
+  /** 글 아래 빈 줄을 클릭/터치 — 그 줄까지 줄바꿈을 채우고 커서 이동 */
+  const handleContentClick = (event: MouseEvent<HTMLDivElement>) => {
+    const el = event.currentTarget;
+    const text = getEditableText(el);
+    if (text === "" || text === "\n") return;
+
+    const lineHeight = parseFloat(window.getComputedStyle(el).lineHeight);
+    if (!lineHeight) return;
+
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const rects = range.getClientRects();
+    const lastBottom =
+      rects.length > 0
+        ? Math.max(...Array.from(rects, (rect) => rect.bottom))
+        : el.getBoundingClientRect().top;
+    const gap = event.clientY - lastBottom;
+    if (gap <= 0) return;
+
+    const base = text.endsWith("\n") ? text.slice(0, -1) : text;
+    const room = LETTER_CONTENT_MAX - base.length;
+    const breaks = Math.min(Math.floor(gap / lineHeight) + 1, room);
+    if (breaks <= 0) return;
+
+    /* 끝의 줄바꿈만으로는 빈 줄이 그려지지 않아 <br>로 마지막 줄을 만든 뒤 그 앞에 커서 */
+    const textNode = document.createTextNode(base + "\n".repeat(breaks));
+    el.replaceChildren(textNode, document.createElement("br"));
+
+    const selection = window.getSelection();
+    if (selection) {
+      const caretRange = document.createRange();
+      caretRange.setStart(el, 1); /* <br> 바로 앞 — 커서 위치를 br 줄로 계산 */
+      caretRange.collapse(true);
+      selection.removeAllRanges();
+      selection.addRange(caretRange);
+    }
+    setContent(getEditableText(el));
+    el.dispatchEvent(new Event("input", { bubbles: true }));
+  };
+
   const handleContentPaste = (event: ClipboardEvent<HTMLDivElement>) => {
     event.preventDefault();
     const el = event.currentTarget;
@@ -501,6 +542,7 @@ export function Letter_write({
                 onBeforeInput={handleContentBeforeInput}
                 onInput={handleContentInput}
                 onPaste={handleContentPaste}
+                onClick={handleContentClick}
                 suppressContentEditableWarning
               />
               <span
@@ -509,6 +551,16 @@ export function Letter_write({
                 aria-hidden="true"
                 hidden
               />
+              {content === "" || content === "\n" ? (
+                <span className="letter-write__placeholder" aria-hidden="true">
+                  <span className="letter-write__placeholder-title">
+                    제목을 입력하세요.
+                  </span>
+                  <span className="letter-write__placeholder-limit">
+                    최대 {LETTER_CONTENT_MAX}자
+                  </span>
+                </span>
+              ) : null}
               <span id="letter-write-content-limit" className="visually-hidden">
                 최대 {LETTER_CONTENT_MAX}자
               </span>
