@@ -93,7 +93,12 @@ export function NicknameSetupPage() {
                 <li className="nickname-setup__recommend-item" key={name}>
                   <button
                     type="button"
-                    className="nickname-setup__chip"
+                    className={
+                      nickname.trim() === name
+                        ? "nickname-setup__chip nickname-setup__chip--selected"
+                        : "nickname-setup__chip"
+                    }
+                    aria-pressed={nickname.trim() === name}
                     onClick={() => handleChange(name)}
                   >
                     {name}

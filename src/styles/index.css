@@ -35,6 +35,7 @@
 @import "./components/mailbox-search.css";
 @import "./components/sparkle-cursor.css";
 @import "./components/click-splosion.css";
+@import "./components/ad-video-layer.css";
 
 @import "./pages/index.css";
 @import "./pages/login.css";

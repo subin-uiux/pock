@@ -135,8 +135,8 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-  max-width: none;
-  margin-inline: 0;
+  max-width: 20rem; /* 320 — 닉네임 입력창과 동일 컨테이너 */
+  margin-inline: auto;
   padding: 1.25rem 0 0; /* top 20 */
   box-sizing: border-box;
 }

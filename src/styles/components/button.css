@@ -34,12 +34,18 @@
   pointer-events: none;
 }
 
-.btn:hover::before,
 .btn:active::before,
 .btn--push-pressed::before,
 .btn--popup-pressed::before,
 .btn--action-pressed::before {
   opacity: 1;
+}
+
+/* 터치 기기는 탭 후 :hover가 남아 기본 상태가 호버처럼 보임 → 마우스 기기만 */
+@media (hover: hover) {
+  .btn:hover::before {
+    opacity: 1;
+  }
 }
 
 .btn--block {

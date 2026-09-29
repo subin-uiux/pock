@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AdVideoLayer } from "@/components/AdVideoLayer";
 import { Button } from "@/components/Button";
 import { Popup } from "@/components/Popup";
 import { LETTER_PAPER_OPTIONS } from "@/data/letter-paper";
@@ -29,10 +31,12 @@ export function LetterPaperPicker({
   onSelect,
   onConfirm,
 }: LetterPaperPickerProps) {
+  const navigate = useNavigate();
   const { balance, spend } = useCoin();
   const [owned, setOwned] = useState<LetterTheme[]>(() => getOwnedLetterPapers());
   const [pendingId, setPendingId] = useState<LetterTheme>(selectedId);
   const [adOpen, setAdOpen] = useState(false);
+  const [adVideoOpen, setAdVideoOpen] = useState(false);
   const [buyOpen, setBuyOpen] = useState(false);
   const [buyTarget, setBuyTarget] = useState<LetterTheme | null>(null);
   const [coinWarnOpen, setCoinWarnOpen] = useState(false);
@@ -93,6 +97,11 @@ export function LetterPaperPicker({
 
   const handleAdConfirm = () => {
     setAdOpen(false);
+    setAdVideoOpen(true);
+  };
+
+  const handleAdVideoClose = () => {
+    setAdVideoOpen(false);
     unlockLetterPaper("rainbow");
     setPendingId("rainbow");
     onSelect?.("rainbow");
@@ -256,6 +265,8 @@ export function LetterPaperPicker({
         onClose={() => setAdOpen(false)}
       />
 
+      <AdVideoLayer open={adVideoOpen} onClose={handleAdVideoClose} />
+
       <Popup
         open={buyOpen}
         variant="info"
@@ -269,10 +280,21 @@ export function LetterPaperPicker({
 
       <Popup
         open={coinWarnOpen}
-        variant="warning"
-        message="코인이 부족합니다."
+        variant="info"
+        message={
+          <>
+            코인이 부족합니다.
+            <br />
+            구매하러 가시겠습니까?
+          </>
+        }
+        cancelLabel="취소"
         confirmLabel="확인"
-        onConfirm={() => setCoinWarnOpen(false)}
+        onCancel={() => setCoinWarnOpen(false)}
+        onConfirm={() => {
+          setCoinWarnOpen(false);
+          navigate("/coin");
+        }}
         onClose={() => setCoinWarnOpen(false)}
       />
     </div>

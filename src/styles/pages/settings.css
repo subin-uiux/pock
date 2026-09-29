@@ -21,8 +21,9 @@
   max-width: 100%;
 }
 
-/* Mo — main 좌우 20 */
+/* Mo — main 상하 40 · 좌우 20 (다른 페이지와 동일) */
 .page--settings .main {
+  padding-block: 2.5rem; /* 40 */
   padding-inline: 1.25rem; /* 20 */
 }
 
@@ -38,14 +39,14 @@
   margin-inline: auto;
 }
 
-/* 코인 행 — 위 64 · 프로필 창 위 10 · 오른쪽 정렬 */
+/* 코인 행 — 위 여백은 main(Mo 40) · Tb+ 64 · 프로필 창 위 10 · 오른쪽 정렬 */
 .settings__coin-row {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
   align-self: flex-end;
   gap: 0.125rem; /* 2 — 버튼 ↔ plus-box */
-  margin-top: 4rem; /* 64 — 버튼 위 간격 */
+  margin-top: 0;
   margin-bottom: 0.625rem; /* 10 — 창 위 간격 */
 }
 
@@ -564,7 +565,13 @@
 /* Tb / Pc — 630 · 출석+메뉴 가로 2열 */
 @media (min-width: 769px) {
   .page--settings .main {
+    padding-top: var(--spacing-md);
+    padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom));
     padding-inline: 1.25rem; /* 20 — 임시값 */
+  }
+
+  .settings__coin-row {
+    margin-top: 4rem; /* 64 — 버튼 위 간격 */
   }
 
   .page--settings .friend-list-toast {

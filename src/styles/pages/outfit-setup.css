@@ -134,16 +134,21 @@
   align-items: flex-start;
   justify-content: center;
   gap: 0.75rem; /* 12 — mo */
+  box-sizing: border-box;
   width: 100%;
+  max-width: 20rem; /* 320 — 다음 버튼과 동일 컨테이너 */
   margin-top: 2.5rem; /* 40 — preview↔choices */
+  margin-inline: auto;
   padding: 0;
 }
 
+/* mo — 컨테이너 폭을 박스들이 나눠 채움 */
 .outfit-setup__choice.selection-box {
-  width: 6.25rem; /* 100 */
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
   height: 7.5rem; /* 120 */
   aspect-ratio: auto;
-  flex-shrink: 0;
 }
 
 .outfit-setup__choice .selection-box__media {
@@ -166,8 +171,8 @@
   justify-content: center;
   flex-shrink: 0;
   width: 100%;
-  max-width: none;
-  margin-inline: 0;
+  max-width: 20rem; /* 320 — 닉네임 입력창과 동일 컨테이너 */
+  margin-inline: auto;
   padding: 1.25rem 0 0; /* 20 */
   box-sizing: border-box;
 }
@@ -216,10 +221,12 @@
 
   .outfit-setup__choices {
     gap: 1.5rem; /* 24 — pad/pc */
+    max-width: none;
     margin-top: 3.75rem; /* 60 */
   }
 
   .outfit-setup__choice.selection-box {
+    flex: 0 0 auto;
     width: 8.125rem; /* 130 */
     height: 9.25rem; /* 148 */
   }

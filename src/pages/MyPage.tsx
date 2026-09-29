@@ -484,10 +484,21 @@ export function MyPage() {
 
       <Popup
         open={coinWarnOpen}
-        variant="warning"
-        message="코인이 부족합니다."
+        variant="info"
+        message={
+          <>
+            코인이 부족합니다.
+            <br />
+            구매하러 가시겠습니까?
+          </>
+        }
+        cancelLabel="취소"
         confirmLabel="확인"
-        onConfirm={() => setCoinWarnOpen(false)}
+        onCancel={() => setCoinWarnOpen(false)}
+        onConfirm={() => {
+          setCoinWarnOpen(false);
+          navigate("/coin");
+        }}
         onClose={() => setCoinWarnOpen(false)}
       />
     </section>

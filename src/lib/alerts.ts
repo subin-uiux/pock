@@ -1,8 +1,34 @@
-import type { AlertGroup, AlertItem } from "@/data/alert-data";
+import {
+  alertGroups,
+  type AlertGroup,
+  type AlertItem,
+} from "@/data/alert-data";
 import { storage } from "@/lib/storage";
 
 const STORAGE_KEY = "pock.alerts";
+const READ_KEY = "pock.alertsRead";
 const MAX_ALERTS = 50;
+
+function getReadIds(): string[] {
+  return storage.get<string[]>(READ_KEY) ?? [];
+}
+
+/** 알림 확인(클릭) — 빨간 점 제거 */
+export function markAlertRead(id: string): void {
+  const ids = getReadIds();
+  if (ids.includes(id)) return;
+  storage.set(READ_KEY, [...ids, id]);
+}
+
+function withReadState(groups: AlertGroup[]): AlertGroup[] {
+  const read = new Set(getReadIds());
+  return groups.map((group) => ({
+    ...group,
+    items: group.items.map((item) =>
+      read.has(item.id) ? { ...item, unread: false } : item,
+    ),
+  }));
+}
 
 interface StoredAlert extends Omit<AlertItem, "time"> {
   createdAt: string;
@@ -46,4 +72,16 @@ export function getStoredAlertGroups(): AlertGroup[] {
     id: `group-${item.id}`,
     items: [{ ...item, time: formatRelativeTime(createdAt, now) }],
   }));
+}
+
+/** 알림 페이지 목록 — 저장 알림 + 데모 알림 · 확인한 알림은 unread 해제 */
+export function getAlertGroups(): AlertGroup[] {
+  return withReadState([...getStoredAlertGroups(), ...alertGroups]);
+}
+
+/** 홈 알림 아이콘 빨간 점 — 안 읽은 알림이 하나라도 있으면 true */
+export function hasUnreadAlerts(): boolean {
+  return getAlertGroups().some((group) =>
+    group.items.some((item) => item.unread),
+  );
 }
