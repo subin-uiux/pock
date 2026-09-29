@@ -33,6 +33,9 @@
 }
 
 .landing__brand {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;

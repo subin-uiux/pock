@@ -124,7 +124,7 @@ export interface MailboxCardSample {
   hintPaid?: boolean;
   theme?: LetterTheme;
   imageSrc?: string;
-  /** 수신자가 첨부한 이미지 — 없으면 카드에 캐릭터 */
+  /** 카드 썸네일 이미지 — 없으면 imageSrc, 둘 다 없으면 캐릭터 */
   attachmentSrc?: string;
 }
 

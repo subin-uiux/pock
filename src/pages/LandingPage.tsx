@@ -130,8 +130,8 @@ export function LandingPage() {
       </a>
       <main id="main" className="main main--index">
         <section className="landing" aria-label="POCK 시작">
-          <div className="landing__brand">
-            <div className="landing__mark">
+          <h1 className="landing__brand">
+            <span className="landing__mark">
               <img
                 ref={forkRef}
                 className="landing__fork"
@@ -147,7 +147,7 @@ export function LandingPage() {
                 width={49}
                 height={45}
               />
-            </div>
+            </span>
             <img
               className="landing__wordmark"
               src="/assets/images/brand/pocktext-logo.svg"
@@ -155,7 +155,7 @@ export function LandingPage() {
               width={92}
               height={19}
             />
-          </div>
+          </h1>
         </section>
       </main>
     </div>
