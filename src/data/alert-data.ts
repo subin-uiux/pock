@@ -20,7 +20,7 @@ export interface AlertGroup {
 }
 
 const UNLOCK_ICON = {
-  icon: "/assets/images/open-soon.svg",
+  icon: "/assets/images/alert/open-soon.svg",
   iconW: 19,
   iconH: 19,
   label: "드디어 열어볼 시간이에요!",
@@ -64,7 +64,7 @@ export const alertGroups: AlertGroup[] = [
       {
         id: "alert-arrive",
         kind: "arrive",
-        icon: "/assets/images/new-pock.svg",
+        icon: "/assets/images/alert/new-pock.svg",
         iconW: 16,
         iconH: 14,
         label: "새로운 POCK가 도착했어요!",
@@ -80,7 +80,7 @@ export const alertGroups: AlertGroup[] = [
       {
         id: "alert-friend",
         kind: "friend",
-        icon: "/assets/images/new-friend.svg",
+        icon: "/assets/images/alert/new-friend.svg",
         iconW: 15,
         iconH: 15,
         label: "새로운 친구가 생겼어요!",
@@ -96,7 +96,7 @@ export const alertGroups: AlertGroup[] = [
       {
         id: "alert-notice",
         kind: "notice",
-        icon: "/assets/images/new-notice.svg",
+        icon: "/assets/images/alert/new-notice.svg",
         iconW: 15,
         iconH: 15,
         label: "새로운 공지가 있어요!",

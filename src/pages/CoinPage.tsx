@@ -22,7 +22,7 @@ const COIN_PACKS: {
     label: "1 COIN",
     price: "₩100",
     amount: 1,
-    icon: "/assets/images/coin-store/1coin.svg",
+    icon: "/assets/images/coin/coin-1.svg",
     iconW: 35,
     iconH: 35,
   },
@@ -31,7 +31,7 @@ const COIN_PACKS: {
     label: "10 COIN",
     price: "₩1,000",
     amount: 10,
-    icon: "/assets/images/coin-store/10coin.svg",
+    icon: "/assets/images/coin/coin-10.svg",
     iconW: 61,
     iconH: 41,
   },
@@ -40,7 +40,7 @@ const COIN_PACKS: {
     label: "20 COIN",
     price: "₩2,000",
     amount: 20,
-    icon: "/assets/images/coin-store/20coin.svg",
+    icon: "/assets/images/coin/coin-20.svg",
     iconW: 60,
     iconH: 73,
   },
@@ -49,7 +49,7 @@ const COIN_PACKS: {
     label: "30 COIN",
     price: "₩3,000",
     amount: 30,
-    icon: "/assets/images/coin-store/30coin.svg",
+    icon: "/assets/images/coin/coin-30.svg",
     iconW: 70,
     iconH: 82,
   },
@@ -58,7 +58,7 @@ const COIN_PACKS: {
     label: "50 COIN+5",
     price: "₩5,000",
     amount: 55,
-    icon: "/assets/images/coin-store/50%20coin.svg",
+    icon: "/assets/images/coin/coin-50.svg",
     iconW: 81,
     iconH: 49,
   },
@@ -67,7 +67,7 @@ const COIN_PACKS: {
     label: "100 COIN+10",
     price: "₩10,000",
     amount: 110,
-    icon: "/assets/images/coin-store/100%20coin.svg",
+    icon: "/assets/images/coin/coin-100.svg",
     iconW: 81,
     iconH: 51,
   },
@@ -144,7 +144,7 @@ export function CoinPage() {
         >
           <img
             className="coin-page__back-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}
@@ -159,7 +159,7 @@ export function CoinPage() {
           >
             <img
               className="coin-page__coin-icon"
-              src="/assets/images/coin-store/1coin.svg"
+              src="/assets/images/coin/coin-1.svg"
               alt=""
               width={18}
               height={18}
@@ -193,7 +193,7 @@ export function CoinPage() {
         >
           <img
             className="coin-page__ad-icon"
-            src="/assets/images/coin-store/Advertisement-icon.svg"
+            src="/assets/images/coin/ad-icon.svg"
             alt=""
             width={23}
             height={23}
@@ -219,7 +219,7 @@ export function CoinPage() {
             >
               <img
                 className="pock-window__control-icon"
-                src="/assets/images/heart-icon.svg"
+                src="/assets/images/icons/heart.svg"
                 alt=""
                 width={9}
                 height={7}

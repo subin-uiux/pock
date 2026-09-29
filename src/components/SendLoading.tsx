@@ -14,9 +14,9 @@ interface SendLoadingProps {
 }
 
 const LOADING_BARS = [
-  "/assets/images/loading-bar1.svg",
-  "/assets/images/loading-bar2.svg",
-  "/assets/images/loading-bar3.svg",
+  "/assets/images/loading/loading-bar1.svg",
+  "/assets/images/loading/loading-bar2.svg",
+  "/assets/images/loading/loading-bar3.svg",
 ] as const;
 
 const BAR_STEP_MS = 700; /* 각 바 노출 · 임시값 */
@@ -84,7 +84,7 @@ export function SendLoading({
         {isComplete ? (
           <img
             className="send-loading__logo send-loading__logo--complete"
-            src="/assets/images/loading-complete.svg"
+            src="/assets/images/loading/loading-complete.svg"
             alt=""
             width={250}
             height={204}
@@ -92,7 +92,7 @@ export function SendLoading({
         ) : (
           <img
             className="send-loading__logo send-loading__logo--loading"
-            src="/assets/images/loading.svg"
+            src="/assets/images/loading/loading.svg"
             alt=""
             width={200}
             height={230}

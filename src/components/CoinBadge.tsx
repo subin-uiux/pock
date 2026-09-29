@@ -8,7 +8,7 @@ export function CoinBadge({ amount, className = "" }: CoinBadgeProps) {
     <span className={`coin ${className}`.trim()}>
       <img
         className="coin__icon"
-        src="/assets/images/coin.svg"
+        src="/assets/images/coin/coin.svg"
         alt=""
         width={14}
         height={14}

@@ -171,7 +171,7 @@ export function MailboxLetterLayer({
           <span className="btn__icon btn__icon--image" aria-hidden="true">
             <img
               className="btn__icon-image"
-              src="/assets/images/save-icon.webp"
+              src="/assets/images/icons/save.webp"
               alt=""
               width={15}
               height={15}

@@ -3,7 +3,7 @@ import { letterDateFromToday } from "@/lib/letter-progress";
 
 const LETTERS = [
   {
-    imageSrc: "/assets/images/letter/letter-img1.png",
+    imageSrc: "/assets/images/letter/samples/letter-img1.png",
     title: "너 이거 볼 때 표정 궁금함 ㅋㅋ",
     body: `아까는 별말 안 했는데
 집 오니까 갑자기 할 말 생각나서 보냄 ㅋㅋㅋ
@@ -19,7 +19,7 @@ const LETTERS = [
 다음엔 간식 더 많이 사놓고 놀자 ♡`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img2.png",
+    imageSrc: "/assets/images/letter/samples/letter-img2.png",
     title: "교니 사랑해요!!!!!!!!",
     body: `그냥 갑자기 보내고 싶어서 보냄.
 
@@ -35,7 +35,7 @@ const LETTERS = [
 이상입니다.`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img3.png",
+    imageSrc: "/assets/images/letter/samples/letter-img3.png",
     title: "오늘의 우리 저장 완료 ♡",
     body: `오늘 날짜 기억해놔.
 
@@ -52,7 +52,7 @@ const LETTERS = [
 나중에 이거 다시 열어보면 그때도 친하게 지내고 있겠지?`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img4.png",
+    imageSrc: "/assets/images/letter/samples/letter-img4.png",
     title: "우리 오늘 좀 귀여웠음",
     body: `사진 정리하다가 이거 보고 바로 너 생각남ㅋㅋ
 
@@ -75,33 +75,33 @@ const LETTERS = [
 그땐 사진 더 많이 찍기 📸♡`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img5.png",
+    imageSrc: "/assets/images/letter/samples/letter-img5.png",
     title: "너 보자마자 생각난 짤 보냄 ♡",
     body: `이거 보자마자 너 생각남ㅋㅋ
 귀여운 척 하는 것까지 똑같음 ♡`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img6.png",
+    imageSrc: "/assets/images/letter/samples/letter-img6.png",
     title: "공부는 언제 함?",
     body: `또 수업시간에 이러고 있네ㅋㅋㅋ
 근데 사진은 잘 나왔으니까 봐줌`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img7.png",
+    imageSrc: "/assets/images/letter/samples/letter-img7.png",
     title: "짝남이랑 찍음 ㅁㅊ",
     body: `야 너 드디어 짝남이랑 같이 찍었잖아ㅋㅋㅋㅋ
 표정 관리 좀 해 너무 좋아하잖아
 응 이거 평생 놀릴꺼야~~~`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img8.png",
+    imageSrc: "/assets/images/letter/samples/letter-img8.png",
     title: "야 이것 좀 봐ㅋㅋㅋ",
     body: `편지 하나에 왜 다 달라붙어있냐고ㅋㅋ
 남의 얘기가 제일 재밌긴 함
 다음 편 빨리 가져와.`,
   },
   {
-    imageSrc: "/assets/images/letter/letter-img9.png",
+    imageSrc: "/assets/images/letter/samples/letter-img9.png",
     title: "잘지내?",
     body: `우리 원래라면 오늘 3주년인 거 알아?
 보고싶어.

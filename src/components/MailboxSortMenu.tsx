@@ -80,7 +80,7 @@ export function MailboxSortMenu({
               >
                 <img
                   className="mailbox-sort__check"
-                  src="/assets/icons/alignment-check.svg"
+                  src="/assets/images/icons/alignment-check.svg"
                   alt=""
                   width={12}
                   height={12}

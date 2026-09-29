@@ -135,14 +135,14 @@ export function LandingPage() {
               <img
                 ref={forkRef}
                 className="landing__fork"
-                src="/assets/images/pork-logo.svg"
+                src="/assets/images/brand/pork-logo.svg"
                 alt=""
                 width={28}
                 height={71}
               />
               <img
                 className="landing__pocket"
-                src="/assets/images/pocket-logo.svg"
+                src="/assets/images/brand/pocket-logo.svg"
                 alt=""
                 width={49}
                 height={45}
@@ -150,7 +150,7 @@ export function LandingPage() {
             </div>
             <img
               className="landing__wordmark"
-              src="/assets/images/pocktext-logo.svg"
+              src="/assets/images/brand/pocktext-logo.svg"
               alt="POCK"
               width={92}
               height={19}

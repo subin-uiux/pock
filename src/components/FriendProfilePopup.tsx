@@ -110,7 +110,7 @@ export function FriendProfilePopup({
           onClick={onClose}
         >
           <img
-            src="/assets/images/pixelarticons_close.svg"
+            src="/assets/images/icons/close.svg"
             alt=""
             width={18}
             height={18}

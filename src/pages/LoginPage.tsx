@@ -31,7 +31,7 @@ export function LoginPage() {
     <section className="login" aria-label="로그인">
       <img
         className="login__logo"
-        src="/assets/images/logo.svg"
+        src="/assets/images/brand/logo.svg"
         alt="POCK"
         width={92}
         height={123}

@@ -37,7 +37,7 @@ export function GuideMarkup() {
                 <div className="logo-system__board">
                   <p className="logo-system__card-title">Logo</p>
                   <div className="logo-system__frame">
-                    <img className="logo-system__image" src="/assets/images/logo.svg" alt="포크 심벌과 POCK 워드마크 로고" width={132} height={163} />
+                    <img className="logo-system__image" src="/assets/images/brand/logo.svg" alt="포크 심벌과 POCK 워드마크 로고" width={132} height={163} />
                   </div>
                 </div>
               </section>
@@ -1075,7 +1075,7 @@ export function GuideMarkup() {
                         </p>
                         <div className="card-system__resize" role="group">
                           <article className="letter-card letter-card--gift letter-card--mo" aria-label="새 보관함 카드">
-                            <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
+                            <img className="letter-card__gift-image" src="/assets/images/letter/letter-before-opening.webp" alt="" width={960} height={620} />
                         </article>
                         </div>
                       </li>
@@ -1156,7 +1156,7 @@ export function GuideMarkup() {
                         </p>
                         <div className="card-system__resize card-system__resize--tb" role="group">
                           <article className="letter-card letter-card--gift letter-card--tb" aria-label="새 보관함 카드">
-                            <img className="letter-card__gift-image" src="/assets/images/letter/letter_Before-opening.webp" alt="" width={960} height={620} />
+                            <img className="letter-card__gift-image" src="/assets/images/letter/letter-before-opening.webp" alt="" width={960} height={620} />
                         </article>
                         </div>
                       </li>
@@ -1235,7 +1235,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Red)</p>
                         <article className="letter letter--mo letter--red">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1259,7 +1259,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Orange)</p>
                         <article className="letter letter--mo letter--orange">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1283,7 +1283,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Yellow)</p>
                         <article className="letter letter--mo letter--yellow">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1307,7 +1307,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Green)</p>
                         <article className="letter letter--mo letter--green">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1331,7 +1331,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Blue)</p>
                         <article className="letter letter--mo letter--blue">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1355,7 +1355,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Purple)</p>
                         <article className="letter letter--mo letter--purple">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1379,7 +1379,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Pink)</p>
                         <article className="letter letter--mo letter--pink">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1408,7 +1408,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Red)</p>
                         <article className="letter letter--tb letter--red">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1432,7 +1432,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Orange)</p>
                         <article className="letter letter--tb letter--orange">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1456,7 +1456,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Yellow)</p>
                         <article className="letter letter--tb letter--yellow">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1480,7 +1480,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Green)</p>
                         <article className="letter letter--tb letter--green">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1504,7 +1504,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Blue)</p>
                         <article className="letter letter--tb letter--blue">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1528,7 +1528,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Purple)</p>
                         <article className="letter letter--tb letter--purple">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1552,7 +1552,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Pink)</p>
                         <article className="letter letter--tb letter--pink">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1581,7 +1581,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Rainbow)</p>
                         <article className="letter letter--mo letter--rainbow">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1605,7 +1605,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Heart)</p>
                         <article className="letter letter--mo letter--heart">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1629,7 +1629,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Star)</p>
                         <article className="letter letter--mo letter--star">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1653,7 +1653,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Stripe)</p>
                         <article className="letter letter--mo letter--stripe">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1677,7 +1677,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Clover)</p>
                         <article className="letter letter--mo letter--clover">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1706,7 +1706,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Rainbow)</p>
                         <article className="letter letter--tb letter--rainbow">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1730,7 +1730,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Heart)</p>
                         <article className="letter letter--tb letter--heart">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1754,7 +1754,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Star)</p>
                         <article className="letter letter--tb letter--star">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1778,7 +1778,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Stripe)</p>
                         <article className="letter letter--tb letter--stripe">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1802,7 +1802,7 @@ export function GuideMarkup() {
                       <li className="letter-system__item">
                         <p className="letter-system__caption">Letter (Clover)</p>
                         <article className="letter letter--tb letter--clover">
-                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/pixelarticons_close.svg" alt="" width={18} height={18} /></button>
+                          <button className="letter__expand" type="button" aria-label="닫기"><img className="letter__expand-icon" src="/assets/images/icons/close.svg" alt="" width={18} height={18} /></button>
                           <div className="letter__media"></div>
                           <div className="letter__content">
                             <div className="letter__text">
@@ -1855,7 +1855,7 @@ export function GuideMarkup() {
                         <div className="pock-window__actions">
                           <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                           <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                            <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
+                            <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={9} height={7} />
                           </span>
                         </div>
                       </header>
@@ -1867,7 +1867,7 @@ export function GuideMarkup() {
                           <div className="pock-window__actions">
                             <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
+                              <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={9} height={7} />
                             </span>
                           </div>
                         </header>
@@ -1878,7 +1878,7 @@ export function GuideMarkup() {
                           <div className="pock-window__actions">
                             <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
+                              <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={9} height={7} />
                             </span>
                           </div>
                         </header>
@@ -1935,12 +1935,12 @@ export function GuideMarkup() {
                           <div className="pock-window__actions">
                             <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
+                              <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={7} height={5} />
                             </span>
                           </div>
                         </header>
                         <div className="pock-popup__body">
-                          <img className="pock-popup__icon" src="/assets/images/Info_popup-icon.svg" alt="" width={36} height={36} />
+                          <img className="pock-popup__icon" src="/assets/images/popup/info.svg" alt="" width={36} height={36} />
                           <p className="pock-popup__text">Text</p>
                         </div>
                         <div className="pock-popup__actions">
@@ -1956,12 +1956,12 @@ export function GuideMarkup() {
                           <div className="pock-window__actions">
                             <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
+                              <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={9} height={7} />
                             </span>
                           </div>
                         </header>
                         <div className="pock-popup__body">
-                          <img className="pock-popup__icon" src="/assets/images/Info_popup-icon.svg" alt="" width={36} height={36} />
+                          <img className="pock-popup__icon" src="/assets/images/popup/info.svg" alt="" width={36} height={36} />
                           <p className="pock-popup__text">Text</p>
                         </div>
                         <div className="pock-popup__actions">
@@ -1977,12 +1977,12 @@ export function GuideMarkup() {
                           <div className="pock-window__actions">
                             <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={7} height={5} />
+                              <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={7} height={5} />
                             </span>
                           </div>
                         </header>
                         <div className="pock-popup__body">
-                          <img className="pock-popup__icon" src="/assets/images/Warning%20_Popup-icon.svg" alt="" width={36} height={36} />
+                          <img className="pock-popup__icon" src="/assets/images/popup/warning.svg" alt="" width={36} height={36} />
                           <p className="pock-popup__text">
                             <span className="pock-popup__heading">POCK을 정말 떠나시겠어요?</span><br />
                             탈퇴하면 지금까지의 편지와 기록이 모두 삭제되며 다시 복구할 수 없습니다.
@@ -2001,12 +2001,12 @@ export function GuideMarkup() {
                           <div className="pock-window__actions">
                             <span className="pock-window__control pock-window__control--min" aria-hidden="true"></span>
                             <span className="pock-window__control pock-window__control--close" aria-hidden="true">
-                              <img className="pock-window__control-icon" src="/assets/images/heart-icon.svg" alt="" width={9} height={7} />
+                              <img className="pock-window__control-icon" src="/assets/images/icons/heart.svg" alt="" width={9} height={7} />
                             </span>
                           </div>
                         </header>
                         <div className="pock-popup__body">
-                          <img className="pock-popup__icon" src="/assets/images/Warning%20_Popup-icon.svg" alt="" width={36} height={36} />
+                          <img className="pock-popup__icon" src="/assets/images/popup/warning.svg" alt="" width={36} height={36} />
                           <p className="pock-popup__text">
                             <span className="pock-popup__heading">POCK을 정말 떠나시겠어요?</span><br />
                             탈퇴하면 지금까지의 편지와<br />

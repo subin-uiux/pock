@@ -7,31 +7,31 @@ const NAV_ITEMS = [
   {
     to: "/home",
     label: "홈",
-    icon: "/assets/icons/navigation/home.svg",
+    icon: "/assets/images/icons/navigation/home.svg",
     onboard: "nav-home",
   },
   {
     to: "/pock-received",
     label: "보관함",
-    icon: "/assets/icons/navigation/Storage%20Box.svg",
+    icon: "/assets/images/icons/navigation/storage-box.svg",
     onboard: "nav-received",
   },
   {
     to: "/pock-send",
     label: "보내기",
-    icon: "/assets/icons/navigation/sand.svg",
+    icon: "/assets/images/icons/navigation/send.svg",
     onboard: "nav-send",
   },
   {
     to: "/pock-sent",
     label: "전송함",
-    icon: "/assets/icons/navigation/Sent.svg",
+    icon: "/assets/images/icons/navigation/sent.svg",
     onboard: "nav-sent",
   },
   {
     to: "/settings",
     label: "설정",
-    icon: "/assets/icons/navigation/setting.svg",
+    icon: "/assets/images/icons/navigation/setting.svg",
     onboard: "nav-settings",
   },
 ] as const;

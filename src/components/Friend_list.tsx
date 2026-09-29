@@ -111,7 +111,7 @@ export function Friend_list({
           >
             <img
               className="pock-window__control-icon"
-              src="/assets/images/heart-icon.svg"
+              src="/assets/images/icons/heart.svg"
               alt=""
               width={9}
               height={7}
@@ -201,7 +201,7 @@ export function Friend_list({
           >
             <img
               className="pock-window__manage-icon"
-              src="/assets/images/friends-management-icon.svg"
+              src="/assets/images/icons/friends-management.svg"
               alt=""
               width={18}
               height={18}

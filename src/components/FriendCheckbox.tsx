@@ -42,7 +42,7 @@ export function FriendCheckbox({
   const icon = checked ? (
     <img
       className="friend-checkbox__icon"
-      src="/assets/icons/common/checkbox-check.svg"
+      src="/assets/images/icons/checkbox-check.svg"
       alt=""
       width={checkPx}
       height={checkPx}

@@ -123,7 +123,7 @@ function LetterCardHintButton({
       {hintPaid ? null : (
         <img
           className="letter-card__coin"
-          src="/assets/images/coin.svg"
+          src="/assets/images/coin/coin.svg"
           alt=""
           width={13}
           height={10}
@@ -272,7 +272,7 @@ export function Card({
         <div className="letter-card__gift-box" aria-hidden="true">
           <img
             className="letter-card__gift-image"
-            src="/assets/images/letter/letter_Before-opening.webp"
+            src="/assets/images/letter/letter-before-opening.webp"
             alt=""
             width={960}
             height={620}

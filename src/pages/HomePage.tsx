@@ -141,7 +141,7 @@ export function HomePage() {
       >
         <img
           className="home__alert-icon"
-          src="/assets/images/main-alert.svg"
+          src="/assets/images/alert/main-alert.svg"
           alt=""
           width={20}
           height={20}
@@ -192,7 +192,7 @@ export function HomePage() {
             ) : (
               <img
                 className="home__profile-figure-img"
-                src="/assets/images/setting/girl.svg"
+                src="/assets/images/avatar/girl.svg"
                 alt=""
                 width={80}
                 height={80}
@@ -209,7 +209,7 @@ export function HomePage() {
               <div className="home__profile-coin">
                 <img
                   className="home__profile-coin-icon"
-                  src="/assets/images/coin.svg"
+                  src="/assets/images/coin/coin.svg"
                   alt=""
                   width={18}
                   height={18}
@@ -262,7 +262,7 @@ export function HomePage() {
                 >
                   <img
                     className="pock-window__control-icon"
-                    src="/assets/images/heart-icon.svg"
+                    src="/assets/images/icons/heart.svg"
                     alt=""
                     width={9}
                     height={7}
@@ -325,7 +325,7 @@ export function HomePage() {
               >
                 <img
                   className="pock-window__manage-icon"
-                  src="/assets/images/friends-management-icon.svg"
+                  src="/assets/images/icons/friends-management.svg"
                   alt=""
                   width={18}
                   height={18}

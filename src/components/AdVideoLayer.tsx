@@ -53,7 +53,7 @@ export function AdVideoLayer({ open, onClose }: AdVideoLayerProps) {
       >
         <img
           className="ad-video-layer__close-icon"
-          src="/assets/images/pixelarticons_close.svg"
+          src="/assets/images/icons/close.svg"
           alt=""
           width={18}
           height={18}
@@ -62,7 +62,7 @@ export function AdVideoLayer({ open, onClose }: AdVideoLayerProps) {
       <video
         ref={videoRef}
         className="ad-video-layer__video"
-        src="/assets/images/ad_video.MOV"
+        src="/assets/videos/ad-video.mov"
         autoPlay
         loop
         playsInline

@@ -20,7 +20,7 @@ export function Header({ title = "POCK", showCoin = true }: HeaderProps) {
             <Link className="coin coin--header" to="/coin" aria-label="코인">
               <img
                 className="coin__icon"
-                src="/assets/images/coin.svg"
+                src="/assets/images/coin/coin.svg"
                 alt=""
                 width={18}
                 height={18}

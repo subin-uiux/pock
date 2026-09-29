@@ -33,7 +33,7 @@ export function SearchInput({
       <span className="visually-hidden">{label}</span>
       <img
         className="search-input__icon"
-        src="/assets/images/search-icon.svg"
+        src="/assets/images/icons/search.svg"
         alt=""
         width={18}
         height={18}

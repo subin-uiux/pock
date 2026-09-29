@@ -37,7 +37,7 @@ export function ProfileCompletePage() {
           <div className="profile-complete__bubble" aria-hidden="true">
             <img
               className="profile-complete__bubble-img"
-              src="/assets/images/hello-bubble.svg"
+              src="/assets/images/character/hello-bubble.svg"
               alt=""
               width={105}
               height={48}
@@ -48,7 +48,7 @@ export function ProfileCompletePage() {
           <div className="profile-complete__figure" aria-hidden="true">
             <img
               className="profile-complete__sparkle"
-              src={`/assets/images/${character === "girl" ? "pink" : "blue"}-sparkle.gif`}
+              src={`/assets/images/effects/${character === "girl" ? "pink" : "blue"}-sparkle.gif`}
               alt=""
               width={320}
               height={320}

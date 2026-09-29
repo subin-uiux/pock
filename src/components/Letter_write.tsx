@@ -390,7 +390,7 @@ export function Letter_write({
         <div className="letter-write__status">
           <img
             className="letter-write__signal"
-            src="/assets/images/Signal.svg"
+            src="/assets/images/icons/signal.svg"
             alt=""
             width={18}
             height={12}
@@ -398,7 +398,7 @@ export function Letter_write({
           <div className="letter-write__coin">
             <img
               className="letter-write__coin-icon"
-              src="/assets/images/coin.svg"
+              src="/assets/images/coin/coin.svg"
               alt=""
               width={14}
               height={14}
@@ -434,7 +434,7 @@ export function Letter_write({
               >
                 <img
                   className="letter-write__tab-icon"
-                  src="/assets/images/letter-icon.svg"
+                  src="/assets/images/letter/letter-icon.svg"
                   alt=""
                   width={16}
                   height={16}
@@ -457,7 +457,7 @@ export function Letter_write({
               >
                 <img
                   className="letter-write__tab-icon"
-                  src="/assets/images/picture-icon.svg"
+                  src="/assets/images/icons/picture.svg"
                   alt=""
                   width={16}
                   height={16}
@@ -483,7 +483,7 @@ export function Letter_write({
               >
                 <img
                   className="letter-write__tab-icon"
-                  src="/assets/images/Release-date-icon.svg"
+                  src="/assets/images/icons/release-date.svg"
                   alt=""
                   width={16}
                   height={16}
@@ -521,7 +521,7 @@ export function Letter_write({
                 ) : (
                   <img
                     className="letter-write__media-icon"
-                    src="/assets/images/image-icon.svg"
+                    src="/assets/images/icons/image.svg"
                     alt=""
                     aria-hidden="true"
                   />
@@ -622,7 +622,7 @@ export function Letter_write({
                 >
                   <img
                     className="pock-window__control-icon"
-                    src="/assets/images/heart-icon.svg"
+                    src="/assets/images/icons/heart.svg"
                     alt=""
                     width={9}
                     height={7}

@@ -53,7 +53,7 @@ export function addCoinPurchaseAlert(packLabel: string): void {
   const next: StoredAlert = {
     id: `alert-coin-${now.getTime()}`,
     kind: "coin",
-    icon: "/assets/images/coin.svg",
+    icon: "/assets/images/coin/coin.svg",
     iconW: 15,
     iconH: 15,
     /* 임시값 — 코인 구매 알림 카피 시안 확정 시 교체 */

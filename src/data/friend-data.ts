@@ -10,8 +10,8 @@ export const friendItems: PockUser[] = homeFriends.map((friend, index) => ({
   name: friend.name,
   profileImage:
     friend.character === "boy"
-      ? "/assets/images/setting/boy.svg"
-      : "/assets/images/setting/girl.svg",
+      ? "/assets/images/avatar/boy.svg"
+      : "/assets/images/avatar/girl.svg",
   gender: friend.character === "boy" ? "male" : "female",
   character: friend.character,
   outfit: friend.outfit,

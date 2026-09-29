@@ -97,7 +97,7 @@ export function InquiryPage() {
         >
           <img
             className="inquiry-page__back-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}
@@ -123,7 +123,7 @@ export function InquiryPage() {
             >
               <img
                 className="pock-window__control-icon"
-                src="/assets/images/heart-icon.svg"
+                src="/assets/images/icons/heart.svg"
                 alt=""
                 width={9}
                 height={7}

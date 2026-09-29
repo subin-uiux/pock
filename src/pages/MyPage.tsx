@@ -42,17 +42,17 @@ const PROFILE_TABS: {
   {
     id: "gender",
     label: "성별",
-    icon: "/assets/icons/edit-profile-gender.svg",
+    icon: "/assets/images/icons/edit-profile-gender.svg",
   },
   {
     id: "clothes",
     label: "옷",
-    icon: "/assets/icons/edit-profile-clothes.svg",
+    icon: "/assets/images/icons/edit-profile-clothes.svg",
   },
   {
     id: "background",
     label: "배경",
-    icon: "/assets/icons/edit-profile-background.svg",
+    icon: "/assets/images/icons/edit-profile-background.svg",
   },
 ];
 
@@ -66,13 +66,13 @@ const GENDER_OPTIONS: {
     id: "male",
     character: "boy",
     label: "남자",
-    src: "/assets/images/setting/boy.svg",
+    src: "/assets/images/avatar/boy.svg",
   },
   {
     id: "female",
     character: "girl",
     label: "여자",
-    src: "/assets/images/setting/girl.svg",
+    src: "/assets/images/avatar/girl.svg",
   },
 ];
 
@@ -82,19 +82,19 @@ const CLOTHES_BY_GENDER: Record<GenderId, ClothesOption[]> = {
       id: "girl-school",
       label: "교복",
       src: "/assets/images/outfit/girl-school.svg",
-      thumbSrc: "/assets/images/selection-box__school.svg",
+      thumbSrc: "/assets/images/outfit/thumbs/school.svg",
     },
     {
       id: "girl-skirt",
       label: "스커트",
       src: "/assets/images/outfit/girl-skirt.svg",
-      thumbSrc: "/assets/images/selection-box__skirt.svg",
+      thumbSrc: "/assets/images/outfit/thumbs/skirt.svg",
     },
     {
       id: "girl-coat",
       label: "코트",
       src: "/assets/images/outfit/girl-coat.svg",
-      thumbSrc: "/assets/images/selection-box__coat.svg",
+      thumbSrc: "/assets/images/outfit/thumbs/coat.svg",
     },
   ],
   male: [
@@ -102,19 +102,19 @@ const CLOTHES_BY_GENDER: Record<GenderId, ClothesOption[]> = {
       id: "boy-hood",
       label: "후드",
       src: "/assets/images/outfit/boy-hood.svg",
-      thumbSrc: "/assets/images/selection-box__hood.svg",
+      thumbSrc: "/assets/images/outfit/thumbs/hood.svg",
     },
     {
       id: "boy-jacket",
       label: "자켓",
       src: "/assets/images/outfit/boy-jacket.svg",
-      thumbSrc: "/assets/images/selection-box__jacket.svg",
+      thumbSrc: "/assets/images/outfit/thumbs/jacket.svg",
     },
     {
       id: "boy-knit",
       label: "니트",
       src: "/assets/images/outfit/boy-knit.svg",
-      thumbSrc: "/assets/images/selection-box__knit.svg",
+      thumbSrc: "/assets/images/outfit/thumbs/knit.svg",
     },
   ],
 };
@@ -167,8 +167,8 @@ export function MyPage() {
   const previewSrc = useMemo(
     () =>
       genderId === "male"
-        ? "/assets/images/setting/boy.svg"
-        : "/assets/images/setting/girl.svg",
+        ? "/assets/images/avatar/boy.svg"
+        : "/assets/images/avatar/girl.svg",
     [genderId],
   );
 
@@ -241,7 +241,7 @@ export function MyPage() {
         >
           <img
             className="mypage__back-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}
@@ -267,7 +267,7 @@ export function MyPage() {
             >
               <img
                 className="pock-window__control-icon"
-                src="/assets/images/heart-icon.svg"
+                src="/assets/images/icons/heart.svg"
                 alt=""
                 width={9}
                 height={7}
@@ -322,7 +322,7 @@ export function MyPage() {
               >
                 <img
                   className="mypage-profile__cost-icon"
-                  src="/assets/images/setting/crystal-coin.svg"
+                  src="/assets/images/coin/crystal-coin.svg"
                   alt=""
                   width={14}
                   height={14}

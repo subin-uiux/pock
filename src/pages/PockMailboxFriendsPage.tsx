@@ -71,7 +71,7 @@ function FriendAvatar({
       ) : (
         <img
           className="friend-list-page__avatar-img"
-          src="/assets/images/setting/girl.svg"
+          src="/assets/images/avatar/girl.svg"
           alt=""
           width={50}
           height={50}
@@ -155,7 +155,7 @@ export function PockMailboxFriendsPage() {
         >
           <img
             className="mailbox-friends__back-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}

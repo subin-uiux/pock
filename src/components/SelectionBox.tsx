@@ -30,7 +30,7 @@ export function SelectionBox({
       {selected ? (
         <img
           className="selection-box__check"
-          src="/assets/icons/common/check-blue.svg"
+          src="/assets/images/icons/check-blue.svg"
           alt=""
           width={25}
           height={25}

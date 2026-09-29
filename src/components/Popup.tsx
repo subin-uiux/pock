@@ -25,9 +25,9 @@ interface PopupProps {
 }
 
 const ICONS: Record<PopupVariant, string> = {
-  info: "/assets/images/Info_popup-icon.svg",
-  warning: "/assets/images/Warning%20_Popup-icon.svg",
-  share: "/assets/images/Share%20_Popup-icon.svg",
+  info: "/assets/images/popup/info.svg",
+  warning: "/assets/images/popup/warning.svg",
+  share: "/assets/images/popup/share.svg", // 파일 미제공 — 추가 시 이 경로에 넣기
 };
 
 export function Popup({
@@ -78,7 +78,7 @@ export function Popup({
             >
               <img
                 className="pock-window__control-icon"
-                src="/assets/images/heart-icon.svg"
+                src="/assets/images/icons/heart.svg"
                 alt=""
                 width={9}
                 height={7}

@@ -106,7 +106,7 @@ export function AlertPage() {
         >
           <img
             className="alert-page__back-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}

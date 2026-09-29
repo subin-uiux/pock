@@ -89,7 +89,7 @@ export function PrivacyPage() {
         <button type="button" className="terms-page__back" onClick={goBack}>
           <img
             className="terms-page__back-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}
@@ -100,7 +100,7 @@ export function PrivacyPage() {
           <span className="terms-page__next-label">종료</span>
           <img
             className="terms-page__next-icon"
-            src="/assets/icons/left-arrow.svg"
+            src="/assets/images/icons/left-arrow.svg"
             alt=""
             width={24}
             height={24}

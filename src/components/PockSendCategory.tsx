@@ -13,17 +13,17 @@ const CATEGORIES: CategoryItem[] = [
   {
     id: "array",
     label: "배열",
-    icon: "/assets/images/PockSendPage_array-icon.svg",
+    icon: "/assets/images/icons/category-array.svg",
   },
   {
     id: "search",
     label: "검색",
-    icon: "/assets/images/PockSendPage_search-icon.svg",
+    icon: "/assets/images/icons/category-search.svg",
   },
   {
     id: "friends",
     label: "친구",
-    icon: "/assets/images/PockSendPage_freinds-icon.svg",
+    icon: "/assets/images/icons/category-friends.svg",
   },
 ];
 

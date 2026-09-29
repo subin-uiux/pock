@@ -108,7 +108,7 @@ export function SettingsPage() {
         >
           <img
             className="settings__coin-icon"
-            src="/assets/images/coin-store/1coin.svg"
+            src="/assets/images/coin/coin-1.svg"
             alt=""
             width={18}
             height={18}
@@ -145,7 +145,7 @@ export function SettingsPage() {
             >
               <img
                 className="pock-window__control-icon"
-                src="/assets/images/heart-icon.svg"
+                src="/assets/images/icons/heart.svg"
                 alt=""
                 width={9}
                 height={7}
@@ -186,7 +186,7 @@ export function SettingsPage() {
             ) : (
               <img
                 className="settings-profile__avatar-img"
-                src="/assets/images/setting/girl.svg"
+                src="/assets/images/avatar/girl.svg"
                 alt=""
                 width={80}
                 height={80}
@@ -247,7 +247,7 @@ export function SettingsPage() {
             <header className="settings-menu__head">
               <img
                 className="settings-menu__icon settings-menu__icon--friends"
-                src="/assets/images/setting/Friends-icon.svg"
+                src="/assets/images/setting/friends-icon.svg"
                 alt=""
                 width={38}
                 height={23}
@@ -264,7 +264,7 @@ export function SettingsPage() {
                   <span className="settings-menu__label">친구 초대하기</span>
                   <img
                     className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
+                    src="/assets/images/icons/left-arrow.svg"
                     alt=""
                     width={16}
                     height={16}
@@ -283,7 +283,7 @@ export function SettingsPage() {
                   </span>
                   <img
                     className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
+                    src="/assets/images/icons/left-arrow.svg"
                     alt=""
                     width={16}
                     height={16}
@@ -298,7 +298,7 @@ export function SettingsPage() {
             <header className="settings-menu__head">
               <img
                 className="settings-menu__icon settings-menu__icon--service"
-                src="/assets/images/setting/Service-icon.svg"
+                src="/assets/images/setting/service-icon.svg"
                 alt=""
                 width={24}
                 height={18}
@@ -323,7 +323,7 @@ export function SettingsPage() {
                   </span>
                   <img
                     className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
+                    src="/assets/images/icons/left-arrow.svg"
                     alt=""
                     width={16}
                     height={16}
@@ -340,7 +340,7 @@ export function SettingsPage() {
                   <span className="settings-menu__label">약관 및 정책</span>
                   <img
                     className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
+                    src="/assets/images/icons/left-arrow.svg"
                     alt=""
                     width={16}
                     height={16}
@@ -357,7 +357,7 @@ export function SettingsPage() {
                   <span className="settings-menu__label">문의하기</span>
                   <img
                     className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
+                    src="/assets/images/icons/left-arrow.svg"
                     alt=""
                     width={16}
                     height={16}
@@ -375,7 +375,7 @@ export function SettingsPage() {
             <header className="settings-menu__head">
               <img
                 className="settings-menu__icon settings-menu__icon--instagram"
-                src="/assets/images/insta.svg"
+                src="/assets/images/setting/instagram-icon.svg"
                 alt=""
                 width={23}
                 height={23}
@@ -394,7 +394,7 @@ export function SettingsPage() {
                   <span className="settings-menu__label">@p.o0ck</span>
                   <img
                     className="settings-menu__chevron"
-                    src="/assets/icons/left-arrow.svg"
+                    src="/assets/images/icons/left-arrow.svg"
                     alt=""
                     width={16}
                     height={16}

@@ -28,7 +28,7 @@ export function Letter({
       <article className={`letter letter--${size} letter--before-open`} aria-label="개봉 전 편지">
         <img
           className="letter__before-image"
-          src="/assets/images/letter/letter_Before-opening.webp"
+          src="/assets/images/letter/letter-before-opening.webp"
           alt=""
         />
       </article>
@@ -47,7 +47,7 @@ export function Letter({
       >
         <img
           className="letter__expand-icon"
-          src="/assets/images/pixelarticons_close.svg"
+          src="/assets/images/icons/close.svg"
           alt=""
           width={18}
           height={18}

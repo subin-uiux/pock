@@ -159,7 +159,7 @@ export function LetterPaperPicker({
         >
           <img
             className="letter-paper-pick__back-icon"
-            src="/assets/images/arrow-before.svg"
+            src="/assets/images/icons/arrow-before.svg"
             alt=""
             width={24}
             height={24}
@@ -207,7 +207,7 @@ export function LetterPaperPicker({
                       {option.unlock === "ad" ? (
                         <img
                           className="letter-paper-pick__lock-icon"
-                          src="/assets/images/letter-ad.svg"
+                          src="/assets/images/letter/letter-ad.svg"
                           alt=""
                           width={40}
                           height={40}
@@ -216,7 +216,7 @@ export function LetterPaperPicker({
                         <>
                           <img
                             className="letter-paper-pick__lock-icon"
-                            src="/assets/images/letter-lock.svg"
+                            src="/assets/images/letter/letter-lock.svg"
                             alt=""
                             width={40}
                             height={40}
@@ -224,7 +224,7 @@ export function LetterPaperPicker({
                           <span className="letter-paper-pick__price">
                             <img
                               className="letter-paper-pick__coin"
-                              src="/assets/images/coin.svg"
+                              src="/assets/images/coin/coin.svg"
                               alt=""
                               width={14}
                               height={14}
