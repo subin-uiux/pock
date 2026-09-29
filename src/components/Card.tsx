@@ -239,9 +239,7 @@ export function Card({
               width={size === "tb" ? 120 : 90}
               height={size === "tb" ? 150 : 120}
             />
-          ) : (
-            <div className="letter-card__thumb" aria-hidden="true" />
-          )}
+          ) : null}
           <div className="letter-card__meta">
             {openLines.map((line) => (
               <p className="letter-card__line" key={line}>
@@ -355,9 +353,7 @@ export function Card({
               width={size === "tb" ? 120 : 90}
               height={size === "tb" ? 150 : 120}
             />
-          ) : (
-            <div className="letter-card__thumb" aria-hidden="true" />
-          )}
+          ) : null}
           <div className="letter-card__meta">
             {openLines.map((line) => (
               <p className="letter-card__line" key={line}>

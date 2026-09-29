@@ -5,6 +5,7 @@ import {
   SENT_LOCKED_SAMPLES,
   SENT_OPEN_SAMPLES,
 } from "@/data/pock-mailbox-samples";
+import { getUserSentMailboxCards } from "@/lib/pock";
 import type { LetterCardMailbox } from "@/types";
 
 const SELF_NAME = "나";
@@ -38,7 +39,12 @@ export function countMailboxLetters(
   const samples =
     mailbox === "received"
       ? [...RECEIVED_LOCKED_SAMPLES, ...RECEIVED_OPEN_SAMPLES]
-      : [...SENT_LOCKED_SAMPLES, ...SENT_OPEN_SAMPLES];
+      : [
+          ...getUserSentMailboxCards("locked"),
+          ...getUserSentMailboxCards("open"),
+          ...SENT_LOCKED_SAMPLES,
+          ...SENT_OPEN_SAMPLES,
+        ];
   return samples.filter((item) => item.target === friendName).length;
 }
 
