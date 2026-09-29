@@ -86,7 +86,7 @@ export function TermsPage() {
           <img
             className="terms-page__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />
@@ -97,7 +97,7 @@ export function TermsPage() {
           <img
             className="terms-page__next-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="다음"
             width={24}
             height={24}
           />

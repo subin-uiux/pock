@@ -38,7 +38,7 @@ export function ProfileCompletePage() {
             <img
               className="profile-complete__bubble-img"
               src="/assets/images/character/hello-bubble.svg"
-              alt=""
+              alt="안녕 말풍선"
               width={105}
               height={48}
             />
@@ -49,14 +49,14 @@ export function ProfileCompletePage() {
             <img
               className="profile-complete__sparkle"
               src={`/assets/images/effects/${character === "girl" ? "pink" : "blue"}-sparkle.gif`}
-              alt=""
+              alt="반짝이는 효과"
               width={320}
               height={320}
             />
             <img
               className="profile-complete__base"
               src={CHARACTER_BASE.src[character]}
-              alt=""
+              alt={character === "boy" ? "남자 캐릭터" : "여자 캐릭터"}
               width={CHARACTER_BASE.width}
               height={CHARACTER_BASE.height}
             />
@@ -68,7 +68,7 @@ export function ProfileCompletePage() {
                     : "profile-complete__wear"
                 }
                 src={outfit.src}
-                alt=""
+                alt={`${outfit.label} 옷`}
                 width={outfit.width}
                 height={outfit.height}
                 style={wearStyle}

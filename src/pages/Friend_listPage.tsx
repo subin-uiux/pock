@@ -85,7 +85,7 @@ export function Friend_listPage() {
           <img
             className="friend-list-page__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />
@@ -102,7 +102,7 @@ export function Friend_listPage() {
           <img
             className="friend-list-page__invite-icon"
             src="/assets/images/icons/friend-list.svg"
-            alt=""
+            alt="친구 목록"
             width={20}
             height={20}
           />
@@ -128,7 +128,7 @@ export function Friend_listPage() {
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />
@@ -172,7 +172,8 @@ export function Friend_listPage() {
                           <img
                             className="friend-list-page__avatar-base"
                             src={CHARACTER_BASE.src[friend.character]}
-                            alt=""
+                            alt={`${friend.name} 캐릭터`}
+                            loading="lazy"
                             width={CHARACTER_BASE.width}
                             height={CHARACTER_BASE.height}
                           />
@@ -184,7 +185,8 @@ export function Friend_listPage() {
                                   : "friend-list-page__avatar-wear"
                               }
                               src={wear.src}
-                              alt=""
+                              alt={`${wear.label} 옷`}
+                              loading="lazy"
                               width={wear.width}
                               height={wear.height}
                             />
@@ -194,7 +196,8 @@ export function Friend_listPage() {
                         <img
                           className="friend-list-page__avatar-img"
                           src={friend.profileImage}
-                          alt=""
+                          alt={`${friend.name} 프로필`}
+                          loading="lazy"
                           width={50}
                           height={50}
                         />

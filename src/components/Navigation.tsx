@@ -100,7 +100,7 @@ return (
                 <img
                   className="navigation__icon"
                   src={item.icon}
-                  alt=""
+                  alt={`${item.label} 아이콘`}
                   width={56}
                   height={56}
                 />
@@ -138,7 +138,7 @@ return (
                       <img
                         className="navigation__icon"
                         src={item.icon}
-                        alt=""
+                        alt={`${item.label} 아이콘`}
                         width={56}
                         height={56}
                       />

@@ -85,7 +85,7 @@ export function SendLoading({
           <img
             className="send-loading__logo send-loading__logo--complete"
             src="/assets/images/loading/loading-complete.svg"
-            alt=""
+            alt="전송 완료된 편지"
             width={250}
             height={204}
           />
@@ -93,7 +93,7 @@ export function SendLoading({
           <img
             className="send-loading__logo send-loading__logo--loading"
             src="/assets/images/loading/loading.svg"
-            alt=""
+            alt="전송 중인 편지"
             width={200}
             height={230}
           />
@@ -107,7 +107,7 @@ export function SendLoading({
           <img
             className="send-loading__bar-image"
             src={LOADING_BARS[barIndex]}
-            alt=""
+            alt="전송 진행률"
             width={154}
             height={16}
           />

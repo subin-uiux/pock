@@ -391,7 +391,7 @@ export function Letter_write({
           <img
             className="letter-write__signal"
             src="/assets/images/icons/signal.svg"
-            alt=""
+            alt="신호 세기"
             width={18}
             height={12}
           />
@@ -399,7 +399,7 @@ export function Letter_write({
             <img
               className="letter-write__coin-icon"
               src="/assets/images/coin/coin.svg"
-              alt=""
+              alt="코인"
               width={14}
               height={14}
             />
@@ -435,7 +435,7 @@ export function Letter_write({
                 <img
                   className="letter-write__tab-icon"
                   src="/assets/images/letter/letter-icon.svg"
-                  alt=""
+                  alt="편지지 선택"
                   width={16}
                   height={16}
                 />
@@ -458,7 +458,7 @@ export function Letter_write({
                 <img
                   className="letter-write__tab-icon"
                   src="/assets/images/icons/picture.svg"
-                  alt=""
+                  alt="사진 첨부"
                   width={16}
                   height={16}
                 />
@@ -484,7 +484,7 @@ export function Letter_write({
                 <img
                   className="letter-write__tab-icon"
                   src="/assets/images/icons/release-date.svg"
-                  alt=""
+                  alt="개봉일 선택"
                   width={16}
                   height={16}
                 />
@@ -516,13 +516,13 @@ export function Letter_write({
                   <img
                     className="letter-write__media-image"
                     src={imageUrl}
-                    alt=""
+                    alt="첨부한 사진"
                   />
                 ) : (
                   <img
                     className="letter-write__media-icon"
                     src="/assets/images/icons/image.svg"
-                    alt=""
+                    alt="사진 추가"
                     aria-hidden="true"
                   />
                 )}
@@ -577,13 +577,15 @@ export function Letter_write({
                   onChange={(e) => setFrom(e.target.value)}
                 />
               </label>
-              <time
-                className="letter-write__date"
-                dateTime={writtenDate ? writtenDate.replace(/\./g, "-") : undefined}
-                aria-label="개봉일"
-              >
-                {writtenDate || "개봉일 선택"}
-              </time>
+              {writtenDate ? (
+                <time
+                  className="letter-write__date"
+                  dateTime={writtenDate.replace(/\./g, "-")}
+                  aria-label="개봉일"
+                >
+                  {writtenDate}
+                </time>
+              ) : null}
             </div>
           </div>
         </div>
@@ -623,7 +625,7 @@ export function Letter_write({
                   <img
                     className="pock-window__control-icon"
                     src="/assets/images/icons/heart.svg"
-                    alt=""
+                    alt="하트"
                     width={9}
                     height={7}
                   />

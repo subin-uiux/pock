@@ -34,7 +34,7 @@ export function SearchInput({
       <img
         className="search-input__icon"
         src="/assets/images/icons/search.svg"
-        alt=""
+        alt="검색"
         width={18}
         height={18}
       />

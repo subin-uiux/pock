@@ -29,7 +29,7 @@ export function Letter({
         <img
           className="letter__before-image"
           src="/assets/images/letter/letter-before-opening.webp"
-          alt=""
+          alt="개봉 전 편지 선물 상자"
         />
       </article>
     );
@@ -48,14 +48,14 @@ export function Letter({
         <img
           className="letter__expand-icon"
           src="/assets/images/icons/close.svg"
-          alt=""
+          alt="닫기"
           width={18}
           height={18}
         />
       </button>
       {imageSrc ? (
         <div className="letter__media">
-          <img className="letter__image" src={imageSrc} alt="" />
+          <img className="letter__image" src={imageSrc} alt="편지 사진" loading="lazy" />
         </div>
       ) : null}
       <div className="letter__content">

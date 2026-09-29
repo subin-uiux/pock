@@ -98,7 +98,7 @@ export function InquiryPage() {
           <img
             className="inquiry-page__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />
@@ -124,7 +124,7 @@ export function InquiryPage() {
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />

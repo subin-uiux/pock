@@ -172,7 +172,7 @@ export function MailboxLetterLayer({
             <img
               className="btn__icon-image"
               src="/assets/images/icons/save.webp"
-              alt=""
+              alt="편지 저장"
               width={15}
               height={15}
             />

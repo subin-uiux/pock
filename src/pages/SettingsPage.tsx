@@ -109,7 +109,7 @@ export function SettingsPage() {
           <img
             className="settings__coin-icon"
             src="/assets/images/coin/coin-1.svg"
-            alt=""
+            alt="코인"
             width={18}
             height={18}
           />
@@ -124,7 +124,7 @@ export function SettingsPage() {
           <img
             className="settings__coin-plus-icon"
             src="/assets/images/setting/plus-box.svg"
-            alt=""
+            alt="코인 충전"
             width={24}
             height={24}
           />
@@ -146,7 +146,7 @@ export function SettingsPage() {
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />
@@ -165,7 +165,7 @@ export function SettingsPage() {
                 <img
                   className="settings-profile__avatar-base"
                   src={CHARACTER_BASE.src[character]}
-                  alt=""
+                  alt={character === "boy" ? "남자 캐릭터" : "여자 캐릭터"}
                   width={CHARACTER_BASE.width}
                   height={CHARACTER_BASE.height}
                 />
@@ -177,7 +177,7 @@ export function SettingsPage() {
                         : "settings-profile__avatar-wear"
                     }
                     src={outfit.src}
-                    alt=""
+                    alt={`${outfit.label} 옷`}
                     width={outfit.width}
                     height={outfit.height}
                   />
@@ -187,7 +187,7 @@ export function SettingsPage() {
               <img
                 className="settings-profile__avatar-img"
                 src="/assets/images/avatar/girl.svg"
-                alt=""
+                alt="기본 프로필 캐릭터"
                 width={80}
                 height={80}
               />
@@ -248,7 +248,8 @@ export function SettingsPage() {
               <img
                 className="settings-menu__icon settings-menu__icon--friends"
                 src="/assets/images/setting/friends-icon.svg"
-                alt=""
+                alt="친구"
+                loading="lazy"
                 width={38}
                 height={23}
               />
@@ -265,7 +266,8 @@ export function SettingsPage() {
                   <img
                     className="settings-menu__chevron"
                     src="/assets/images/icons/left-arrow.svg"
-                    alt=""
+                    alt="바로가기"
+                    loading="lazy"
                     width={16}
                     height={16}
                     aria-hidden="true"
@@ -284,7 +286,8 @@ export function SettingsPage() {
                   <img
                     className="settings-menu__chevron"
                     src="/assets/images/icons/left-arrow.svg"
-                    alt=""
+                    alt="바로가기"
+                    loading="lazy"
                     width={16}
                     height={16}
                     aria-hidden="true"
@@ -299,7 +302,8 @@ export function SettingsPage() {
               <img
                 className="settings-menu__icon settings-menu__icon--service"
                 src="/assets/images/setting/service-icon.svg"
-                alt=""
+                alt="서비스"
+                loading="lazy"
                 width={24}
                 height={18}
               />
@@ -324,7 +328,8 @@ export function SettingsPage() {
                   <img
                     className="settings-menu__chevron"
                     src="/assets/images/icons/left-arrow.svg"
-                    alt=""
+                    alt="바로가기"
+                    loading="lazy"
                     width={16}
                     height={16}
                     aria-hidden="true"
@@ -341,7 +346,8 @@ export function SettingsPage() {
                   <img
                     className="settings-menu__chevron"
                     src="/assets/images/icons/left-arrow.svg"
-                    alt=""
+                    alt="바로가기"
+                    loading="lazy"
                     width={16}
                     height={16}
                     aria-hidden="true"
@@ -358,7 +364,8 @@ export function SettingsPage() {
                   <img
                     className="settings-menu__chevron"
                     src="/assets/images/icons/left-arrow.svg"
-                    alt=""
+                    alt="바로가기"
+                    loading="lazy"
                     width={16}
                     height={16}
                     aria-hidden="true"
@@ -376,7 +383,8 @@ export function SettingsPage() {
               <img
                 className="settings-menu__icon settings-menu__icon--instagram"
                 src="/assets/images/setting/instagram-icon.svg"
-                alt=""
+                alt="인스타그램"
+                loading="lazy"
                 width={23}
                 height={23}
               />
@@ -395,7 +403,8 @@ export function SettingsPage() {
                   <img
                     className="settings-menu__chevron"
                     src="/assets/images/icons/left-arrow.svg"
-                    alt=""
+                    alt="바로가기"
+                    loading="lazy"
                     width={16}
                     height={16}
                     aria-hidden="true"

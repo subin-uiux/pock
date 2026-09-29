@@ -78,7 +78,7 @@ export function OutfitSetupPage() {
             <img
               className="outfit-setup__base"
               src={CHARACTER_BASE.src[character]}
-              alt=""
+              alt={character === "boy" ? "남자 캐릭터" : "여자 캐릭터"}
               width={CHARACTER_BASE.width}
               height={CHARACTER_BASE.height}
             />
@@ -90,7 +90,7 @@ export function OutfitSetupPage() {
                     : "outfit-setup__wear"
                 }
                 src={selected.src}
-                alt=""
+                alt={`${selected.label} 옷`}
                 width={selected.width}
                 height={selected.height}
                 style={wearStyle}
@@ -114,7 +114,8 @@ export function OutfitSetupPage() {
                 <img
                   className="outfit-setup__thumb"
                   src={item.thumbSrc ?? item.src}
-                  alt=""
+                  alt={`${item.label} 옷`}
+                  loading="lazy"
                   width={item.thumbWidth ?? item.width}
                   height={item.thumbHeight ?? item.height}
                 />

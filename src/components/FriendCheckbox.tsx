@@ -43,7 +43,7 @@ export function FriendCheckbox({
     <img
       className="friend-checkbox__icon"
       src="/assets/images/icons/checkbox-check.svg"
-      alt=""
+      alt="선택됨"
       width={checkPx}
       height={checkPx}
     />

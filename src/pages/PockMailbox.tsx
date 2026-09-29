@@ -316,7 +316,7 @@ export function PockMailbox({ mailbox }: PockMailboxProps) {
                 <img
                   className="pock-mailbox__refresh-icon"
                   src="/assets/images/icons/refresh.svg"
-                  alt=""
+                  alt="새로고침"
                   width={isMo ? 18 : 24}
                   height={isMo ? 18 : 24}
                 />

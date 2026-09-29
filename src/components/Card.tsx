@@ -124,7 +124,8 @@ function LetterCardHintButton({
         <img
           className="letter-card__coin"
           src="/assets/images/coin/coin.svg"
-          alt=""
+          alt="코인"
+          loading="lazy"
           width={13}
           height={10}
         />
@@ -245,7 +246,8 @@ export function Card({
             <img
               className="letter-card__thumb"
               src={previewSrc}
-              alt=""
+              alt="편지 사진"
+              loading="lazy"
               width={size === "tb" ? 120 : 90}
               height={size === "tb" ? 150 : 120}
             />
@@ -273,7 +275,8 @@ export function Card({
           <img
             className="letter-card__gift-image"
             src="/assets/images/letter/letter-before-opening.webp"
-            alt=""
+            alt="개봉 전 편지 선물 상자"
+            loading="lazy"
             width={960}
             height={620}
           />
@@ -363,7 +366,8 @@ export function Card({
                 <img
                   className="letter-card__thumb"
                   src={previewSrc}
-                  alt=""
+                  alt="편지 사진"
+                  loading="lazy"
                   width={90}
                   height={120}
                 />
@@ -402,7 +406,8 @@ export function Card({
               <img
                 className="letter-card__thumb"
                 src={previewSrc}
-                alt=""
+                alt="편지 사진"
+                loading="lazy"
                 width={usePreview ? 90 : size === "tb" ? 120 : 90}
                 height={usePreview ? 120 : size === "tb" ? 150 : 120}
               />
@@ -424,7 +429,8 @@ export function Card({
             <img
               className="letter-card__lock-image"
               src="/assets/images/letter/letter-lock-icon.png"
-              alt=""
+              alt="잠긴 편지 자물쇠"
+              loading="lazy"
               width={40}
               height={40}
             />

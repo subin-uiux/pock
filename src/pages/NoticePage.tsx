@@ -43,7 +43,7 @@ export function NoticePage() {
           <img
             className="notice-page__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />
@@ -69,7 +69,7 @@ export function NoticePage() {
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />
@@ -104,7 +104,8 @@ export function NoticePage() {
                     <img
                       className="notice-page__chevron"
                       src="/assets/images/icons/left-arrow.svg"
-                      alt=""
+                      alt="바로가기"
+                      loading="lazy"
                       width={16}
                       height={16}
                       aria-hidden="true"

@@ -9,7 +9,7 @@ export function CoinBadge({ amount, className = "" }: CoinBadgeProps) {
       <img
         className="coin__icon"
         src="/assets/images/coin/coin.svg"
-        alt=""
+        alt="코인"
         width={14}
         height={14}
       />

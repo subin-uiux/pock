@@ -112,7 +112,7 @@ export function Friend_list({
             <img
               className="pock-window__control-icon"
               src="/assets/images/icons/heart.svg"
-              alt=""
+              alt="하트"
               width={9}
               height={7}
             />
@@ -164,7 +164,8 @@ export function Friend_list({
                       <img
                         className="pock-window__thumb"
                         src={friend.profileImage}
-                        alt=""
+                        alt={`${friend.name} 프로필`}
+                        loading="lazy"
                         width={isPick ? 36 : 48}
                         height={isPick ? 36 : 48}
                       />
@@ -202,7 +203,8 @@ export function Friend_list({
             <img
               className="pock-window__manage-icon"
               src="/assets/images/icons/friends-management.svg"
-              alt=""
+              alt="친구 관리"
+              loading="lazy"
               width={18}
               height={18}
             />

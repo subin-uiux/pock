@@ -242,7 +242,7 @@ export function MyPage() {
           <img
             className="mypage__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />
@@ -268,7 +268,7 @@ export function MyPage() {
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />
@@ -289,7 +289,7 @@ export function MyPage() {
                 <img
                   className="mypage-profile__body"
                   src={previewSrc}
-                  alt=""
+                  alt="내 캐릭터"
                   width={105}
                   height={160}
                 />
@@ -297,7 +297,7 @@ export function MyPage() {
                   <img
                     className="mypage-profile__clothes"
                     src={selectedClothes.src}
-                    alt=""
+                    alt={`${selectedClothes.label} 옷`}
                     width={105}
                     height={160}
                   />
@@ -323,7 +323,7 @@ export function MyPage() {
                 <img
                   className="mypage-profile__cost-icon"
                   src="/assets/images/coin/crystal-coin.svg"
-                  alt=""
+                  alt="크리스탈 코인"
                   width={14}
                   height={14}
                 />
@@ -358,7 +358,7 @@ export function MyPage() {
                     <img
                       className="mypage-tabs__icon"
                       src={tab.icon}
-                      alt=""
+                      alt={`${tab.label} 탭`}
                       width={38}
                       height={38}
                     />
@@ -392,7 +392,8 @@ export function MyPage() {
                               : "mypage-gender__img"
                           }
                           src={item.src}
-                          alt=""
+                          alt={`${item.label} 캐릭터`}
+                          loading="lazy"
                           width={72}
                           height={110}
                         />
@@ -416,7 +417,8 @@ export function MyPage() {
                         <img
                           className="mypage-clothes__img"
                           src={item.thumbSrc ?? item.src}
-                          alt=""
+                          alt={`${item.label} 옷`}
+                          loading="lazy"
                           width={60}
                           height={90}
                         />

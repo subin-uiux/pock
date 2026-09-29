@@ -142,7 +142,7 @@ export function HomePage() {
         <img
           className="home__alert-icon"
           src="/assets/images/alert/main-alert.svg"
-          alt=""
+          alt="알림"
           width={20}
           height={20}
         />
@@ -171,7 +171,7 @@ export function HomePage() {
                 <img
                   className="home__profile-figure-base"
                   src={CHARACTER_BASE.src[character]}
-                  alt=""
+                  alt={character === "boy" ? "남자 캐릭터" : "여자 캐릭터"}
                   width={CHARACTER_BASE.width}
                   height={CHARACTER_BASE.height}
                 />
@@ -183,7 +183,7 @@ export function HomePage() {
                         : "home__profile-figure-wear"
                     }
                     src={outfit.src}
-                    alt=""
+                    alt={`${outfit.label} 옷`}
                     width={outfit.width}
                     height={outfit.height}
                   />
@@ -193,7 +193,7 @@ export function HomePage() {
               <img
                 className="home__profile-figure-img"
                 src="/assets/images/avatar/girl.svg"
-                alt=""
+                alt="기본 프로필 캐릭터"
                 width={80}
                 height={80}
               />
@@ -210,7 +210,7 @@ export function HomePage() {
                 <img
                   className="home__profile-coin-icon"
                   src="/assets/images/coin/coin.svg"
-                  alt=""
+                  alt="코인"
                   width={18}
                   height={18}
                 />
@@ -263,7 +263,7 @@ export function HomePage() {
                   <img
                     className="pock-window__control-icon"
                     src="/assets/images/icons/heart.svg"
-                    alt=""
+                    alt="하트"
                     width={9}
                     height={7}
                   />
@@ -326,7 +326,8 @@ export function HomePage() {
                 <img
                   className="pock-window__manage-icon"
                   src="/assets/images/icons/friends-management.svg"
-                  alt=""
+                  alt="친구 관리"
+                  loading="lazy"
                   width={18}
                   height={18}
                 />

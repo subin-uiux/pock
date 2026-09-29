@@ -64,7 +64,7 @@ export function SignUpStepGauge({
                   : "signup-step-gauge__image"
               }
               src={src}
-              alt=""
+              alt={active ? "완료된 단계" : "남은 단계"}
               width={asset.width}
               height={asset.height}
             />

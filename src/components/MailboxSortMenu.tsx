@@ -81,7 +81,7 @@ export function MailboxSortMenu({
                 <img
                   className="mailbox-sort__check"
                   src="/assets/images/icons/alignment-check.svg"
-                  alt=""
+                  alt="선택된 정렬"
                   width={12}
                   height={12}
                   aria-hidden={!selected}

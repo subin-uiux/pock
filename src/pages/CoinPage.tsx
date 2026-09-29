@@ -145,7 +145,7 @@ export function CoinPage() {
           <img
             className="coin-page__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />
@@ -160,7 +160,7 @@ export function CoinPage() {
             <img
               className="coin-page__coin-icon"
               src="/assets/images/coin/coin-1.svg"
-              alt=""
+              alt="코인"
               width={18}
               height={18}
             />
@@ -177,7 +177,7 @@ export function CoinPage() {
             <img
               className="coin-page__coin-plus-icon"
               src="/assets/images/setting/plus-box.svg"
-              alt=""
+              alt="코인 충전"
               width={24}
               height={24}
             />
@@ -194,7 +194,7 @@ export function CoinPage() {
           <img
             className="coin-page__ad-icon"
             src="/assets/images/coin/ad-icon.svg"
-            alt=""
+            alt="광고 시청"
             width={23}
             height={23}
           />
@@ -220,7 +220,7 @@ export function CoinPage() {
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />
@@ -237,7 +237,8 @@ export function CoinPage() {
                 <img
                   className="coin-shop__icon"
                   src={pack.icon}
-                  alt=""
+                  alt={pack.label}
+                  loading="lazy"
                   width={pack.iconW}
                   height={pack.iconH}
                   style={{ width: pack.iconW, height: pack.iconH }}

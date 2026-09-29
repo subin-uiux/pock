@@ -54,7 +54,7 @@ export function AdVideoLayer({ open, onClose }: AdVideoLayerProps) {
         <img
           className="ad-video-layer__close-icon"
           src="/assets/images/icons/close.svg"
-          alt=""
+          alt="닫기"
           width={18}
           height={18}
         />

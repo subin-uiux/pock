@@ -79,7 +79,7 @@ export function Popup({
               <img
                 className="pock-window__control-icon"
                 src="/assets/images/icons/heart.svg"
-                alt=""
+                alt="하트"
                 width={9}
                 height={7}
               />
@@ -90,7 +90,7 @@ export function Popup({
           <img
             className="pock-popup__icon"
             src={resolvedIcon}
-            alt=""
+            alt={variant === "warning" ? "경고" : variant === "share" ? "공유" : "안내"}
             width={resolvedIconSize}
             height={resolvedIconSize}
             style={{ width: resolvedIconSize, height: resolvedIconSize }}

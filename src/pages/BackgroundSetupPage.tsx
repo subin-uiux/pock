@@ -89,7 +89,7 @@ export function BackgroundSetupPage() {
               <img
                 className="background-setup__base"
                 src={CHARACTER_BASE.src[character]}
-                alt=""
+                alt={character === "boy" ? "남자 캐릭터" : "여자 캐릭터"}
                 width={CHARACTER_BASE.width}
                 height={CHARACTER_BASE.height}
               />
@@ -101,7 +101,7 @@ export function BackgroundSetupPage() {
                       : "background-setup__wear"
                   }
                   src={outfit.src}
-                  alt=""
+                  alt={`${outfit.label} 옷`}
                   width={outfit.width}
                   height={outfit.height}
                   style={wearStyle}

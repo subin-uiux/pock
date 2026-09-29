@@ -44,7 +44,8 @@ function AlertCard({
             <img
               className="alert-card__icon"
               src={item.icon}
-              alt=""
+              alt={`${item.label} 알림`}
+              loading="lazy"
               width={item.iconW}
               height={item.iconH}
             />
@@ -107,7 +108,7 @@ export function AlertPage() {
           <img
             className="alert-page__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />

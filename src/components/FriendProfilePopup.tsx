@@ -111,7 +111,7 @@ export function FriendProfilePopup({
         >
           <img
             src="/assets/images/icons/close.svg"
-            alt=""
+            alt="닫기"
             width={18}
             height={18}
           />
@@ -137,7 +137,7 @@ export function FriendProfilePopup({
               <img
                 className="friend-profile-popup__avatar-img"
                 src={profileImage}
-                alt=""
+                alt={`${name} 프로필`}
                 width={82}
                 height={137}
               />

@@ -160,7 +160,7 @@ export function LetterPaperPicker({
           <img
             className="letter-paper-pick__back-icon"
             src="/assets/images/icons/arrow-before.svg"
-            alt=""
+            alt="이전"
             width={24}
             height={24}
           />
@@ -208,7 +208,7 @@ export function LetterPaperPicker({
                         <img
                           className="letter-paper-pick__lock-icon"
                           src="/assets/images/letter/letter-ad.svg"
-                          alt=""
+                          alt="광고 시청으로 받는 편지지"
                           width={40}
                           height={40}
                         />
@@ -217,7 +217,7 @@ export function LetterPaperPicker({
                           <img
                             className="letter-paper-pick__lock-icon"
                             src="/assets/images/letter/letter-lock.svg"
-                            alt=""
+                            alt="잠긴 편지지"
                             width={40}
                             height={40}
                           />
@@ -225,7 +225,7 @@ export function LetterPaperPicker({
                             <img
                               className="letter-paper-pick__coin"
                               src="/assets/images/coin/coin.svg"
-                              alt=""
+                              alt="코인"
                               width={14}
                               height={14}
                             />

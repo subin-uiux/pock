@@ -21,7 +21,7 @@ export function Header({ title = "POCK", showCoin = true }: HeaderProps) {
               <img
                 className="coin__icon"
                 src="/assets/images/coin/coin.svg"
-                alt=""
+                alt="코인"
                 width={18}
                 height={18}
               />

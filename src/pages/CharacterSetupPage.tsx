@@ -81,7 +81,7 @@ export function CharacterSetupPage() {
                 <img
                   className="character-setup__avatar"
                   src={item.src}
-                  alt=""
+                  alt={item.label}
                   width={106}
                   height={180}
                 />

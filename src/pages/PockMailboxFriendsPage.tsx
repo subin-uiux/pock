@@ -50,7 +50,8 @@ function FriendAvatar({
           <img
             className="friend-list-page__avatar-base"
             src={CHARACTER_BASE.src[character]}
-            alt=""
+            alt={character === "boy" ? "남자 캐릭터" : "여자 캐릭터"}
+            loading="lazy"
             width={CHARACTER_BASE.width}
             height={CHARACTER_BASE.height}
           />
@@ -62,7 +63,8 @@ function FriendAvatar({
                   : "friend-list-page__avatar-wear"
               }
               src={wear.src}
-              alt=""
+              alt={`${wear.label} 옷`}
+              loading="lazy"
               width={wear.width}
               height={wear.height}
             />
@@ -72,7 +74,8 @@ function FriendAvatar({
         <img
           className="friend-list-page__avatar-img"
           src="/assets/images/avatar/girl.svg"
-          alt=""
+          alt="기본 프로필 캐릭터"
+          loading="lazy"
           width={50}
           height={50}
         />
@@ -156,7 +159,7 @@ export function PockMailboxFriendsPage() {
           <img
             className="mailbox-friends__back-icon"
             src="/assets/images/icons/left-arrow.svg"
-            alt=""
+            alt="뒤로 가기"
             width={24}
             height={24}
           />

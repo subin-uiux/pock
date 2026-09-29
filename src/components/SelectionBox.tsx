@@ -31,7 +31,7 @@ export function SelectionBox({
         <img
           className="selection-box__check"
           src="/assets/images/icons/check-blue.svg"
-          alt=""
+          alt="선택됨"
           width={25}
           height={25}
         />

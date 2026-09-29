@@ -136,14 +136,14 @@ export function LandingPage() {
                 ref={forkRef}
                 className="landing__fork"
                 src="/assets/images/brand/pork-logo.svg"
-                alt=""
+                alt="포크 심벌"
                 width={28}
                 height={71}
               />
               <img
                 className="landing__pocket"
                 src="/assets/images/brand/pocket-logo.svg"
-                alt=""
+                alt="주머니 심벌"
                 width={49}
                 height={45}
               />
