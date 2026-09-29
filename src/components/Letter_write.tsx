@@ -538,7 +538,6 @@ export function Letter_write({
                 role="textbox"
                 aria-multiline="true"
                 aria-label="편지 작성"
-                aria-describedby="letter-write-content-limit"
                 onBeforeInput={handleContentBeforeInput}
                 onInput={handleContentInput}
                 onPaste={handleContentPaste}
@@ -561,9 +560,6 @@ export function Letter_write({
                   </span>
                 </span>
               ) : null}
-              <span id="letter-write-content-limit" className="visually-hidden">
-                최대 {LETTER_CONTENT_MAX}자
-              </span>
             </div>
             <div className="letter-write__paper-foot">
               <label className="letter-write__from-field">
