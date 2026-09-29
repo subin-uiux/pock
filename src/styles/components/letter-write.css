@@ -344,24 +344,34 @@
   flex: 1 1 auto;
   min-height: var(--lw-lines-total-h);
   overflow: hidden;
-  background-color: var(--lw-paper-bg);
+  /*
+   * 배경은 편지지(paper)가 그대로 비치게 투명.
+   * 단색 마스크 대신 가로선을 사진+여백 구간(좌상단)만 비워서 그림
+   * → 그라데이션·이미지 편지지에서도 사진 옆 색이 튀지 않음
+   */
+  background-color: transparent;
   background-image:
-    /* 1) 옆 5줄 구간: 사진+여백 위 선 가림 */
-    linear-gradient(var(--lw-paper-bg), var(--lw-paper-bg)),
-    /* 2) 사진 전체 높이: 사진 아래 일부에 선이 비치지 않게 */
-    linear-gradient(var(--lw-paper-bg), var(--lw-paper-bg)),
-    /* 3) 가로선 — 줄 1칸 타일을 세로 반복 (배율과 무관하게 1px 선 유지) */
+    /* 1) 사진+여백 오른쪽: 전체 높이 — 줄 1칸 타일 세로 반복 */
     linear-gradient(
       to bottom,
       transparent calc(100% - 1px),
       var(--lw-line-color) calc(100% - 1px)
+    ),
+    /* 2) 사진+여백 열: 옆 5줄 아래부터 */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--lw-line-height) - 1px),
+      var(--lw-line-color) calc(var(--lw-line-height) - 1px),
+      var(--lw-line-color) var(--lw-line-height)
     );
   background-size:
-    calc(var(--lw-media-w) + var(--lw-media-gap)) var(--lw-side-block-h),
-    var(--lw-media-w) var(--lw-media-h),
-    100% var(--lw-line-height);
-  background-position: 0 0, 0 0, 0 0;
-  background-repeat: no-repeat, no-repeat, repeat-y;
+    calc(100% - var(--lw-media-w) - var(--lw-media-gap)) var(--lw-line-height),
+    calc(var(--lw-media-w) + var(--lw-media-gap)) calc(100% - var(--lw-side-block-h));
+  background-position:
+    calc(var(--lw-media-w) + var(--lw-media-gap)) 0,
+    0 var(--lw-side-block-h);
+  background-repeat: repeat-y, no-repeat;
 }
 
 .letter-write__media {
@@ -932,19 +942,17 @@
   background-size: 100% 100%;
 }
 
-.letter-write__paper--stripe .letter-write__compose {
-  --lw-paper-bg: rgba(255, 233, 246, 0.72); /* 가로선 마스크 · 임시값 */
-  background-color: transparent;
-}
-
+/* 클로버 — 편지 보기(letter.css .letter--clover)와 동일 */
 .letter-write__paper--clover {
   position: relative;
-  --lw-paper-bg: #d0ffd6;
-  background: radial-gradient(
-    60% 50% at 50% 45%,
-    #f3ffe8 0%,
-    #d0ffd6 55%,
-    #b8f0c0 100%
+  --lw-paper-bg: #caffca;
+  background-color: #caffca;
+  background-image: radial-gradient(
+    circle at center,
+    #ffffff 25%,
+    #f7fff8 60%,
+    #e7ffea 90%,
+    #caffca 100%
   );
 }
 
@@ -952,14 +960,14 @@
 .letter-write__paper--clover::after {
   content: "";
   position: absolute;
-  top: 0.75rem;
-  bottom: 0.75rem;
+  top: 0.375rem; /* 6 — 편지지와 간격 */
+  bottom: 0.375rem; /* 6 */
   z-index: 0;
-  width: 1.1875rem; /* 19 */
+  width: 1.1875rem; /* 19 — letter-clover-pattern */
   background-image: url("/assets/images/letter/letter-clover-pattern.svg");
   background-repeat: repeat-y;
-  background-position: center top;
-  background-size: 100% auto;
+  background-size: 1.1875rem 27.75rem; /* 19×444 — SVG 원본 타일 */
+  background-position: top center;
   pointer-events: none;
 }
 
@@ -976,8 +984,4 @@
 .letter-write__paper--clover .letter-write__paper-foot {
   position: relative;
   z-index: 1;
-}
-
-.letter-write__paper--rainbow .letter-write__compose {
-  background-color: transparent;
 }

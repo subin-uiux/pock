@@ -235,6 +235,7 @@ export function InquiryPage() {
                 }}
                 placeholder={PLACEHOLDERS.email}
                 autoComplete="email"
+                spellCheck={false}
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={
                   errors.email ? "inquiry-email-error" : undefined

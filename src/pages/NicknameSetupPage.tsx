@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { SignUpStepGauge } from "@/components/SignUpStepGauge";
@@ -17,14 +17,21 @@ const RECOMMENDED_NICKNAMES = [
   "사랑폭격",
 ] as const;
 
+/** 이 페이지에서 새로고침(직접 진입)했으면 첫 화면은 빈 입력칸 */
+let startEmpty = window.location.pathname === "/profile/nickname";
+
 /**
  * 프로필 설정 1단계 — 닉네임 입력
  */
 export function NicknameSetupPage() {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState(
-    () => getProfileSetup().nickname ?? "",
+  const [nickname, setNickname] = useState(() =>
+    startEmpty ? "" : (getProfileSetup().nickname ?? ""),
   );
+
+  useEffect(() => {
+    startEmpty = false;
+  }, []);
   const canNext = nickname.trim().length > 0;
 
   const handleChange = (value: string) => {

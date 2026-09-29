@@ -410,6 +410,11 @@
   height: 10.875rem; /* 174 */
 }
 
+/* 1행 — 친구 카드(2행 139)에서 한 행(41) 뺀 높이 · 임시값 */
+.settings-menu--instagram {
+  height: 6.125rem; /* 98 */
+}
+
 .settings-menu__head {
   display: flex;
   flex: 0 0 auto;
@@ -433,6 +438,15 @@
 .settings-menu__icon--service {
   width: 1.490625rem; /* 23.85 */
   height: 1.125rem; /* 18 */
+}
+
+.settings-menu__icon--instagram {
+  width: 1.4375rem; /* 23 — 친구 아이콘 높이와 동일 */
+  height: 1.4375rem;
+}
+
+a.settings-menu__btn {
+  text-decoration: none;
 }
 
 .settings-menu__title {
@@ -565,13 +579,8 @@
 /* Tb / Pc — 630 · 출석+메뉴 가로 2열 */
 @media (min-width: 769px) {
   .page--settings .main {
-    padding-top: var(--spacing-md);
-    padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom));
+    padding-block: 2.5rem; /* 40 — 홈·보내기 Pad/Pc와 동일 */
     padding-inline: 1.25rem; /* 20 — 임시값 */
-  }
-
-  .settings__coin-row {
-    margin-top: 4rem; /* 64 — 버튼 위 간격 */
   }
 
   .page--settings .friend-list-toast {

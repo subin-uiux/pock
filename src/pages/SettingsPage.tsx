@@ -367,6 +367,43 @@ export function SettingsPage() {
               </li>
             </ul>
           </article>
+
+          <article
+            className="settings-menu settings-menu--instagram"
+            aria-label="인스타그램"
+          >
+            <header className="settings-menu__head">
+              <img
+                className="settings-menu__icon settings-menu__icon--instagram"
+                src="/assets/images/insta.svg"
+                alt=""
+                width={23}
+                height={23}
+              />
+              <h2 className="settings-menu__title">인스타그램</h2>
+            </header>
+            <ul className="settings-menu__list">
+              <li className="settings-menu__item">
+                <a
+                  className="settings-menu__btn"
+                  href="https://www.instagram.com/p.o0ck?stkn=bDRzaXhkdzE1N2hm&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {/* 행 문구 시안 없음 — 계정 아이디 표기 · 임시값 */}
+                  <span className="settings-menu__label">@p.o0ck</span>
+                  <img
+                    className="settings-menu__chevron"
+                    src="/assets/icons/left-arrow.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                    aria-hidden="true"
+                  />
+                </a>
+              </li>
+            </ul>
+          </article>
         </div>
       </div>
 

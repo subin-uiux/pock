@@ -23,7 +23,7 @@
   width: 100%;
   max-width: none;
   padding-top: 2.5rem; /* 40 */
-  padding-bottom: calc(var(--navigation-height) + 2.5rem + env(safe-area-inset-bottom)); /* 네비 위 40 */
+  padding-bottom: 2.5rem; /* 40 — 네비 높이는 page__wrapper가 확보 */
   padding-inline: 1.25rem; /* 20 */
 }
 
