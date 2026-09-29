@@ -183,6 +183,31 @@
 
 .inquiry-page__input {
   height: 2.5rem; /* 40 · 임시값 */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* 브라우저 자동완성 — 파란 배경·appearance 변경으로 박스가 사라지는 것 방지 */
+.inquiry-page__input:-webkit-autofill,
+.inquiry-page__input:-webkit-autofill:hover,
+.inquiry-page__input:-webkit-autofill:focus,
+.inquiry-page__input:autofill {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0.5px solid var(--color-base-700);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-base-0) inset;
+  box-shadow: 0 0 0 1000px var(--color-base-0) inset;
+  -webkit-text-fill-color: var(--color-base-900);
+  caret-color: var(--color-base-900);
+  transition: background-color 9999s ease-out 0s;
+}
+
+.inquiry-page__input:-webkit-autofill:focus {
+  border-color: var(--color-base-900);
+}
+
+.inquiry-page__input--error:-webkit-autofill {
+  border-color: var(--color-rainbow-red-base);
 }
 
 .inquiry-page__textarea {
