@@ -516,8 +516,7 @@
 .letter-write__from:focus-visible,
 .letter-write__date:focus-visible,
 .letter-write__media:focus-visible {
-  outline: 1px solid var(--color-brand-base);
-  outline-offset: 1px;
+  outline: none;
 }
 
 .letter-write__from,
