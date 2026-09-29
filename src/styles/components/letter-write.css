@@ -344,34 +344,38 @@
   flex: 1 1 auto;
   min-height: var(--lw-lines-total-h);
   overflow: hidden;
-  /*
-   * 배경은 편지지(paper)가 그대로 비치게 투명.
-   * 단색 마스크 대신 가로선을 사진+여백 구간(좌상단)만 비워서 그림
-   * → 그라데이션·이미지 편지지에서도 사진 옆 색이 튀지 않음
-   */
+  isolation: isolate; /* ::before 가로선을 내용 뒤·편지지 위에 */
+  /* 배경은 편지지(paper)가 그대로 비치게 투명 */
   background-color: transparent;
-  background-image:
-    /* 1) 사진+여백 오른쪽: 전체 높이 — 줄 1칸 타일 세로 반복 */
-    linear-gradient(
-      to bottom,
-      transparent calc(100% - 1px),
-      var(--lw-line-color) calc(100% - 1px)
-    ),
-    /* 2) 사진+여백 열: 옆 5줄 아래부터 */
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent calc(var(--lw-line-height) - 1px),
-      var(--lw-line-color) calc(var(--lw-line-height) - 1px),
-      var(--lw-line-color) var(--lw-line-height)
-    );
-  background-size:
-    calc(100% - var(--lw-media-w) - var(--lw-media-gap)) var(--lw-line-height),
-    calc(var(--lw-media-w) + var(--lw-media-gap)) calc(100% - var(--lw-side-block-h));
-  background-position:
+}
+
+/*
+ * 가로선 — 한 장의 그라데이션으로 전체를 그려 확대/축소 시에도 줄이 어긋나지 않음.
+ * 사진+여백 구간(좌상단)만 clip-path로 잘라 선을 숨김
+ * → 그라데이션·이미지 편지지에서도 사진 옆 색이 튀지 않음
+ */
+.letter-write__compose::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* 줄 1칸 타일 세로 반복 — 배율이 애매해도 선이 빠지지 않음 */
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(100% - 1px),
+    var(--lw-line-color) calc(100% - 1px)
+  );
+  background-size: 100% var(--lw-line-height);
+  background-repeat: repeat-y;
+  clip-path: polygon(
     calc(var(--lw-media-w) + var(--lw-media-gap)) 0,
-    0 var(--lw-side-block-h);
-  background-repeat: repeat-y, no-repeat;
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 var(--lw-side-block-h),
+    calc(var(--lw-media-w) + var(--lw-media-gap)) var(--lw-side-block-h)
+  );
 }
 
 .letter-write__media {

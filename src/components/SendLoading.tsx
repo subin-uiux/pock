@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/Button";
 
 type SendLoadingPhase = "loading" | "complete";
@@ -70,7 +71,7 @@ export function SendLoading({
 
   const isComplete = phase === "complete";
 
-  return (
+  return createPortal(
     <div
       className={
         isComplete ? "send-loading send-loading--complete" : "send-loading"
@@ -130,6 +131,7 @@ export function SendLoading({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

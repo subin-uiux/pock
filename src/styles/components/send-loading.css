@@ -32,18 +32,24 @@
   object-fit: contain;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  /* 포크가 오른쪽에 있어 주머니 기준 중앙 맞춤 · 자기 폭 % */
-  transform: translateX(15%); /* 임시값 */
 }
 
+/* 포크가 오른쪽에 있어 주머니 기준 중앙 맞춤 · 자기 폭 % (주머니 중심 = 폭의 26%) */
 .send-loading__logo--loading {
+  transform: translateX(24%);
   width: 6.25rem; /* 100 — Mo */
   height: 7.125rem; /* 114 */
 }
 
+/*
+ * 주머니 중심 = 폭의 32.8%
+ * 높이는 로딩 로고와 동일(아래 정렬) — 글자·버튼이 로딩 글자·로딩바와 같은 위치
+ */
 .send-loading__logo--complete {
+  transform: translateX(17.2%);
   width: 7.125rem; /* 114 — Mo */
-  height: 6.25rem; /* 100 */
+  height: 7.125rem; /* 로딩 로고 높이 114 */
+  object-position: center bottom;
 }
 
 .send-loading__text {
@@ -56,13 +62,17 @@
   text-align: center;
 }
 
-/* 로딩 바 — loading-bar1→2→3 순차 교체 · Mo 154×16 */
+/*
+ * 로딩 바 — loading-bar1→2→3 순차 교체 · Mo 154×16
+ * 전송완료 버튼(높이 32)과 같은 칸의 세로 가운데 — 위아래 여백으로 높이 맞춤
+ */
 .send-loading__bar-image {
   display: block;
   box-sizing: border-box;
   width: 9.625rem; /* 154 */
   height: 1rem; /* 16 */
-  margin-top: 1.25rem; /* 20 — 임시값 */
+  margin-top: calc(1.25rem + (2rem - 1rem) / 2); /* 20 + (버튼 32 − 바 16) / 2 */
+  margin-bottom: calc((2rem - 1rem) / 2);
   object-fit: fill;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
@@ -95,7 +105,7 @@
 
   .send-loading__logo--complete {
     width: 11.625rem; /* 186 — 원본 */
-    height: 9.75rem; /* 156 — 원본 */
+    height: 14.375rem; /* 로딩 로고 높이 230 */
   }
 
   .send-loading__text {
@@ -106,7 +116,8 @@
   .send-loading__bar-image {
     width: 15.625rem; /* 250 — 원본 비율 유지 · 임시값 */
     height: 1.625rem; /* 26 */
-    margin-top: 1.5rem;
+    margin-top: calc(1.5rem + (2rem - 1.625rem) / 2); /* 24 + (버튼 32 − 바 26) / 2 */
+    margin-bottom: calc((2rem - 1.625rem) / 2);
   }
 
   .send-loading__actions {
