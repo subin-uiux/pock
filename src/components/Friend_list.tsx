@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/Button";
 import { DimmedOverlay } from "@/components/DimmedOverlay";
 import { FriendCheckbox } from "@/components/FriendCheckbox";
@@ -10,6 +10,8 @@ import type { PockUser } from "@/types";
 interface Friend_listProps {
   open: boolean;
   friends: PockUser[];
+  /** 목록 맨 위 '나' — 아래 구분선 */
+  self?: PockUser | null;
   selectedId?: string | null;
   size?: "mo" | "tb" | "pc";
   /** modal: 딤+팝업(기본) · inline: 페이지 내 배치(홈) */
@@ -32,6 +34,7 @@ interface Friend_listProps {
 export function Friend_list({
   open,
   friends,
+  self = null,
   selectedId,
   size = "mo",
   variant = "modal",
@@ -55,11 +58,16 @@ export function Friend_list({
     }
   }, [open, selectedId]);
 
+  const items = useMemo(
+    () => (self ? [self, ...friends] : friends),
+    [self, friends],
+  );
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return friends;
-    return friends.filter((f) => f.name.toLowerCase().includes(q));
-  }, [friends, query]);
+    if (!q) return items;
+    return items.filter((f) => f.name.toLowerCase().includes(q));
+  }, [items, query]);
 
   if (!open) return null;
 
@@ -74,7 +82,7 @@ export function Friend_list({
   };
 
   const handleConfirm = () => {
-    const friend = friends.find((f) => f.id === pendingId);
+    const friend = items.find((f) => f.id === pendingId);
     if (!friend) return;
     if (onConfirm) {
       onConfirm(friend);
@@ -142,40 +150,46 @@ export function Friend_list({
                 Boolean(friend.outfit) &&
                 Boolean(friend.background);
               const hasThumb = Boolean(friend.profileImage);
+              const isSelf = Boolean(self) && friend.id === self?.id;
 
               return (
-                <li key={friend.id}>
-                  <button
-                    type="button"
-                    className={
-                      selected
-                        ? "pock-window__item pock-window__item--selected"
-                        : "pock-window__item"
-                    }
-                    onClick={() => handleItemClick(friend)}
-                  >
-                    {hasAvatar ? (
-                      <PockWindowThumb
-                        character={friend.character!}
-                        outfit={friend.outfit!}
-                        background={friend.background!}
-                      />
-                    ) : hasThumb ? (
-                      <img
-                        className="pock-window__thumb"
-                        src={friend.profileImage}
-                        alt={`${friend.name} 프로필`}
-                        loading="lazy"
-                        width={isPick ? 36 : 48}
-                        height={isPick ? 36 : 48}
-                      />
-                    ) : (
-                      <span className="pock-window__thumb" aria-hidden="true" />
-                    )}
-                    <p className="pock-window__name">{friend.name}</p>
-                    <FriendCheckbox size={checkboxSize} checked={selected} />
-                  </button>
-                </li>
+                <Fragment key={friend.id}>
+                  <li>
+                    <button
+                      type="button"
+                      className={
+                        selected
+                          ? "pock-window__item pock-window__item--selected"
+                          : "pock-window__item"
+                      }
+                      onClick={() => handleItemClick(friend)}
+                    >
+                      {hasAvatar ? (
+                        <PockWindowThumb
+                          character={friend.character!}
+                          outfit={friend.outfit!}
+                          background={friend.background!}
+                        />
+                      ) : hasThumb ? (
+                        <img
+                          className="pock-window__thumb"
+                          src={friend.profileImage}
+                          alt={`${friend.name} 프로필`}
+                          loading="lazy"
+                          width={isPick ? 36 : 48}
+                          height={isPick ? 36 : 48}
+                        />
+                      ) : (
+                        <span className="pock-window__thumb" aria-hidden="true" />
+                      )}
+                      <p className="pock-window__name">{friend.name}</p>
+                      <FriendCheckbox size={checkboxSize} checked={selected} />
+                    </button>
+                  </li>
+                  {isSelf ? (
+                    <li className="pock-window__divider" aria-hidden="true" />
+                  ) : null}
+                </Fragment>
               );
             })}
           </ul>

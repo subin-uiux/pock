@@ -672,15 +672,15 @@
     font-size: 1rem; /* 16 */
   }
 
-  /* 카운트다운 카드 썸네일 90×120 */
+  /* 카운트다운 카드 썸네일 — 다른 카드와 동일 120×150 */
   .letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb,
   .letter-card--tb.letter-card--open.letter-card--preview:has(.letter-card__status--progress) .letter-card__thumb {
-    width: 5.625rem; /* 90 */
-    height: 7.5rem; /* 120 */
+    width: 7.5rem; /* 120 */
+    height: 9.375rem; /* 150 */
   }
 
   .letter-card__stack:has(.letter-card__status--progress) {
-    grid-template-columns: 5.625rem minmax(0, 16.5rem); /* 썸네일 90 · 상태 264 */
+    grid-template-columns: 7.5rem minmax(0, 16.5rem); /* 썸네일 120 · 상태 264 */
   }
 
   .letter-card__stack .letter-card__status--progress {

@@ -4,8 +4,8 @@ import { Button } from "@/components/Button";
 import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { Popup } from "@/components/Popup";
 import { SearchInput } from "@/components/SearchInput";
-import { friendItems } from "@/data/friend-data";
 import { useToastPresence } from "@/hooks/useToastPresence";
+import { deleteFriend, getFriendItems } from "@/lib/friends";
 import {
   CHARACTER_BASE,
   getOutfitById,
@@ -22,7 +22,7 @@ const INVITE_LINK = "https://pock.app/invite";
 export function Friend_listPage() {
   const navigate = useNavigate();
 
-  const [friends, setFriends] = useState<PockUser[]>(() => [...friendItems]);
+  const [friends, setFriends] = useState<PockUser[]>(getFriendItems);
   const [query, setQuery] = useState("");
   const [profileFriend, setProfileFriend] = useState<PockUser | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<PockUser | null>(null);
@@ -57,6 +57,7 @@ export function Friend_listPage() {
 
   const confirmDelete = () => {
     if (!deleteTarget) return;
+    deleteFriend(deleteTarget.name);
     setFriends((prev) => prev.filter((f) => f.id !== deleteTarget.id));
     setDeleteTarget(null);
     setProfileFriend((prev) =>

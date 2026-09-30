@@ -635,6 +635,15 @@ button.pock-window__control--close {
   transform: translateX(-50%);
 }
 
+/* '나' 아래 구분선 — 위 간격은 행 padding-bottom(20)과 동일 */
+.pock-window--friend-pick .pock-window__divider {
+  flex: 0 0 auto;
+  height: 1px;
+  margin: 0 0 1.25rem;
+  background-color: var(--color-base-200);
+  list-style: none;
+}
+
 .pock-window--friend-pick .pock-window__name {
   flex: 1 1 auto;
   min-width: 0;

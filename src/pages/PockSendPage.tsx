@@ -1,16 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Friend_list } from "@/components/Friend_list";
 import { Letter_write } from "@/components/Letter_write";
 import { Popup } from "@/components/Popup";
 import { SendLoading } from "@/components/SendLoading";
-import { friendItems } from "@/data/friend-data";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { getFriendItems } from "@/lib/friends";
 import {
   clearDraftLeaveGuard,
   setDraftLeaveGuard,
 } from "@/lib/leave-guard";
+import { MAILBOX_SELF_NAME } from "@/lib/mailbox-friends";
 import { addSentPockFromPayload } from "@/lib/pock";
+import { getProfileSetup } from "@/lib/profile-setup";
 import type { LetterWritePayload, PockUser } from "@/types";
 
 type PockSendLocationState = {
@@ -38,6 +40,23 @@ export function PockSendPage() {
   const [writeKey, setWriteKey] = useState(0);
   const pendingPayloadRef = useRef<LetterWritePayload | null>(null);
   const pendingLeaveRef = useRef<(() => void) | null>(null);
+
+  /** 친구 선택 맨 위 '나' — 내 프로필 캐릭터·옷·배경 */
+  const selfItem = useMemo<PockUser>(() => {
+    const { character, outfit, background } = getProfileSetup();
+    return {
+      id: "self",
+      name: MAILBOX_SELF_NAME,
+      profileImage:
+        character === "boy"
+          ? "/assets/images/avatar/boy.svg"
+          : "/assets/images/avatar/girl.svg",
+      gender: character === "boy" ? "male" : "female",
+      character: character ?? undefined,
+      outfit: outfit ?? undefined,
+      background: background ?? undefined,
+    };
+  }, []);
 
   useEffect(() => {
     document.title = "POCK 작성 ㅣ POCK";
@@ -116,7 +135,8 @@ export function PockSendPage() {
 
       <Friend_list
         open={friendOpen}
-        friends={friendItems}
+        friends={getFriendItems()}
+        self={selfItem}
         selectedId={friend?.id ?? null}
         size={size}
         mode="pick"

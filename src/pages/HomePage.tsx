@@ -4,10 +4,11 @@ import { FriendProfilePopup } from "@/components/FriendProfilePopup";
 import { OnboardGuide } from "@/components/OnboardGuide";
 import { PockWindowScrollbar } from "@/components/PockWindowScrollbar";
 import { PockWindowThumb } from "@/components/PockWindowThumb";
-import { homeFriends, type HomeFriend } from "@/data/home-friends";
+import type { HomeFriend } from "@/data/home-friends";
 import { useCoin } from "@/hooks/useCoin";
 import { useToastPresence } from "@/hooks/useToastPresence";
 import { hasUnreadAlerts } from "@/lib/alerts";
+import { getHomeFriends } from "@/lib/friends";
 import {
   markHomeOnboardSeen,
   shouldOpenHomeOnboard,
@@ -47,6 +48,7 @@ export function HomePage() {
 
   const [size, setSize] = useState<FriendListSize>(getFriendListSize);
   const [hasAlert] = useState(hasUnreadAlerts);
+  const [homeFriends] = useState(getHomeFriends);
   const [selectedFriend, setSelectedFriend] = useState<HomeFriend | null>(null);
   const [toastOpen, setToastOpen] = useState(false);
   const toast = useToastPresence(toastOpen);
