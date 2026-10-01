@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
+import {
+  PORTFOLIO_NOTICE_CLOSED_EVENT,
+  hasSeenNotice,
+} from "@/components/PortfolioNotice";
 
 /**
  * 앱 진입 스플래시 — 포크가 pocket에 꽂힌 뒤 /login 으로 이동
@@ -36,11 +40,28 @@ export function LandingPage() {
       transformOrigin: "50% 85%",
     } as const;
 
+    /* 포트폴리오 안내 팝업이 떠 있으면 닫힌 뒤 시작 */
+    const whenNoticeClosed = (start: () => void) => {
+      if (hasSeenNotice()) {
+        start();
+        return () => {};
+      }
+      window.addEventListener(PORTFOLIO_NOTICE_CLOSED_EVENT, start, {
+        once: true,
+      });
+      return () =>
+        window.removeEventListener(PORTFOLIO_NOTICE_CLOSED_EVENT, start);
+    };
+
     if (reduceMotion) {
       gsap.set(fork, docked);
-      const timer = window.setTimeout(goNext, 600);
+      let timer = 0;
+      const stopWaiting = whenNoticeClosed(() => {
+        timer = window.setTimeout(goNext, 600);
+      });
       return () => {
         cancelled = true;
+        stopWaiting();
         window.clearTimeout(timer);
       };
     }
@@ -55,6 +76,7 @@ export function LandingPage() {
     });
 
     const tl = gsap.timeline({
+      paused: true,
       defaults: { ease: "sine.inOut" },
       onComplete: goNext,
     });
@@ -117,8 +139,11 @@ export function LandingPage() {
       })
       .to({}, { duration: 0.75 });
 
+    const stopWaiting = whenNoticeClosed(() => tl.play());
+
     return () => {
       cancelled = true;
+      stopWaiting();
       tl.kill();
     };
   }, [navigate]);

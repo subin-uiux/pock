@@ -60,6 +60,7 @@
   color: var(--color-base-900); /* 임시값 */
   font-size: 1rem; /* 16 */
   line-height: var(--line-height-tight); /* 임시값 */
+  word-break: keep-all;
 }
 
 .pock-popup__heading {

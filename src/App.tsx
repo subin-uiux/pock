@@ -3,6 +3,7 @@ import { RequireAuth } from "@/components/RequireAuth";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CursorPressTilt } from "@/components/CursorPressTilt";
 import { CursorSparkles } from "@/components/CursorSparkles";
+import { PortfolioNotice } from "@/components/PortfolioNotice";
 import { AppLayout } from "@/layouts/AppLayout";
 import { LandingPage } from "@/pages/LandingPage";
 import { LoginPage } from "@/pages/LoginPage";
@@ -205,6 +206,7 @@ export default function App() {
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <PortfolioNotice />
     </BrowserRouter>
   );
 }
